@@ -1,6 +1,5 @@
 ﻿# India Heritage & Freedom Fighters
 
-# freedom-fighters-project
 This Project Showcases the Movements, Legacy of Indias great freedom fighters.Built as Tribute to Indias rich heritage and Struggle for Independence
 This is The Entrance page Which Consists of Authentication and Navbar To Explore the Freedom fighters And Their Struggles
 
@@ -114,5 +113,6 @@ This Is the Timeline which shows the Indias Struggle for Independence to Indian 
 The Calender Which Shows the events of Freedom like Republic Day....
 
 <img width="1310" height="952" alt="Screenshot 2025-07-21 005742" src="https://github.com/user-attachments/assets/aaa72210-d6bf-4d9c-aa14-8a6ce4ede80c" />
+
 
 
