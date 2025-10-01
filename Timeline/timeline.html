@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Freedom Struggle Timeline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF8F1C;
+            --secondary: #138808;
+            --dark: #000080;
+            --light: #FFFFFF;
+            --gray: #F5F7FA;
+            --dark-gray: #6B7280;
+            --accent: #B629E9;
+            --card-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--gray);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Animated Background Elements */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 143, 28, 0.2);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .flag-animation {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--primary) 33%, var(--light) 33%, var(--light) 66%, var(--secondary) 66%);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: -1;
+            animation: wave 8s ease-in-out infinite;
+            transform-origin: bottom left;
+            opacity: 0.1;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+        
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,247,250,0.95) 100%);
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: var(--dark-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 10px;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-phase {
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .phase-title {
+            background: var(--light);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 3rem;
+            border: 2px solid var(--primary);
+            font-weight: 700;
+            color: var(--dark);
+            z-index: 5;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .phase-title:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .timeline-item {
+            width: calc(50% - 2rem);
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+            perspective: 1000px;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: 4rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: 4rem;
+            margin-top: 6rem;
+        }
+
+        .timeline-year {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year::after {
+            content: '';
+            position: absolute;
+            right: -4.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 5px solid var(--light);
+            box-shadow: 0 0 0 5px var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year::before {
+            content: '';
+            position: absolute;
+            left: -4.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 5px solid var(--light);
+            box-shadow: 0 0 0 5px var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-year::after,
+        .timeline-item:hover .timeline-year::before {
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .timeline-content {
+            background: var(--light);
+            padding: 0;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid var(--light);
+            filter: drop-shadow(2px 0 2px rgba(0,0,0,0.1));
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid var(--light);
+            filter: drop-shadow(-2px 0 2px rgba(0,0,0,0.1));
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: all 0.5s ease;
+        }
+
+        .timeline-content:hover .timeline-image {
+            transform: scale(1.05);
+        }
+
+        .timeline-text {
+            padding: 1.8rem;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .timeline-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover .timeline-title::after {
+            width: 100%;
+            background: var(--secondary);
+        }
+
+        .timeline-desc {
+            color: var(--dark-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--dark);
+            color: var(--light);
+            border: none;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 128, 0.2);
+        }
+
+        .timeline-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 143, 28, 0.3);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--dark), #1a1a8a);
+            color: var(--light);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 5rem;
+            position: relative;
+            z-index: 5;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .footer p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(255, 143, 28, 0.4);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--secondary);
+        }
+
+        /* Tooltip for timeline items */
+        .timeline-tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .timeline-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--dark);
+        }
+
+        .timeline-item:hover .timeline-tooltip {
+            opacity: 1;
+            top: -50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .timeline-container::before {
+                left: 3rem;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 6rem !important;
+                text-align: left !important;
+                margin-top: 0 !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-year::after,
+            .timeline-item:nth-child(even) .timeline-year::before {
+                left: -3.5rem;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -15px;
+                right: auto;
+                border-right: 15px solid var(--light);
+                border-left: none;
+            }
+
+            .flag-animation {
+                right: 20px;
+                top: 20px;
+                width: 80px;
+                height: 50px;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .phase-title {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            .timeline-title {
+                font-size: 1.2rem;
+            }
+
+            .timeline-desc {
+                font-size: 0.95rem;
+            }
+
+            .timeline-image {
+                height: 180px;
+            }
+
+            .footer {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+                padding: 2.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .timeline-container::before {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                padding-left: 4rem !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-year::after,
+            .timeline-item:nth-child(even) .timeline-year::before {
+                left: -2.5rem;
+                width: 20px;
+                height: 20px;
+            }
+
+            .timeline-text {
+                padding: 1.5rem;
+            }
+
+            .flag-animation {
+                display: none;
+            }
+
+            .fab {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="particles" id="particles"></div>
+    <div class="flag-animation"></div>
+
+    <div class="header">
+        <h1>Indian Freedom Struggle Timeline</h1>
+        <p>Explore the key events and movements that shaped India's journey to independence from British colonial rule through this interactive timeline experience</p>
+    </div>
+
+    <div class="timeline-container">
+        <!-- Phase 1: Early Resistance -->
+        <div class="timeline-phase">
+            <div class="phase-title">⚔️ Phase 1: Early Resistance (1757–1857)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1757</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Battle that started British dominance</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Lord_Clive_meeting_with_Mir_Jafar_after_the_Battle_of_Plassey.jpg" alt="Battle of Plassey" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Battle of Plassey</h3>
+                            <p class="timeline-desc">Robert Clive's victory over Siraj-ud-Daulah established British East India Company's dominance in Bengal, marking the beginning of British colonial rule in India.</p>
+                            <a href="plassey.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1764</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Decisive British victory in Bengal</div>
+                        <img src="https://www.cheggindia.com/wp-content/uploads/2024/01/Battle-of-Buxar-1.png" alt="Battle of Buxar" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Battle of Buxar</h3>
+                            <p class="timeline-desc">British victory over combined forces of Mir Qasim, Shuja-ud-Daula, and Shah Alam II strengthened their control over Bengal and Bihar, establishing them as the dominant power in northern India.</p>
+                            <a href="buxar.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1799</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Fall of Mysore's Tiger</div>
+                        <img src="https://sc0.blr1.cdn.digitaloceanspaces.com/article/173948-jdfcnrsbrh-1651667452.jpg" alt="Death of Tipu Sultan" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Death of Tipu Sultan</h3>
+                            <p class="timeline-desc">The Tiger of Mysore fell during the 4th Anglo-Mysore War, ending significant resistance in South India against British expansion.</p>
+                            <a href="tipu.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1806</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">First sepoy uprising</div>
+                        <img src="https://www.sahapedia.org/sites/default/files/styles/sp_page_banner_800x800/public/Madras%20Army%20Sepoys%20from%20early%201800s_WC.jpg?itok=RlDFCifF" alt="Vellore Mutiny" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Vellore Mutiny</h3>
+                            <p class="timeline-desc">First large-scale sepoy uprising against British dress regulations and religious interference, foreshadowing the 1857 rebellion.</p>
+                            <a href="vellore.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1831</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Coorg uprising against British</div>
+                        <img src="https://media.assettype.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Fgallery_images%2Ffile7bv9o3ttg9w1l9h6oc25.jpg?w=undefined" alt="Rebellion of Kodagu" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Rebellion of Kodagu</h3>
+                            <p class="timeline-desc">Uprising in Coorg against British annexation led by Virarajendra, demonstrating early resistance to colonial expansion in South India.</p>
+                            <a href="kodagu.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1855</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Tribal uprising in Jharkhand</div>
+                        <img src="https://triumphias.com/blog/wp-content/uploads/2019/01/3-tribal-revolts-india-before-indian-independence-1.jpg" alt="Santhal Rebellion" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Santhal Rebellion</h3>
+                            <p class="timeline-desc">Tribal uprising in Jharkhand against British and zamindari oppression led by Sidhu and Kanhu, one of the largest peasant revolts.</p>
+                            <a href="santhal.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1857</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">First major war for independence</div>
+                        <img src="https://static.india.com/wp-content/uploads/2024/05/the-Revolt-of-1857_.jpg?impolicy=Medium_Resize&w=1200&h=800" alt="First War of Independence" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">First War of Independence</h3>
+                            <p class="timeline-desc">Massive uprising led by Mangal Pandey, Rani Lakshmi Bai, Tantia Tope, and Bahadur Shah Zafar against British rule, marking a turning point in Indian history.</p>
+                            <a href="1857.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Reform & National Awakening -->
+        <div class="timeline-phase">
+            <div class="phase-title">🌱 Phase 2: Reform & National Awakening (1858–1905)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1858</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">End of Company rule</div>
+                        <img src="https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_3840,h_1920,g_auto/dpr_auto/f_auto/q_auto:eco/v1/gettyimages-114677106?_a=BAVAZGDX0" alt="British Crown Rule Begins" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">British Crown Rule Begins</h3>
+                            <p class="timeline-desc">End of East India Company rule after the 1857 revolt, beginning of direct British Crown governance through the Government of India Act 1858.</p>
+                            <a href="crown-rule.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1875</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Hindu reform movement</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7RHfxHbr6DPBxtaJks-ISbIoJbQrGYt6KUKrmO-2PFBL1e4o87vvhK3qKaxWcIwSWqiA&usqp=CAU" alt="Arya Samaj Founded" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Arya Samaj Founded</h3>
+                            <p class="timeline-desc">Swami Dayanand Saraswati establishes reformist Hindu organization promoting education, nationalism, and social reform.</p>
+                            <a href="arya-samaj.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1876</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">First nationalist organization</div>
+                        <img src="https://education.cfr.org/sites/default/files/public/independence-movements-cards/images/india.jpg" alt="Indian National Association" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Indian National Association</h3>
+                            <p class="timeline-desc">First nationalist organization founded by Surendranath Banerjee and Anand Mohan Bose, precursor to the Indian National Congress.</p>
+                            <a href="ina.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1885</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Birth of INC</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Ct6IQR85pDi5BLdgmcLkCVsB5b-9-Un_lA&s" alt="Indian National Congress Formed" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Indian National Congress Formed</h3>
+                            <p class="timeline-desc">A.O. Hume helps establish INC, which would lead the freedom struggle for decades, becoming the principal voice of Indian nationalism.</p>
+                            <a href="inc.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1893</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Cultural nationalism</div>
+                        <img src="https://truthsun.com/images/seekers/nationalists/bal-gangadhar-tilak/Sri-Aurobindo-Tilak-Nationalist-Conference-Surat-1907.jpg" alt="Tilak's Cultural Nationalism" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Tilak's Cultural Nationalism</h3>
+                            <p class="timeline-desc">Bal Gangadhar Tilak promotes Ganesh Utsav and Shivaji Jayanti to foster national unity and resistance against British rule.</p>
+                            <a href="tilak.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1897</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">First revolutionary act</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm4azGNSneX3pmnuRoHTnvvMpkvSA5CQ3K5w&s" alt="Chapekar Brothers' Assassination" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Chapekar Brothers' Assassination</h3>
+                            <p class="timeline-desc">Damodar and Balkrishna Chapekar assassinate British officer Rand in Pune, marking early revolutionary activity against British rule.</p>
+                            <a href="chapekar.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1904</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Revolutionary organization</div>
+                        <img src="https://preview.redd.it/on-march-24-1902-anushilan-samiti-was-established-by-satish-v0-es38f6db1dqc1.jpg?width=1080&crop=smart&auto=webp&s=b729d380f88162442228293b3fd46c012fa560c5" alt="Anushilan Samiti Formed" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Anushilan Samiti Formed</h3>
+                            <p class="timeline-desc">Revolutionary nationalist organization established in Bengal by Pramathanath Mitra, advocating armed resistance against British rule.</p>
+                            <a href="anushilan.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Partition & Swadeshi Movement -->
+        <div class="timeline-phase">
+            <div class="phase-title">🔥 Phase 3: Partition & Swadeshi Movement (1905–1917)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1905</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Divide and rule policy</div>
+                        <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201810/partition.jpeg" alt="Partition of Bengal" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Partition of Bengal</h3>
+                            <p class="timeline-desc">Lord Curzon divides Bengal on religious lines, sparking massive protests and the Swadeshi movement, galvanizing nationalist sentiment.</p>
+                            <a href="partition.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1905–1908</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Economic nationalism</div>
+                        <img src="https://cn.edurev.in/ApplicationImages/Temp/59_262f872d-d038-4563-a976-0ff48fed26e9_lg.png?w=360&dpr=2.6" alt="Swadeshi & Boycott Movements" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Swadeshi & Boycott Movements</h3>
+                            <p class="timeline-desc">Massive nationalist campaigns promoting Indian goods and boycotting British products, marking the beginning of economic nationalism.</p>
+                            <a href="swadeshi.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1906</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Muslim political organization</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/All_India_Muslim_League_Working_Committee_Lahore_1940.jpg/250px-All_India_Muslim_League_Working_Committee_Lahore_1940.jpg" alt="Muslim League Formed" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Muslim League Formed</h3>
+                            <p class="timeline-desc">Political organization established to represent Muslim interests, later demanding Pakistan under Muhammad Ali Jinnah's leadership.</p>
+                            <a href="muslim-league.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1907</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Congress divides</div>
+                        <img src="https://licchavilyceum.com/wp-content/uploads/2023/07/second-session-of-the-Indian-National-Congress.jpg" alt="Surat Split" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Surat Split</h3>
+                            <p class="timeline-desc">INC divides between Moderates (Gokhale) favoring constitutional methods and Extremists (Tilak, Lajpat Rai, Pal) advocating stronger resistance.</p>
+                            <a href="surat-split.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1909</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Separate electorates introduced</div>
+                        <img src="https://img.jagranjosh.com/imported/images/E/GK/GK-morley-minto-reforms.webp" alt="Morley-Minto Reforms" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Morley-Minto Reforms</h3>
+                            <p class="timeline-desc">Introduced separate electorates for Muslims, sowing seeds of communalism while expanding Indian participation in governance.</p>
+                            <a href="morley-minto.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1911</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Nationalist victory</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjdJCT7GHE8qG9Sk698VyusptPe0YCmi1BQ&s" alt="Partition of Bengal Annulled" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Partition of Bengal Annulled</h3>
+                            <p class="timeline-desc">British reverse partition due to nationalist pressure, but shift capital to Delhi to maintain administrative control.</p>
+                            <a href="partition-annulled.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Gandhian Era Begins -->
+        <div class="timeline-phase">
+            <div class="phase-title">✊ Phase 4: Gandhian Era Begins (1917–1930)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1915</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Mahatma returns to India</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5aHXCpTstjV6y8lrg-eVvMIEZL5xbUPWMHA&s" alt="Gandhi Returns to India" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Gandhi Returns to India</h3>
+                            <p class="timeline-desc">After developing satyagraha in South Africa, Gandhi joins Indian freedom struggle with nonviolent resistance methods.</p>
+                            <a href="gandhi-return.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1917</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">First satyagraha in India</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Gandhiji_and_Sub-Inspector_Qurban_Ali_in_Champaran_%281917%29.jpg" alt="Champaran Satyagraha" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Champaran Satyagraha</h3>
+                            <p class="timeline-desc">Gandhi's first satyagraha in India supporting indigo farmers against exploitative British planters, establishing his leadership.</p>
+                            <a href="champaran.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1918</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Peasant movement in Gujarat</div>
+                        <img src="https://imgk.timesnownews.com/story/1568987839-Bardoli_Satyagraha.jpg?tr=w-1200,h-900" alt="Kheda Satyagraha" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Kheda Satyagraha</h3>
+                            <p class="timeline-desc">Gandhi supports peasants in Gujarat affected by famine and high taxes, demonstrating mass mobilization potential.</p>
+                            <a href="kheda.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1919</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">British massacre in Amritsar</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PI0SXtw-zwng078OE_rE2RLlR_gvoVOFddJfbNO5lH32zbM4VM90Fs6E4Y8Z0rkucck&usqp=CAU" alt="Jallianwala Bagh Massacre" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Jallianwala Bagh Massacre</h3>
+                            <p class="timeline-desc">General Dyer orders troops to fire on peaceful gathering in Amritsar, killing hundreds and galvanizing nationalist movement.</p>
+                            <a href="jallianwala.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1919</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Limited self-government</div>
+                        <img src="https://cdn1.byjus.com/wp-content/uploads/2018/11/free-ias-prep/2018/07/03081920/montford1-300x172.png" alt="Montagu-Chelmsford Reforms" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Montagu-Chelmsford Reforms</h3>
+                            <p class="timeline-desc">Introduces dyarchy system but fails to satisfy nationalist demands for self-rule, leading to Non-Cooperation Movement.</p>
+                            <a href="montford.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1920</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Mass civil disobedience</div>
+                        <img src="https://i0.wp.com/civilaspirant.in/wp-content/uploads/2020/08/20200804_125303_0000.png?fit=816%2C459&ssl=1" alt="Non-Cooperation Movement" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Non-Cooperation Movement</h3>
+                            <p class="timeline-desc">Gandhi launches mass movement boycotting British institutions, titles, and goods, marking shift to mass politics.</p>
+                            <a href="non-cooperation.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1922</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Violence ends movement</div>
+                        <img src="https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2021/02/chch.jpg" alt="Chauri Chaura Incident" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Chauri Chaura Incident</h3>
+                            <p class="timeline-desc">Violent clash between police and protesters leads Gandhi to call off Non-Cooperation Movement, emphasizing nonviolence.</p>
+                            <a href="chauri-chaura.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1923</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Congress faction formed</div>
+                        <img src="https://cn.edurev.in/ApplicationImages/Temp/6895861_a4dd0a56-e7a9-4b7b-bff2-7cc377950aee_lg.png?w=360&dpr=2.6" alt="Swaraj Party Formed" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Swaraj Party Formed</h3>
+                            <p class="timeline-desc">C.R. Das and Motilal Nehru form party to contest elections and obstruct British rule from within legislative councils.</p>
+                            <a href="swaraj-party.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1925</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Revolutionary action</div>
+                        <img src="https://images.news18.com/webstories/2023/12/image-6581806240e3f.png" alt="Kakori Train Robbery" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Kakori Train Robbery</h3>
+                            <p class="timeline-desc">Revolutionaries including Ram Prasad Bismil loot British government money train to fund independence activities.</p>
+                            <a href="kakori.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1927</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">All-white commission</div>
+                        <img src="https://cdn.britannica.com/93/270593-050-BF249625/Demonstration-in-Pune-India-against-British-colonial-rule-1928-Simon-Go-Back--banner-refers-to-the-Simon-Commission.jpg" alt="Simon Commission Arrives" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Simon Commission Arrives</h3>
+                            <p class="timeline-desc">All-white British commission on constitutional reforms met with nationwide protests and "Go Back Simon" slogans.</p>
+                            <a href="simon.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1928</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Indian constitutional proposal</div>
+                        <img src="https://static.theprint.in/wp-content/uploads/2020/07/Nehru-1024x576.jpg" alt="Nehru Report" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Nehru Report</h3>
+                            <p class="timeline-desc">Motilal Nehru chairs committee proposing dominion status constitution for India, rejected by more radical nationalists.</p>
+                            <a href="nehru-report.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1929</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Demand for complete independence</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/NehruAddressingCrowds_FatehMaidan.jpg" alt="Purna Swaraj Declared" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Purna Swaraj Declared</h3>
+                            <p class="timeline-desc">Lahore Congress session under Jawaharlal Nehru demands complete independence, setting stage for Civil Disobedience Movement.</p>
+                            <a href="purna-swaraj.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 5: Civil Disobedience & Rise of Revolutionaries -->
+        <div class="timeline-phase">
+            <div class="phase-title">🧂 Phase 5: Civil Disobedience & Rise of Revolutionaries (1930–1939)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1930</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Salt Satyagraha</div>
+                        <img src="https://th-i.thgim.com/public/migration_catalog/article16314896.ece/alternates/FREE_1200/TH06_DANDI_MARCH" alt="Dandi March" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Dandi March</h3>
+                            <p class="timeline-desc">Gandhi's 240-mile Salt Satyagraha challenging British salt tax laws, a defining moment in Civil Disobedience Movement.</p>
+                            <a href="dandi.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1931</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Truce agreement</div>
+                        <img src="https://www.cseguide.com/wp-content/uploads/2025/03/Gandhi-Irwin-Pact-5-March-1931.webp" alt="Gandhi-Irwin Pact" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Gandhi-Irwin Pact</h3>
+                            <p class="timeline-desc">Truce agreement between Gandhi and Viceroy Irwin ending Civil Disobedience Movement and securing Congress participation in Round Table Conference.</p>
+                            <a href="gandhi-irwin.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1931</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Martyrs of freedom struggle</div>
+                        <img src="https://assets.telegraphindia.com/telegraph/2021/Jul/1625193370_untitled-1.jpg" alt="Execution of Bhagat Singh" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Execution of Bhagat Singh</h3>
+                            <p class="timeline-desc">Revolutionaries Bhagat Singh, Rajguru, and Sukhdev hanged for Lahore conspiracy case, becoming icons of resistance.</p>
+                            <a href="bhagat-singh.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1932</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Dalit representation</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOOoR884iv6j1e4UcsA7GWnL9TsQdOgUGNBQ&s" alt="Poona Pact" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Poona Pact</h3>
+                            <p class="timeline-desc">Agreement between Gandhi and Ambedkar on political representation for Dalits, avoiding separate electorates.</p>
+                            <a href="poona-pact.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1935</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Constitutional reforms</div>
+                        <img src="https://blog.ipleaders.in/wp-content/uploads/2019/08/GOIA.jpg" alt="Government of India Act" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Government of India Act</h3>
+                            <p class="timeline-desc">Provides provincial autonomy but retains British control at center, becoming basis for independent India's constitution.</p>
+                            <a href="goi-act.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1939</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Radical faction</div>
+                        <img src="https://tds-images.thedailystar.net/sites/default/files/styles/very_big_1/public/feature/images/006.png" alt="Bose Forms Forward Bloc" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Bose Forms Forward Bloc</h3>
+                            <p class="timeline-desc">Subhas Chandra Bose resigns from INC after ideological differences with Gandhi and forms new radical faction advocating direct action.</p>
+                            <a href="forward-bloc.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 6: Final Revolt & Towards Independence -->
+        <div class="timeline-phase">
+            <div class="phase-title">⚔️ Phase 6: Final Revolt & Towards Independence (1940–1947)</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1940</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Limited protest</div>
+                        <img src="https://i0.wp.com/iasnext.com/wp-content/uploads/2023/11/Individual-Satyagraha.webp" alt="Individual Satyagraha" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Individual Satyagraha</h3>
+                            <p class="timeline-desc">Limited protest against British dragging India into WWII without consultation, led by Vinoba Bhave and Nehru.</p>
+                            <a href="individual-satyagraha.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1942</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Do or Die movement</div>
+                        <img src="https://images.firstpost.com/wp-content/uploads/2020/08/quit-india-movement_640.jpg?im=FitAndFill=(596,336)" alt="Quit India Movement" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Quit India Movement</h3>
+                            <p class="timeline-desc">Gandhi's call for immediate British withdrawal leads to mass arrests and nationwide protests despite wartime repression.</p>
+                            <a href="quit-india.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1943</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Army for independence</div>
+                        <img src="https://media.ptcnews.tv/wp-content/uploads/2024/08/d86f5bdd529ddf7ab819c63d1e30eb7e_1280X720.webp" alt="Bose Leads INA" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Bose Leads INA</h3>
+                            <p class="timeline-desc">Subhas Chandra Bose reorganizes Indian National Army to fight British with Japanese support, giving slogan "Give me blood and I will give you freedom".</p>
+                            <a href="ina-bose.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1946</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Naval uprising</div>
+                        <img src="https://images.indianexpress.com/2023/08/Featured-image.jpeg" alt="Royal Indian Navy Mutiny" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Royal Indian Navy Mutiny</h3>
+                            <p class="timeline-desc">Massive revolt by Indian sailors in Bombay and Karachi against British officers, showing widespread discontent with colonial rule.</p>
+                            <a href="rin-mutiny.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1946</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Constitutional proposal</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKaX_Wg60XFhijrEV773QqO7oDNaSKiWdFhFEdK-qpX-cQqZYnaeraFJ6Oe1jOigUD-4M&usqp=CAU" alt="Cabinet Mission Plan" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Cabinet Mission Plan</h3>
+                            <p class="timeline-desc">British proposal for united India with limited autonomy, ultimately rejected leading to partition.</p>
+                            <a href="cabinet-mission.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1947</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">Partition plan</div>
+                        <img src="https://images.hindustantimes.com/img/2021/06/03/550x309/partition-plan_4feb1d22-cc04-11ea-9e0e-a2b226992cea_1622696583841.jpg" alt="Mountbatten Plan" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">Mountbatten Plan</h3>
+                            <p class="timeline-desc">Final partition plan dividing India and Pakistan, setting August 15 independence date amid communal violence.</p>
+                            <a href="mountbatten.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1947</div>
+                    <div class="timeline-content">
+                        <div class="timeline-tooltip">India becomes free</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHPiFDspj1mhho3heseSIqFdtM93uiz0yTqg&s" alt="India Gains Independence" class="timeline-image">
+                        <div class="timeline-text">
+                            <h3 class="timeline-title">India Gains Independence</h3>
+                            <p class="timeline-desc">At midnight on August 15, India becomes a free nation after 200 years of British rule, with Jawaharlal Nehru as first PM.</p>
+                            <a href="independence.html" class="timeline-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Journey through the complete timeline of India's freedom struggle and discover the sacrifices, movements, and leaders that shaped our nation's destiny</p>
+        <div class="footer-links">
+            <a href="dashboard.html"><i class="fas fa-home"></i> Home</a>
+            <a href="chatbot.html"><i class="fas fa-robot"></i> Chatbot</a>
+            
+            <a href="card.html"><i class="fas fa-book"></i>Fighters Gallery</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+    </div>
+
+    <!-- Floating action button -->
+    <div class="fab" id="fab">
+        <i class="fas fa-share-alt"></i>
+    </div>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.3 + 0.1;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = opacity;
+                
+                // Random color based on theme
+                const colors = ['rgba(255, 143, 28, 0.2)', 'rgba(19, 136, 8, 0.2)', 'rgba(0, 0, 128, 0.2)'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Animation for timeline items
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            timelineItems.forEach(item => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (itemPosition < screenPosition) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createParticles();
+            animateTimeline();
+            
+            // Add hover effect to FAB
+            const fab = document.getElementById('fab');
+            fab.addEventListener('mouseenter', () => {
+                fab.innerHTML = '<i class="fas fa-arrow-up"></i>';
+                fab.setAttribute('title', 'Back to Top');
+            });
+            
+            fab.addEventListener('mouseleave', () => {
+                fab.innerHTML = '<i class="fas fa-share-alt"></i>';
+                fab.removeAttribute('title');
+            });
+            
+            fab.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate on scroll
+        window.addEventListener('scroll', animateTimeline);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Responsive adjustments for particles
+        window.addEventListener('resize', () => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                particle.style.left = `${Math.random() * window.innerWidth}px`;
+                particle.style.top = `${Math.random() * window.innerHeight}px`;
+            });
+        });
+
+        // Add tooltip to FAB
+        const fab = document.getElementById('fab');
+        fab.addEventListener('mouseenter', () => {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'fab-tooltip';
+            tooltip.textContent = 'Back to Top';
+            fab.appendChild(tooltip);
+            
+            setTimeout(() => {
+                tooltip.style.opacity = '1';
+                tooltip.style.transform = 'translateY(-40px)';
+            }, 10);
+        });
+        
+        fab.addEventListener('mouseleave', () => {
+            const tooltip = fab.querySelector('.fab-tooltip');
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = 'translateY(-20px)';
+                setTimeout(() => tooltip.remove(), 200);
+            }
+        });
+    </script>
+</body>
+</html>

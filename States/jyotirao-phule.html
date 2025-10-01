@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirao Phule - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <style>
+    /* Use the same CSS structure as previous bio pages like Bhagat Singh */
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the heroes who fought for our independence and social justice</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGDBFUylTCdx1wd58yaXj5JUqXoO03e9GEuzfzIG_L4pcreok6xwMim_nuEG2T5ByBmjM&usqp=CAU" alt="Jyotirao Phule">
+            </div>
+            <div class="hero-content">
+                <h2>Jyotirao Phule</h2>
+                <p>The visionary social reformer who pioneered women's education in India and fought against caste discrimination, earning the title of 'Father of Indian Social Revolution'.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>April 11, 1827</p>
+                        <p>Pune, Maharashtra</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>November 28, 1890 (aged 63)</p>
+                        <p>Pune, Maharashtra</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Title</h4>
+                        <p>Mahatma Jyotirao Phule</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Women's education, Anti-caste movement, Social reform</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "If you educate a man, you educate an individual. But if you educate a woman, you educate an entire family."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Born on April 11, 1827 in Pune, Jyotirao Govindrao Phule belonged to the Mali (gardener) community. Though born in a lower caste, he received education at a Scottish missionary school, which shaped his progressive views. Married to Savitribai Phule at age 13, the couple would become India's first modern feminist activists.</p>
+            
+            <p>In 1848, Phule opened India's first school for girls from all castes, facing severe opposition from orthodox society. He established the Satyashodhak Samaj (Truth-Seekers' Society) in 1873 to challenge caste discrimination and promote rational thinking. His seminal work "Gulamgiri" (Slavery) published in 1873 remains a foundational text of anti-caste literature.</p>
+            
+            <p>Phule advocated for widow remarriage, started orphanages for illegitimate children, and worked to abolish untouchability. The title 'Mahatma' was first bestowed upon him in 1888 by another social reformer Vithalrao Krishnaji Vandekar.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Timeline of Reforms</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1848</div>
+                    <p>Opened first school for girls in Pune with his wife Savitribai as teacher</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1851</div>
+                    <p>Established schools for children from untouchable castes</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1863</div>
+                    <p>Started infanticide prevention center for pregnant widows</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1873</div>
+                    <p>Founded Satyashodhak Samaj and published "Gulamgiri"</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1888</div>
+                    <p>Honored with the title 'Mahatma' by his followers</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Major Works and Contributions</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Education Revolution:</strong> Established 18 schools for girls and lower castes</li>
+                <li><strong>Gulamgiri (1873):</strong> Exposed caste oppression and compared it to slavery</li>
+                <li><strong>Satyashodhak Samaj:</strong> Organization promoting social equality and rationalism</li>
+                <li><strong>Women's Rights:</strong> Advocated for widow remarriage and against child marriage</li>
+                <li><strong>Farmers' Rights:</strong> Worked to eliminate exploitative practices against farmers</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://livewire.thewire.in/wp-content/uploads/2021/04/jyotirao-phule_youtube-1200x600.jpg" alt="Jyotirao Phule portrait">
+                    <div class="gallery-caption">Portrait of Mahatma Jyotirao Phule</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202503/jyotiba-phule-savitribai-phule-24433990-16x9_0.jpeg?VersionId=mPVLv1PUoh4LCqXAThtH82rokQk1Byme&size=690:388" alt="Phule with Savitribai">
+                    <div class="gallery-caption">Jyotirao with his wife Savitribai Phule</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.thestatesman.com/wp-content/uploads/2023/02/Untitled-design-14-1-1024x683.jpg" alt="First girls school">
+                    <div class="gallery-caption">Site of India's first girls' school in Pune</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.forwardpress.in/wp-content/uploads/2018/01/SSS-Brahminless-wedding.jpg" alt="Satyashodhak Samaj">
+                    <div class="gallery-caption">Satyashodhak Samaj meeting</div>
+                </div>
+              
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Lessons to Learn from Jyotirao Phule</h3>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-book-open"></i> Power of Education</h4>
+                <p>Phule demonstrated education as the most powerful tool for social transformation, especially for oppressed communities.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-venus"></i> Gender Equality</h4>
+                <p>His work with Savitribai shows that social reform must include women's empowerment as a fundamental principle.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-hands-helping"></i> Allyship</h4>
+                <p>As a person from a backward but not 'untouchable' caste, he used his privilege to uplift the most marginalized.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-brain"></i> Rational Thinking</h4>
+                <p>Phule's emphasis on reason over blind tradition teaches us to question unjust social norms.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-fist-raised"></i> Courage in Reform</h4>
+                <p>Despite threats and social boycott, he persisted in his mission, showing that real change requires courage.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-school"></i> Educational Institutions</h4>
+                    <p>Numerous schools, colleges and universities across India bear Phule's name, continuing his educational mission.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-monument"></i> Memorials</h4>
+                    <p>Statues and memorials across Maharashtra, with the most prominent at Pune where he lived and worked.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-medal"></i> Government Honors</h4>
+                    <p>Featured on Indian postage stamps, and the University of Pune was renamed Savitribai Phule Pune University in 2014.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-users"></i> Social Movements</h4>
+                    <p>His ideas inspired Dr. B.R. Ambedkar and continue to influence anti-caste movements today.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Further Reading</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>"Gulamgiri" (Slavery) by Jyotirao Phule</li>
+                <li>"Selected Writings of Jotirao Phule" edited by G.P. Deshpande</li>
+                <li>"Jotirao Phule and the Ideology of Social Revolution in India" by Gail Omvedt</li>
+                <li>"Mahatma Jotirao Phule: Father of Our Social Revolution" by Dhananjay Keer</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for our independence and social justice</p>
+        </div>
+    </footer>
+</body>
+</html>

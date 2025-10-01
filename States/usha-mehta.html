@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usha Mehta - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the heroes who fought for our independence</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Usha_Mehta.jpg" alt="Usha Mehta">
+            </div>
+            <div class="hero-content">
+                <h2>Usha Mehta</h2>
+                <p>The courageous freedom fighter who ran the secret Congress Radio during the Quit India Movement, becoming the voice of India's independence struggle.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>March 25, 1920</p>
+                        <p>Saras, Gujarat, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>August 11, 2000 (aged 80)</p>
+                        <p>Mumbai, Maharashtra, India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Congress Radio, Quit India Movement</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Awards</h4>
+                        <p>Padma Vibhushan (1998)</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "We wanted to keep the flame of freedom burning through our broadcasts, to remind people that the fight was still on."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Usha Mehta was born on March 25, 1920, in Saras village near Surat in Gujarat. From a very young age, she was drawn to the Indian independence movement, participating in her first protest at just eight years old.</p>
+            <p>She completed her education in Bombay (now Mumbai), earning a BA in Philosophy and later an LLB. However, her true passion lay in the freedom struggle. During the Quit India Movement in 1942, at just 22 years old, she became famous for operating the underground Congress Radio, which became a crucial tool for communication among freedom fighters when the British had banned all Congress activities and censored the press.</p>
+            <p>After independence, she completed her PhD and became a professor of Political Science at the University of Bombay, where she taught for many years.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Freedom Struggle Contributions</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1928</div>
+                    <p>At just 8 years old, participated in her first protest against British rule, carrying water for the satyagrahis during the Simon Commission boycott.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1930</div>
+                    <p>At age 10, participated in the protests against the Salt Laws during the Salt Satyagraha.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1942</div>
+                    <p>Played a pivotal role in the Quit India Movement by establishing the secret Congress Radio along with other freedom fighters like Vithalbhai Jhaveri and Chandrakant Jhaveri.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1942</div>
+                    <p>Arrested on November 12, 1942, for operating the illegal radio station. Spent four years in prison until 1946.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1998</div>
+                    <p>Awarded the Padma Vibhushan, India's second-highest civilian award, for her contributions to the freedom struggle.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Congress Radio</h3>
+            <p>Usha Mehta's most significant contribution to the freedom struggle was the establishment and operation of the secret Congress Radio during the Quit India Movement in 1942. When all Congress leaders were arrested and the organization banned, this underground radio station became the voice of the independence movement.</p>
+            
+            <p>Key facts about Congress Radio:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>First broadcast on August 27, 1942 from Bombay</li>
+                <li>Broadcast news about the freedom movement that was censored in mainstream media</li>
+                <li>Changed locations frequently to avoid detection</li>
+                <li>Broadcast messages from underground leaders</li>
+                <li>Operated for about three months before being discovered</li>
+                <li>Used the tagline "This is the Congress Radio calling on 42.34 meters from somewhere in India"</li>
+            </ul>
+            
+            <div class="quote">
+                "The radio was our weapon against the British propaganda. Through it, we could tell our people the truth about our movement."
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://www.thefamouspeople.com/profiles/images/usha-mehta-2.jpg" alt="Usha Mehta portrait">
+                    <div class="gallery-caption">Usha Mehta in her later years</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.thefamouspeople.com/profiles/images/usha-mehta-3.jpg" alt="Usha Mehta receiving award">
+                    <div class="gallery-caption">Receiving the Padma Vibhushan award</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.livehistoryindia.com/sites/default/files/2020-08/Congress%20Radio%20Usha%20Mehta.jpg" alt="Congress Radio">
+                    <div class="gallery-caption">Replica of the Congress Radio equipment</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://gumlet.assettype.com/freepressjournal/2021-08/8d6c3e2b-1f2c-4d0e-b8a5-6d4d0c6d7e7b/usha_mehta.jpg" alt="Usha Mehta documentary">
+                    <div class="gallery-caption">Documentary on Usha Mehta's life</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-broadcast-tower"></i> Media Pioneer</h4>
+                    <p>Recognized as a pioneer of underground broadcasting in India. Her innovative use of radio inspired future generations of journalists and communicators.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-female"></i> Women in Freedom Struggle</h4>
+                    <p>Symbol of women's participation in the independence movement, showing how young women played crucial roles beyond traditional expectations.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Academic Contributions</h4>
+                    <p>After independence, made significant contributions to political science academia, bridging the gap between activism and scholarship.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-award"></i> Honors</h4>
+                    <p>Received numerous awards including the Padma Vibhushan. Several institutions and awards are named after her today.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Further Reading</h3>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>"The Secret Congress Radio" by Usha Mehta (her memoirs)</li>
+                <li>"Women in the Indian National Movement: Unseen Faces and Unheard Voices" by Suruchi Thapar-Bjorkert</li>
+                <li>"Broadcasting Freedom: Radio and the Indian Independence Movement" by David Lelyveld</li>
+                <li>"The Indian Struggle: 1920-1942" by Subhas Chandra Bose (for context of the period)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+            
+            <div class="footer-links">
+                <a href="dashboard.html">Home</a>
+                <a href="card.html">Freedom Fighters</a>
+                <a href="timeline.html">Timeline</a>
+                
+            </div>
+            
+            
+            <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ const fighters = [
+            {
+                id: 1,
+                name: "Mahatma Gandhi",
+                years: "1869 - 1948",
+                image: "https://i.pinimg.com/originals/9d/dd/95/9ddd95bec31f46e6b43828d1910ad796.jpg",
+                category: "leader",
+                shortDesc: "The Father of the Nation who led India to independence through non-violent civil disobedience and inspired freedom movements worldwide.",
+                longDesc: "Mohandas Karamchand Gandhi, known as Mahatma Gandhi, was the preeminent leader of India's independence movement against British rule. Employing nonviolent civil disobedience, Gandhi led India to independence and inspired movements for civil rights and freedom across the world. His birthday, 2nd October, is commemorated as Gandhi Jayanti, a national holiday in India, and worldwide as the International Day of Nonviolence. Gandhi's philosophy was firmly founded on nonviolence (ahimsa) and truth (satyagraha).",
+                quote: "Be the change that you wish to see in the world.",
+                achievements: [
+                    "Led the successful non-violent campaign for India's independence",
+                    "Organized the historic Salt March in 1930 against British salt taxes",
+                    "Promoted Hindu-Muslim unity throughout his life",
+                    "Championed the concept of Swadeshi (self-reliance)",
+                    "Developed the philosophy of Satyagraha (truth-force)"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+            },
+            {
+                id: 2,
+                name: "Bhagat Singh",
+                years: "1907 - 1931",
+                image: "https://akm-img-a-in.tosshub.com/businesstoday/images/story/202203/ezgif-sixteen_nine_250.jpg?size=948:533",
+                category: "soldier",
+                shortDesc: "Revolutionary socialist who became a symbol of resistance against British rule through his courageous acts and martyrdom at age 23.",
+                longDesc: "Bhagat Singh was an Indian socialist revolutionary whose acts of dramatic violence against the British in India and execution at age 23 made him a folk hero of the Indian independence movement. He was involved in the murder of a junior British police officer and the Delhi Assembly bombing. In prison, he led a hunger strike to protest the mistreatment of Indian prisoners. His execution spurred many to join the freedom movement. Bhagat Singh became a symbol of bravery and sacrifice for the nation's youth.",
+                quote: "They may kill me, but they cannot kill my ideas. They can crush my body, but they will not be able to crush my spirit.",
+                achievements: [
+                    "Participated in the killing of British police officer J.P. Saunders",
+                    "Bombed the Central Legislative Assembly in Delhi to protest repressive laws",
+                    "Popularized revolutionary ideas through his writings in newspapers",
+                    "Became a symbol of resistance against British rule",
+                    "Inspired youth across India to join the freedom struggle"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Bhagat_Singh"
+            },
+            {
+                id: 3,
+                name: "Rani Lakshmibai",
+                years: "1828 - 1858",
+                image: "https://ebnw.net/wp-content/uploads/2021/06/Rani-Laxmi-Bai.jpg.webp",
+                category: "woman",
+                shortDesc: "The fierce Queen of Jhansi who led a rebellion against British annexation.",
+                longDesc: "Rani Lakshmibai was a symbol of resistance to British rule during the 1857 revolt. Her leadership in battle and refusal to surrender made her a heroic figure in Indian history and a source of inspiration for women's empowerment.",
+                quote: "I shall not surrender my Jhansi!",
+                achievements: [
+                    "Led the defense of Jhansi during the 1857 rebellion",
+                    "Personally led troops in battle against the British",
+                    "Became a symbol of resistance and women's empowerment",
+                    "Inspired generations of freedom fighters",
+                    "Remembered as one of India's brahest warriors"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Rani_of_Jhansi"
+            },
+            {
+                id: 4,
+                name: "Sarojini Naidu",
+                years: "1879 - 1949",
+                image: "https://assets.thehansindia.com/h-upload/2025/02/11/1522611-a-tribute-to-sarojini-naidu-the-nightingale-of-india.webp",
+                category: "woman",
+                shortDesc: "Poet, freedom fighter, and the first Indian woman to become president of the INC.",
+                longDesc: "Known as the 'Nightingale of India', Sarojini Naidu was a gifted poet and powerful orator. She worked alongside Gandhi in various movements and later became the Governor of Uttar Pradesh after independence.",
+                quote: "We want deeper sincerity of motive, a greater courage in speech, and earnestness in action.",
+                achievements: [
+                    "First Indian woman president of the Indian National Congress",
+                    "Key participant in the Civil Disobedience Movement",
+                    "First woman governor of an Indian state (Uttar Pradesh)",
+                    "Renowned poet who inspired through her writings",
+                    "Advocate for women's rights and education"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Sarojini_Naidu"
+            },
+            {
+                id: 5,
+                name: "Aruna Asaf Ali",
+                years: "1909 - 1996",
+                image: "https://www.aidwaonline.org/sites/default/files/2018-06/4%20aruna-asaf-ali_0.jpg",
+                category: "woman",
+                shortDesc: "Hoisted the Indian flag at the Gowalia Tank Maidan during the Quit India Movement.",
+                longDesc: "Aruna Asaf Ali was an Indian freedom fighter who became prominent during the Quit India Movement. Despite police threats, she hoisted the tricolour at the 1942 Congress session in Bombay, becoming a national icon of resistance.",
+                quote: "Freedom is not given — it is taken.",
+                achievements: [
+                    "Hoisted the Indian flag during Quit India Movement in 1942",
+                    "Active in underground activities during the freedom struggle",
+                    "First Mayor of Delhi after independence",
+                    "Awarded the International Lenin Peace Prize",
+                    "Received India's second highest civilian honor, the Padma Vibhushan"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Aruna_Asaf_Ali"
+            },
+            {
+                id: 6,
+                name: "Subhas Chandra Bose",
+                years: "1897 - 1945",
+                image: "https://media.assettype.com/outlookindia/2025-01-15/bcu3vnko/1.png?w=801&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
+                category: "leader",
+                shortDesc: "Charismatic leader of the Indian National Army who fought for India's liberation abroad.",
+                longDesc: "Subhas Chandra Bose, known as Netaji, broke away from the Indian National Congress to form the INA and seek international alliances to fight British colonialism. His slogan 'Give me blood and I will give you freedom' rallied thousands.",
+                quote: "Give me blood and I will give you freedom.",
+                achievements: [
+                    "Formed the Indian National Army to fight British rule",
+                    "Established the Azad Hind government in exile",
+                    "Led the INA's campaign in Northeast India",
+                    "Inspired mass support for independence",
+                    "Created the famous slogan 'Jai Hind'"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Subhas_Chandra_Bose"
+            },
+            {
+                id: 7,
+                name: "Chandra Shekhar Azad",
+                years: "1906 - 1931",
+                image: "https://www.drishtiias.com/images/uploads/1595585727_image2.png",
+                category: "soldier",
+                shortDesc: "Mastermind of revolutionary activities; died in a heroic gunfight with British police.",
+                longDesc: "Chandra Shekhar Azad was a fearless revolutionary who vowed never to be captured alive. He reorganized the Hindustan Socialist Republican Association and inspired countless youth to join the struggle.",
+                quote: "I am free and will remain free till my last breath.",
+                achievements: [
+                    "Reorganized the Hindustan Republican Association",
+                    "Participated in the Kakori train robbery",
+                    "Assassinated British police officer J.P. Saunders",
+                    "Inspired youth to join the freedom movement",
+                    "Martyred in a gunfight with British police"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Chandra_Shekhar_Azad"
+            },
+            {
+                id: 8,
+                name: "Usha Mehta",
+                years: "1920 - 2000",
+                image: "https://akm-img-a-in.tosshub.com/indiatoday/styles/medium_crop_simple/public/2023-03/india_today-f244ss17-dvd-0074.jpg?VersionId=kX9vy6lhaZClN6A2tImVN.Q.rR8VttnO&size=750:*",
+                category: "woman",
+                shortDesc: "Ran a secret Congress Radio to broadcast anti-British messages during Quit India.",
+                longDesc: "Usha Mehta was a brave woman who defied British censorship by setting up an underground radio station during the Quit India Movement, spreading the voice of resistance throughout India.",
+                quote: "This is the Congress Radio calling on 42.34 meters from somewhere in India.",
+                achievements: [
+                    "Established Congress Radio during Quit India Movement",
+                    "Broadcast messages of freedom struggle across India",
+                    "Arrested and imprisoned for her revolutionary activities",
+                    "Received Padma Vibhushan for her contributions",
+                    "Became a professor of political science after independence"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Usha_Mehta"
+            },
+            {
+                id: 9,
+                name: "Matangini Hazra",
+                years: "1870 - 1942",
+                image: "https://currentaffairs.adda247.com/wp-content/uploads/multisite/sites/5/2024/08/10183709/Unsung-Heroes-Matangini-Hazra.png",
+                category: "woman",
+                shortDesc: "Elderly Gandhian freedom fighter shot while leading a procession with the Indian flag.",
+                longDesc: "Matangini Hazra, also called 'Gandhi Buri', was a part of the Quit India Movement. She continued marching with the tricolour while wounded, becoming a powerful symbol of courage and sacrifice.",
+                quote: "Vande Mataram! Vande Mataram!",
+                achievements: [
+                    "Participated in the Civil Disobedience Movement",
+                    "Led procession during Quit India Movement",
+                    "Shot dead while holding the Indian flag",
+                    "Became a symbol of women's participation in freedom struggle",
+                    "Remembered as 'Gandhi Buri' (Old Lady Gandhi)"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Matangini_Hazra"
+            },
+            {
+                id: 10,
+                name: "Veerapandiya Kattabomman",
+                years: "1760 - 1799",
+                image: "https://raksha-anirveda.com/wp-content/uploads/2022/05/Kattabomman-e1651390032910.webp",
+                category: "soldier",
+                shortDesc: "Early Tamil chieftain who resisted British rule with fiery defiance.",
+                longDesc: "Veerapandiya Kattabomman was a Palayakarrar (chieftain) who refused to pay taxes to the British East India Company. He waged an armed rebellion and became a celebrated folk hero in Tamil Nadu.",
+                quote: "I would rather die in honour than live in disgrace.",
+                achievements: [
+                    "Refused to pay taxes to British East India Company",
+                    "Led armed rebellion against British rule",
+                    "Executed by British but became a folk hero",
+                    "Inspired later freedom fighters in South India",
+                    "Remembered for his courage and defiance"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Veerapandiya_Kattabomman"
+            },
+            {
+                id: 11,
+                name: "Ram Prasad Bismil",
+                years: "1897 - 1927",
+                image: "https://en-media.thebetterindia.com/uploads/2018/06/14a6956f1fee17f7eb6d8f98445cc964.jpg",
+                category: "soldier",
+                shortDesc: "Poet-revolutionary executed for his role in the Kakori Train Robbery.",
+                longDesc: "Ram Prasad Bismil was a firebrand revolutionary and poet who participated in armed struggles against the British. He was a key figure in the Kakori conspiracy and was hanged for his defiance.",
+                quote: "Maa, tujhe pranaam... phir milenge swarg mein.",
+                achievements: [
+                    "Founding member of Hindustan Republican Association",
+                    "Mastermind of Kakori train robbery",
+                    "Wrote inspiring patriotic poems",
+                    "Executed by British but became a martyr",
+                    "Inspired youth to join freedom struggle"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Ram_Prasad_Bismil"
+            }
+        ];

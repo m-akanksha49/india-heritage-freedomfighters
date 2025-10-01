@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Rajendra Prasad - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        .lessons-list {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .lessons-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the architects of modern India</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAAU96M0SwH2IXDLxC74HhLUwFqAHdj1EdWgiFYXDG0wVk8bDUyMU0xprJ-5xHdCuDUA6_zZhleaxhjpD_f7pykJF6tYrP125-ZDn9HV0nqoYr6tFXWs3XW_VEyfvAeGzgple_u6Qb-ji3mJLDwwQKWMVPn2IitXszNwS0hTdX3GIT1dIbZ1Pbmddhiu8/s320/Rajendra%20Prasad.jpg" alt="Dr. Rajendra Prasad">
+            </div>
+            <div class="hero-content">
+                <h2>Dr. Rajendra Prasad</h2>
+                <p>India's first President, eminent freedom fighter, and one of the chief architects of the Indian Constitution - a man who dedicated his life to the service of the nation.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>December 3, 1884</p>
+                        <p>Ziradei, Bihar, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>February 28, 1963 (aged 78)</p>
+                        <p>Patna, Bihar, India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Title</h4>
+                        <p>First President of India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Indian independence movement, Constitution framing, Nation-building</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "The constitution is a sacred document that lays down the path for our nation's progress."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Born on December 3, 1884 in Ziradei village of Bihar, Rajendra Prasad showed exceptional academic brilliance from childhood. He completed his Masters in Law from Calcutta University with first division, topping the university. While practicing law in Calcutta, he came under the influence of Mahatma Gandhi during the Champaran Satyagraha (1917) and abandoned his lucrative legal career to join India's freedom struggle.</p>
+            
+            <p>Dr. Prasad played a pivotal role in the Non-Cooperation Movement (1920), Salt Satyagraha (1930), and Quit India Movement (1942), enduring several imprisonments. As President of the Constituent Assembly (1946-1950), he guided the framing of India's Constitution with wisdom and foresight. Elected as independent India's first President in 1950, he served two terms until 1962, setting high standards for the office.</p>
+            
+            <p>Despite holding the highest constitutional position, he maintained a simple lifestyle, donating his salary to the Prime Minister's National Relief Fund. His profound scholarship (he mastered Persian, Hindi, Sanskrit, and English) and deep understanding of India's civilizational ethos made him uniquely qualified to help shape the new republic.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Timeline of Key Contributions</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1917</div>
+                    <p>Joined Gandhi's Champaran Satyagraha, marking his entry into freedom struggle</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1920</div>
+                    <p>Left legal practice to join Non-Cooperation Movement</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1934</div>
+                    <p>Elected President of Indian National Congress</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1946</div>
+                    <p>Became President of Constituent Assembly</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1950-1962</div>
+                    <p>Served as first President of Republic of India</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1957</div>
+                    <p>Re-elected as President, the only person to serve two full terms</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1962</div>
+                    <p>Awarded Bharat Ratna, India's highest civilian honor</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Key Contributions to Nation-Building</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Constitution Making:</strong> Presided over 11 sessions of Constituent Assembly debates</li>
+                <li><strong>Parliamentary Democracy:</strong> Established conventions for President's role in democratic system</li>
+                <li><strong>Social Harmony:</strong> Worked to integrate princely states and promote communal harmony</li>
+                <li><strong>Agricultural Reforms:</strong> Advocated for land reforms and farmers' welfare</li>
+                <li><strong>Education:</strong> Emphasized universal education and established several educational institutions</li>
+                <li><strong>Foreign Policy:</strong> Represented India in international forums during formative years</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.news18.com/ibnlive/uploads/2020/12/1606973670_rajendra-prasad.jpg" alt="Young Rajendra Prasad">
+                    <div class="gallery-caption">Young Rajendra Prasad as a lawyer</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://c8.alamy.com/comp/A2FXBC/mahatma-gandhi-with-rajendra-prasad-mumbai-bombay-india-august-1942-A2FXBC.jpg" alt="With Mahatma Gandhi">
+                    <div class="gallery-caption">With Mahatma Gandhi during freedom struggle</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.livelaw.in/h-upload/2021/12/04/1500x900_405303-constituent-assembly.jpg" alt="Constituent Assembly">
+                    <div class="gallery-caption">Presiding over Constituent Assembly debates</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://api-timescontent.timesofindia.com/api/v1/image-path/view/jpg/137138" alt="Oath as President">
+                    <div class="gallery-caption">Taking oath as India's first President</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJLPVTypPw9kLB1XCsKYb-uKvrUuwvsJOqag&s" alt="With world leaders">
+                    <div class="gallery-caption">Meeting with other world leaders</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlcyFpP2A-Zfr_avFpYygvF213NmogWqNQJg&s" alt="Later years">
+                    <div class="gallery-caption">Dr. Prasad in his later years</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Lessons from Dr. Rajendra Prasad's Life</h3>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-balance-scale"></i> Integrity in Public Life</h4>
+                <p>Dr. Prasad set unmatched standards of personal integrity, refusing special privileges and donating his salary, teaching us that public service demands sacrifice.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-book"></i> Lifelong Learning</h4>
+                <p>His mastery of multiple languages and continuous intellectual growth shows the importance of constant learning for nation-building.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-handshake"></i> Consensus Building</h4>
+                <p>As Constituent Assembly President, he harmonized diverse viewpoints, demonstrating that democracy thrives on accommodation.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-heart"></i> Simplicity & Humility</h4>
+                <p>Despite holding highest office, he maintained Gandhian simplicity, proving that true greatness lies in humility.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-shield-alt"></i> Constitutional Values</h4>
+                <p>His steadfast commitment to constitutional principles established strong foundations for Indian democracy.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Literary Contributions</h3>
+            <p>Dr. Prasad was a prolific writer whose works provide deep insights into India's freedom struggle and constitutional journey:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>"India Divided"</strong> (1946): Analysis of Hindu-Muslim question</li>
+                <li><strong>"Satyagraha at Champaran"</strong>: First-hand account of Gandhi's first satyagraha</li>
+                <li><strong>"Atmakatha"</strong> (Autobiography): His life story till 1946</li>
+                <li><strong>"Bharatiya Shiksha"</strong>: Vision for India's education system</li>
+                <li><strong>"Since Independence"</strong>: Reflections on early years of independence</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-university"></i> Educational Institutions</h4>
+                    <p>Several universities including Rajendra Agricultural University and Rajendra Law University honor his legacy.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-landmark"></i> Memorials</h4>
+                    <p>Rajendra Smriti Sangrahalaya in Patna preserves his personal artifacts and documents.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-medal"></i> Awards & Honors</h4>
+                    <p>Bharat Ratna (1962), commemorative stamps, and his portrait in Parliament.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book-open"></i> Constitutional Traditions</h4>
+                    <p>The conventions he established continue to guide India's presidency.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who shaped our nation</p>
+        </div>
+    </footer>
+</body>
+</html>

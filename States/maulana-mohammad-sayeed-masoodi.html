@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maulana Mohammad Sayeed Masoodi - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+       <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the heroes who fought for our independence</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+               <img src= "https://akm-img-a-in.tosshub.com/sites/media2/indiatoday/images/stories/1977December/who_091914102109.jpg">
+            </div>
+            <div class="hero-content">
+                <h2>Maulana Mohammad Sayeed Masoodi</h2>
+                <p>The Freedom Fighter from Kashmir who played a pivotal role in the Indian independence movement and the integration of Jammu & Kashmir with India.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>1905</p>
+                        <p>Anantnag, Jammu and Kashmir, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>July 12, 1990 (aged 85)</p>
+                        <p>Srinagar, Jammu and Kashmir, India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Political Party</h4>
+                        <p>National Conference</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Key role in Kashmir's accession to India, Freedom fighter, Islamic scholar</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "The future of Kashmir lies with secular and democratic India, not with theocratic Pakistan."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Maulana Mohammad Sayeed Masoodi was born in 1905 in Anantnag, Jammu and Kashmir. He was a prominent Islamic scholar, freedom fighter, and political leader who played a crucial role in the Indian independence movement and the integration of Jammu & Kashmir with India.</p>
+            <p>Masoodi received his early education in Anantnag and later studied Islamic theology. He became actively involved in the freedom struggle during his youth and joined the National Conference under Sheikh Abdullah's leadership. Masoodi served as the General Secretary of the National Conference for many years and was a close associate of Sheikh Abdullah.</p>
+            <p>During the crucial period of 1947-48, Masoodi played a pivotal role in Kashmir's accession to India. He was instrumental in mobilizing public opinion in favor of joining India when Pakistani tribal raiders attacked Kashmir. Masoodi worked tirelessly to counter Pakistani propaganda and helped organize resistance against the invaders.</p>
+            <p>After independence, Masoodi continued to serve Jammu and Kashmir in various capacities, including as a member of the Constituent Assembly of Jammu and Kashmir. He remained committed to secular values and worked for the welfare of all communities in the state.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Key Contributions and Events</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1930s</div>
+                    <p>Became active in the freedom movement in Kashmir, joining the Muslim Conference which later became the National Conference.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1946</div>
+                    <p>Played a key role in the "Quit Kashmir" movement against the Dogra ruler Maharaja Hari Singh.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">October 1947</div>
+                    <p>When Pakistani tribal raiders attacked Kashmir, Masoodi helped organize resistance and mobilized public opinion in favor of accession to India.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1947-48</div>
+                    <p>Served as the General Secretary of the National Conference during the crucial period of Kashmir's accession to India.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1951</div>
+                    <p>Elected to the Constituent Assembly of Jammu and Kashmir which ratified the state's accession to India.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1953</div>
+                    <p>Arrested along with Sheikh Abdullah during the political crisis in Jammu and Kashmir.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1975</div>
+                    <p>Supported the Indira-Sheikh Accord which brought Sheikh Abdullah back to power in Jammu and Kashmir.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1990</div>
+                    <p>Passed away on July 12 in Srinagar, leaving behind a legacy of secularism and commitment to India.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Role in Kashmir's Accession to India</h3>
+            <p>Maulana Masoodi played a crucial role in Jammu and Kashmir's accession to India in 1947 when Pakistani tribal raiders attacked the state. As General Secretary of the National Conference, he:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>Helped mobilize public opinion in favor of joining India</li>
+                <li>Organized resistance against the Pakistani raiders</li>
+                <li>Worked closely with Sheikh Abdullah and Indian leaders during the crisis</li>
+                <li>Countered Pakistani propaganda that tried to portray the conflict as religious</li>
+                <li>Played a key role in the historic meeting of the Jammu & Kashmir National Conference that endorsed the accession to India</li>
+                <li>Helped maintain communal harmony during this turbulent period</li>
+            </ul>
+            
+            <div class="quote">
+                "Kashmir's destiny is intertwined with India's secular democracy. We must resist all forces that try to divide us on religious lines."
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://kashmirlife.net/wp-content/uploads/2022/11/Auqaf-meet.jpg" alt="Maulana Masoodi portrait">
+                    <div class="gallery-caption">Maulana Mohammad Sayeed Masoodi with National Leaders</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://kashmirlife.net/wp-content/uploads/2023/06/Advocate-Shabir-Masoodi-relaeseing-the-book-on-his-father-authored-by-Prof-Soz.-Moulana-Keng-and-M-Sayeed-Malik-are-also-in-the-photograph.-KL-Image.jpg" alt="With Sheikh Abdullah">
+                    <div class="gallery-caption">Masoodi with Sheikh Abdullah</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.greaterkashmir.com/wp-content/uploads/2023/08/Book_release_1.jpg" alt="Memorial event">
+                    <div class="gallery-caption">Memorial event honoring Masoodi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.knskashmir.com/userfiles/image/s_638223348741634947_WhatsApp_Image_2023-06-14_at_10.50.23_PM.jpeg" alt="With Indian leaders">
+                    <div class="gallery-caption">Maulana Mohammad Sayeed Masoodi Potrait</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-landmark"></i> Political Legacy</h4>
+                    <p>Masoodi's steadfast commitment to secularism and democracy in Jammu and Kashmir set an example for future generations. His role in Kashmir's accession to India remains a landmark in the state's history.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Literary Contributions</h4>
+                    <p>As an Islamic scholar, Masoodi wrote extensively on Islam's compatibility with democracy and secularism. His works continue to be referenced in discussions about Islam in modern India.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-hands-helping"></i> Communal Harmony</h4>
+                    <p>Masoodi worked tirelessly to maintain Hindu-Muslim unity in Kashmir during partition. His efforts helped prevent large-scale communal violence in the valley during this turbulent period.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-monument"></i> Memorials</h4>
+                    <p>Several institutions and places in Jammu and Kashmir are named after Masoodi, including the Maulana Masoodi Memorial Hall in Srinagar. The National Conference commemorates his death anniversary annually.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Further Reading</h3>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>"Kashmir: The Unwritten History" by Christopher Snedden</li>
+                <li>"The Story of Kashmir" by Mohammad Yusuf Saraf</li>
+                <li>"Kashmir in Conflict" by Victoria Schofield</li>
+                <li>"Sheikh Abdullah: The Caged Lion of Kashmir" by Ajit Bhattacharjea</li>
+                <li>"Kashmir: Behind the Vale" by M.J. Akbar</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+            
+            <div class="footer-links">
+                <a href="dashboard.html">Home</a>
+                <a href="card.html">Freedom Fighters</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="about.html">About</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

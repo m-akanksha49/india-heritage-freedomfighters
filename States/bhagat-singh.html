@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhagat Singh - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the heroes who fought for our independence</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Bhagat_Singh_1929.jpg" alt="Bhagat Singh">
+            </div>
+            <div class="hero-content">
+                <h2>Bhagat Singh</h2>
+                <p>The revolutionary hero of India's independence movement who became a symbol of bravery and sacrifice.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>September 28, 1907</p>
+                        <p>Bangay, Punjab, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>March 23, 1931 (aged 23)</p>
+                        <p>Lahore, Punjab, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Organizations</h4>
+                        <p>Hindustan Socialist Republican Association</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Indian independence movement, Revolutionary activities</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "They may kill me, but they cannot kill my ideas. They can crush my body, but they will not be able to crush my spirit."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Bhagat Singh was born on September 28, 1907, in the village of Banga in the Lyallpur district of Punjab (now in Pakistan) to Kishan Singh and Vidyavati. From an early age, he was deeply influenced by the nationalist movement and the sacrifices made by his family members for India's freedom.</p>
+            <p>Bhagat Singh was a brilliant student and voracious reader who was deeply influenced by socialist and anarchist ideas. He joined the National College in Lahore where he came into contact with other revolutionaries and became involved in revolutionary activities against British rule.</p>
+            <p>He became one of the most prominent faces of the Indian independence movement through his revolutionary actions and writings that inspired millions of Indians to join the freedom struggle.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Revolutionary Activities</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1928</div>
+                    <p>Formed the Hindustan Socialist Republican Association (HSRA) with other revolutionaries like Chandrashekhar Azad and Sukhdev.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1928</div>
+                    <p>Participated in the assassination of British police officer John Saunders to avenge the death of Lala Lajpat Rai during a protest against the Simon Commission.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1929</div>
+                    <p>Along with Batukeshwar Dutt, threw bombs in the Central Legislative Assembly in Delhi to protest against repressive laws. They deliberately courted arrest to use the trial as a platform to propagate their ideas.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1931</div>
+                    <p>Executed at the age of 23 along with Rajguru and Sukhdev on March 23 in Lahore Central Jail. Their execution sparked nationwide protests and turned them into martyrs of the Indian independence movement.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Ideology and Philosophy</h3>
+            <p>Bhagat Singh was deeply influenced by socialist and anarchist thought. He believed in:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>Complete independence from British rule</li>
+                <li>Establishment of a socialist society</li>
+                <li>Secularism and communal harmony</li>
+                <li>Empowerment of workers and peasants</li>
+                <li>Revolutionary methods to overthrow colonial rule</li>
+            </ul>
+            <p>During his trial and imprisonment, he wrote extensively about his vision for India and the need for social revolution alongside political independence.</p>
+            
+            <div class="quote">
+                "The sword of revolution is sharpened on the whetting stone of ideas."
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://i.pinimg.com/736x/c0/cb/2a/c0cb2a8be5c9938dd2c60bd9a560a450.jpg" alt="Bhagat Singh with hat">
+                    <div class="gallery-caption">Bhagat Singh in his revolutionary attire</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.gxqaEr1eiprJvrP402KZRQHaD4&pid=Api&P=0&h=180" alt="Bhagat Singh with comrades">
+                    <div class="gallery-caption">Bhagat Singh with Sukhdev and Rajguru</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://frontline.thehindu.com/politics/article25770853.ece/alternates/FREE_810/FL04-Bhagat-Singh" alt="Bhagat Singh in jail">
+                    <div class="gallery-caption">Bhagat Singh during his imprisonment</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Statues_of_Bhagat_Singh%2C_Rajguru_and_Sukhdev.jpg/1280px-Statues_of_Bhagat_Singh%2C_Rajguru_and_Sukhdev.jpg" alt="Bhagat Singh memorial">
+                    <div class="gallery-caption">Memorial at Hussainiwala</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-landmark"></i> Memorials</h4>
+                    <p>Numerous memorials across India including the National Martyrs Memorial at Hussainiwala, statues in Parliament and various cities, and museums dedicated to his life.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-film"></i> Cultural Impact</h4>
+                    <p>Subject of numerous films, plays, songs, and literature. Considered one of the most iconic freedom fighters in Indian popular culture.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Writings</h4>
+                    <p>His jail diaries and essays like "Why I Am an Atheist" continue to inspire generations of Indians and are studied widely.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-birthday-cake"></i> Shaheed Diwas</h4>
+                    <p>March 23 is observed as Martyrs' Day (Shaheed Diwas) in India to honor Bhagat Singh, Rajguru, and Sukhdev.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Further Reading</h3>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>"The Jail Notebook and Other Writings" by Bhagat Singh</li>
+                <li>"Why I Am an Atheist" by Bhagat Singh</li>
+                <li>"Bhagat Singh: The Eternal Rebel" by Malwinder Jit Singh Waraich</li>
+                <li>"Inquilab: Bhagat Singh on Religion and Revolution" edited by S. Irfan Habib</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+            
+            <div class="footer-links">
+                <a href="dashboard.html">Home</a>
+                <a href="card.html">Freedom Fighters</a>
+                <a href="timeline.html">Timeline</a>
+                
+            </div>
+            
+            
+            <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

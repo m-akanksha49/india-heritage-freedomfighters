@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alluri Sitarama Raju - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #ff9933;
+      --secondary-color: #138808;
+      --accent-color: #000080;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .hero-content {
+      flex: 2;
+      min-width: 300px;
+      padding: 2rem;
+    }
+    
+    .hero-content h2 {
+      color: var(--accent-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .fact-card {
+      background: var(--light-color);
+      padding: 1rem;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .fact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fact-card h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .fact-card i {
+      color: var(--accent-color);
+    }
+    
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section h3 {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+    
+    .section h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 5px;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+      margin-top: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-color);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      border: 3px solid var(--primary-color);
+    }
+    
+    .timeline-year {
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    
+    .quote {
+      font-style: italic;
+      padding: 1.5rem;
+      background: var(--light-color);
+      border-left: 4px solid var(--primary-color);
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .quote::before, .quote::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary-color);
+      opacity: 0.3;
+      position: absolute;
+    }
+    
+    .quote::before {
+      top: 0;
+      left: 10px;
+    }
+    
+    .quote::after {
+      bottom: -20px;
+      right: 10px;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-caption {
+      padding: 0.8rem;
+      background: white;
+      font-size: 0.9rem;
+    }
+    
+    .legacy-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .legacy-card {
+      flex: 1;
+      min-width: 250px;
+      background: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .legacy-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .legacy-card h4 {
+      color: var(--accent-color);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .legacy-card i {
+      color: var(--primary-color);
+    }
+    
+    footer {
+      background: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.5rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-icons a:hover {
+      color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-button {
+      padding: 0.8rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--dark-color);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-button.active {
+      color: var(--primary-color);
+    }
+    
+    .tab-button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary-color);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .map-container {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .poem {
+      font-family: 'Times New Roman', serif;
+      line-height: 1.8;
+      padding: 1.5rem;
+      background: var(--light-color);
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+    
+    .poem-title {
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .poem-line {
+      margin-bottom: 0.5rem;
+    }
+    
+    .poem-line:last-child {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    
+    .awards-list {
+      list-style-type: none;
+    }
+    
+    .awards-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed #ddd;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .awards-list i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .book-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .book-cover {
+      height: 250px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-color);
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .book-info {
+      padding: 1rem;
+    }
+    
+    .book-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    
+    .book-year {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content, .hero-image {
+        flex: 100%;
+      }
+      
+      .hero-image {
+        height: 300px;
+      }
+      
+      .fact-card {
+        min-width: 100%;
+      }
+      
+      .legacy-card {
+        min-width: 100%;
+      }
+      
+      .tabs {
+        flex-wrap: wrap;
+      }
+      
+      .tab-button {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Celebrating the heroes who fought for India's independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://arisebharat.com/wp-content/uploads/2019/05/alluri-seetharamaraju-1.jpg" alt="Alluri Sitarama Raju">
+      </div>
+      <div class="hero-content">
+        <h2>Alluri Sitarama Raju</h2>
+        <p>The fearless revolutionary who led the Rampa Rebellion (Manyam Rebellion) against British rule in the tribal areas of the Madras Presidency, earning him the title "Manyam Veerudu" (Hero of the Jungle).</p>
+        
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4><i class="fas fa-birthday-cake"></i> Born</h4>
+            <p>July 4, 1897</p>
+            <p>Mogallu, West Godavari, Madras Presidency (present-day Andhra Pradesh)</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-cross"></i> Died</h4>
+            <p>May 7, 1924 (aged 26)</p>
+            <p>Koyyuru, Madras Presidency (executed by British)</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-star"></i> Known For</h4>
+            <p>Rampa Rebellion (Manyam Rebellion), Guerrilla warfare against British, Tribal rights activism</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-award"></i> Legacy</h4>
+            <p>National hero of Andhra Pradesh, Featured on ₹10 coin, Statues across India, Subject of films and literature</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "A single spark can start a prairie fire. Our fight is not just for today but for the freedom of generations to come."
+          <div style="text-align: right; margin-top: 1rem;">— Alluri Sitarama Raju</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'biography')">Biography</button>
+        <button class="tab-button" onclick="openTab(event, 'rebellion')">Rampa Rebellion</button>
+        <button class="tab-button" onclick="openTab(event, 'tactics')">Guerrilla Tactics</button>
+        <button class="tab-button" onclick="openTab(event, 'legacy')">Legacy</button>
+      </div>
+      
+      <div id="biography" class="tab-content active">
+        <h3>The Life of Manyam Veerudu</h3>
+        <p>Alluri Sitarama Raju (1897-1924) was born in present-day Andhra Pradesh to a Telugu-speaking family. His early life was marked by spiritual seeking and deep empathy for the oppressed. After his father's death when he was just 12, he was raised by his uncle in Visakhapatnam where he developed a passion for Indian independence.</p>
+        
+        <p>Raju's transformation into a revolutionary leader came after witnessing the exploitation of tribal communities by British colonial policies, particularly the oppressive Madras Forest Act of 1882 that restricted tribal access to forest resources. He became a champion of tribal rights and organized resistance against British rule.</p>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1897</div>
+            <p>Born on July 4 in Mogallu village to Venkata Rama Raju and Suryanarayanamma</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1909</div>
+            <p>Father's death; moved to Visakhapatnam to live with uncle Rama Krishnam Raju</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1918</div>
+            <p>Began touring tribal areas, witnessing British exploitation firsthand</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1922</div>
+            <p>Launched the Rampa Rebellion (Manyam Rebellion) against British rule</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1922-24</div>
+            <p>Led successful guerrilla campaigns against British forces in Eastern Ghats</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1924</div>
+            <p>Captured on May 7 at Chintapalle forests; executed without trial at Koyyuru</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1986</div>
+            <p>Indian government issued a stamp in his honor</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <p>Featured on ₹10 coin commemorating his 121st birth anniversary</p>
+          </div>
+        </div>
+        
+        <h3>Early Life and Spiritual Journey</h3>
+        <p>Raju was deeply spiritual from a young age. He studied Sanskrit, Hindu scriptures, and Ayurveda. His extensive travels across India exposed him to nationalist ideas and the plight of tribal communities. Key aspects of his early life:</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-book"></i> Education</h4>
+            <p>Studied at various schools in Rajahmundry, Kakinada, and Visakhapatnam. Learned Sanskrit and Hindu scriptures.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-mountain"></i> Pilgrimage</h4>
+            <p>At 15, he embarked on a nationwide pilgrimage, visiting Nasik, Gangotri, and other sacred sites.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-seedling"></i> Tribal Connection</h4>
+            <p>Lived among tribal communities in Eastern Ghats, learning their ways and understanding their struggles.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="rebellion" class="tab-content">
+        <h3>The Rampa Rebellion (Manyam Rebellion) 1922-24</h3>
+        <p>The Rampa Rebellion, also known as the Manyam Rebellion, was one of the most significant armed uprisings against British rule in South India. Alluri Sitarama Raju mobilized tribal communities to resist oppressive British policies through guerrilla warfare.</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-tree"></i> Causes</h4>
+            <p>Oppressive Madras Forest Act 1882 restricted tribal access to forests for podu (shifting cultivation) and collection of minor forest produce.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-users"></i> Leadership</h4>
+            <p>Raju united various tribal groups including Koyas, Konda Reddis, and others under a common cause.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-crosshairs"></i> Strategy</h4>
+            <p>Used guerrilla tactics, attacking police stations and sabotaging British communication lines.</p>
+          </div>
+        </div>
+        
+        <h3>Key Events of the Rebellion</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">August 1922</div>
+            <p>Raju launched the rebellion by attacking Chintapalle police station, seizing weapons and ammunition</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">December 1922</div>
+            <p>Successful attack on Krishnadevipeta police station, killing British officers</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">January 1923</div>
+            <p>British deployed Malabar Special Police and Assam Rifles to suppress the rebellion</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">April 1923</div>
+            <p>Raju's forces defeated British troops at Peddavalassa, capturing more weapons</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1923-1924</div>
+            <p>British conducted massive combing operations in Eastern Ghats to capture Raju</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">May 1924</div>
+            <p>Raju captured after being betrayed by a tribal collaborator; executed without trial</p>
+          </div>
+        </div>
+        
+        <h3>Impact of the Rebellion</h3>
+        <ul style="columns: 2; column-gap: 2rem; margin-top: 1rem;">
+          <li>Forced British to review oppressive forest policies</li>
+          <li>Inspired future tribal revolts across India</li>
+          <li>Demonstrated effectiveness of guerrilla warfare</li>
+          <li>United various tribal communities against common oppressor</li>
+          <li>Exposed British vulnerability in remote areas</li>
+          <li>Brought attention to tribal rights issues</li>
+          <li>Inspired nationalist movements in Andhra region</li>
+          <li>Led to some reforms in tribal administration</li>
+        </ul>
+        
+        <div class="quote">
+          "The Rampa Rebellion under Raju's leadership was one of the most formidable challenges the British faced in South India. His ability to mobilize tribal communities and wage successful guerrilla warfare forced the colonial government to deploy unprecedented military resources."
+          <div style="text-align: right; margin-top: 1rem;">— Dr. David Arnold, Historian</div>
+        </div>
+      </div>
+      
+      <div id="tactics" class="tab-content">
+        <h3>Revolutionary Tactics and Strategies</h3>
+        <p>Alluri Sitarama Raju developed innovative guerrilla warfare techniques that made him nearly invincible in the Eastern Ghats for two years. His tactics combined traditional tribal warfare with modern revolutionary methods.</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-map-marked-alt"></i> Terrain Mastery</h4>
+            <p>Used dense forests and hilly terrain to his advantage, launching surprise attacks and disappearing quickly.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-users-cog"></i> Tribal Integration</h4>
+            <p>Fully adopted tribal lifestyle, earning their trust and utilizing their knowledge of the land.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-bolt"></i> Hit-and-Run Tactics</h4>
+            <p>Conducted lightning raids on police stations, seizing weapons and supplies before retreating.</p>
+          </div>
+        </div>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-bullhorn"></i> Psychological Warfare</h4>
+            <p>Used his reputation as a mystic to intimidate British forces and inspire tribal warriors.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-network-wired"></i> Communication Network</h4>
+            <p>Established an efficient intelligence system using tribal runners and hidden signals.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-user-secret"></i> Disguise & Deception</h4>
+            <p>Frequently changed appearance and location to evade capture.</p>
+          </div>
+        </div>
+        
+        <h3>Notable Attacks and Engagements</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1.5rem;">
+          <thead>
+            <tr style="background-color: var(--light-color);">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--primary-color);">Date</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--primary-color);">Location</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--primary-color);">Action</th>
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--primary-color);">Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Aug 1922</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Chintapalle</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Police station attack</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Seized weapons, began rebellion</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Dec 1922</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Krishnadevipeta</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Police station raid</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Killed British officers, gained more arms</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Apr 1923</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Peddavalassa</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Ambush of British forces</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Major victory, captured rifles</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">1923-24</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Eastern Ghats</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Guerrilla campaign</td>
+              <td style="padding: 12px; border-bottom: 1px solid #ddd;">Eluded thousands of British troops for nearly 2 years</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <h3 style="margin-top: 2rem;">British Counter-Insurgency Measures</h3>
+        <p>The British colonial government was forced to deploy unprecedented resources to suppress Raju's rebellion:</p>
+        <ul style="columns: 2; column-gap: 2rem; margin-top: 1rem;">
+          <li>Deployed Malabar Special Police force</li>
+          <li>Brought in Assam Rifles battalion</li>
+          <li>Established new police outposts</li>
+          <li>Offered rewards for information</li>
+          <li>Implemented collective punishment</li>
+          <li>Conducted large-scale forest combing operations</li>
+          <li>Used tribal collaborators</li>
+          <li>Destroyed villages supporting Raju</li>
+        </ul>
+      </div>
+      
+      <div id="legacy" class="tab-content">
+        <h3>Enduring Legacy</h3>
+        <p>Though Alluri Sitarama Raju's rebellion was eventually crushed, his martyrdom inspired generations of freedom fighters and left an indelible mark on India's independence movement and tribal rights activism.</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-monument"></i> Memorials</h4>
+            <p>Statues across Andhra Pradesh and Telangana, including a 30-ft bronze statue in Hyderabad</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-rupee-sign"></i> Currency</h4>
+            <p>Featured on ₹10 coin issued in 2018 commemorating his 121st birth anniversary</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-stamp"></i> Philately</h4>
+            <p>Commemorative stamp released by India Post in 1986</p>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Cultural Depictions</h3>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGy69sQ82UrrDxKYqvew3a7BqOAme-P_1-Lg&s" alt="1974 Film Poster">
+            <div class="gallery-caption">1974 Telugu film "Alluri Seetharama Raju" starring Krishna</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/06/Ram-Charan-RRR-feature.jpg" alt="RRR Film">
+            <div class="gallery-caption">2022 blockbuster "RRR" inspired by Raju's life (fictionalized)</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://pibindia.wordpress.com/wp-content/uploads/2016/08/alluri-sitarama-raju.jpg?w=900" alt="Book Cover">
+            <div class="gallery-caption">Biography "Alluri Sitarama Raju: The Heroic Guerrilla"</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyPPyw-2I3x6Bx8PWk5N3xB6oGjm0gmObAfxc1Kf-niDRYz1hfexlpyVyrG-0KyNPGJ5Y&usqp=CAU" alt="Hyderabad Statue">
+            <div class="gallery-caption">30-ft bronze statue in Hyderabad's Tank Bund</div>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Historical Significance</h3>
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-flag"></i> Nationalism</h4>
+            <p>Proved British could be challenged militarily in South India</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-users"></i> Tribal Rights</h4>
+            <p>Highlighted tribal exploitation and need for forest rights</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-tactical"></i> Guerrilla Warfare</h4>
+            <p>Demonstrated effectiveness of asymmetric warfare</p>
+          </div>
+        </div>
+        
+        <div class="quote" style="margin-top: 2rem;">
+          "Alluri Sitarama Raju was not just a freedom fighter but a social revolutionary who fought for the rights of tribal communities. His rebellion was as much about social justice as it was about political freedom."
+          <div style="text-align: right; margin-top: 1rem;">— Prof. G. Ramakrishna, Historian</div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Commemorations</h3>
+        <ul class="awards-list">
+          <li><i class="fas fa-road"></i> <strong>Roads and Institutions</strong> - Numerous roads, schools and colleges named after him across Andhra Pradesh and Telangana</li>
+          <li><i class="fas fa-trophy"></i> <strong>Awards</strong> - Alluri Sitarama Raju Award given by Andhra Pradesh government</li>
+          <li><i class="fas fa-university"></i> <strong>District</strong> - Alluri Sitarama Raju district created in Andhra Pradesh in 2022</li>
+          <li><i class="fas fa-film"></i> <strong>Films</strong> - Subject of several films including 1974 classic and 2022's RRR</li>
+          <li><i class="fas fa-book"></i> <strong>Literature</strong> - Featured in novels, poems and plays in Telugu literature</li>
+          <li><i class="fas fa-monument"></i> <strong>Museums</strong> - Memorials at Mogallu (birthplace) and Pandrangi (where he was captured)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Historical Context</h3>
+      <p>The Rampa Rebellion led by Alluri Sitarama Raju occurred during a pivotal period in India's freedom struggle and must be understood in its broader historical context:</p>
+      
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-tree"></i> Forest Policies</h4>
+          <p>British forest laws restricted traditional tribal rights, creating widespread discontent</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-hand-holding-usd"></i> Economic Exploitation</h4>
+          <p>Forced labor and taxation systems oppressed tribal communities</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-fist-raised"></i> Nationalist Movement</h4>
+          <p>Non-Cooperation Movement (1920-22) inspired armed resistance</p>
+        </div>
+      </div>
+      
+      <p style="margin-top: 1.5rem;">The rebellion was particularly significant because it:</p>
+      <ul style="margin-top: 1rem; columns: 2; column-gap: 2rem;">
+        <li>Challenged British authority in remote tribal areas</li>
+        <li>United various tribal groups against common oppressor</li>
+        <li>Demonstrated effectiveness of guerrilla tactics</li>
+        <li>Forced British to reconsider oppressive forest policies</li>
+        <li>Inspired future tribal revolts across India</li>
+        <li>Showed link between tribal rights and national freedom</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h3>Further Exploration</h3>
+      <p>To learn more about Alluri Sitarama Raju and his revolutionary struggle:</p>
+      
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-book-open"></i> Recommended Books</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>"The Tribal Revolt of Alluri Sitarama Raju" by D. Subbarao</li>
+            <li>"Manyam Veerudu: The Life and Times of Alluri Sitarama Raju" by V. Ramakrishna</li>
+            <li>"Forest Rebels: The Story of Alluri's Revolt" by David Arnold</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-landmark"></i> Places to Visit</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>Alluri Sitarama Raju Memorial, Mogallu (birthplace)</li>
+            <li>Pandrangi (capture site)</li>
+            <li>Koyyuru (execution site)</li>
+            <li>Chintapalle (first attack site)</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-film"></i> Films & Documentaries</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>"Alluri Seetharama Raju" (1974 Telugu film)</li>
+            <li>"RRR" (2022 fictionalized account)</li>
+            <li>"Manyam Veerudu" (DD documentary)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Honoring the sacrifices of India's revolutionary heroes</p>
+      
+      
+  </footer>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tabbuttons;
+      
+      // Hide all tab content
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      // Remove active class from all tab buttons
+      tabbuttons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].classList.remove("active");
+      }
+      
+      // Show the current tab and add active class to the button
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Initialize the map (this is a placeholder - would need actual map API integration)
+    function initMap() {
+      // This would be replaced with actual map initialization code
+      console.log("Map would be initialized here");
+    }
+    
+    // Initialize the page
+    window.onload = function() {
+      initMap();
+    };
+  </script>
+</body>
+</html>

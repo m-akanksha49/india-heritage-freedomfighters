@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Freedom Fighters - Interactive Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+   <style>
+        :root {
+            --primary-color: #FF8F1C;
+            --secondary-color: #FFFFFF;
+            --accent-color: #138808;
+            --dark-color: #000080;
+            --text-color: #2E2E2E;
+            --light-gray: #f9f9f9;
+            --gold-color: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: var(--light-gray);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            bottom: -15px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .slider {
+            display: flex;
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 340px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-years {
+            font-size: 1rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-years i {
+            color: var(--gold-color);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+            border: 2px solid var(--primary-color);
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .read-more {
+            background: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev {
+            left: 0;
+        }
+
+        .slider-btn.next {
+            right: 0;
+        }
+
+        .filter-options {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark-color);
+            color: white;
+            border-color: var(--dark-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            padding: 2.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-subtitle span {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .modal-quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-color);
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .modal-quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-btn.full {
+            background: var(--dark-color);
+            color: white;
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.full:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .modal-btn.outline {
+            background: transparent;
+            color: var(--dark-color);
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.outline:hover {
+            background: var(--dark-color);
+            color: white;
+        }
+
+        @media (min-width: 992px) {
+            .modal-body {
+                flex-direction: row;
+            }
+
+            .modal-image {
+                flex: 0 0 45%;
+                height: auto;
+            }
+
+            .modal-info {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .slider-container {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                flex: 0 0 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .slider-container {
+                padding: 0 1rem;
+            }
+            
+            .slider-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+            
+            .filter-btn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                flex: 0 0 280px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="fade-in">
+        <h1>India's Freedom Fighters</h1>
+        <p class="subtitle">Celebrating the brave souls who fought for India's independence. Explore their inspiring stories and contributions to our nation's history.</p>
+    </header>
+
+   
+
+    <div class="slider-container fade-in">
+        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider" id="slider">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-nav" id="sliderDots">
+            <!-- Dots will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+   const fighters = [
+    // ... (your existing fighters)
+
+  {
+    id: 26,
+    name: "Jitku Ram",
+    years: "Unknown – 1857",
+    image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXFxoXGBUYGR0YGBoYGBcYGBgYFxgYHSggGBolHRcYITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGi0lHSUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLf/AABEIAQIAwwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBAUGB//EADwQAAEDAgMFBQcEAQMEAwAAAAEAAhEDIRIxQQRRYXHwBSKBkaEGEzJCscHRFFLh8SMzYnIWQ4KiY5LS/8QAGAEAAwEBAAAAAAAAAAAAAAAAAAECAwT/xAAiEQEBAAICAwEBAQADAAAAAAAAAQIRITEDEkFRE2EiMkL/2gAMAwEAAhEDEQA/APsiJUosWq1TnKpQElBoCiIQqB10jEmJYCNEKooFChq1GtHeIA4kD6pkNCfBZT2iye7Lv+IJHmbJbttdEikbjVzR9JUXPH9P1rdiUBXK/XVb9xuerot4NQP2yvm0UgN0Ocec4h9FP9Yr0rsq4XCLqxF6rs8mhrfsT6rV2VtDh/jffVjiZJaND/uH0Tx8st0VwsdNRUFYWiUCgUUagKVwqVoCKEKaqaoC5UUlRAJLlblnftDL34ZFB+uYPm9FHtP1WjwNUUpJ2lu9D+sZHxehR7T9PVOm6jQkja2fu+qg2lv7ke0/RpoDkb3gCSQALk6Qsf6hp+bdfmsdeuKrsIM02GDn3nj0hv15JXOSD1pz9te49wYW/ucO8eTTYDifJIbQEyZc79zjJ8CchwFk9oG9FAWN3l2riKwWyRDJEYVEIAC1VCY3goGo0ABUWYmkHS4IzB0IOhTH2QgZoB+ybTMsfGNoBPEHJwGgz8Vslcfb3lhZVn4HAOG9jyGu8iWu/wDFdUPGUjzW+GX6iwYVAoQ8bwoHjeFe4kSuUDnjePNCKgGoS3Bo2VZSi8TIIRYhvCNjQ4USy9v7h5qJ7geaqbQSCcBy5+o8E5hOGZzH44pP6ctxkmZyG651ROb8JmAAJvu/hcEtdIzUdJETEZHfulCa0Zgj7rPtFX4onMZZoar5id17ItORoZWkmBInOYvyUNZ0gRbms9KiXNNxnmZRhkYRnAn7CUt0aTtB7msOE99xDGiPmdYEjcLk8AV0NlphjAwCzcutVzn1m+9GNwYykzESSAMTiQJJOjQ7zWHtT2sp0xia3FeG4jhxRq1t3YbZmJtCftjjzS9beI9KD5owV81f7cbW67WsY2D3mskgzAEOcSTceaXR7X22qYNZwbIl4wtsQcgMjoZNpCn+8/F/wy+19QarC+d7M3aH3ftFUiROB8AnXPIRw0sujsBqAd2q85HvPc4chzz3pzz/AOJvi19ezbqrgrgbPtlVti4HeYv4Cea2jbXk/LEbuo/haTySouFjplv8oDqsB22sDZrCObgfoQnfrJF2wYykFP3hetP2yjja5mj2FvmCPuubsW3YqdN0iSGi5+ci4byIctI7TE94Fo32IFzuMjxCy7DRaMbTBwVnlutn/wCRp5Q+J3BLLKW8HJ+tZr243E5jP+ETKkXJBETKRQgidP7/ACo74o4W8NfVTsaPNUZ3hMJAz8lmf3e9vi3K6HE50GTMm1oiMozT9ho920XsABGvVrow42t5fhZ6AmbZi/G60U2iYGQA8Cf6Cc3SIe8SrUquue6FaRs20u7jpvnp1vRNNs/RL2p3dvEWF+Y3Iw8xl6JfTZ+9JIdqcx/NkFVveGRmNeOacwa7yfL7JNUiXemfkpvSoPY3d241Pkcs/ujGbjp0fuioNtoVy+3XxQdmMVRjThuYc8NLY1xAYf8AyReIJN1519epXqvrNY59MOHu7DCYbhDg05uka272+Fx9ubVqVC6o4YnGQ7O0GcOH5Zw8bWXun7DhpS5sQwd1oBDALEMG85AnIFeVa0YwQ0NZGEDV0tJgOJJ7uHwm1yY5s8dOjDImn2a2xJd/uEtmZBgmANDfOPBdmhskgTuiCLRnaeBmP6StnZIBgkTJMC0WgYMhqfFdyhSuSOZ/o/hGOJZZK2bY40GS3UdlytujURlmOrptIAcLekyPsteMLoxxjC5VnZsvLLkOX8rQ3ZrfZNpumeeifK1mMZ2svujYKVG8MvWVrGSUW2P3T9RtjczduiY8FyHOfQf3WzTeC6o0CXDC0D3jN8CxYM9Lrv1WblzO1Kfd94Jll5mDGRG697G0LLKa5XjXRpubhk/CQDME2zmI4rMAMTo4DlM8eSDs14wOaDIDjB4OGIRcwLmBOUJuzXuTmbchayrfRdbFWdLmxeJP4lGJi+6fO6W/4zGgA9M/VE8WPgAkDNmbY5Zog6J4lLa0AAnTw4zZE2zeMKoTNVNz19lass3GOCpLdMva3CInUW8fVaJEbuaz7QyBHEW3XWgtEJfTIom3nuWeq+5ExJEx+Ny0UPhB6slsZLzzJ+yV6EMDref0J/Hms21Ma40WkSMRcQR+1ji3MZyeoT60BvjE+KwdvbX7lraxEimTN/3tLQJjeR4lFOcultLWvZDi0iNct0wdIK8Vt1THUsAGNBDG4bACbkRInEeNt6Psz2mfUqNpAQCHkOfJJ+FwaSMzfIXsps/ZVUuzaSDJmQSSLmYvaIFwImCsc8rnrTXHH03toougyQAWaDIERlbPdqc10djqA8szwzjPkspp125gHQAGbxpI0Jzzj1x9odqe5DQ5oxGwBNrD03Kf+vZ99O+yochfjl4clrY3dP06C8DR9rXtl3u26ABxkSIkCLkiYWg+3FUT/gYe85tpsW3jXQ5bgqx8kK+LL499TB0MfRaGSOvovn+ze3xtipgThmHGBN9RuXpezfavZ6sD3jGm5wuIBtbW2i1x8mLPLxZR3p43QkEzvSztLYBkc5C83257XMptHuRjJsSZDYmJ3xnfKyrLyY491OOGWXT01S2ccVk2u7HDKWmPI6nL+F4Z/trXv3GG/dkw0iCcpk71od7V1nhoFKkCZDx7xgiBcNa4jeLZ5rO+aVp/HKPR9jV5pGobS6DlBwDDiBHIDwXT2UWF4MDSJzMLy3Y3bDRTp0nsNIgGHPLcEz3u8LYoNm8OC9TRrNIJa4EaEEERlmLFVhYnOWBoPu4k6z5X6CJ7svE+e86IaZ7ud4+phG67o5D7qviKMuMf1wRVso32zVEyQOQlE8XAVEsEDQKKiB0f4UTDDtPy/wDIc0+qe6eSy7Q+cMDIjfkDuOSZU2lsG8SLWIWe1LZ16JOzfG6dJm/E5Im1hEkic45peyuDcZxXJ1zCX4DdpeBcmAJcTpYSZ0AXA7V7a2esx+zNLnOeDTDgA0YiM8TsgM8sgl+2m2kUmsae88xAm+G+liJi2q4/ZPZBLjVa7A5gdLiBZ72nJsbifAhZ5eS+2o1wwnruvV7F2VszKJDabcIbOKL93J2J3exG5leebVrU3hjSCCzHgdJLQWggYps6ZtNl1/YyvNItce803nItjC0id0RlmuTX2kOrVahwu70AgT3Rv3QQYPOUvJZcZTxl9rsVPt93dmkSZixI3CwIvYg3XK9pq5d7moab2Fj/AJzIItIJaYB9TK6OwdlPdODO0F2WAkSLmQQA7LfndM2zs3aO8zAwTLZc8Frr2wyDeMIExc+Kzx9tbXvGVwK+xuf3w0M94+RYQGO7rThEARGlzulPd2M4twtfk5x72GkDfMh5DjkdJg7ltodiGpRp1HVcYBw+5IIwua/IuBz7pvCI+yLKjsT31mzdw7pDSQcnOu5sgcbqpjT94885jntxOIxxhO7C2LzkdR4INr2QgGpDTAIwtsJNiA4Egm4dGd16kdihlb/ERgiDSILgREd0uJIM5cuBmu2dndVDKAjG94sO8QGw5zpsBxNtBqpmN2r3eRpVHMEB5a4NJtvHxCeTsltOzuaZa1plhmHYowktcRiIvBJGc6L6KPZtjtk9wRF5xAd7F+6Rebmc7WXB7M7IBoYqrA/3RdTdRi5LC5svIjFqY45wrvi0j+srj9n9muLmsJYGARLTSNS4iQHmTYiWSIlaK3YMy5jxUbbH8IIIgy5ps2bZZYVureyWz1CXf5hicJpsAwic2jGQ4NJGc8lk2/2bqscarHf44uxp3XwtxbhbXI3KLjdb7HvLe3Jo4Gkve3EA4tcxtruDiDTOU4hG+Ms19E7E2D9PstOnAa7DLgJMPN3AE5/wuB2Vsc16UtwxT94A4f8AcIhgJgjIOdA85NvX7S64g2tAF45a65K/Hjqcs/Llu6gqJ0vmAL2te3BMptk+Zn6a7llY+ZLoEAkXmLCLi2ZK07LEEiN1uC1Y1dd8Hw+438kykZImbXSKzS42Eid+UD86J9I3P25py8ir6z/lRLq5m/0UTLSr8PL+eaLEeHXjdYdo2jA3EQDNrnLkUdCsHBrrDOwM5D83U+3w9cbajPDynzSn7Q0Zkf8A1tmsfaVY5TDeNt1yNfNauzqQ922+fe87z6o3u6PWpt5j2zp4vcukBuItxCZBc6nlxhroOh5pXZtZlNlZ5EjGByIAaIkkZ3vvXQ9rqDX7JUnHI74eBIGA/NuED+V5vZNpeaNUGzwccfNIiC0HIEDIWM+WHkustt8OcWHZjVqOe6TJfgBgCcRBjFMNAgXykxqu5s7JYDJmco+aZJhp1gHwFyuNsLA6mYMnE9xmA0D5TBvYjRdbswuxybY8JxG0mLzFgPyOKwjTJ6DsGgQDIi3qNScpK3bXsjnCxLcrWiZ15ZotheMuuZXQgZrtxxlx05Mrzt5R9KtSLopU3sJDi0EgYj8Tm27pcbkZTdMG2udb9FtEkWMNOWXeMDwzXpY6+6ssF55z6yj+X+n7/wCPHu2uuQW09ldiMtD6jxLe7JMNBEc4yhaexexDRcX1HmpVf8T8u7M4cGgkDmg2vtYvqFtJpwyY0xkGCZjKRZtpudy6ewioDD25ix3mTut4LLHW+GmW5HYonRcftHZKjKpq0mhzXAiqzFhdIEB7LQTAgg5wF2aVv5SdtDsLsEYwJbIJE7jG/KdF0XmMJdVxdn7Ve2z9lrsNsmioDMgXabmQrr7TVqGGUHx/8kUm5ZkXcQJyjRbuxu2Ke0giMNRs4qZIJacjcZibSuo2kBkpmEs74VctXp5E03U64Y6oMb2mo5+Eue5xIbhpiIa1oBH+0QNV2tloAMDSxzg6+J0NOlzGt53rH29szXbRQBa04g8QQ4zGBwysRMmDbU5JjaT2UzhwgkxZuFutyBMHM2O6FPVVeZHSIaDGA3BvNuXBBU2Zk4sN9dZ3A6xmsrnuAnEQ4XA+JrrQJI55cCnVtodJDQOJjhkPyquSdNDabJPdj6pjsH7YHXFcp9QhuQMme8JuJ35FaKA70xHckt0k5WOqUyLTTZRKqtIJtqoq3RwgpggSJtrlN9OHqgfSiwt3SbaE6x1mVopm3XkgGfgPubnVIbc7tEOwi4mD5nLwC6rThYANBHkOvNc3bWlz2tGRI8Bc6cr8E2k8uNqgcLd2B9RfUKZeVXpi7Z2dzmBzQ04RY+8LHzq1p+AggxDxG/h4XZtmq0qpbhLAe8LDvDI4MMtJg2i1rL6ZXptNyASCIJg62gjLwXnfarsRuH37Ja5lnAE4XNcYfabGLkjSc1Pkw3F+PPXDh0KIBim0NdJDgXOIGEDEJcbCwOUd43W/aWhjg4kZTuGWdiZEDx4rm7PWa6qQyzcmTcANBDt+oBzi66+2C2gyM6iIg3EH1C5vja9t+z7WWjUwN0TnJg30yK7ezbQS0acJy0XlaBlobfO0jPIX5Eea7eyOMa9ajeNFt48qxzxdj3gjj+Fydvrurk06ZhgkPqDUgf6bZ1mJOQBG9Y+2O1TSAawzUeQ1gN7u3xwvu4rV2YxrNnkknC3vOPzOiXO85yWvv7cJmOuXC7SZUp1WvoUy8BgpwLWDvCYnPnmln2n2ljprUnMpy0SLyXRB8fRdyp2kxwcGMNXCSCxomcp8YMqMpipPvmsYzLC9wBIBBDu6bZAQVl6z5Wnt+w3YvaSgResCdBBLvIAzdXQ7ZfUcR7iq1hiKjgGtM3mJxAcYV0OyKVN7XNp024ZhzCGngJFyI0nTy2Gq1svMkZYheABM23Tdazf2srr5HF9qdiNIjbKHdqU4xx3Q+nIkOIGY8zPAEeh2LbRUYHAiCJ9Tndc/tLamP2eqWlrgaT4N8IljoLovxySPZVp/TsxRIGnG+mmR8k5dZcfRZvHn431jNdlvhY8+eBvldZ9rbhGHA745ADsWKMnDG7MTeT9EdJw9887mNGQkEkuNzzB+yZtpLjTiYl27hEyjfA1yWacQ0OdBJzJcYkauvY7yqcIMh0zMze40ERkjae82+bifU7ldWA7KAGkxl1lmpB1GzRrby1Gd0ygP8jjewaPqYv4KURYchHiFNlu55O8DyE/dWkt+ZuVFWGbwPP8AlRLYMa3heOraKhmTwi+UASVaButxnnn1yTDG8/5N5AnfEwPv9VWxgzJsSQTiaGkYbRYnEBv4qqcl7iCRB0zi59fsnUWkSMRN2xP5EKJ2unViMJn/APOtjbwVufMgWIj6xxlSoe5n9wgqMsdf7/CtDwGzvcNrrgHCPfVIgaYgLCcpw5b16D5TnfSJuReZiVwu2NnFLb60A9//ACd0ie80DICbd4wuyzaLb5kwbyed4BnxIK5OsrHVeZKJgAnQG8gCDc7rze0bt627O8RhmeZO8WE8vVc9lUElpMOGmK4bbfcgrM7aHseR8IABkEkSTxyPO27Kz9tJ9dt/aeyuD6dVt8MsIO5xzkfKHNG83XLHaRf/AKuM4Ymm34SBxyABGYnNdMdrgtAeCJJaMz3hmAALZZrKQW96O4HAAtcQWmwyboIvPndGWr0JucVp7P7RDgcFBwZjgMYxsNIGsQZ4EfRaa/abgC4UKkZGxmdThEkiOgslDtBjqhxktqRaq2ASJNjmBe/ivQbPWGEWa7jMzGSvGzLjacuPjk7P21mDs1XFAcYpmDLs8p114pj+0GzPuqrHHQsIDhMSYEEXtrfy64gXwga56yetVi2ja/lbE8Jwg8vm1t5wrs1O0yy3ph2TZMQqNZTDW1CRUaWwcRkuBGvdc0Qd/n36VBtNsAANAgRAAEzAAsABZc+hXbSEFxJN5OdxmfFB212lhZaJMADi4ho9SE5ZJ/pXdouzhPvXREvgQCdwz3yDK0CnLqY1DeZvz+vLwLsrZjTYKbjJDYnQudL3xwnLgFZE1iD+yTPExfjdPXELfIGnvj/iT5zPCfyqxON/9utrm9/BG6kAY/2m3DIX0SqdPva5NGWXCEqHQn7DiEvZjZ5Fu870smtOcH11S9nHc8/WZVpKDtxjl/atQt3E+qtLRibpM+m5LZl58eKaRbrRY9o2llNkuc1trE62tbVFuhC9iFiYjE8+QEeNwifWAIl3dB7xJEATv0XO2Ta6jgG02HInG4Q3eYAkjMZkZprOzXPg1TjABgGQ0CD8uszef5We7el2Sdi2jtYHu0ml5kd64YJPdExLpOgjNI/V1zhEtLnkDAG2baXGSZgDU55arp06VwABbhawuQPNKqU8NRr4gCQc8nDdreDPgiy36JYx9tdh+8otLP8AWp95hmC53xPa45nFfxjJee2LaRGR7pMA/FAAAB3fXMr3y4/bfYPvCa1IhtcCJvDxIIDo1EWPMGQn5PH7cwYZ64rz21OMjDusbSYMi+Qy5d6630cFZkPbDgbgi5w/t43i65FZpBLHgseCcbSCAPlxNsQWgEmRGRJJyDKFcTD4JsDoJtvi95EAXjcuaWy8trN9HuohhECImQCS0iDmOYOXFdGi3Ge6Ymzmn7cM1iYHTiglttQS2JnPPh90DdnNi2A6DIuGkWyAP7pNvROUq2V/Z57xZ4FxBucIF4jWYyO9D/0i8Elu0PaDYYW3HkR/QQbF25VpDvgWJB5iLAxfnxC2n2kYQATEndp+NPNXL4vs5Tf6fC6Hsm+P8m11jpDYaCJGpk6DxXQGxMojwOd4AvIvIGZJM6rKz2hMCGk4nYcV4iDrEDJZqmy1Kji+u4NYJIZN3AfESR/psy5zEK946/4wv+X/AKrY7ZQ8B8gAEuc4mLAG4J0BmU/YthlwrPBEXpNIAIkAl5Ektcbw3QHeUey7GaoGMYWAAtpkQDuL2zO4hmQ1k2GiqHttAczT9wGUHfz/ALVzHXNRcvkaqAzPGP6S2H/K7kPtPhKHZtrZqYJJPAcSQI8Pwqo1Aajza8AGRB1kcOSrc4To0XJyy+9/ol0233DFx0gTxyTKeZ8PveZSqJm+uIm44nrxQGgnNDStTaM+6PXPJFWsCeBt4KnjuNHIcLDgmRbjdRQgcVFOjcwbXXqg+7aabd5Ac8i4nPC3WM5lHT7GDbu7ztC44jGGw7w335rsC0W64jrJUTn1z64J+k+j3vxl90Rv/PNNdabRp+QifM666eXhZU52gHl9UyZaWeXp4DgtRaDbw68ISajABqeIFwcpnXOEzGM8+MffclDqtmMd0m4yvmJWgdfwlVKciZv1Kuk+RncT/Hin0VI7W7Gp12w4Q4CA9phzRMmDlH+02K8Xt/ZlegSHDE2J94ASIcf+5AJZIHEcdR9BZ0Pujz38xY8LhGfjxz77PHyXF857L2yDMOLHgRYARniDpM55aW8Oj+ikTQeRHyGA2IhoGZgEf+y7HaXsxTqHHTik8fM1sg2g42yA7IXBBzvdc07FWpEgMx7nU3DEGg2mm8g3AyGLKywvhyn+xt743rikU3VA3vUQ4X1gRlYOGUfhOp1sQMbN8WYJaASLFs3kyIhV/wBWUGQ2sHsd+1zC127I5XXS2ftN1Vk7NQdeSKtVpazPNrB36mc5AXzTxwl6pW37FUaVa8MpUmyXF2KfQADxnzT6Ox+9zB9yL9+7qzswSMhTBvGp0jPdsvZ/zVXmq+J7wAaLm7aY7rfU8Vse2LacFtjhrmsbkUXXSnjJaHZpBz63deSdKFvog5+Wnpll6rK/ZRO45Tra/hdbhu/vr8ISCLeimzapXM9zUaZbUP8AxO4aWHIQiZXqNjEwOjOM9dPVb8PiL9eqmHQ59dSp9Pw/Zjq9qsIcCHNdGRB+2i3Vagc0FpBG8X/pJdQB5j769b1lfsJDppnCQDlGE3+YRz9Ubyg4ro+6m9/JRZafaJAgsf8A+OXhdRVuFquqAEL8rdckcefl/CFwt+VrpmU8TuFkotv/ABymPVOcPr0Ep3pafvCmqgYnrdqlAX8fz5LS1ttOEcLWKB7eUeP2U2HKOlMfn0Q16M3Bv9eCtnjllb03LRi666lV2VZab+F4Ft3NNY5XWoA9dbklwcP9w4Zjwm6XMHbS1w65oyAReNePNZKdQb/O3PNO95vVSloNXZg5zZAIBIvG60TcRwWvxWSrUhzLfPH/AKn+Fpc6BfzVSwrtEt7kr9S05GeWXnkphJF+XhzyyU730ekJnRXTp57vufymNbA8FGpaBRb1fqEITHCeuI3KR587cZRowOHXh+EBF/CP6CMc9PrIBv8AlVwm+7kUgmG8jocPGEumTiO+B+R9Fop9eO5L2dveM8uvP1RoD9yOoH2UTAOXXgoq4LYgNeoVnUaQqA4KBMgVeugsxd143+y1PHWnmkOF5kzz63KclQezi1/srczOyGkbddcU0NTJnI+175RH3Tp/pU9qjW9b0gZO7oIXBSURHX8qiAaQNiEj9I0ZF45OJGm8rU1iFxzSsh7Y3UMRDcTpBxYg6DOmQ9NyM9lUycTsToj4nucJHAmE7ZciTqZP0WhyJjO9HbS2NGgjTyt5IxldXuQkqkrcM0IgIo63oXpUw4voqnoKHr7Kx145apADhyUA4+Ec8t38oyhAjr6JaCmC5VbJ8RiL8I37lcc1WxjvX58bZa58UvptKimFRaaSFXh01UIVYigKI668Ul7OXJOcgeOvyppwNLLw6smsS6GV05icFCWpYbl9U8hBhlFhbU0q4VRCYEQB6/KAjejPW5U6fAIoBsxzHH7JzkinIM3NrD18Ss1LaHRJz3bjoCOUeaW9HpvjJU5VTcTctLTqJBi28InEXTJJ69FTgoFYATBeLNQ9fxuRPQtPXA/0pNbSph666soM+p5+qPgmAAJFE4X8hv6nJaQFi2l2Ez1ylTlxyc/DKm3tBIlRZKVIkA3vfMflRT7U/V1So47lCBvUOS1QpyEhGUBSphZ1/YTGlLp2Hn/aJ3kEAxscVcXQkqBMlWVSjshKAtpgc0GLjxRFC71SoLD75a9Zoy0TMCd6stRcY8EGFxVOMhE0Ki2EBMSueuCEKwlAt/XFBxRkoSOSYWDfKOCOEpkT4JhKIQm/VZNu8c/Cy1jxWbbxI6nPLkll0c7FTAi8eSpBTpOIUSNrB/tRwiFAbBQmytISbjyCsBWqwzZAKpi1uKOOP4VsyUlIxGyHDdDCMoJEMI5VFARosJz13KTrmqJVJ7Cy6ypQHgoSkay5CDxUUJQFFVKimL8pBY1VkIT9U0BMEtaZPWgTpQtBROQSDMpdUWTBqPVQskRP29UWGz0n2Fp65KJbWO3eiijZugRkqqdeRUUWqEA+n3UcLnn91FEGXS08PoFYy8D9VFEgW45c0Q+x+qtRKBRV6eSiiAEq9ytRBlznz/Kv8qKIoWc1VQ28lFEqAn4TyP0Udr1ooogCPxDn+E9uR63qlE4VTf4pjx14KKKgHXxCp2vWpUUQHNebnmfqooos1v/Z",
+    
+    category: "tribal martyr",
+    shortDesc: "Tribal hero who fought against British oppression in the 1857 revolt.",
+    longDesc: "Jitku Ram was a tribal freedom fighter from the Jashpur region of present-day Chhattisgarh. He led the Kol tribals in an uprising against the British in 1857. He was eventually captured and martyred, becoming a symbol of tribal resistance in central India.",
+    quote: "We will not bow to foreign rulers in our forests and fields.",
+    wikipedia: "https://www.typingbaba.com/" // No official page, you can refer to local sources or replace
+},
+{
+    id: 27,
+    name: "Mini Mata",
+    years: "1916 – 1973",
+    image: "http://cgculture.in/admin/samman_master/SMN20180813636698005772460952.PNG",
+    category: "social reformer",
+    shortDesc: "Social reformer and MP who worked for Dalit and women empowerment in Chhattisgarh.",
+    longDesc: "Mini Mata was the first woman Member of Parliament from Chhattisgarh and a strong advocate for women's rights, Dalit upliftment, and social justice. She was associated with the Scheduled Castes Federation and was known for her work in tribal and rural areas.",
+    quote: "A truly free nation uplifts its weakest and unheard voices.",
+    wikipedia: "https://en.wikipedia.org/wiki/Mini_Mata"
+},
+{
+    id: 28,
+    name: "Ravishankar Shukla",
+    years: "1877 – 1956",
+    image: "data:image/jpeg;base64,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",
+   
+    category: "political leader",
+    shortDesc: "First Chief Minister of Madhya Pradesh and senior Congress leader from Chhattisgarh.",
+    longDesc: "Pandit Ravishankar Shukla was a freedom fighter and senior leader in the Indian National Congress. He participated in the Non-Cooperation and Civil Disobedience Movements. Post-independence, he became the first Chief Minister of undivided Madhya Pradesh and worked for educational and administrative reform.",
+    quote: "Education and justice are pillars of a truly independent India.",
+    wikipedia: "https://en.wikipedia.org/wiki/Ravi_Shankar_Shukla"
+},
+{
+    id: 29,
+    name: "Veer Narayan Singh",
+    years: "1795 – 1857",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMqq8WdY6irX9f97VpgS2eCX9yxUtUOHlJLw&s",
+    category: "revolutionary",
+    shortDesc: "First freedom fighter from Chhattisgarh who revolted against British rule in 1857.",
+    longDesc: "Veer Narayan Singh was a landlord from Sonakhan and one of the earliest freedom fighters from Chhattisgarh. He led a popular revolt against British exploitation during the 1857 uprising. Captured and executed, he remains a folk hero in Chhattisgarh's struggle for independence.",
+    quote: "Let the British know, we are not theirs to rule or break.",
+    wikipedia: "https://en.wikipedia.org/wiki/Veer_Narayan_Singh"
+},
+{
+    id: 30,
+    name: "Thakur Pyarelal Singh",
+    years: "1891 – 1954",
+    image: "https://lh5.googleusercontent.com/proxy/vXaTEF0En_RKdJcB3xfxSq4HIOsSvjaPiBx45fy4WHGSYHDItkiKOHkx-It3Y0mhwWzOKjmml6B7NuYOmgY21jyTWayrQZ66PTjhVPWyqgQ6C3gw1bGJeoZkjG211qiv",
+    category: "freedom fighter and social reformer",
+    shortDesc: "Lawyer and Gandhian who led movements for workers' and peasants' rights in Chhattisgarh.",
+    longDesc: "Thakur Pyarelal Singh was a freedom fighter, lawyer, and reformer. He established labor unions, led Satyagraha movements in the Raipur region, and worked to eradicate untouchability. A follower of Mahatma Gandhi, he remains a towering figure in Chhattisgarh’s political history.",
+    quote: "Service to the oppressed is the truest form of patriotism.",
+    wikipedia: "https://en.wikipedia.org/wiki/Thakur_Pyarelal_Singh"
+}
+
+
+
+];
+    const slider = document.getElementById('slider');
+    const sliderDots = document.getElementById('sliderDots');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentSlide = 0;
+    let filteredFighters = [...fighters];
+    let cardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+
+    function initSlider() {
+        renderCards();
+        createDots();
+        updateSlider();
+    }
+
+    function renderCards() {
+        slider.innerHTML = '';
+        filteredFighters.forEach((fighter, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.id = fighter.id;
+            card.dataset.category = fighter.category;
+            card.innerHTML = `
+                <div class="card-image">
+                    <img src="${fighter.image}" alt="${fighter.name}">
+                    <div class="card-overlay">
+                        <h3 class="card-title">${fighter.name}</h3>
+                        <p class="card-years"><i class="fas fa-calendar-alt"></i> ${fighter.years}</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <span class="card-category">${getCategoryName(fighter.category)}</span>
+                    <p class="card-description">${fighter.shortDesc}</p>
+                    <div class="card-actions">
+                        <a href="${fighter.name.toLowerCase().replace(/\s+/g, '-')}.html" class="read-more">
+                            Read More <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+            slider.appendChild(card);
+        });
+    }
+
+    function createDots() {
+        sliderDots.innerHTML = '';
+        const dotCount = Math.ceil(filteredFighters.length / cardsPerView);
+
+        for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot';
+            dot.dataset.index = i;
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            sliderDots.appendChild(dot);
+        }
+
+        if (sliderDots.children.length > 0) {
+            sliderDots.children[0].classList.add('active');
+        }
+    }
+
+    function updateSlider() {
+        const cardWidth = document.querySelector('.card')?.offsetWidth + 40;
+        if (cardWidth) {
+            slider.scrollTo({
+                left: currentSlide * cardsPerView * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= Math.ceil(filteredFighters.length / cardsPerView) - 1;
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlider();
+    }
+
+    function filterFighters() {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        filteredFighters = fighters.filter(fighter => {
+            return activeFilter === 'all' || fighter.category === activeFilter;
+        });
+
+        currentSlide = 0;
+        renderCards();
+        createDots();
+        updateSlider();
+    }
+
+    function getCategoryName(category) {
+        const names = {
+            'leader': 'National Leader',
+            'soldier': 'Armed Revolutionary',
+            'woman': 'Women Warrior'
+        };
+        return names[category] || category;
+    }
+
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterFighters();
+        });
+    });
+
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlider();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentSlide < Math.ceil(filteredFighters.length / cardsPerView) - 1) {
+            currentSlide++;
+            updateSlider();
+        }
+    });
+
+    // Responsive
+    function handleResize() {
+        const newCardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+        if (newCardsPerView !== cardsPerView) {
+            cardsPerView = newCardsPerView;
+            createDots();
+            updateSlider();
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Initialize
+    initSlider();
+    </script>
+</body>
+</html>

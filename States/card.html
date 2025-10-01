@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Freedom Fighters | Tribute</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --light-blue: #E2F1FF;
+            --gold: #FFD700;
+            --dark-green: #0A5C36;
+            --red: #E21717;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-blue), var(--white));
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+            border-radius: 3px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--saffron), var(--navy), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--navy);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            padding-left: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box:focus {
+            border-color: var(--saffron);
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.3);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--navy);
+            font-size: 1.2rem;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: var(--white);
+            border: 2px solid var(--navy);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-btn i {
+            font-size: 1rem;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--navy);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-btn.active {
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            border-color: transparent;
+        }
+        
+        .hero-section {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 450px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 10s ease;
+        }
+        
+        .hero-section:hover .hero-image {
+            transform: scale(1.05);
+        }
+        
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .hero-quote {
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .slider-container {
+            position: relative;
+            margin: 50px 0;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 20px 0;
+        }
+        
+        .card {
+            min-width: 320px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 0 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--saffron), var(--red));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .card-content {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+        
+        .card-subtitle {
+            font-size: 1rem;
+            color: var(--saffron);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .card-bio {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-top: 1px dashed #ddd;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .read-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--green), var(--saffron));
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            transform: scale(1.3);
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .prev:hover, .next:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .prev {
+            left: -25px;
+        }
+        
+        .next {
+            right: -25px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.3rem;
+            color: var(--navy);
+            display: none;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+        }
+        
+        .no-results i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--saffron);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            background: linear-gradient(135deg, var(--saffron), var(--green));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: var(--gold);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .hero-section {
+                height: 400px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .card {
+                min-width: 280px;
+            }
+            
+            .hero-section {
+                height: 350px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-section {
+                height: 300px;
+            }
+            
+            .hero-content {
+                padding: 20px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-quote {
+                font-size: 0.9rem;
+            }
+            
+            .prev, .next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .prev {
+                left: -15px;
+            }
+            
+            .next {
+                right: -15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .search-box {
+                padding: 10px 15px 10px 40px;
+            }
+            
+            .search-icon {
+                left: 15px;
+            }
+            
+            .categories {
+                gap: 8px;
+            }
+            
+            .category-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-section {
+                height: 250px;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+            
+            .card {
+                min-width: 260px;
+                margin: 0 10px;
+            }
+            
+            .card-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="fade-in">
+            <h1>Indian Freedom Fighters</h1>
+            <p class="subtitle">Honoring the heroes who shaped our nation's destiny</p>
+        </header>
+        
+        <!-- Search Box -->
+        <div class="search-container fade-in">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-box" placeholder="Search freedom fighters..." id="searchInput">
+        </div>
+        
+        <!-- Categories -->
+        <div class="categories fade-in">
+            <button class="category-btn active" data-category="all">
+                <i class="fas fa-star"></i> All Heroes
+            </button>
+            <button class="category-btn" data-category="national">
+                <i class="fas fa-flag"></i> National Leaders
+            </button>
+            <button class="category-btn" data-category="armed">
+                <i class="fas fa-fist-raised"></i> Revolutionaries
+            </button>
+            <button class="category-btn" data-category="women">
+                <i class="fas fa-female"></i> Women Warriors
+            </button>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section fade-in">
+            <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Indian Flag" class="hero-image">
+            <div class="hero-content">
+                <h2 class="hero-title">Freedom in the Mind, Strength in the Words</h2>
+                <p class="hero-subtitle">Celebrating the courage and sacrifice of India's brave souls</p>
+                <p class="hero-quote">"Long years ago we made a tryst with destiny, and now the time comes when we shall redeem our pledge..." - Jawaharlal Nehru</p>
+            </div>
+        </div>
+        
+        <!-- Card Slider -->
+        <div class="slider-container">
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider" id="slider">
+                <!-- Card 1 - Mahatma Gandhi -->
+                <div class="card fade-in" data-category="national" data-name="mahatma gandhi">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/800px-Mahatma-Gandhi%2C_studio%2C_1931.jpg" alt="Mahatma Gandhi">
+                        <span class="card-badge">Father of the Nation</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Mahatma Gandhi</h2>
+                        <p class="card-subtitle">1869 - 1948</p>
+                        <p class="card-bio">The leader who taught the world the power of non-violence and led India to independence through Satyagraha.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">30+</div>
+                                <div class="stat-label">Years of Struggle</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Major Movements</div>
+                            </div>
+                        </div>
+                        <a href="States/mahatma-gandhi.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 - Bhagat Singh -->
+                <div class="card fade-in" data-category="armed" data-name="bhagat singh">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bhagat_Singh_1929.jpg/800px-Bhagat_Singh_1929.jpg" alt="Bhagat Singh">
+                        <span class="card-badge">Revolutionary Martyr</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Bhagat Singh</h2>
+                        <p class="card-subtitle">1907 - 1931</p>
+                        <p class="card-bio">The fearless revolutionary who became a symbol of resistance with his daring actions against British rule.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">23</div>
+                                <div class="stat-label">Age at Death</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1929</div>
+                                <div class="stat-label">Assembly Bombing</div>
+                            </div>
+                        </div>
+                        <a href="States/bhagat-singh.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 - Rani Lakshmibai -->
+                <div class="card fade-in" data-category="women" data-name="rani lakshmibai">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Rani_of_jhansi.jpg/800px-Rani_of_jhansi.jpg" alt="Rani Lakshmibai">
+                        <span class="card-badge">Queen of Jhansi</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Rani Lakshmibai</h2>
+                        <p class="card-subtitle">1828 - 1858</p>
+                        <p class="card-bio">The warrior queen who became a legend for her resistance against British annexation during the 1857 revolt.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">1857</div>
+                                <div class="stat-label">First War</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">29</div>
+                                <div class="stat-label">Age at Death</div>
+                            </div>
+                        </div>
+                        <a href="States/rani-lakshmibai.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 4 - Subhas Chandra Bose -->
+                <div class="card fade-in" data-category="national" data-name="subhas chandra bose">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Subhas_Chandra_Bose_NRB.jpg/800px-Subhas_Chandra_Bose_NRB.jpg" alt="Subhas Chandra Bose">
+                        <span class="card-badge">Netaji</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Subhas Chandra Bose</h2>
+                        <p class="card-subtitle">1897 - 1945</p>
+                        <p class="card-bio">The charismatic leader who founded the Indian National Army to liberate India through armed struggle.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">INA</div>
+                                <div class="stat-label">Army Founded</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1943</div>
+                                <div class="stat-label">Azad Hind</div>
+                            </div>
+                        </div>
+                        <a href="States/subhas-bose.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 5 - Sarojini Naidu -->
+                <div class="card fade-in" data-category="women" data-name="sarojini naidu">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sarojini_Naidu.jpg/800px-Sarojini_Naidu.jpg" alt="Sarojini Naidu">
+                        <span class="card-badge">Nightingale</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Sarojini Naidu</h2>
+                        <p class="card-subtitle">1879 - 1949</p>
+                        <p class="card-bio">Poet, politician and activist who played a pivotal role in India's struggle for independence.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">1925</div>
+                                <div class="stat-label">Congress President</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1947</div>
+                                <div class="stat-label">Governor</div>
+                            </div>
+                        </div>
+                        <a href="States/sarojini-naidu.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 6 - Chandrashekhar Azad -->
+                <div class="card fade-in" data-category="armed" data-name="chandrashekhar azad">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Chandrashekhar_Azad.jpg/800px-Chandrashekhar_Azad.jpg" alt="Chandrashekhar Azad">
+                        <span class="card-badge">The Immortal</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Chandrashekhar Azad</h2>
+                        <p class="card-subtitle">1906 - 1931</p>
+                        <p class="card-bio">Revolutionary who vowed never to be captured alive and reorganised the Hindustan Republican Association.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">1928</div>
+                                <div class="stat-label">Saunders Shooting</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Age at Death</div>
+                            </div>
+                        </div>
+                        <a href="States/chandrashekhar-azad.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Card 7 - Lala Lajpat Rai -->
+                <div class="card fade-in" data-category="national" data-name="lala lajpat rai">
+                    <div class="card-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Lala_Lajpat_Rai.jpg/800px-Lala_Lajpat_Rai.jpg" alt="Lala Lajpat Rai">
+                        <span class="card-badge">Punjab Kesari</span>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="card-title">Lala Lajpat Rai</h2>
+                        <p class="card-subtitle">1865 - 1928</p>
+                        <p class="card-bio">Leader of the independence movement, part of the Lal Bal Pal trio and founder of Punjab National Bank.</p>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <div class="stat-value">1920</div>
+                                <div class="stat-label">Congress President</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">1928</div>
+                                <div class="stat-label">Protest Death</div>
+                            </div>
+                        </div>
+                        <a href="States/lala-lajpat-rai.html" class="read-more">Explore Legacy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+        
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search"></i>
+            <p>No freedom fighters found matching your search.</p>
+            <p>Try different keywords or categories</p>
+        </div>
+        
+        <footer class="fade-in">
+            <p class="footer-text">"Freedom is never dear at any price. It is the breath of life." - Mahatma Gandhi</p>
+            <p class="footer-text">Dedicated to the brave souls who fought for India's independence</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Card Slider Functionality
+            const slider = document.querySelector('.slider');
+            const cards = document.querySelectorAll('.card');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const searchInput = document.getElementById('searchInput');
+            const noResults = document.getElementById('noResults');
+            
+            let currentIndex = 0;
+            const cardWidth = 350; // 320px card + 30px margin
+            let visibleCards = Math.min(4, Math.floor(window.innerWidth / cardWidth));
+            
+            // Initialize slider
+            updateSlider();
+            
+            // Next button click
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < cards.length - visibleCards) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+            
+            // Previous button click
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+            
+            // Dot navigation click
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+            
+            // Category filter click
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active category button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    filterCards(category, searchInput.value.trim().toLowerCase());
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                filterCards(activeCategory, searchTerm);
+            });
+            
+            // Filter cards based on category and search term
+            function filterCards(category, searchTerm) {
+                let visibleCount = 0;
+                let firstVisibleIndex = -1;
+                
+                cards.forEach((card, index) => {
+                    const matchesCategory = category === 'all' || card.dataset.category === category;
+                    const matchesSearch = searchTerm === '' || 
+                                        card.dataset.name.includes(searchTerm) || 
+                                        card.querySelector('.card-title').textContent.toLowerCase().includes(searchTerm);
+                    
+                    if (matchesCategory && matchesSearch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                        if (firstVisibleIndex === -1) firstVisibleIndex = index;
+                        
+                        // Add animation delay based on position
+                        card.style.animationDelay = `${index * 0.1}s`;
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+                    }
+                });
+                
+                // Show no results message if no cards are visible
+                noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+                
+                // Reset to first visible slide when filtering
+                if (firstVisibleIndex !== -1) {
+                    currentIndex = Math.min(firstVisibleIndex, cards.length - visibleCards);
+                } else {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }
+            
+            // Update slider position and dot indicators
+            function updateSlider() {
+                const transformValue = -currentIndex * cardWidth;
+                slider.style.transform = `translateX(${transformValue}px)`;
+                
+                // Update dot indicators
+                const totalDots = Math.ceil(cards.length / visibleCards);
+                dots.forEach((dot, index) => {
+                    dot.style.display = index < totalDots ? 'block' : 'none';
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Hide/show navigation buttons based on position
+                prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+                const visibleCardsCount = Math.min(visibleCards, cards.length);
+                nextBtn.style.display = currentIndex >= cards.length - visibleCardsCount ? 'none' : 'flex';
+            }
+            
+            // Auto-rotate cards for demonstration
+            let autoRotateInterval = setInterval(() => {
+                if (currentIndex < cards.length - visibleCards) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }, 5000);
+            
+            // Pause auto-rotation on interaction
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(autoRotateInterval);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                autoRotateInterval = setInterval(() => {
+                    if (currentIndex < cards.length - visibleCards) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateSlider();
+                }, 5000);
+            });
+            
+            // Responsive adjustments
+            window.addEventListener('resize', function() {
+                visibleCards = Math.min(4, Math.floor(window.innerWidth / cardWidth));
+                updateSlider();
+            });
+            
+            // Initialize animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

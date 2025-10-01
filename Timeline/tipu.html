@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death of Tipu Sultan - Indian History</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://www.pakpedia.pk/files/Image/Tipu-Sultan-Death.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/India_geographic_map.svg/1200px-India_geographic_map.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1799</div>
+        <h1>Death of Tipu Sultan</h1>
+        <p>The fall of the Tiger of Mysore and the end of significant resistance to British expansion in South India</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The End of an Era</h2>
+                    <p>The death of Tipu Sultan on May 4, 1799, during the Siege of Seringapatam marked the final defeat of Mysore in the Fourth Anglo-Mysore War. Tipu's death eliminated the most formidable opponent of British expansion in South India and paved the way for complete British dominance over the subcontinent.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Background of the Conflict</h3>
+                        <p>Tipu Sultan, known as the Tiger of Mysore, had been a persistent adversary of the British East India Company, fighting them in three previous Anglo-Mysore Wars. The British, allied with the Nizam of Hyderabad and the Marathas, launched the Fourth Anglo-Mysore War to eliminate Tipu as a threat once and for all. The siege culminated in a brutal assault on Seringapatam, Tipu's capital, where he died defending his fort.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1782</div>
+                            <div class="timeline-content">
+                                <h3>Tipu Becomes Ruler</h3>
+                                <p>Tipu Sultan succeeds his father Hyder Ali as ruler of Mysore after his death during the Second Anglo-Mysore War.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1792</div>
+                            <div class="timeline-content">
+                                <h3>Third Anglo-Mysore War</h3>
+                                <p>Tipu suffers defeat and is forced to cede half his territory and pay a large indemnity to the British and their allies.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1798</div>
+                            <div class="timeline-content">
+                                <h3>Fourth War Brewing</h3>
+                                <p>British Governor-General Richard Wellesley uses Tipu's attempts to seek French support as justification for war.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1799</div>
+                            <div class="timeline-content">
+                                <h3>Siege of Seringapatam</h3>
+                                <p>British forces besiege Tipu's capital. On May 4, they breach the walls and Tipu dies fighting in the ensuing battle.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1799</div>
+                            <div class="timeline-content">
+                                <h3>Aftermath</h3>
+                                <p>Mysore is divided between the British and their allies. The Wodeyar dynasty is restored as puppet rulers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://c8.alamy.com/comp/FY3D9R/tragic-death-of-tipu-sultan-or-tipu-sahib-the-tiger-of-mysore-1799-FY3D9R.jpg" alt="Death of Tipu Sultan">
+                            <div class="gallery-caption">Artistic depiction of Tipu Sultan's death during the siege</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://alchetron.com/cdn/siege-of-seringapatam-1799-7445e50f-c1b5-4bf5-a560-581e28eed47-resize-750.jpeg" alt="Map of Siege of Seringapatam">
+                            <div class="gallery-caption">Strategic map showing the siege of Seringapatam</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://sc0.blr1.cdn.digitaloceanspaces.com/inline/oykbmcexax-1652622420.jpg" alt="Tipu Sultan's death spot">
+                            <div class="gallery-caption">The spot where Tipu Sultan fell in Seringapatam</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://c8.alamy.com/comp/A64NW0/shah-allum-mogul-of-hindostan-reviewing-troops-of-the-british-east-A64NW0.jpg" alt="British troops at Seringapatam">
+                            <div class="gallery-caption">British East India Company troops during the siege</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Fall of Tipu Sultan</h3>
+                        <p>The death of Tipu Sultan was a watershed moment in Indian history, marking the end of significant resistance to British expansion in South India. Here's an in-depth look at various aspects of this pivotal event:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Military Tactics</h4>
+                                    <p>The British employed sophisticated siege tactics against Seringapatam, including artillery bombardment to breach the walls. Tipu's forces, though valiant, were outmatched by British military technology and organization.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Political Consequences</h4>
+                                    <p>With Tipu's death, Mysore ceased to be an independent power. The British installed the Wodeyar dynasty as puppet rulers, marking the beginning of indirect British rule in the region.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Economic Impact</h4>
+                                    <p>The British gained control over Mysore's rich resources and strategic location. Tipu's treasury, estimated at £1.5 million, was divided among the victors.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Leadership Factors</h4>
+                                    <p>Tipu's death created a leadership vacuum in South India. His sons were exiled, and no other ruler in the region could match his organizational skills or military prowess against the British.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Technological Edge</h4>
+                                    <p>The British had superior artillery and military engineering skills. Tipu, though innovative (he introduced iron-cased rockets), couldn't match British industrial military production.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Long-Term Effects</h4>
+                                    <p>The elimination of Tipu removed the last major obstacle to British dominance in India. Within 50 years, nearly all of India would be under direct or indirect British control.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of Tipu Sultan</h3>
+                            <p>Tipu Sultan remains a controversial figure in Indian history - reviled by some as a religious bigot, revered by others as a freedom fighter against British imperialism. His administrative innovations, including the introduction of a new calendar and coinage system, demonstrated his vision for an independent Mysore. The circumstances of his death - fighting to the last when many of his troops had fled - became legendary. While the British portrayed him as a tyrant, later Indian nationalists would celebrate him as an early resistance fighter against colonial rule. His personal belongings, including his famous mechanical tiger, were taken as war trophies and remain in British museums today.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://c8.alamy.com/comp/KFDDAH/tipu-sultan-1750-1799-the-tiger-of-mysore-ruler-of-the-kingdom-of-KFDDAH.jpg" alt="Tipu Sultan">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Tipu Sultan</h4>
+                            <p>The Tiger of Mysore, ruler who resisted British expansion until his death at Seringapatam in 1799.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://cdn.britannica.com/31/127731-004-765AC4A9/Richard-Colley-Wellesley-engraving.jpg" alt="Richard Wellesley">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Richard Wellesley</h4>
+                            <p>British Governor-General who orchestrated the Fourth Anglo-Mysore War and Tipu's downfall.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://kids.kiddle.co/images/thumb/d/db/Lord_G._Harris_GCB_(1893)_(14777920371).jpg/300px-Lord_G._Harris_GCB_(1893)_(14777920371).jpg" alt="General Harris">
+                        </div>
+                        <div class="figure-info">
+                            <h4>General George Harris</h4>
+                            <p>British commander who led the siege of Seringapatam and the final assault.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://cdn.siasat.com/wp-content/uploads/2020/08/New-Project-12-2-780x470.jpg" alt="Hyder Ali">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Hyder Ali</h4>
+                            <p>Tipu's father and predecessor who first built Mysore into a formidable military power.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Battle Locations</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 70%; left: 65%;" data-location="Seringapatam (Siege Site)"></div>
+                    <div class="map-marker" style="top: 75%; left: 70%;" data-location="Bangalore (Strategic Fort)"></div>
+                    <div class="map-marker" style="top: 65%; left: 60%;" data-location="Mysore (Kingdom Capital)"></div>
+                    <div class="map-marker" style="top: 60%; left: 55%;" data-location="Hyderabad (British Ally)"></div>
+                </div>
+
+                <h2>Consequences</h2>
+                <ul class="impact-list">
+                    <li>Eliminated the last major resistance to British expansion in South India</li>
+                    <li>Mysore was divided between the British and their allies</li>
+                    <li>Wodeyar dynasty restored as puppet rulers of Mysore</li>
+                    <li>British gained control over strategic territories in South India</li>
+                    <li>Removed French influence from South India</li>
+                    <li>Demonstrated British military superiority over Indian rulers</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"Tipu Sultan fought bravely, discharging loaded muskets handed him by his servants as if he had been at a tiger hunt. But he was at last shot through the head and his body was found in a choked-up gateway."</p>
+            <p class="quote-author">— British account of Tipu's death</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="indian-battles.html" class="back-button">Explore More Historical Battles</a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Seringapatam (Siege Site)": "Now called Srirangapatna, this was Tipu Sultan's capital where he made his last stand against the British in 1799. The siege lasted from April 5 to May 4, 1799.",
+                    "Bangalore (Strategic Fort)": "Bangalore Fort was an important military stronghold captured by the British before advancing on Seringapatam. Tipu had strengthened its defenses after previous wars.",
+                    "Mysore (Kingdom Capital)": "The traditional capital of the Kingdom of Mysore, which became the seat of the restored Wodeyar dynasty after Tipu's death.",
+                    "Hyderabad (British Ally)": "The Nizam of Hyderabad allied with the British against Tipu Sultan, providing troops for the final campaign against Mysore."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

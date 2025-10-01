@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dadabhai Naoroji - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://static.india.com/wp-content/uploads/2024/09/FotoJet-24.png?impolicy=Medium_Widthonly&w=400&h=800" alt="Dadabhai Naoroji">
+      </div>
+      <div class="hero-content">
+        <h2>Dadabhai Naoroji</h2>
+        <p>Known as the "Grand Old Man of India", Dadabhai Naoroji was a pioneer of Indian nationalism, economist, educator, and the first Asian to become a British Member of Parliament. His groundbreaking work exposed the economic exploitation of India under British rule through his famous "Drain Theory".</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>September 4, 1825</p>
+            <p>Navsari, Gujarat, British India</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>June 30, 1917</p>
+            <p>Bombay, British India</p>
+          </div>
+          <div class="fact-card">
+            <h4>Education</h4>
+            <p>Elphinstone College, University of Bombay</p>
+          </div>
+          <div class="fact-card">
+            <h4>Key Positions</h4>
+            <p>Founder of Indian National Congress, British MP, Professor of Mathematics</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "The British Empire is rotten to the core, corrupt in every direction, and tyrannical and mean."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Dadabhai Naoroji (1825-1917) was born into a Parsi family in Navsari, Gujarat. After graduating from Elphinstone College in Bombay (now Mumbai), he became the first Indian professor at the same institution, teaching mathematics and natural philosophy. He later moved to England where he established the first Indian business firm outside India.</p>
+      
+      <p>Naoroji was a founding member and three-time president of the Indian National Congress (1886, 1893, 1906). His 1906 presidential address famously declared Swaraj (self-rule) as the goal of the Indian National Congress. He was elected to the British House of Commons in 1892 as a Liberal Party MP for Central Finsbury, becoming the first Indian to sit in Parliament.</p>
+      
+      <p>His most significant contribution was the "Drain Theory" articulated in his book "Poverty and Un-British Rule in India" (1901), which systematically demonstrated how Britain was draining India's wealth. He estimated this drain at £30-40 million annually, explaining India's poverty despite its rich resources.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline of Contributions</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1855</div>
+          <p>Moved to England as partner in Cama & Co., the first Indian company to be established in Britain</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1866</div>
+          <p>Founded the East India Association in London to promote Indian interests</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1885</div>
+          <p>Co-founded the Indian National Congress in Bombay</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1892</div>
+          <p>Elected to British Parliament as Liberal MP for Central Finsbury (1892-95)</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1901</div>
+          <p>Published "Poverty and Un-British Rule in India" detailing his Drain Theory</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1906</div>
+          <p>As Congress President, declared Swaraj (self-rule) as India's goal</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Key Contributions</h3>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>Drain Theory:</strong> Demonstrated how British colonial policies systematically transferred India's wealth to Britain, causing poverty.</li>
+        <li><strong>Political Representation:</strong> First Indian to serve in British Parliament, advocating for Indian self-governance.</li>
+        <li><strong>Indian National Congress:</strong> Played pivotal role in establishing India's primary nationalist organization.</li>
+        <li><strong>Economic Analysis:</strong> Used statistical data to challenge colonial economic policies, pioneering economic nationalism.</li>
+        <li><strong>Social Reforms:</strong> Advocated for women's education and against child marriage in Parsi community.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Lessons to Learn from Dadabhai Naoroji</h3>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-chart-line"></i> Power of Economic Analysis</h4>
+        <p>Naoroji showed how data and economic arguments can be powerful tools against oppression. His Drain Theory provided concrete evidence of colonial exploitation that galvanized the independence movement.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-globe"></i> Global Advocacy</h4>
+        <p>By engaging with British institutions and international audiences, Naoroji demonstrated the importance of making your case on the global stage. His work in Britain brought India's plight to world attention.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-graduation-cap"></i> Education as Empowerment</h4>
+        <p>As one of India's first university graduates and professors, Naoroji exemplified how education could challenge colonial narratives and create leaders for national movements.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-handshake"></i> Institutional Building</h4>
+        <p>Through organizations like Indian National Congress and East India Association, Naoroji showed how creating formal institutions gives longevity and structure to social movements.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-balance-scale"></i> Peaceful Resistance</h4>
+        <p>Naoroji championed constitutional methods and dialogue, proving that systemic change can be achieved through persistent, principled advocacy within existing frameworks.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-book"></i> Drain Theory</h4>
+          <p>His economic critique became foundational to Indian nationalist thought and inspired generations of economists and freedom fighters.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-landmark"></i> Political Trailblazer</h4>
+          <p>As first Indian MP, he paved the way for future generations of Indian leaders in global politics and diplomacy.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-university"></i> Educational Reforms</h4>
+          <p>His emphasis on education influenced India's focus on building strong educational institutions post-independence.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-feather-alt"></i> Literary Contributions</h4>
+          <p>His writings, especially "Poverty and Un-British Rule in India", remain seminal works on colonial economics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+    </div>
+  </footer>
+</body>
+</html>

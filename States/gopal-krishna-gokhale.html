@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gopal Krishna Gokhale - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Use the same CSS structure as previous bio pages like Bhagat Singh */
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/GKGokhale.jpg" alt="Gopal Krishna Gokhale">
+      </div>
+      <div class="hero-content">
+        <h2>Gopal Krishna Gokhale</h2>
+        <p>Gopal Krishna Gokhale (1866-1915) was one of India's most respected moderate leaders during the independence movement. A mentor to Mahatma Gandhi, he advocated for constitutional reforms, education and social empowerment as the path to self-rule.</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>May 9, 1866</p>
+            <p>Kotluk, Ratnagiri, Bombay Presidency</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>February 19, 1915 (aged 48)</p>
+            <p>Bombay (now Mumbai), Maharashtra</p>
+          </div>
+          <div class="fact-card">
+            <h4>Organizations</h4>
+            <p>Indian National Congress, Servants of India Society</p>
+          </div>
+          <div class="fact-card">
+            <h4>Known For</h4>
+            <p>Moderate leadership, mentor to Gandhi, social reforms</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "What Bengal thinks today, India thinks tomorrow."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Born in a poor Chitpavan Brahmin family in coastal Maharashtra, Gokhale overcame financial hardships to receive an excellent education. He graduated from Elphinstone College in 1884 and was deeply influenced by social reformers like Justice M.G. Ranade.</p>
+      
+      <p>Gokhale joined the Indian National Congress in 1889 and quickly rose to prominence as a moderate leader advocating for constitutional reforms within the British system. He served as President of the Congress in 1905 during its Benares session.</p>
+      
+      <p>In 1905, he founded the Servants of India Society to train Indians for public service and social work. His moderate approach and emphasis on education earned him respect even from British officials, though he faced criticism from more radical nationalists.</p>
+      
+      <p>Gokhale served as a member of the Imperial Legislative Council from 1902-1915, where he tirelessly advocated for Indian interests. His health deteriorated due to diabetes and overwork, and he passed away prematurely at age 48.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline of Contributions</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1866</div>
+          <p>Born on May 9 in Kotluk village, Ratnagiri district</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1884</div>
+          <p>Graduated from Elphinstone College, Bombay</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1889</div>
+          <p>Joined Indian National Congress</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1902</div>
+          <p>Elected to Imperial Legislative Council</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1905</div>
+          <p>Founded Servants of India Society; became Congress President</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1912</div>
+          <p>Mentored Mahatma Gandhi on Indian issues</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1915</div>
+          <p>Passed away on February 19 in Bombay</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://mc-webpcache.readwhere.in/mcms.php?size=large&in=https://mcmscache.epapr.in/post_images/website_350/post_15678069/thumb.jpg" alt="Gokhale Portrait">
+          <div class="gallery-caption">Official portrait of Gopal Krishna Gokhale</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://static.wixstatic.com/media/780d8d_21dcc8f9cf324bb294466b8669acb021~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/780d8d_21dcc8f9cf324bb294466b8669acb021~mv2.jpg" alt="Servants of India Society">
+          <div class="gallery-caption">Servants of India Society headquarters</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Gandhi_group_Gokhale.jpg/250px-Gandhi_group_Gokhale.jpg" alt="Gokhale with Gandhi">
+          <div class="gallery-caption">Gokhale mentoring young Mahatma Gandhi</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.indianexpress.com/2017/06/gopal-krishna-gokhale-home.jpg" alt="Gokhale Memorial">
+          <div class="gallery-caption">Gokhale Memorial in Pune</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Key Contributions</h3>
+      <h4>Political Reforms</h4>
+      <ul>
+        <li>Advocated for Indian self-rule through constitutional means</li>
+        <li>Demanded expansion of legislative councils and more Indian representation</li>
+        <li>Pushed for reduction in salt tax and other economic reforms</li>
+        <li>Supported education for all Indians regardless of caste or gender</li>
+      </ul>
+      
+      <h4>Social Work</h4>
+      <ul>
+        <li>Founded Servants of India Society (1905) to train social workers</li>
+        <li>Worked to eradicate untouchability and caste discrimination</li>
+        <li>Promoted women's education and widow remarriage</li>
+        <li>Advocated for primary education in vernacular languages</li>
+      </ul>
+      
+      <h4>Mentorship</h4>
+      <ul>
+        <li>Guided Mahatma Gandhi on Indian issues during his South Africa years</li>
+        <li>Influenced Muhammad Ali Jinnah in his early political career</li>
+        <li>Trained a generation of moderate leaders through Servants of India Society</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Philosophy and Ideology</h3>
+      <p>Gokhale's political philosophy was characterized by:</p>
+      
+      <ul>
+        <li><strong>Moderate Approach:</strong> Believed in gradual constitutional reforms rather than radical revolution</li>
+        <li><strong>Constructive Work:</strong> Emphasized social reforms and education as foundations for self-rule</li>
+        <li><strong>Inclusive Nationalism:</strong> Advocated for unity across religious and caste lines</li>
+        <li><strong>Ethical Politics:</strong> Maintained high moral standards in political life</li>
+        <li><strong>Administrative Expertise:</strong> Mastery of parliamentary procedures and government functioning</li>
+      </ul>
+      
+      <p>He famously said: "The emancipation of the mind is a necessary preliminary to the emancipation of the body."</p>
+    </div>
+
+    <div class="section">
+      <h3>Lessons from Gopal Krishna Gokhale's Life</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-handshake"></i> The Power of Moderation</h4>
+          <p>Gokhale showed how patient, reasoned dialogue can achieve lasting change.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-graduation-cap"></i> Education as Liberation</h4>
+          <p>His emphasis on education reminds us it's the foundation of true freedom.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-users"></i> Mentorship Matters</h4>
+          <p>His guidance to Gandhi demonstrates how mentoring shapes future leaders.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-balance-scale"></i> Ethical Leadership</h4>
+          <p>His integrity in public life sets standards for politicians today.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-book"></i> Mastery of Systems</h4>
+          <p>His deep understanding of governance shows the value of institutional knowledge.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-heart"></i> Social Reform First</h4>
+          <p>His work proves political freedom must be accompanied by social progress.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy and Memorials</h3>
+      <p>Gopal Krishna Gokhale's legacy continues through:</p>
+      
+      <ul>
+        <li><strong>Gokhale Institute of Politics and Economics</strong> in Pune, established in 1930</li>
+        <li><strong>Gokhale Memorial Girls' College</strong> in Kolkata</li>
+        <li>Numerous schools, colleges and roads across India named after him</li>
+        <li>The continuing work of <strong>Servants of India Society</strong></li>
+        <li>His influence on India's constitutional development</li>
+        <li>Stamp issued in his honor by India Post in 1966</li>
+      </ul>
+      
+      <p>Though often overshadowed by more radical leaders, Gokhale's emphasis on education, social reform and constitutional methods laid important groundwork for India's independence. His moderate approach and ethical politics remain relevant models for democratic leadership.</p>
+    </div>
+
+    <div class="section">
+      <h3>Further Reading</h3>
+      <ul>
+        <li><em>Gopal Krishna Gokhale: A Political Biography</em> by B.R. Nanda</li>
+        <li><em>Gokhale: The Indian Moderates and the British Raj</em> by Stanley Wolpert</li>
+        <li><em>Speeches and Writings of Gopal Krishna Gokhale</em> edited by R.P. Patwardhan</li>
+        <li><em>Gandhi and Gokhale: Reformers at Work</em> by S.R. Mehrotra</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Freedom Fighters</a>
+        <a href="#">Timeline</a>
+        <a href="#">Resources</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

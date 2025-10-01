@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <title>Indian Freedom Fighters - Interactive Gallery</title>
+        <style>
+        :root {
+            --primary-color: #FF8F1C;
+            --secondary-color: #FFFFFF;
+            --accent-color: #138808;
+            --dark-color: #000080;
+            --text-color: #2E2E2E;
+            --light-gray: #f9f9f9;
+            --gold-color: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: var(--light-gray);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            bottom: -15px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .slider {
+            display: flex;
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 340px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-years {
+            font-size: 1rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-years i {
+            color: var(--gold-color);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+            border: 2px solid var(--primary-color);
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .read-more {
+            background: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev {
+            left: 0;
+        }
+
+        .slider-btn.next {
+            right: 0;
+        }
+
+        .search-filter {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 350px;
+            padding: 1rem 2rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(255, 143, 28, 0.2);
+        }
+
+        .filter-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark-color);
+            color: white;
+            border-color: var(--dark-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            padding: 2.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-subtitle span {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .modal-quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-color);
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .modal-quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-btn.full {
+            background: var(--dark-color);
+            color: white;
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.full:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .modal-btn.outline {
+            background: transparent;
+            color: var(--dark-color);
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.outline:hover {
+            background: var(--dark-color);
+            color: white;
+        }
+
+        @media (min-width: 992px) {
+            .modal-body {
+                flex-direction: row;
+            }
+
+            .modal-image {
+                flex: 0 0 45%;
+                height: auto;
+            }
+
+            .modal-info {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .slider-container {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                flex: 0 0 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .slider-container {
+                padding: 0 1rem;
+            }
+            
+            .slider-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+            
+            .search-box {
+                min-width: 100%;
+            }
+            
+            .filter-btn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                flex: 0 0 280px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>India's Freedom Fighters</h1>
+        <p class="subtitle">Celebrating the brave souls who fought for India's independence. Explore their inspiring stories and contributions to our nation's history.</p>
+    </header>
+
+    <div class="search-filter">
+        <input type="text" class="search-box" placeholder="Search freedom fighters..." id="searchInput">
+        <button class="filter-btn active" data-filter="all">All Heroes</button>
+        <button class="filter-btn" data-filter="leader">National Leaders</button>
+        <button class="filter-btn" data-filter="soldier">Armed Revolutionaries</button>
+        <button class="filter-btn" data-filter="woman">Women Warriors</button>
+    </div>
+
+    <div class="slider-container">
+        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider" id="slider">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-nav" id="sliderDots">
+            <!-- Dots will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const fighters = [
+            {
+                id: 1,
+                name: "Mahatma Gandhi",
+                years: "1869 - 1948",
+                image: "https://i.pinimg.com/originals/9d/dd/95/9ddd95bec31f46e6b43828d1910ad796.jpg",
+                category: "leader",
+                shortDesc: "The Father of the Nation who led India to independence through non-violent civil disobedience.",
+                longDesc: "Mohandas Karamchand Gandhi, known as Mahatma Gandhi, was the preeminent leader of India's independence movement against British rule...",
+                quote: "Be the change that you wish to see in the world.",
+                page: "States/mahatma-gandhi.html",
+                achievements: [
+                    "Led the successful non-violent campaign for India's independence",
+                    "Organized the historic Salt March in 1930",
+                    "Promoted Hindu-Muslim unity",
+                    "Championed the concept of Swadeshi",
+                    "Developed the philosophy of Satyagraha"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+            },
+            {
+                id: 2,
+                name: "Bhagat Singh",
+                years: "1907 - 1931",
+                image: "https://akm-img-a-in.tosshub.com/businesstoday/images/story/202203/ezgif-sixteen_nine_250.jpg",
+                category: "soldier",
+                shortDesc: "Revolutionary socialist who became a symbol of resistance against British rule.",
+                longDesc: "Bhagat Singh was an Indian socialist revolutionary whose acts of dramatic violence against the British in India...",
+                quote: "They may kill me, but they cannot kill my ideas.",
+                page: "States/bhagat-singh.html",
+                achievements: [
+                    "Participated in killing of British police officer",
+                    "Bombed the Central Legislative Assembly",
+                    "Popularized revolutionary ideas",
+                    "Became a symbol of resistance",
+                    "Inspired youth across India"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Bhagat_Singh"
+            },
+              {
+                id: 3,
+                name: "Rani Lakshmibai",
+                years: "1828 - 1858",
+                image: "https://ebnw.net/wp-content/uploads/2021/06/Rani-Laxmi-Bai.jpg.webp",
+                category: "woman",
+                  page: "States/rani-lakshmibai.html",
+                shortDesc: "The fierce Queen of Jhansi who led a rebellion against British annexation.",
+                longDesc: "Rani Lakshmibai was a symbol of resistance to British rule during the 1857 revolt. Her leadership in battle and refusal to surrender made her a heroic figure in Indian history and a source of inspiration for women's empowerment.",
+                quote: "I shall not surrender my Jhansi!",
+                achievements: [
+                    "Led the defense of Jhansi during the 1857 rebellion",
+                    "Personally led troops in battle against the British",
+                    "Became a symbol of resistance and women's empowerment",
+                    "Inspired generations of freedom fighters",
+                    "Remembered as one of India's brahest warriors"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Rani_of_Jhansi"
+            },
+               {
+    id: 5,
+    name: "Alluri Sita Rama Raju",
+    years: "1897 – 1924",
+    image: "https://static.langimg.com/thumb/msid-92645990,imgsize-29930,width-700,height-525,resizemode-75/alluri-sitarama-raju-92645990.jpg",
+    category: "revolutionary",
+    shortDesc: "Fierce leader of the Rampa Rebellion against British rule in Andhra Pradesh.",
+    page: "States/alluri-sita-rama-raju.html",
+    longDesc: "Alluri Sita Rama Raju led the tribal people of the Eastern Ghats in armed rebellion against the British in 1922–24, advocating for the rights of the Adivasis. He was known for his guerrilla warfare tactics and deep understanding of the forest terrain.",
+    quote: "Better to live one day as a lion than a hundred years as a sheep.",
+    wikipedia: "https://en.wikipedia.org/wiki/Alluri_Sitarama_Raju"
+},
+     {
+                id: 6,
+                name: "Subhas Chandra Bose",
+                years: "1897 - 1945",
+                image: "https://media.assettype.com/outlookindia/2025-01-15/bcu3vnko/1.png?w=801&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
+                category: "leader",
+                shortDesc: "Charismatic leader of the Indian National Army who fought for India's liberation abroad.",
+                longDesc: "Subhas Chandra Bose, known as Netaji, broke away from the Indian National Congress to form the INA and seek international alliances to fight British colonialism. His slogan 'Give me blood and I will give you freedom' rallied thousands.",
+                quote: "Give me blood and I will give you freedom.",
+                page: "States/subhas-chandra-bose.html",
+                achievements: [
+                    "Formed the Indian National Army to fight British rule",
+                    "Established the Azad Hind government in exile",
+                    "Led the INA's campaign in Northeast India",
+                    "Inspired mass support for independence",
+                    "Created the famous slogan 'Jai Hind'"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Subhas_Chandra_Bose"
+            },
+             {
+                id: 7,
+                name: "Chandra Shekhar Azad",
+                years: "1906 - 1931",
+                image: "https://www.drishtiias.com/images/uploads/1595585727_image2.png",
+                category: "soldier",
+                shortDesc: "Mastermind of revolutionary activities; died in a heroic gunfight with British police.",
+                longDesc: "Chandra Shekhar Azad was a fearless revolutionary who vowed never to be captured alive. He reorganized the Hindustan Socialist Republican Association and inspired countless youth to join the struggle.",
+                quote: "I am free and will remain free till my last breath.",
+                page: "States/chandra-shekar-azad.html",
+                achievements: [
+                    "Reorganized the Hindustan Republican Association",
+                    "Participated in the Kakori train robbery",
+                    "Assassinated British police officer J.P. Saunders",
+                    "Inspired youth to join the freedom movement",
+                    "Martyred in a gunfight with British police"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Chandra_Shekhar_Azad"
+            },
+            {
+    id: 8,
+    name: "Potti Sreeramulu",
+    years: "1901 – 1952",
+    image: "https://1.bp.blogspot.com/-dBxdOOeid_c/XBRgwCwL3wI/AAAAAAAAKic/FEE1vLTFSGMnEtcgssBcpQGvPtyipH9-wCLcBGAs/s320/IMG_20181215_072024.jpg",
+    category: "activist",
+    shortDesc: "Fasted unto death demanding a separate Andhra state, becoming a martyr.",
+    page: "States/potti-sreeramulu.html",
+    longDesc: "Potti Sreeramulu was a staunch follower of Gandhi and a devoted freedom fighter who is remembered for his ultimate sacrifice for the formation of Andhra Pradesh. His death after a hunger strike triggered the creation of the first linguistic state in India.",
+    quote: "Language is the soul of a people — I will give my life for it.",
+    wikipedia: "https://en.wikipedia.org/wiki/Potti_Sreeramulu"
+},
+ 
+            {
+                id: 9,
+                name: "Matangini Hazra",
+                years: "1870 - 1942",
+                image: "https://currentaffairs.adda247.com/wp-content/uploads/multisite/sites/5/2024/08/10183709/Unsung-Heroes-Matangini-Hazra.png",
+                category: "woman",
+                page: "States/matangini-hazra.html",
+                shortDesc: "Elderly Gandhian freedom fighter shot while leading a procession with the Indian flag.",
+                longDesc: "Matangini Hazra, also called 'Gandhi Buri', was a part of the Quit India Movement. She continued marching with the tricolour while wounded, becoming a powerful symbol of courage and sacrifice.",
+                quote: "Vande Mataram! Vande Mataram!",
+                achievements: [
+                    "Participated in the Civil Disobedience Movement",
+                    "Led procession during Quit India Movement",
+                    "Shot dead while holding the Indian flag",
+                    "Became a symbol of women's participation in freedom struggle",
+                    "Remembered as 'Gandhi Buri' (Old Lady Gandhi)"
+                ],
+                wikipedia: "https://en.wikipedia.org/wiki/Matangini_Hazra"
+            },
+            {
+              id: 10,
+    name: "Ambikagiri Raichoudhury",
+    years: "1885 – 1967",
+    image: "https://amarghar.org/wp-content/themes/amar/images/founder.jpg",
+    category: "freedom fighter, poet",
+    page: "States/ambikagiri-raichoudary.html",
+    shortDesc: "Poet and nationalist who fought for Assam's identity and Indian independence.",
+    longDesc: "Ambikagiri Raichoudhury was a noted Assamese poet, freedom fighter, and social reformer. He actively participated in the Swadeshi Movement and was imprisoned for anti-British activities. He also advocated for Assamese culture and language and was awarded the Sahitya Akademi Award post-independence.",
+    quote: "Freedom of the land must walk hand-in-hand with the freedom of the spirit.",
+    wikipedia: "https://en.wikipedia.org/wiki/Ambikagiri_Raichoudhury"
+},
+{
+    id: 11,
+    name: "Sardar Vallabhbhai Patel",
+    years: "1875 – 1950",
+    page: "States/sardar-vallabhbai.html",
+    image: "https://statueofunityguide.in/wp-content/uploads/2022/01/Iron-Man-of-India-Alias-of-Sardar-Patel-statue-of-unity.jpg",
+    category: "National Leader",
+    shortDesc: "Iron Man of India who unified 562 princely states post-independence.",
+    longDesc: "Sardar Vallabhbhai Patel was a senior leader in the Indian National Congress and a key architect of India’s political integration. He played a critical role in the Salt Satyagraha and Quit India Movement and became India’s first Deputy Prime Minister and Home Minister. His statesmanship ensured the unification of India.",
+    quote: "My only desire is that India should be a good producer and no one should be hungry, shedding tears for food in the country.",
+    wikipedia: "https://en.wikipedia.org/wiki/Vallabhbhai_Patel"
+},
+     {
+    id: 12,
+    name: "Bal Gangadhar Tilak",
+    years: "1856 – 1920",
+    page: "States/bal-gangadhar-tilak.html",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/34/Bal_Gangadhar_Tilak_painting.jpg",
+    category: "nationalist leader",
+    shortDesc: "Assertive nationalist who declared 'Swaraj is my birthright and I shall have it.'",
+    longDesc: "Bal Gangadhar Tilak was one of the first leaders to demand full independence from British rule. Known as 'Lokmanya Tilak', he mobilized the masses through cultural revivalism, Ganesh Utsav, and Shivaji Jayanti. His assertive stance laid the foundation for future mass movements.",
+    quote: "Swaraj is my birthright and I shall have it!",
+    wikipedia: "https://en.wikipedia.org/wiki/Bal_Gangadhar_Tilak"
+},
+      {
+    id: 13,
+    name: "Jyotirao Phule",
+    years: "1827 – 1890",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Hvbde4odx6hu03810HJ8Szi5R7i7W7ybag&s",
+    category: "social reformer",
+    page: "States/jyotirao-phule.html",
+    shortDesc: "Pioneer of social justice and education for oppressed castes and women.",
+    longDesc: "Jyotirao Phule was a visionary reformer who fought against caste discrimination, child marriage, and gender inequality. He founded the first school for girls in India and the Satyashodhak Samaj to promote equality. His ideas laid the groundwork for social reform in Maharashtra and beyond.",
+    quote: "The spread of knowledge is the real weapon to fight oppression.",
+    wikipedia: "https://en.wikipedia.org/wiki/Jyotirao_Phule"
+},
+{
+    id: 14,
+    name: "Savitribai Phule",
+    years: "1831 – 1897",
+    page: "States/savitribai-phule.html",
+    image: "https://spsmmpkv.in/assets/images/base/savitribai.jpg",
+    category: "women's rights activist",
+    shortDesc: "India’s first female teacher and fierce crusader for women’s education.",
+    longDesc: "Savitribai Phule, wife of Jyotirao Phule, was a pioneer in girls' education and women's rights in India. She faced social ostracism and threats for opening schools for girls and lower-caste children. Her life remains a symbol of courage and empowerment.",
+    quote: "I will educate my sisters, even if society stands against me.",
+    wikipedia: "https://en.wikipedia.org/wiki/Savitribai_Phule"
+},
+{
+    id: 15,
+    name: "Lala Lajpat Rai",
+    years: "1865 – 1928",
+    image: "https://d2av8kbir6lh9m.cloudfront.net/uploads/7I8th9viz6hKfPOQoXyUbpkuvW1ZhEsrgAsNaQ48.jpg",
+    category: "freedom fighter and leader",
+    page: "States/lala-lajpat-rai.html",
+    
+    shortDesc: "Punjab Kesari who stood against British repression and inspired youth.",
+    longDesc: "Lala Lajpat Rai was a senior leader in the Indian National Congress and part of the Lal-Bal-Pal trio. He led a protest against the Simon Commission and was severely beaten by British police, succumbing to his injuries. His death deeply moved revolutionaries like Bhagat Singh.",
+    quote: "The blows struck at me today will be the last nails in the coffin of British rule in India.",
+    wikipedia: "https://en.wikipedia.org/wiki/Lala_Lajpat_Rai"
+},
+ {
+    id: 16,
+    name: "Naoroji",
+    years: "1825 – 1917",
+    image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201706/647_063017125323.jpg",
+    category: "intellectual leader",
+    shortDesc: "Pioneer of Indian nationalism and first Indian elected to British Parliament.",
+    longDesc: "Dadabhai Naoroji, known as the 'Grand Old Man of India,' was a key figure in the early phase of the Indian freedom movement. He exposed the British economic exploitation through his 'Drain Theory' and advocated for Indian self-governance. He was also the first Indian to be elected to the British Parliament.",
+    quote: "Self-government is our birthright, and we shall have it.",
+    page: "States/dadabhai-naoroji.html",
+    wikipedia: "https://en.wikipedia.org/wiki/Dadabhai_Naoroji"
+},
+  {
+    "id": 17,
+    "name": "Khudiram Bose",
+    "years": "1889 – 1908",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Painting_of_Khudiram_Bose_by_Haripada_Das_it_is_kept_at_Mahajati_Sadan%2C_Kolkata.jpg/250px-Painting_of_Khudiram_Bose_by_Haripada_Das_it_is_kept_at_Mahajati_Sadan%2C_Kolkata.jpg",
+    "category": "martyr",
+    page: "States/khudiram-bose.html",
+    "shortDesc": "One of the youngest martyrs in India’s freedom struggle.",
+    "longDesc": "Khudiram Bose was only 18 years old when he was hanged by the British for attempting to assassinate a British magistrate. He became a symbol of youthful patriotism and sacrifice during the early revolutionary movements in Bengal.",
+    "quote": "I am not afraid to die.",
+    "wikipedia": "https://en.wikipedia.org/wiki/Khudiram_Bose"
+  }
+     
+    
+            // Add all other fighters here...
+        ];
+
+        const slider = document.getElementById('slider');
+        const sliderDots = document.getElementById('sliderDots');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        let currentSlide = 0;
+        let filteredFighters = [...fighters];
+        let cardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+
+        // Mapping of fighter IDs to their HTML files
+        const fighterPages = {
+            1: "mahatma-gandhi.html",
+            2: "bhagat-singh.html",
+            3: "rani-lakshmibai.html",
+            4: "sarojini-naidu.html",
+            5: "alluri-sita-rama-raju.html",
+            6: "subhas-chandra-bose.html",
+            7: "chandra-shekhar-azad.html",
+            8: "potti-sreeramulu.html",
+            9: "matangini-hazra.html",
+            
+            10: "ambikagiri-raichoudhury.html",
+            11: "sardar-vallabhbhai-patel.html",
+            12: "bal-gangadhar-tilak.html",
+            13: "jyotirao-phule.html",
+            14: "savitribai-phule.html",
+            15: "lala-lajpat-rai.html",
+            16: "dadabhai-naoroji.html",
+            17: "khudiram-bose.html"
+        };
+
+        function initSlider() {
+            renderCards();
+            createDots();
+            updateSlider();
+        }
+
+        function renderCards() {
+            slider.innerHTML = '';
+            filteredFighters.forEach(fighter => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-image">
+                        <img src="${fighter.image}" alt="${fighter.name}">
+                        <div class="card-overlay">
+                            <h3 class="card-title">${fighter.name}</h3>
+                            <p class="card-years">${fighter.years}</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">${getCategoryName(fighter.category)}</span>
+                        <p class="card-description">${fighter.shortDesc}</p>
+                        <div class="card-actions">
+                            <button class="read-more" data-id="${fighter.id}">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                `;
+                slider.appendChild(card);
+            });
+
+            // Add event listeners to read more buttons
+            document.querySelectorAll('.read-more').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    if (fighterPages[id]) {
+                        window.location.href = fighterPages[id];
+                    } else {
+                        // Fallback to generic page with ID parameter
+                        window.location.href = `freedom-fighter.html?id=${id}`;
+                    }
+                });
+            });
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'leader': 'National Leader',
+                'soldier': 'Armed Revolutionary',
+                'woman': 'Women Warrior'
+            };
+            return names[category] || category;
+        }
+
+        // Rest of your slider functions (createDots, updateSlider, etc.)
+        function createDots() {
+            sliderDots.innerHTML = '';
+            const dotCount = Math.ceil(filteredFighters.length / cardsPerView);
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot';
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => goToSlide(i));
+                sliderDots.appendChild(dot);
+            }
+            if (sliderDots.children.length > 0) {
+                sliderDots.children[0].classList.add('active');
+            }
+        }
+
+        function updateSlider() {
+            const cardWidth = document.querySelector('.card')?.offsetWidth + 40;
+            if (cardWidth) {
+                slider.scrollTo({
+                    left: currentSlide * cardsPerView * cardWidth,
+                    behavior: 'smooth'
+                });
+            }
+            document.querySelectorAll('.slider-dot').forEach(dot => dot.classList.remove('active'));
+            if (document.querySelectorAll('.slider-dot')[currentSlide]) {
+                document.querySelectorAll('.slider-dot')[currentSlide].classList.add('active');
+            }
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide >= Math.ceil(filteredFighters.length / cardsPerView) - 1;
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function filterFighters() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            filteredFighters = fighters.filter(fighter => {
+                const matchesSearch = fighter.name.toLowerCase().includes(searchTerm) ||
+                    fighter.shortDesc.toLowerCase().includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || fighter.category === activeFilter;
+                return matchesSearch && matchesFilter;
+            });
+            currentSlide = 0;
+            renderCards();
+            createDots();
+            updateSlider();
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', filterFighters);
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterFighters();
+            });
+        });
+        prevBtn.addEventListener('click', () => currentSlide > 0 && goToSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => currentSlide < Math.ceil(filteredFighters.length / cardsPerView) - 1 && goToSlide(currentSlide + 1));
+        window.addEventListener('resize', () => {
+            const newCardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+            if (newCardsPerView !== cardsPerView) {
+                cardsPerView = newCardsPerView;
+                createDots();
+                updateSlider();
+            }
+        });
+
+        initSlider();
+    </script>
+</body>
+</html>

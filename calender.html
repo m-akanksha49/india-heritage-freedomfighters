@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Historical Events Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-clr: #3a5a78;
+        --secondary-clr: #ff7e5f;
+        --accent-clr: #4CAF50;
+        --dark-clr: #1a237e;
+        --light-clr: #f8f9fa;
+        --freedom-orange: #FF9933;
+        --freedom-green: #138808;
+        --freedom-blue: #000080;
+        --freedom-white: #FFFFFF;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      body {
+        background: linear-gradient(135deg, var(--freedom-white) 0%, #e3f2fd 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .container {
+        width: 1000px;
+        min-height: 750px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        position: relative;
+        border: 2px solid var(--freedom-orange);
+      }
+      
+      .left {
+        width: 55%;
+        padding: 25px;
+        background-color: white;
+      }
+      
+      .calendar {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      
+      .view-toggle {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .view-toggle button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--freedom-orange);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.8rem;
+      }
+      
+      .view-toggle button.active {
+        background-color: var(--freedom-blue);
+      }
+      
+      .view-toggle button:hover {
+        background-color: var(--freedom-green);
+      }
+      
+      .month {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      
+      .month .prev, .month .next {
+        cursor: pointer;
+        color: var(--dark-clr);
+        font-size: 1.2rem;
+        transition: all 0.3s;
+      }
+      
+      .month .prev:hover, .month .next:hover {
+        color: var(--freedom-orange);
+        transform: scale(1.2);
+      }
+      
+      .month .date {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--dark-clr);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 600;
+        color: var(--freedom-blue);
+        font-size: 0.9rem;
+      }
+      
+      .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+      }
+      
+      .day {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        color: var(--dark-clr);
+        position: relative;
+      }
+      
+      .day:hover:not(.prev-date, .next-date, .disabled) {
+        background-color: var(--light-clr);
+      }
+      
+      .prev-date, .next-date {
+        color: #ccc;
+      }
+      
+      .disabled {
+        color: #ddd;
+        cursor: not-allowed;
+      }
+      
+      .active {
+        background-color: var(--freedom-blue) !important;
+        color: white !important;
+      }
+      
+      .today {
+        background-color: var(--freedom-green);
+        color: white;
+      }
+      
+      .event {
+        position: relative;
+      }
+      
+      .event::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: var(--secondary-clr);
+      }
+      
+      .goto-today {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      
+      .goto {
+        display: flex;
+        align-items: center;
+      }
+      
+      .goto input {
+        width: 100px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+      
+      .goto-btn, .today-btn {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--freedom-blue);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      
+      .goto-btn:hover, .today-btn:hover {
+        background-color: var(--freedom-green);
+      }
+      
+      .right {
+        width: 45%;
+        padding: 25px;
+        background-color: var(--light-clr);
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid #eee;
+      }
+      
+      .search-container {
+        margin-bottom: 20px;
+      }
+      
+      .search-container input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+      
+      .search-container input:focus {
+        outline: none;
+        border-color: var(--freedom-orange);
+      }
+      
+      .today-date {
+        margin-bottom: 20px;
+      }
+      
+      .event-day {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--freedom-blue);
+        margin-bottom: 5px;
+      }
+      
+      .event-date {
+        font-size: 1rem;
+        color: #777;
+      }
+      
+      .events {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        max-height: 300px;
+      }
+      
+      .event-item {
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+      }
+      
+      .event-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .event-title {
+        font-weight: 600;
+        color: var(--dark-clr);
+        margin-bottom: 5px;
+      }
+      
+      .event-description {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      
+      .event-details {
+        font-size: 0.8rem;
+        color: #555;
+        margin-top: 5px;
+        padding: 8px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+      }
+      
+      .event-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+      
+      .event-actions i {
+        cursor: pointer;
+        color: #777;
+        transition: all 0.3s;
+      }
+      
+      .event-actions i:hover {
+        color: var(--secondary-clr);
+      }
+      
+      .no-events {
+        text-align: center;
+        color: #777;
+        margin-top: 50px;
+      }
+      
+      .add-event {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--freedom-orange);
+        color: white;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+      
+      .add-event:hover {
+        transform: scale(1.1);
+        background-color: var(--freedom-green);
+      }
+      
+      .add-event-wrapper {
+        position: absolute;
+        bottom: 100px;
+        right: 30px;
+        width: 350px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: none;
+      }
+      
+      .add-event-wrapper.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .add-event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .add-event-header .title {
+        font-weight: 600;
+        color: var(--dark-clr);
+        font-size: 1.1rem;
+      }
+      
+      .add-event-header .close {
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #777;
+      }
+      
+      .add-event-header .close:hover {
+        color: var(--secondary-clr);
+      }
+      
+      .add-event-body {
+        margin-bottom: 15px;
+      }
+      
+      .add-event-body .form-group {
+        margin-bottom: 15px;
+      }
+      
+      .add-event-body label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: var(--dark-clr);
+        font-size: 0.9rem;
+      }
+      
+      .add-event-body input, 
+      .add-event-body select,
+      .add-event-body textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.9rem;
+      }
+      
+      .add-event-body textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+      
+      .add-event-body input:focus, 
+      .add-event-body select:focus,
+      .add-event-body textarea:focus {
+        outline: none;
+        border-color: var(--freedom-orange);
+      }
+      
+      .repeat-options {
+        margin-top: 5px;
+        padding: 8px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        font-size: 0.85rem;
+      }
+      
+      .add-event-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      
+      .add-event-btn, .cancel-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      
+      .add-event-btn {
+        background-color: var(--freedom-orange);
+        color: white;
+      }
+      
+      .add-event-btn:hover {
+        background-color: var(--freedom-green);
+      }
+      
+      .cancel-btn {
+        background-color: #f0f0f0;
+        color: #555;
+      }
+      
+      .cancel-btn:hover {
+        background-color: #e0e0e0;
+      }
+      
+      .month-events {
+        margin-top: 20px;
+      }
+      
+      .month-events-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--dark-clr);
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .month-event-item {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+      }
+      
+      .month-event-date {
+        font-weight: 600;
+        color: var(--freedom-blue);
+      }
+      
+      .historical-event {
+        background-color: #fff8e1;
+      }
+      
+      .historical-event .event-title {
+        color: #5d4037;
+      }
+      
+      .search-results {
+        position: absolute;
+        background: white;
+        width: calc(100% - 50px);
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        z-index: 100;
+        display: none;
+      }
+      
+      .search-result-item {
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .search-result-item:hover {
+        background-color: #f5f5f5;
+      }
+      
+      @media (max-width: 900px) {
+        .container {
+          flex-direction: column;
+          width: 100%;
+        }
+        
+        .left, .right {
+          width: 100%;
+        }
+        
+        .right {
+          padding-top: 0;
+        }
+        
+        .add-event-wrapper {
+          width: calc(100% - 40px);
+          right: 20px;
+          left: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="calendar">
+          <div class="calendar-header">
+            <div class="view-toggle">
+              <button class="view-btn month-view active">Month</button>
+            </div>
+            <div class="month">
+              <i class="fas fa-angle-left prev"></i>
+              <div class="date">July 2025</div>
+              <i class="fas fa-angle-right next"></i>
+            </div>
+          </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days"></div>
+          <div class="goto-today">
+            <div class="goto">
+              <input type="text" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">Go</button>
+            </div>
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="search-container">
+          <input type="text" placeholder="Search events..." class="search-input" />
+          <div class="search-results"></div>
+        </div>
+        <div class="today-date">
+          <div class="event-day">Wed</div>
+          <div class="event-date">23rd July 2025</div>
+        </div>
+        <div class="events">
+          <div class="no-events">
+            <i class="fas fa-calendar-alt" style="font-size: 2rem; margin-bottom: 10px;"></i>
+            <p>No events for today</p>
+          </div>
+        </div>
+        
+        <div class="month-events">
+          <div class="month-events-title">Events this month</div>
+          <div class="month-events-list">
+            <!-- Month events will be added here -->
+          </div>
+        </div>
+      </div>
+      
+      <button class="add-event">
+        <i class="fas fa-plus"></i>
+      </button>
+      
+      <div class="add-event-wrapper">
+        <div class="add-event-header">
+          <div class="title">Add Event</div>
+          <i class="fas fa-times close"></i>
+        </div>
+        <div class="add-event-body">
+          <div class="form-group">
+            <label for="event-name">Event Title</label>
+            <input type="text" id="event-name" placeholder="Enter event title" class="event-name" />
+          </div>
+          <div class="form-group">
+            <label for="event-description">Description (Optional)</label>
+            <textarea id="event-description" placeholder="Enter event description" class="event-description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="event-date">Date</label>
+            <input type="text" id="event-date" class="event-date-display" readonly />
+          </div>
+          <div class="form-group">
+            <label for="event-repeat">Repeat</label>
+            <select id="event-repeat" class="event-repeat">
+              <option value="none">Does not repeat</option>
+              <option value="yearly">Repeat yearly</option>
+            </select>
+          </div>
+        </div>
+        <div class="add-event-footer">
+          <button class="cancel-btn">Cancel</button>
+          <button class="add-event-btn">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const calendar = document.querySelector(".calendar"),
+          date = document.querySelector(".date"),
+          daysContainer = document.querySelector(".days"),
+          prev = document.querySelector(".prev"),
+          next = document.querySelector(".next"),
+          todayBtn = document.querySelector(".today-btn"),
+          gotoBtn = document.querySelector(".goto-btn"),
+          dateInput = document.querySelector(".date-input"),
+          eventDay = document.querySelector(".event-day"),
+          eventDate = document.querySelector(".event-date"),
+          eventsContainer = document.querySelector(".events"),
+          addEventBtn = document.querySelector(".add-event"),
+          addEventWrapper = document.querySelector(".add-event-wrapper"),
+          addEventCloseBtn = document.querySelector(".close"),
+          addEventCancelBtn = document.querySelector(".cancel-btn"),
+          addEventTitle = document.querySelector(".event-name"),
+          addEventDescription = document.querySelector(".event-description"),
+          eventDateDisplay = document.querySelector(".event-date-display"),
+          eventRepeatSelect = document.querySelector(".event-repeat"),
+          addEventSubmit = document.querySelector(".add-event-btn"),
+          monthEventsList = document.querySelector(".month-events-list"),
+          searchInput = document.querySelector(".search-input"),
+          searchResults = document.querySelector(".search-results"),
+          monthViewBtn = document.querySelector(".month-view");
+
+        let today = new Date();
+        let activeDay;
+        let month = today.getMonth();
+        let year = today.getFullYear();
+        let currentView = 'month';
+
+        const months = [
+          "January", "February", "March", "April", "May", "June", 
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        // Enhanced historical events with detailed descriptions
+        const historicalEvents = [
+          { 
+            id: 'gandhi-death', 
+            day: 30, 
+            month: 1, 
+            year: 1948, 
+            title: "Death Anniversary of Mahatma Gandhi", 
+            description: "Mahatma Gandhi was assassinated by Nathuram Godse on January 30, 1948, at Birla House in New Delhi.",
+            birthInfo: "Born: October 2, 1869 in Porbandar, Gujarat",
+            deathInfo: "Died: January 30, 1948 in New Delhi (Assassinated by Nathuram Godse)",
+            repeat: "yearly", 
+            historical: true 
+          },
+          { 
+            id: 'tilak-birth', 
+            day: 23, 
+            month: 7, 
+            year: 1856, 
+            title: "Birthday of Bal Gangadhar Tilak", 
+            description: "Bal Gangadhar Tilak was an Indian nationalist, teacher, and independence activist.",
+            birthInfo: "Born: July 23, 1856 in Ratnagiri, Maharashtra",
+            deathInfo: "Died: August 1, 1920 in Mumbai",
+            repeat: "yearly", 
+            historical: true 
+          },
+          { 
+            id: 'independence-day', 
+            day: 15, 
+            month: 8, 
+            year: 1947, 
+            title: "Indian Independence Day", 
+            description: "India gained independence from British rule after nearly 200 years of colonial rule.",
+            birthInfo: "",
+            deathInfo: "",
+            repeat: "yearly", 
+            historical: true 
+          },
+          { 
+            id: 'republic-day', 
+            day: 26, 
+            month: 1, 
+            year: 1950, 
+            title: "Republic Day of India", 
+            description: "The Constitution of India came into effect, making India a sovereign democratic republic.",
+            birthInfo: "",
+            deathInfo: "",
+            repeat: "yearly", 
+            historical: true 
+          },
+          { 
+            id: 'gandhi-birth', 
+            day: 2, 
+            month: 10, 
+            year: 1869, 
+            title: "Birthday of Mahatma Gandhi", 
+            description: "Mohandas Karamchand Gandhi, the father of the Indian independence movement.",
+            birthInfo: "Born: October 2, 1869 in Porbandar, Gujarat",
+            deathInfo: "Died: January 30, 1948 in New Delhi (Assassinated by Nathuram Godse)",
+            repeat: "yearly", 
+            historical: true 
+          }
+        ];
+
+        // Load events from localStorage or initialize with historical events
+        let eventsArr = JSON.parse(localStorage.getItem("calendarEvents")) || [];
+        
+        // Add historical events if they don't exist already
+        historicalEvents.forEach(histEvent => {
+          const exists = eventsArr.some(event => event.id === histEvent.id);
+          if (!exists) {
+            eventsArr.push({
+              id: histEvent.id,
+              day: histEvent.day,
+              month: histEvent.month,
+              year: histEvent.year,
+              events: [{ 
+                title: histEvent.title,
+                description: histEvent.description,
+                birthInfo: histEvent.birthInfo,
+                deathInfo: histEvent.deathInfo
+              }],
+              repeat: histEvent.repeat,
+              historical: histEvent.historical
+            });
+          }
+        });
+        
+        // Save to localStorage
+        saveEvents();
+        
+        // Initialize the calendar with all dates enabled
+        initCalendar();
+
+        function initCalendar() {
+          const firstDay = new Date(year, month, 1);
+          const lastDay = new Date(year, month + 1, 0);
+          const prevLastDay = new Date(year, month, 0);
+          const prevDays = prevLastDay.getDate();
+          const lastDate = lastDay.getDate();
+          const day = firstDay.getDay();
+          const nextDays = 7 - lastDay.getDay() - 1;
+
+          date.innerHTML = months[month] + " " + year;
+
+          let days = "";
+
+          // Previous month's days
+          for (let x = day; x > 0; x--) {
+            days += `<div class="day prev-date">${prevDays - x + 1}</div>`;
+          }
+
+          // Current month's days
+          for (let i = 1; i <= lastDate; i++) {
+            // Check if event exists for this day
+            let event = false;
+            let historical = false;
+            
+            eventsArr.forEach((eventObj) => {
+              if (
+                (eventObj.day === i && eventObj.month === month + 1 && eventObj.year === year) ||
+                (eventObj.repeat === "yearly" && eventObj.day === i && eventObj.month === month + 1)
+              ) {
+                event = true;
+                if (eventObj.historical) historical = true;
+              }
+            });
+            
+            // Check if this is today
+            const isToday = 
+              i === today.getDate() && 
+              year === today.getFullYear() && 
+              month === today.getMonth();
+            
+            // Check if this is the active day
+            const isActive = 
+              (!activeDay && isToday) || 
+              (activeDay === i);
+            
+            if (isActive) {
+              activeDay = i;
+              getActiveDay(i);
+              updateEvents(i);
+            }
+            
+            // Create day element
+            let dayClass = "day";
+            if (isToday) dayClass += " today";
+            if (isActive) dayClass += " active";
+            if (event) dayClass += " event";
+            if (historical) dayClass += " historical";
+            
+            days += `<div class="${dayClass}" data-day="${i}">${i}</div>`;
+          }
+
+          // Next month's days
+          for (let j = 1; j <= nextDays; j++) {
+            days += `<div class="day next-date">${j}</div>`;
+          }
+          
+          daysContainer.innerHTML = days;
+          addListner();
+          updateMonthEvents();
+        }
+function updateMonthEvents() {
+    let monthEventsHTML = "";
+    const currentMonthEvents = [];
+    const addedEventIds = new Set(); // Track unique event IDs
+    
+    eventsArr.forEach((event) => {
+        // Check if event is in current month or repeats yearly in this month
+        const isCurrentMonthEvent = (event.month === month + 1 && event.year === year);
+        const isYearlyRepeat = (event.repeat === "yearly" && event.month === month + 1);
+        
+        if (isCurrentMonthEvent || isYearlyRepeat) {
+            // Only add if we haven't seen this event ID before
+            if (!addedEventIds.has(event.id)) {
+                addedEventIds.add(event.id);
+                
+                // For yearly repeating events, use current year for display
+                const displayYear = isYearlyRepeat ? "" : ` ${event.year}`;
+                
+                event.events.forEach((ev) => {
+                    currentMonthEvents.push({
+                        day: event.day,
+                        title: ev.title,
+                        description: ev.description,
+                        id: event.id,
+                        historical: event.historical || false,
+                        birthInfo: ev.birthInfo,
+                        deathInfo: ev.deathInfo,
+                        year: displayYear
+                    });
+                });
+            }
+        }
+    });
+    
+    if (currentMonthEvents.length > 0) {
+        // Sort events by day
+        currentMonthEvents.sort((a, b) => a.day - b.day);
+        
+        currentMonthEvents.forEach((event) => {
+            monthEventsHTML += `
+                <div class="month-event-item ${event.historical ? 'historical-event' : ''}" data-id="${event.id}">
+                    <div>
+                        <span class="month-event-date">${event.day}${getDaySuffix(event.day)}${event.year}</span>: ${event.title}
+                        ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+    } else {
+        monthEventsHTML = `<div style="color: #777; font-size: 0.9rem;">No events this month</div>`;
+    }
+    
+    monthEventsList.innerHTML = monthEventsHTML;
+    
+    // Add click handler for historical events in month view
+    document.querySelectorAll('.month-event-item.historical-event').forEach(eventEl => {
+        eventEl.addEventListener('click', function() {
+            const eventId = this.dataset.id;
+            const event = eventsArr.find(e => e.id === eventId);
+            if (event) {
+                // Jump to the event's date
+                month = event.month - 1;
+                year = event.year || new Date().getFullYear(); // Use current year for yearly events
+                activeDay = event.day;
+                initCalendar();
+            }
+        });
+    });
+}
+
+        function updateEvents(date) {
+          let eventsHTML = "";
+          const eventsForDay = [];
+          
+          // Find all events for this day (including yearly repeating events)
+          eventsArr.forEach((event) => {
+            if (
+              (event.day === date && event.month === month + 1 && event.year === year) ||
+              (event.repeat === "yearly" && event.day === date && event.month === month + 1)
+            ) {
+              event.events.forEach((ev) => {
+                eventsForDay.push({
+                  ...ev,
+                  id: event.id,
+                  repeat: event.repeat,
+                  historical: event.historical || false,
+                  day: event.day,
+                  month: event.month,
+                  year: event.year
+                });
+              });
+            }
+          });
+          
+          if (eventsForDay.length > 0) {
+            eventsForDay.forEach((event) => {
+              eventsHTML += `
+                <div class="event-item ${event.historical ? 'historical-event' : ''}" data-id="${event.id}">
+                  <div class="event-title">${event.title}</div>
+                  ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                  ${event.birthInfo || event.deathInfo ? `
+                    <div class="event-details">
+                      ${event.birthInfo ? `<div><i class="fas fa-birthday-cake"></i> ${event.birthInfo}</div>` : ''}
+                      ${event.deathInfo ? `<div><i class="fas fa-cross"></i> ${event.deathInfo}</div>` : ''}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            });
+          } else {
+            eventsHTML = `
+              <div class="no-events">
+                <i class="fas fa-calendar-alt" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>No events for today</p>
+              </div>
+            `;
+          }
+          
+          eventsContainer.innerHTML = eventsHTML;
+          
+          // Add click handler for historical events to jump to their date
+          document.querySelectorAll('.historical-event').forEach(eventEl => {
+            eventEl.addEventListener('click', function() {
+              const eventId = this.dataset.id;
+              const event = eventsArr.find(e => e.id === eventId);
+              if (event) {
+                // Jump to the event's date
+                month = event.month - 1;
+                year = event.year;
+                activeDay = event.day;
+                initCalendar();
+              }
+            });
+          });
+        }
+
+        function prevMonth() {
+          month--;
+          if (month < 0) {
+            month = 11;
+            year--;
+          }
+          initCalendar();
+        }
+
+        function nextMonth() {
+          month++;
+          if (month > 11) {
+            month = 0;
+            year++;
+          }
+          initCalendar();
+        }
+
+        prev.addEventListener("click", prevMonth);
+        next.addEventListener("click", nextMonth);
+
+        function addListner() {
+          const days = document.querySelectorAll(".day:not(.disabled)");
+          days.forEach((day) => {
+            day.addEventListener("click", (e) => {
+              const dayNum = parseInt(day.textContent);
+              
+              // Check if clicked on previous or next month's day
+              if (day.classList.contains("prev-date")) {
+                prevMonth();
+                setTimeout(() => {
+                  // After switching month, find and activate the same day
+                  const days = document.querySelectorAll(".day");
+                  days.forEach((d) => {
+                    if (
+                      !d.classList.contains("prev-date") &&
+                      parseInt(d.textContent) === dayNum
+                    ) {
+                      d.click();
+                    }
+                  });
+                }, 100);
+                return;
+              } else if (day.classList.contains("next-date")) {
+                nextMonth();
+                setTimeout(() => {
+                  const days = document.querySelectorAll(".day");
+                  days.forEach((d) => {
+                    if (
+                      !d.classList.contains("next-date") &&
+                      parseInt(d.textContent) === dayNum
+                    ) {
+                      d.click();
+                    }
+                  });
+                }, 100);
+                return;
+              }
+              
+              // Set active day
+              activeDay = dayNum;
+              getActiveDay(dayNum);
+              updateEvents(dayNum);
+              
+              // Update active state
+              days.forEach((d) => {
+                d.classList.remove("active");
+              });
+              day.classList.add("active");
+              
+              // Update event date display in add event form
+              updateEventDateDisplay();
+            });
+          });
+        }
+
+        monthViewBtn.addEventListener("click", () => {
+          currentView = 'month';
+          initCalendar();
+        });
+
+        todayBtn.addEventListener("click", () => {
+          today = new Date();
+          month = today.getMonth();
+          year = today.getFullYear();
+          activeDay = today.getDate();
+          initCalendar();
+        });
+
+        dateInput.addEventListener("input", (e) => {
+          dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
+          if (dateInput.value.length === 2) {
+            dateInput.value += "/";
+          }
+          if (dateInput.value.length > 7) {
+            dateInput.value = dateInput.value.slice(0, 7);
+          }
+          if (e.inputType === "deleteContentBackward") {
+            if (dateInput.value.length === 3) {
+              dateInput.value = dateInput.value.slice(0, 2);
+            }
+          }
+        });
+
+        gotoBtn.addEventListener("click", gotoDate);
+
+        function gotoDate() {
+          const dateArr = dateInput.value.split("/");
+          if (dateArr.length === 2) {
+            if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
+              month = dateArr[0] - 1;
+              year = dateArr[1];
+              activeDay = null; // Reset active day
+              initCalendar();
+              return;
+            }
+          }
+          alert("Invalid Date (Use MM/YYYY format)");
+        }
+
+        function getActiveDay(date) {
+          const day = new Date(year, month, date);
+          const dayName = day.toString().split(" ")[0];
+          const daySuffix = getDaySuffix(date);
+          eventDay.innerHTML = dayName;
+          eventDate.innerHTML = date + daySuffix + " " + months[month] + " " + year;
+        }
+
+        function getDaySuffix(day) {
+          if (day >= 11 && day <= 13) {
+            return 'th';
+          }
+          switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+          }
+        }
+
+        // Search functionality
+        searchInput.addEventListener("input", (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          if (searchTerm.length < 2) {
+            searchResults.style.display = 'none';
+            return;
+          }
+          
+          const results = [];
+          eventsArr.forEach(event => {
+            event.events.forEach(ev => {
+              if (ev.title.toLowerCase().includes(searchTerm) || 
+                  (ev.description && ev.description.toLowerCase().includes(searchTerm))) {
+                results.push({
+                  id: event.id,
+                  title: ev.title,
+                  description: ev.description,
+                  day: event.day,
+                  month: event.month,
+                  year: event.year,
+                  repeat: event.repeat,
+                  historical: event.historical
+                });
+              }
+            });
+          });
+          
+          if (results.length > 0) {
+            let resultsHTML = '';
+            results.slice(0, 5).forEach(result => {
+              const date = new Date(result.year, result.month - 1, result.day);
+              resultsHTML += `
+                <div class="search-result-item" data-day="${result.day}" data-month="${result.month - 1}" data-year="${result.year}">
+                  <strong>${result.title}</strong>
+                  <div>${date.toDateString()}</div>
+                  ${result.description ? `<div class="event-description">${result.description}</div>` : ''}
+                </div>
+              `;
+            });
+            
+            if (results.length > 5) {
+              resultsHTML += `<div class="search-result-item">+${results.length - 5} more results</div>`;
+            }
+            
+            searchResults.innerHTML = resultsHTML;
+            searchResults.style.display = 'block';
+            
+            // Add click handlers to search results
+            document.querySelectorAll('.search-result-item').forEach(item => {
+              item.addEventListener('click', () => {
+                const day = parseInt(item.dataset.day);
+                const month = parseInt(item.dataset.month);
+                const year = parseInt(item.dataset.year);
+                
+                // Update calendar to show the event
+                activeDay = day;
+                this.month = month;
+                this.year = year;
+                initCalendar();
+                
+                // Highlight the event
+                setTimeout(() => {
+                  const dayEl = document.querySelector(`.day[data-day="${day}"]`);
+                  if (dayEl) dayEl.click();
+                }, 100);
+                
+                searchResults.style.display = 'none';
+                searchInput.value = '';
+              });
+            });
+          } else {
+            searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+            searchResults.style.display = 'block';
+          }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+          if (e.target !== searchInput && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+          }
+        });
+
+        // Event adding functionality
+        addEventBtn.addEventListener("click", () => {
+          if (!activeDay) {
+            alert("Please select a day first");
+            return;
+          }
+          
+          addEventWrapper.classList.add("active");
+          addEventTitle.focus();
+          updateEventDateDisplay();
+        });
+
+        function updateEventDateDisplay() {
+          if (activeDay) {
+            const daySuffix = getDaySuffix(activeDay);
+            eventDateDisplay.value = `${activeDay}${daySuffix} ${months[month]} ${year}`;
+          }
+        }
+
+        addEventCloseBtn.addEventListener("click", closeEventForm);
+        addEventCancelBtn.addEventListener("click", closeEventForm);
+
+        function closeEventForm() {
+          addEventWrapper.classList.remove("active");
+          addEventTitle.value = "";
+          addEventDescription.value = "";
+          eventRepeatSelect.value = "none";
+        }
+
+        document.addEventListener("click", (e) => {
+          if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
+            closeEventForm();
+          }
+        });
+
+        addEventSubmit.addEventListener("click", addNewEvent);
+        
+        // Allow adding event with Enter key
+        addEventTitle.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            addNewEvent();
+          }
+        });
+
+        function generateEventId() {
+          return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function addNewEvent() {
+          const eventTitle = addEventTitle.value.trim();
+          const eventDescription = addEventDescription.value.trim();
+          const repeatOption = eventRepeatSelect.value;
+          
+          if (!eventTitle) {
+            alert("Please enter event title");
+            return;
+          }
+
+          if (!activeDay) {
+            alert("Please select a day first");
+            return;
+          }
+
+          const newEvent = {
+            title: eventTitle,
+            description: eventDescription
+          };
+          
+          const eventId = generateEventId();
+          
+          // Create event data
+          const eventData = {
+            id: eventId,
+            day: activeDay,
+            month: month + 1,
+            year: year,
+            events: [newEvent],
+            repeat: repeatOption
+          };
+          
+          // Add to events array
+          eventsArr.push(eventData);
+          
+          // Save to localStorage
+          saveEvents();
+          
+          // Update UI
+          closeEventForm();
+          updateEvents(activeDay);
+          updateMonthEvents();
+          
+          // Add event indicator to day
+          const activeDayEl = document.querySelector(`.day[data-day="${activeDay}"]`);
+          if (activeDayEl && !activeDayEl.classList.contains("event")) {
+            activeDayEl.classList.add("event");
+          }
+        }
+
+        function saveEvents() {
+          localStorage.setItem("calendarEvents", JSON.stringify(eventsArr));
+        }
+
+        // Handle event deletion
+        eventsContainer.addEventListener("click", (e) => {
+          if (e.target.classList.contains("delete-event")) {
+            const eventItem = e.target.closest(".event-item");
+            const eventId = eventItem.dataset.id;
+            deleteEvent(eventId);
+          }
+        });
+
+        // Handle event deletion from month events list
+        monthEventsList.addEventListener("click", (e) => {
+          if (e.target.classList.contains("delete-event")) {
+            const eventItem = e.target.closest(".month-event-item");
+            const eventId = eventItem.dataset.id;
+            deleteEvent(eventId);
+          }
+        });
+
+        function deleteEvent(eventId) {
+          if (confirm("Are you sure you want to delete this event?")) {
+            // Find and remove the event
+            const eventIndex = eventsArr.findIndex(event => event.id === eventId);
+            if (eventIndex !== -1) {
+              const deletedEvent = eventsArr[eventIndex];
+              eventsArr.splice(eventIndex, 1);
+              
+              // Save to localStorage
+              saveEvents();
+              
+              // Check if we need to remove event indicator from day
+              const dayHasEvents = eventsArr.some(event => 
+                event.day === deletedEvent.day && 
+                event.month === deletedEvent.month && 
+                (event.year === deletedEvent.year || event.repeat === "yearly")
+              );
+              
+              if (!dayHasEvents) {
+                const activeDayEl = document.querySelector(`.day[data-day="${deletedEvent.day}"]`);
+                if (activeDayEl) {
+                  activeDayEl.classList.remove("event");
+                }
+              }
+              
+              // Update UI
+              if (activeDay === deletedEvent.day && month + 1 === deletedEvent.month && year === deletedEvent.year) {
+                updateEvents(activeDay);
+              }
+              updateMonthEvents();
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

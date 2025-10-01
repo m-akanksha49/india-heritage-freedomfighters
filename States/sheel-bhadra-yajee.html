@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheel Bhadra Yajee - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+   :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+       
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sheel Bhadra Yajee</h1>
+    <p>Indian Freedom Fighter and Revolutionary from Bihar</p>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="data:image/jpeg;base64,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" alt="Sheel Bhadra Yajee">
+      </div>
+      <div class="hero-content">
+        <h2>Sheel Bhadra Yajee</h2>
+        <p>A dedicated nationalist who played a crucial role in India’s independence movement. He was closely associated with both Subhas Chandra Bose and Mahatma Gandhi, bridging revolutionary zeal with Gandhian principles.</p>
+        <div class="quote">"Sacrifice is the foundation of freedom."</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Born in 1906 in Bihar, Sheel Bhadra Yajee was an active participant in India's freedom struggle. He was imprisoned several times by the British for his nationalist activities. He supported Subhas Chandra Bose’s Indian National Army (INA) but later aligned with Gandhian ideals. Yajee worked tirelessly for social reform, especially focusing on labor rights and anti-colonial movements in Bihar.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item"><strong>1906:</strong> Born in Bhagalpur, Bihar.</div>
+        <div class="timeline-item"><strong>1930s:</strong> Joined Congress Socialist Party; imprisoned during Salt Satyagraha.</div>
+        <div class="timeline-item"><strong>1940s:</strong> Supported INA; closely worked with Subhas Chandra Bose.</div>
+        <div class="timeline-item"><strong>Post 1947:</strong> Became member of Constituent Assembly of India.</div>
+        <div class="timeline-item"><strong>1996:</strong> Passed away, remembered as a socialist and patriot.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <ul>
+        <li>Indian postal department issued a commemorative stamp in his honor (2001).</li>
+        <li>Remembered for advocating socialism, nationalism, and labor rights.</li>
+        <li>Schools and roads in Bihar are named after him.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Sheel_Bhadra_Yajee_Stamp_2001.jpg" alt="Sheel Bhadra Yajee Stamp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Sheel_Bhadra_Yajee_Statue.jpg" alt="Statue in Bihar">
+      </div>
+    </div>
+  </div>
+
+   <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+            
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Freedom Fighters</a>
+                <a href="#">Timeline</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

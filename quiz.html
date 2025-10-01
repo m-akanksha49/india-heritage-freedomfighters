@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom Fighters of India Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --light-blue: #E2F1FF;
+            --incorrect: #FF3333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+            color: #222;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            z-index: 0;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-30px) translateX(10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--navy);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            color: var(--navy);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .quiz-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .question {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--navy);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .question::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            height: 60%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--saffron), var(--green));
+            border-radius: 5px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .option::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--saffron);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .option:hover::before {
+            transform: scaleY(1);
+        }
+
+        .option.selected {
+            background-color: rgba(255, 153, 51, 0.2);
+            color: var(--navy);
+            border-color: var(--saffron);
+            font-weight: 600;
+        }
+
+        .option.selected::before {
+            transform: scaleY(1);
+            background-color: var(--saffron);
+        }
+
+        .option.correct {
+            background-color: rgba(19, 136, 8, 0.2);
+            color: var(--green);
+            border-color: var(--green);
+            font-weight: 600;
+        }
+
+        .option.correct::before {
+            transform: scaleY(1);
+            background-color: var(--green);
+        }
+
+        .option.incorrect {
+            background-color: rgba(255, 51, 51, 0.2);
+            color: var(--incorrect);
+            border-color: var(--incorrect);
+        }
+
+        .option.incorrect::before {
+            transform: scaleY(1);
+            background-color: var(--incorrect);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--saffron), var(--green));
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        button:disabled::before {
+            display: none;
+        }
+
+        .btn-next {
+            background-color: var(--saffron);
+            color: white;
+        }
+
+        .btn-next:hover {
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 153, 51, 0.4);
+        }
+
+        .btn-prev {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .btn-prev:hover {
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 128, 0.4);
+        }
+
+        .btn-submit {
+            background-color: var(--green);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            color: white;
+            box-shadow: 0 4px 12px rgba(19, 136, 8, 0.4);
+        }
+
+        .btn-retake {
+            background: var(--navy);
+            color: white;
+            margin: 20px auto 0;
+            padding: 10px 25px;
+            font-size: 1rem;
+            display: block;
+            width: auto;
+        }
+
+        .btn-retake:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .result-container {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--navy);
+            position: relative;
+            display: inline-block;
+        }
+
+        .result-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--green));
+            border-radius: 2px;
+        }
+
+        .score {
+            font-size: 1.8rem;
+            margin: 25px 0;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .score span {
+            color: var(--saffron);
+            font-size: 2.2rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background-color: #eee;
+            border-radius: 6px;
+            margin: 30px 0;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--saffron), var(--green));
+            width: 0%;
+            transition: width 1s ease-in-out;
+            border-radius: 6px;
+        }
+
+        .question-counter {
+            text-align: right;
+            margin-bottom: 20px;
+            color: var(--navy);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .flag-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            background: linear-gradient(to bottom, var(--saffron) 33%, var(--white) 33%, var(--white) 66%, var(--green) 66%);
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--saffron);
+            opacity: 0;
+        }
+
+        .results-details {
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .result-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .user-answer, .correct-answer {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .user-answer.correct {
+            background-color: rgba(19, 136, 8, 0.1);
+            color: var(--green);
+        }
+
+        .user-answer.incorrect {
+            background-color: rgba(255, 51, 51, 0.1);
+            color: var(--incorrect);
+        }
+
+        .correct-answer {
+            background-color: rgba(0, 0, 128, 0.1);
+            color: var(--navy);
+        }
+
+        .answer-label {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .correct-icon, .incorrect-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .correct-icon {
+            color: var(--green);
+        }
+
+        .incorrect-icon {
+            color: var(--incorrect);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .quiz-container, .result-container {
+                padding: 20px;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 10px 20px;
+            }
+
+            .result-title {
+                font-size: 1.6rem;
+            }
+
+            .score {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Freedom Fighters of India <span class="flag-icon"></span> Quiz</h1>
+            <p class="description">Test your knowledge about the heroes of India's independence movement</p>
+        </header>
+
+        <div class="quiz-container" id="quiz">
+            <div class="question-counter" id="question-counter"></div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+            <div class="navigation">
+                <button class="btn-prev" id="prev-btn" disabled>Previous</button>
+                <button class="btn-next" id="next-btn">Next</button>
+                <button class="btn-submit" id="submit-btn" style="display: none;">Submit</button>
+            </div>
+        </div>
+
+        <div class="result-container" id="result-container">
+            <h2 class="result-title">Quiz Results</h2>
+            <div class="score" id="score"></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="results-details" id="results-details"></div>
+            
+            <button class="btn-retake" id="retake-btn">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById("particles");
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.style.left = Math.random() * 100 + "vw";
+                particle.style.top = Math.random() * 100 + "vh";
+                particle.style.animationDelay = Math.random() * 8 + "s";
+                particle.style.animationDuration = (Math.random() * 3 + 5) + "s";
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Quiz questions
+        const questions = [
+            {
+                question: "Who is known as the 'Father of the Nation' in India?",
+                options: ["Jawaharlal Nehru", "Bhagat Singh", "Mahatma Gandhi", "Subhas Chandra Bose"],
+                answer: "Mahatma Gandhi"
+            },
+            {
+                question: "Who founded the Indian National Army (INA)?",
+                options: ["Chandrashekhar Azad", "Subhas Chandra Bose", "Lala Lajpat Rai", "Bal Gangadhar Tilak"],
+                answer: "Subhas Chandra Bose"
+            },
+            {
+                question: "Who was the first woman to become president of the Indian National Congress?",
+                options: ["Sarojini Naidu", "Annie Besant", "Vijaya Lakshmi Pandit", "Aruna Asaf Ali"],
+                answer: "Annie Besant"
+            },
+            {
+                question: "Who gave the slogan 'Inquilab Zindabad'?",
+                options: ["Bhagat Singh", "Mahatma Gandhi", "Sardar Patel", "Jawaharlal Nehru"],
+                answer: "Bhagat Singh"
+            },
+            {
+                question: "Who was known as 'Punjab Kesari'?",
+                options: ["Lala Lajpat Rai", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale"],
+                answer: "Lala Lajpat Rai"
+            },
+            {
+                question: "Who was the first Indian woman to hoist the Indian flag at an international event?",
+                options: ["Madam Bhikaji Cama", "Sarojini Naidu", "Kasturba Gandhi", "Kamala Nehru"],
+                answer: "Madam Bhikaji Cama"
+            },
+            {
+                question: "Who led the Dandi March?",
+                options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Subhas Chandra Bose", "Sardar Patel"],
+                answer: "Mahatma Gandhi"
+            },
+            {
+                question: "Who was known as 'Lokmanya'?",
+                options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Lala Lajpat Rai", "Dadabhai Naoroji"],
+                answer: "Bal Gangadhar Tilak"
+            },
+            {
+                question: "Who was the founder of the Ghadar Party?",
+                options: ["Lala Hardayal", "Bhagat Singh", "Chandrashekhar Azad", "Surya Sen"],
+                answer: "Lala Hardayal"
+            },
+            {
+                question: "Who was called 'The Nightingale of India'?",
+                options: ["Vijaya Lakshmi Pandit", "Sarojini Naidu", "Aruna Asaf Ali", "Sucheta Kriplani"],
+                answer: "Sarojini Naidu"
+            }
+        ];
+
+        // Quiz variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        let quizCompleted = false;
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz');
+        const resultContainer = document.getElementById('result-container');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const retakeBtn = document.getElementById('retake-btn');
+        const scoreElement = document.getElementById('score');
+        const progressBar = document.getElementById('progress-bar');
+        const questionCounter = document.getElementById('question-counter');
+        const resultsDetails = document.getElementById('results-details');
+
+        // Initialize the quiz
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            quizCompleted = false;
+            
+            quizContainer.style.display = 'block';
+            resultContainer.style.display = 'none';
+            
+            showQuestion();
+            updateNavigationButtons();
+        }
+
+        // Display the current question
+        function showQuestion() {
+            const question = questions[currentQuestion];
+            questionElement.textContent = question.question;
+            optionsElement.innerHTML = '';
+            
+            // Update question counter
+            questionCounter.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            
+            // Create options
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.textContent = option;
+                
+                // Check if this option was previously selected
+                if (userAnswers[currentQuestion] === option) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.addEventListener('click', () => selectOption(optionElement, option));
+                optionsElement.appendChild(optionElement);
+            });
+        }
+
+        // Handle option selection
+        function selectOption(optionElement, option) {
+            // Remove selected class from all options
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store the user's answer
+            userAnswers[currentQuestion] = option;
+            
+            // Enable next button if not already enabled
+            if (currentQuestion < questions.length - 1 && nextBtn.disabled) {
+                nextBtn.disabled = false;
+            }
+            
+            // Show submit button if on last question
+            if (currentQuestion === questions.length - 1) {
+                submitBtn.style.display = 'inline-block';
+                nextBtn.style.display = 'none';
+            }
+        }
+
+        // Update navigation buttons state
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion < questions.length - 1) {
+                nextBtn.disabled = userAnswers[currentQuestion] === null;
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = userAnswers[currentQuestion] !== null ? 'inline-block' : 'none';
+            }
+        }
+
+        // Go to next question
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                quizContainer.style.opacity = 0;
+                setTimeout(() => {
+                    showQuestion();
+                    updateNavigationButtons();
+                    quizContainer.style.opacity = 1;
+                }, 300);
+            }
+        }
+
+        // Go to previous question
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                quizContainer.style.opacity = 0;
+                setTimeout(() => {
+                    showQuestion();
+                    updateNavigationButtons();
+                    quizContainer.style.opacity = 1;
+                }, 300);
+            }
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#FF9933', '#138808', '#000080', '#FFFFFF'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -20 + 'px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                container.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+            
+            // Add CSS for confetti animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(360deg);
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Display detailed results
+        function showDetailedResults() {
+            resultsDetails.innerHTML = '<h3 style="text-align: center; margin-bottom: 20px; color: var(--navy);">Detailed Results</h3>';
+            
+            questions.forEach((q, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === q.answer;
+                
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                
+                const questionEl = document.createElement('div');
+                questionEl.className = 'result-question';
+                questionEl.textContent = `${index + 1}. ${q.question}`;
+                resultItem.appendChild(questionEl);
+                
+                // User's answer
+                const userAnswerEl = document.createElement('div');
+                userAnswerEl.className = `user-answer ${isCorrect ? 'correct' : 'incorrect'}`;
+                
+                const userLabel = document.createElement('span');
+                userLabel.className = 'answer-label';
+                userLabel.textContent = 'Your answer:';
+                userAnswerEl.appendChild(userLabel);
+                
+                if (isCorrect) {
+                    const icon = document.createElement('span');
+                    icon.className = 'correct-icon';
+                    icon.innerHTML = '✓';
+                    userAnswerEl.prepend(icon);
+                } else {
+                    const icon = document.createElement('span');
+                    icon.className = 'incorrect-icon';
+                    icon.innerHTML = '✗';
+                    userAnswerEl.prepend(icon);
+                }
+                
+                const userAnswerText = document.createElement('span');
+                userAnswerText.textContent = userAnswer || 'Not answered';
+                userAnswerEl.appendChild(userAnswerText);
+                resultItem.appendChild(userAnswerEl);
+                
+                // Show correct answer if user was wrong
+                if (!isCorrect) {
+                    const correctAnswerEl = document.createElement('div');
+                    correctAnswerEl.className = 'correct-answer';
+                    
+                    const correctLabel = document.createElement('span');
+                    correctLabel.className = 'answer-label';
+                    correctLabel.textContent = 'Correct answer:';
+                    correctAnswerEl.appendChild(correctLabel);
+                    
+                    const correctAnswerText = document.createElement('span');
+                    correctAnswerText.textContent = q.answer;
+                    correctAnswerEl.appendChild(correctAnswerText);
+                    resultItem.appendChild(correctAnswerEl);
+                }
+                
+                resultsDetails.appendChild(resultItem);
+            });
+        }
+
+        // Submit the quiz
+        function submitQuiz() {
+            // Calculate score
+            score = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] === questions[i].answer) {
+                    score++;
+                }
+            }
+            
+            // Show result
+            showResult();
+            
+            // Create confetti if score is good
+            if (score >= questions.length * 0.7) {
+                createConfetti();
+            }
+        }
+
+        // Display the quiz result
+        function showResult() {
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            const percentage = (score / questions.length) * 100;
+            scoreElement.innerHTML = `You scored <span>${score}</span> out of ${questions.length}<br>(${percentage.toFixed(1)}%)`;
+            
+            // Animate progress bar
+            setTimeout(() => {
+                progressBar.style.width = `${percentage}%`;
+            }, 100);
+            
+            // Show detailed results
+            showDetailedResults();
+            
+            quizCompleted = true;
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextQuestion);
+        prevBtn.addEventListener('click', prevQuestion);
+        submitBtn.addEventListener('click', submitQuiz);
+        retakeBtn.addEventListener('click', initQuiz);
+
+        // Initialize particles and start the quiz
+        createParticles();
+        initQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moje Riba - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://assets.odishabytes.com/wp-content/uploads/2020/10/Baji-rout.jpg" alt="Baji Rout">
+      </div>
+      <div class="hero-content">
+        <h2>Baji Rout</h2>
+        <p>Baji Rout is remembered as the youngest martyr in India's freedom struggle. At just 12 years old, he courageously refused to provide a boat to British soldiers during a crackdown in Odisha and was shot dead for his defiance. His sacrifice inspired millions and became a symbol of youthful bravery and patriotism.</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>1926</p>
+            <p>Nilakanthapur, Odisha</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>October 11, 1938 (Age 12)</p>
+            <p>Near Dhenkanal, Odisha</p>
+          </div>
+          <div class="fact-card">
+            <h4>Known For</h4>
+            <p>Refusing to ferry British soldiers during a protest crackdown</p>
+          </div>
+          <div class="fact-card">
+            <h4>Martyrdom</h4>
+            <p>Shot by British police for his patriotic resistance</p>
+          </div>
+          <div class="fact-card">
+            <h4>Legacy</h4>
+            <p>Youngest martyr of India’s freedom movement</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "I will not row the boat for enemies of my motherland."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Baji Rout was born in 1926 in Nilakanthapur village near Dhenkanal in Odisha, a region that was under the oppressive rule of princely states and British-backed authorities. From a young age, Baji was deeply moved by the injustice and suffering around him.</p>
+
+      <p>He joined the local children’s wing of the Praja Mandal Movement, which was fighting against feudal exploitation and British interference. Despite being just 12, Baji displayed exceptional courage and maturity. He volunteered for various duties to support the freedom fighters and kept watch on enemy movements.</p>
+
+      <p>His short life came to a heroic end when he refused to ferry a group of British police across the Brahmani River during a crackdown. For his defiance, he was shot dead on the night of October 11, 1938. His body was later retrieved with those of other comrades who were also killed that night.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline of Contributions</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1926</div>
+          <p>Born in Nilakanthapur village in Dhenkanal district, Odisha</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1938</div>
+          <p>Joined children’s wing of Praja Mandal to support anti-feudal protests</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">October 11, 1938</div>
+          <p>Shot by British police for refusing to provide boat transport during a crackdown</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Posthumous</div>
+          <p>Recognized as the youngest martyr of the Indian independence movement</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Resistance Against British Rule</h3>
+      <p>The Praja Mandal Movement in Odisha was gaining momentum against the autocratic rulers and British agents in princely states like Dhenkanal. Baji Rout, despite his tender age, was inspired by the struggle and joined the movement actively.</p>
+
+      <p>His final act of resistance—refusing the British police a boat to cross the Brahmani River—was an act of silent rebellion. He knew the risk of defying the armed British forces but chose his country’s dignity over personal safety. His death brought national attention to the atrocities in Odisha and galvanized support for the cause.</p>
+    </div>
+
+    <div class="section">
+      <h3>Lessons to Learn from Baji Rout</h3>
+
+      <div class="lesson-card">
+        <h4>Age Is No Barrier to Patriotism</h4>
+        <p>Even a child can display courage and sacrifice when driven by love for their country.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>Moral Bravery</h4>
+        <p>Choosing to do the right thing in the face of fear is the highest form of bravery—Baji chose resistance over safety.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>Silent Resistance</h4>
+        <p>Even a quiet 'no' can shake an empire—Baji’s refusal to row the boat was a powerful act of defiance.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h4>Inspiration for Youth</h4>
+        <p>His story inspires generations of young Indians to stand up for truth, justice, and their motherland.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-monument"></i> Memorials</h4>
+          <p>Statues and memorials in Odisha commemorate his sacrifice, including a prominent one near Angul and in Bhubaneswar.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-book-reader"></i> Textbooks & Literature</h4>
+          <p>Baji Rout’s story is taught in schools and appears in patriotic literature and poems, including works by Sachidananda Routray.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-calendar-alt"></i> Martyrdom Day</h4>
+          <p>October 11 is observed as a day of remembrance in parts of Odisha in honor of his martyrdom.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-flag"></i> Symbol of Young Patriotism</h4>
+          <p>Baji Rout remains an enduring symbol of youthful courage and patriotism, inspiring children across the country.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+
+      <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ambikagiri Raichoudhury - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #ff9933;
+      --secondary-color: #138808;
+      --accent-color: #000080;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .hero-content {
+      flex: 2;
+      min-width: 300px;
+      padding: 2rem;
+    }
+    
+    .hero-content h2 {
+      color: var(--accent-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .quick-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .fact-card {
+      background: var(--light-color);
+      padding: 1rem;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .fact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fact-card h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .fact-card i {
+      color: var(--accent-color);
+    }
+    
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section h3 {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+    
+    .section h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      background: var(--primary-color);
+      border-radius: 5px;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+      margin-top: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-color);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      border: 3px solid var(--primary-color);
+    }
+    
+    .timeline-year {
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+    
+    .quote {
+      font-style: italic;
+      padding: 1.5rem;
+      background: var(--light-color);
+      border-left: 4px solid var(--primary-color);
+      margin: 1.5rem 0;
+      position: relative;
+    }
+    
+    .quote::before, .quote::after {
+      content: '"';
+      font-size: 2rem;
+      color: var(--primary-color);
+      opacity: 0.3;
+      position: absolute;
+    }
+    
+    .quote::before {
+      top: 0;
+      left: 10px;
+    }
+    
+    .quote::after {
+      bottom: -20px;
+      right: 10px;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-caption {
+      padding: 0.8rem;
+      background: white;
+      font-size: 0.9rem;
+    }
+    
+    .legacy-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .legacy-card {
+      flex: 1;
+      min-width: 250px;
+      background: var(--light-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .legacy-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .legacy-card h4 {
+      color: var(--accent-color);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .legacy-card i {
+      color: var(--primary-color);
+    }
+    
+    footer {
+      background: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 0.5rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .social-icons a:hover {
+      color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-button {
+      padding: 0.8rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--dark-color);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-button.active {
+      color: var(--primary-color);
+    }
+    
+    .tab-button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary-color);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .map-container {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .poem {
+      font-family: 'Times New Roman', serif;
+      line-height: 1.8;
+      padding: 1.5rem;
+      background: var(--light-color);
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+    
+    .poem-title {
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .poem-line {
+      margin-bottom: 0.5rem;
+    }
+    
+    .poem-line:last-child {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    
+    .awards-list {
+      list-style-type: none;
+    }
+    
+    .awards-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed #ddd;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .awards-list i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .book-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .book-cover {
+      height: 250px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-color);
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .book-info {
+      padding: 1rem;
+    }
+    
+    .book-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    
+    .book-year {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content, .hero-image {
+        flex: 100%;
+      }
+      
+      .hero-image {
+        height: 300px;
+      }
+      
+      .fact-card {
+        min-width: 100%;
+      }
+      
+      .legacy-card {
+        min-width: 100%;
+      }
+      
+      .tabs {
+        flex-wrap: wrap;
+      }
+      
+      .tab-button {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Celebrating the voices of resistance and patriotism</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/AmbikagiriRaichoudhuryPic.jpg" alt="Ambikagiri Raichoudhury">
+      </div>
+      <div class="hero-content">
+        <h2>Ambikagiri Raichoudhury</h2>
+        <p>The "Assam Kesari" (Lion of Assam) - A fearless poet, nationalist, and social reformer who used his pen as a sword to ignite patriotism among the people of Assam during India's freedom struggle.</p>
+        
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4><i class="fas fa-birthday-cake"></i> Born</h4>
+            <p>December 18, 1885</p>
+            <p>Barpeta, Assam, British India</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-cross"></i> Died</h4>
+            <p>January 2, 1967 (aged 81)</p>
+            <p>Guwahati, Assam, India</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-star"></i> Known For</h4>
+            <p>Revolutionary poetry, Anti-British activism, Cultural renaissance, Social reform</p>
+          </div>
+          <div class="fact-card">
+            <h4><i class="fas fa-award"></i> Legacy</h4>
+            <p>Called "Assam Kesari" for his fierce nationalism, Stamp issued in his honor, Literary awards in his name</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "Freedom is not begged for — it is earned through struggle and sacrifice. The pen that writes of liberty must be dipped in the ink of courage."
+          <div style="text-align: right; margin-top: 1rem;">— Ambikagiri Raichoudhury</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'biography')">Biography</button>
+        <button class="tab-button" onclick="openTab(event, 'contributions')">Contributions</button>
+        <button class="tab-button" onclick="openTab(event, 'literary')">Literary Works</button>
+        <button class="tab-button" onclick="openTab(event, 'legacy')">Legacy</button>
+      </div>
+      
+      <div id="biography" class="tab-content active">
+        <h3>The Life of Assam Kesari</h3>
+        <p>Ambikagiri Raichoudhury (1885-1967) was born in the Barpeta district of Assam to a middle-class family. From an early age, he showed remarkable literary talent and deep concern for social issues. His education at the Cotton College in Guwahati exposed him to nationalist ideas that would shape his future.</p>
+        
+        <p>Raichoudhury emerged as a prominent figure during Assam's cultural renaissance in the early 20th century. He became known for his fiery nationalist poetry and essays that challenged British rule while also addressing social evils like caste discrimination and gender inequality.</p>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1885</div>
+            <p>Born on December 18 in Barpeta, Assam</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1905</div>
+            <p>Began writing nationalist poetry during the Partition of Bengal movement</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1916</div>
+            <p>Founded "Chetana", Assam's first nationalist publication</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1921</div>
+            <p>Actively participated in the Non-Cooperation Movement, imprisoned by British</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1930</div>
+            <p>Led Civil Disobedience Movement activities in Assam</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1942</div>
+            <p>Arrested during Quit India Movement, spent 3 years in prison</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1947</div>
+            <p>Witnessed Indian independence, continued social reform work</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1967</div>
+            <p>Passed away on January 2 in Guwahati</p>
+          </div>
+        </div>
+        
+        <p>Raichoudhury's personal life was marked by simplicity and dedication to his ideals. He married at a young age and had children, but his family often faced hardships due to his political activism and frequent imprisonments. Despite this, he remained steadfast in his commitment to India's freedom and Assam's cultural identity.</p>
+      </div>
+      
+      <div id="contributions" class="tab-content">
+        <h3>Freedom Struggle & Social Reforms</h3>
+        <p>Ambikagiri Raichoudhury's contributions to India's freedom movement and Assamese society were multifaceted:</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-pen-fancy"></i> Literary Resistance</h4>
+            <p>Used poetry and prose to inspire nationalism. His works were often banned by the British for their revolutionary content.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-users"></i> Organizational Leadership</h4>
+            <p>Founded Assam's first nationalist organization "Swadeshi Sabha" and mobilized youth across the region.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-gavel"></i> Political Activism</h4>
+            <p>Participated in all major movements from Non-Cooperation (1920) to Quit India (1942), facing multiple imprisonments.</p>
+          </div>
+        </div>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-language"></i> Cultural Renaissance</h4>
+            <p>Championed Assamese language and literature, preserving traditional art forms while modernizing expression.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-hands-helping"></i> Social Reforms</h4>
+            <p>Fought against caste discrimination, promoted women's education, and advocated for tribal rights.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-university"></i> Educational Work</h4>
+            <p>Established schools emphasizing nationalist education and Assamese cultural values.</p>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Major Contributions</h3>
+        <ul style="columns: 2; column-gap: 2rem; margin-top: 1rem;">
+          <li>Founded "Chetana" - Assam's first nationalist publication (1916)</li>
+          <li>Organized peasant movements against British land revenue policies</li>
+          <li>Mobilized support for Gandhi's Non-Cooperation Movement in Assam</li>
+          <li>Established "Asom Sangrakhini Sabha" to preserve Assamese culture</li>
+          <li>Promoted khadi and swadeshi goods throughout Assam</li>
+          <li>Wrote revolutionary poems that became rallying cries for freedom fighters</li>
+          <li>Worked for Hindu-Muslim unity during partition tensions</li>
+          <li>Advocated for the protection of tribal lands and rights</li>
+        </ul>
+      </div>
+      
+      <div id="literary" class="tab-content">
+        <h3>Literary Legacy</h3>
+        <p>Ambikagiri Raichoudhury was one of Assam's most prolific writers, producing poetry, essays, plays, and political writings that shaped Assamese literature and nationalist thought.</p>
+        
+        <div class="poem">
+          <div class="poem-title">Excerpt from "Bandhu" (The Friend)</div>
+          <div class="poem-line">Oh friend, awaken from your slumber deep,</div>
+          <div class="poem-line">The chains that bind us are ours to break;</div>
+          <div class="poem-line">No more shall we bow, no more shall we weep,</div>
+          <div class="poem-line">The dawn of freedom is ours to make.</div>
+          <div class="poem-line">- Translated from Assamese</div>
+        </div>
+        
+        <h3>Major Literary Works</h3>
+        <div class="books-grid">
+          <div class="book-card">
+            <div class="book-cover">Tumi (You)<br>Poetry Collection<br>1925</div>
+            <div class="book-info">
+              <div class="book-title">Tumi (You)</div>
+              <div class="book-year">1925</div>
+              <p>Revolutionary poetry that became anthems of resistance</p>
+            </div>
+          </div>
+          <div class="book-card">
+            <div class="book-cover">Bandhu (The Friend)<br>Poetry Collection<br>1930</div>
+            <div class="book-info">
+              <div class="book-title">Bandhu (The Friend)</div>
+              <div class="book-year">1930</div>
+              <p>Call to national unity and cultural pride</p>
+            </div>
+          </div>
+          <div class="book-card">
+            <div class="book-cover">Sahityar Katha<br>Literary Essays<br>1942</div>
+            <div class="book-info">
+              <div class="book-title">Sahityar Katha</div>
+              <div class="book-year">1942</div>
+              <p>Essays on literature's role in social change</p>
+            </div>
+          </div>
+          <div class="book-card">
+            <div class="book-cover">Jivanar Batat<br>Autobiography<br>1955</div>
+            <div class="book-info">
+              <div class="book-title">Jivanar Batat</div>
+              <div class="book-year">1955</div>
+              <p>Memoirs of his life and freedom struggle</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Literary Themes</h3>
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-flag"></i> Nationalism</h4>
+            <p>His works consistently emphasized Indian unity and resistance to colonial rule.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-heart"></i> Humanism</h4>
+            <p>Poems often addressed universal themes of love, justice, and human dignity.</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-landmark"></i> Cultural Identity</h4>
+            <p>Celebrated Assamese traditions while advocating progressive values.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="legacy" class="tab-content">
+        <h3>Enduring Impact</h3>
+        <p>Ambikagiri Raichoudhury's legacy continues to inspire generations in Assam and across India:</p>
+        
+       
+        
+        <h3 style="margin-top: 2rem;">Honors and Recognition</h3>
+        <ul class="awards-list">
+          <li><i class="fas fa-medal"></i> <strong>Assam Kesari</strong> - Title bestowed by the people of Assam for his fearless nationalism</li>
+          <li><i class="fas fa-stamp"></i> <strong>Commemorative Stamp</strong> - Released by India Post in 2008</li>
+          <li><i class="fas fa-landmark"></i> <strong>Ambikagiri Raichoudhury Award</strong> - Annual literary award given by Assam Sahitya Sabha</li>
+          <li><i class="fas fa-school"></i> <strong>Schools and Colleges</strong> - Numerous educational institutions named after him across Assam</li>
+          <li><i class="fas fa-book"></i> <strong>Literary Studies</strong> - His works are part of school and university curricula in Assam</li>
+          <li><i class="fas fa-monument"></i> <strong>Cultural References</strong> - Frequently referenced in Assamese literature and popular culture</li>
+        </ul>
+        
+        <h3 style="margin-top: 2rem;">Historical Significance</h3>
+        <p>Raichoudhury's unique contribution was combining cultural revival with political resistance. While many nationalists focused solely on political independence, he understood that true freedom required cultural confidence and social reform. His vision for Assam emphasized:</p>
+        
+        <div class="legacy-cards">
+          <div class="legacy-card">
+            <h4><i class="fas fa-brain"></i> Intellectual Freedom</h4>
+            <p>Emancipation from colonial mindset through education and literature</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-hands"></i> Social Justice</h4>
+            <p>Elimination of caste and gender discrimination</p>
+          </div>
+          <div class="legacy-card">
+            <h4><i class="fas fa-seedling"></i> Cultural Roots</h4>
+            <p>Preservation of Assamese traditions while embracing progress</p>
+          </div>
+        </div>
+        
+        <div class="quote" style="margin-top: 2rem;">
+          "Ambikagiri Raichoudhury was not just a freedom fighter; he was the conscience of Assam during its most challenging period. His words armed a generation with the courage to demand freedom."
+          <div style="text-align: right; margin-top: 1rem;">— Dr. Hiren Gohain, Eminent Assamese Intellectual</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Historical Context</h3>
+      <p>Ambikagiri Raichoudhury's life spanned the most transformative period in modern Indian history. Born just three decades after the 1857 rebellion, he witnessed and participated in Assam's awakening during:</p>
+      
+      <ul style="margin-top: 1rem; columns: 2; column-gap: 2rem;">
+        <li>The Partition of Bengal (1905) and Swadeshi Movement</li>
+        <li>World War I and its impact on colonial politics</li>
+        <li>Non-Cooperation Movement (1920-22)</li>
+        <li>Civil Disobedience Movement (1930-34)</li>
+        <li>Quit India Movement (1942)</li>
+        <li>Independence and Partition (1947)</li>
+        <li>Early years of Indian democracy</li>
+      </ul>
+      
+      <p style="margin-top: 1.5rem;">In Assam specifically, Raichoudhury played a crucial role in connecting the freedom movement with local concerns about land rights, cultural preservation, and economic exploitation by British tea planters. His ability to articulate national ideals in the context of Assamese identity made the freedom movement more accessible to the local population.</p>
+    </div>
+    
+    <div class="section">
+      <h3>Further Reading</h3>
+      <p>To learn more about Ambikagiri Raichoudhury and his contributions:</p>
+      
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-book-open"></i> Books</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>"Ambikagiri Raichoudhury: Life and Works" by Dr. Nagen Saikia</li>
+            <li>"The Revolutionary Poets of Assam" edited by P. N. Dutta</li>
+            <li>"Freedom Movement in Assam" by Amalendu Guha</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-landmark"></i> Institutions</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>Assam State Museum, Guwahati</li>
+            <li>Assam Sahitya Sabha archives</li>
+            <li>Barpeta Satra (monastery where he spent early years)</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-globe"></i> Online Resources</h4>
+          <ul style="margin-top: 0.5rem;">
+            <li>National Digital Library of India</li>
+            <li>Assam State Archive digital collections</li>
+            <li>IGNCA (Indira Gandhi National Centre for the Arts)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+      
+     
+  </footer>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tabbuttons;
+      
+      // Hide all tab content
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      // Remove active class from all tab buttons
+      tabbuttons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].classList.remove("active");
+      }
+      
+      // Show the current tab and add active class to the button
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    
+    // Initialize the map (this is a placeholder - would need actual map API integration)
+    function initMap() {
+      // This would be replaced with actual map initialization code
+      console.log("Map would be initialized here");
+    }
+    
+    // Initialize the page
+    window.onload = function() {
+      initMap();
+    };
+  </script>
+</body>
+</html>

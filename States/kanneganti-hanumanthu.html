@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanneganti Hanumanthu - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+ <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .highlight-box {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .highlight-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .ideology-grid, .legacy-grid, .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .ideology-card, .legacy-card, .resource-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .ideology-card:hover, .legacy-card:hover, .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ideology-card h4, .legacy-card h4, .resource-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        .inspiration-box {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Freedom Fighters of India</h1>
+    <p class="subtitle">Remembering the heroes who fought for our independence</p>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW-taNAALavX0Ci0Y4pxDNixS-nDfNgOb_eg&s" alt="Kanneganti Hanumanthu">
+        <div class="image-caption">Kanneganti Hanumanthu (1870-1922) - The Lion of Palnadu</div>
+      </div>
+      <div class="hero-content">
+        <h2>Kanneganti Hanumanthu</h2>
+        <p class="intro">The fearless tribal leader from Andhra Pradesh who led the historic rebellion against British forest laws in the Palnadu region. His martyrdom in 1922 became a rallying point for tribal rights and anti-colonial resistance in South India.</p>
+        
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>1870</p>
+            <p>Minchalapadu village, Palnadu region (present-day Guntur district, Andhra Pradesh)</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>February 22, 1922 (aged ~52)</p>
+            <p>Killed by British forces in Palnadu</p>
+          </div>
+          <div class="fact-card">
+            <h4>Movement</h4>
+            <p>Forest Satyagraha</p>
+            <p>Anti-tax rebellion</p>
+          </div>
+          <div class="fact-card">
+            <h4>Legacy</h4>
+            <p>Martyr of Tribal Rights</p>
+            <p>Symbol of Anti-Colonial Resistance</p>
+          </div>
+        </div>
+        
+        <div class="quote">
+          <blockquote>"I will not pay unjust tax on my own forest and land! The British can take my life but not my self-respect."</blockquote>
+          <p class="quote-source">- Last words before his execution</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Early Life and Background</h3>
+      <p>Born in the small village of Minchalapadu in the Palnadu region, Hanumanthu belonged to the Golla (shepherd) community. From an early age, he witnessed how British forest laws:</p>
+      <ul>
+        <li>Restricted traditional tribal access to forests</li>
+        <li>Imposed heavy taxes on forest produce collection</li>
+        <li>Criminalized age-old practices of the tribal communities</li>
+      </ul>
+      <p>Growing up in this oppressive environment shaped his revolutionary consciousness and commitment to tribal rights.</p>
+    </div>
+
+    <div class="section">
+      <h3>The Forest Satyagraha (1921-1922)</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1921</div>
+          <div class="content">
+            <h4>Beginning of Resistance</h4>
+            <p>Hanumanthu organized villagers to refuse payment of the oppressive "Kattu Panchayati" (forest tax). He argued that the British had no right to tax what nature provided freely.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">January 1922</div>
+          <div class="content">
+            <h4>Mass Movement</h4>
+            <p>Over 5,000 villagers joined his protest. They collectively harvested forest produce without paying taxes, directly challenging British authority.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">February 22, 1922</div>
+          <div class="content">
+            <h4>Martyrdom</h4>
+            <p>British forces surrounded his village. After refusing to surrender, Hanumanthu was shot dead, becoming one of the earliest martyrs of tribal resistance in South India.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="highlight-box">
+        <h4>Impact of the Movement</h4>
+        <p>Though brutally suppressed, Hanumanthu's rebellion:</p>
+        <ul>
+          <li>Inspired similar forest satyagrahas across Madras Presidency</li>
+          <li>Forced the British to moderate some forest laws</li>
+          <li>Became a symbol of tribal resistance that continues to inspire modern movements</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Ideology and Philosophy</h3>
+      <div class="ideology-grid">
+        <div class="ideology-card">
+          <h4>Self-Rule</h4>
+          <p>Believed in complete autonomy over local resources and rejection of colonial interference in traditional practices.</p>
+        </div>
+        <div class="ideology-card">
+          <h4>Direct Action</h4>
+          <p>Advocated non-compliance with unjust laws through mass civil disobedience.</p>
+        </div>
+        <div class="ideology-card">
+          <h4>Community Rights</h4>
+          <p>Fought for collective tribal rights over individual concessions from the British.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Gallery and Memorials</h3>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeSYRDyy2LqnEVAWe8507Bax2TW1nPquLnfqWY8nsP1azSut9jCf19AxlI40oIwgv6tPI&usqp=CAU" alt="Hanumanthu Portrait">
+          <div class="gallery-caption">Official portrait used in memorials</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F340b513d-1273-49bb-a871-58b1860a84bd_680x385.png" alt="Statue">
+          <div class="gallery-caption">10-foot bronze statue in Guntur district</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFW1y8L_lb9o1_ZLOWp9s0XmpgJjzgc0NPvA&s" alt="Memorial">
+          <div class="gallery-caption">Memorial at the site of his martyrdom</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzr4cVZeWrKuEhULfhrOYff1NAE4uZyy-c_Q&s" alt="Palnadu">
+          <div class="gallery-caption">The Palnadu region where he led his movement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Historical Context</h3>
+      <p>Hanumanthu's rebellion occurred during a critical period:</p>
+      <ul>
+        <li>Following the Non-Cooperation Movement (1920)</li>
+        <li>Preceding the Civil Disobedience Movement (1930)</li>
+        <li>Amidst widespread tribal unrest across India against forest laws</li>
+      </ul>
+      <p>His movement demonstrated how the freedom struggle wasn't limited to urban areas but had deep roots in rural and tribal India.</p>
+    </div>
+
+    <div class="section">
+      <h3>Legacy and Commemoration</h3>
+      <div class="legacy-grid">
+        <div class="legacy-card">
+          <h4>Official Recognition</h4>
+          <ul>
+            <li>Included in Andhra Pradesh state textbooks</li>
+            <li>Memorial stamps released in 1972 and 2022</li>
+            <li>Government schemes named after him</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4>Cultural Impact</h4>
+          <ul>
+            <li>Subject of folk songs and ballads</li>
+            <li>Featured in Telugu historical novels</li>
+            <li>Inspiration for tribal rights movements</li>
+          </ul>
+        </div>
+        <div class="legacy-card">
+          <h4>Modern Relevance</h4>
+          <ul>
+            <li>Cited in forest rights activism</li>
+            <li>Example of non-violent tribal resistance</li>
+            <li>Symbol of regional pride in Andhra</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Further Reading and Resources</h3>
+      <div class="resources">
+        <div class="resource-card">
+          <h4>Books</h4>
+          <ul>
+            <li>"Palnadu Freedom Fighters" - Andhra Pradesh Archives</li>
+            <li>"Tribal Resistance in Colonial India" by Archana Prasad</li>
+          </ul>
+        </div>
+        <div class="resource-card">
+          <h4>Documentaries</h4>
+          <ul>
+            <li>"The Forgotten Martyrs" - Doordarshan series</li>
+            <li>"Vanadhikaram" (Forest Rights) - Telugu documentary</li>
+          </ul>
+        </div>
+        <div class="resource-card">
+          <h4>Places to Visit</h4>
+          <ul>
+            <li>Kanneganti Hanumanthu Memorial, Palnadu</li>
+            <li>Freedom Fighter's Gallery, Amaravati</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Inspiration for Today</h3>
+      <div class="inspiration-box">
+        <p>Hanumanthu's life teaches us the importance of:</p>
+        <ul>
+          <li>Standing against unjust policies</li>
+          <li>Protecting community rights</li>
+          <li>The power of non-violent resistance</li>
+          <li>Sacrifice for larger causes</li>
+        </ul>
+        <p>His legacy continues to inspire environmental and tribal rights movements across India.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+    </div>
+  </footer>
+</body>
+</html>

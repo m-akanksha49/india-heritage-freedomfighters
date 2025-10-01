@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partition of Bengal - Indian Freedom Movement</title>
+    <style>
+        /* Copy the entire CSS from salt-satyagraha.html */
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Partition_of_Bengal_1905_map.png'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Partition_of_Bengal_1905_map.png'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1905</div>
+        <h1>Partition of Bengal</h1>
+        <p>The controversial division of Bengal by the British in 1905 that ignited a powerful wave of protest and nationalism across India.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Partition of Bengal</h2>
+                    <p>The Partition of Bengal was announced by Lord Curzon, the then Viceroy of India, and came into effect on October 16, 1905. The stated reason was administrative convenience, but the real motive was to divide and weaken the growing nationalist movement by splitting the largely Hindu western areas from the Muslim-majority east.</p>
+                    <div class="highlight-box">
+                        <h3>Why Partition?</h3>
+                        <p>The British claimed Bengal was too large to govern efficiently. However, the partition was widely seen as an attempt to "divide and rule" by creating religious divisions. The move was met with fierce opposition from both Hindus and Muslims, who saw it as an attack on their unity and identity.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Jul 20</div>
+                            <div class="timeline-content">
+                                <h3>Partition Announced</h3>
+                                <p>Lord Curzon announces the plan to partition Bengal, citing administrative reasons. The decision sparks immediate outrage among Indian leaders and the public.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Oct 16</div>
+                            <div class="timeline-content">
+                                <h3>Partition Implemented</h3>
+                                <p>The partition comes into effect. Massive protests, strikes, and demonstrations erupt across Bengal and other parts of India. The day is observed as a day of mourning.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1906</div>
+                            <div class="timeline-content">
+                                <h3>Swadeshi Movement</h3>
+                                <p>The Swadeshi Movement gains momentum, urging Indians to boycott British goods and promote indigenous industries. Bonfires of foreign cloth and goods become common sights.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1911</div>
+                            <div class="timeline-content">
+                                <h3>Partition Annulled</h3>
+                                <p>Due to sustained protests and national unity, the British government revokes the partition in 1911, reuniting Bengal. The capital of British India is shifted from Calcutta to Delhi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Partition_of_Bengal_1905_map.png" alt="Partition of Bengal Map">
+                            <div class="gallery-caption">Map showing the partitioned Bengal (1905)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Lord_Curzon_India.jpg" alt="Lord Curzon">
+                            <div class="gallery-caption">Lord Curzon, the architect of the partition</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Swadeshi_movement_bonfire.jpg" alt="Swadeshi Movement Bonfire">
+                            <div class="gallery-caption">Bonfire of foreign goods during Swadeshi Movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Chittaranjan_Das_1925.jpg" alt="Chittaranjan Das">
+                            <div class="gallery-caption">Chittaranjan Das, a prominent leader in Bengal</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Partition of Bengal Movement</h3>
+                        <p>The Partition of Bengal was a turning point in India's freedom struggle. It led to the birth of the Swadeshi and Boycott movements, uniting people across religious and regional lines. Here are some key aspects:</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Swadeshi Movement</h4>
+                                    <p>People were urged to boycott British goods and adopt Indian-made products. This movement gave a major boost to Indian industries and self-reliance.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>National Unity</h4>
+                                    <p>The partition, intended to divide, actually united people from different communities in a common cause against colonial rule.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Role of Women</h4>
+                                    <p>Women played a significant role, organizing protests, picketing shops selling foreign goods, and participating in rallies.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Literary and Cultural Impact</h4>
+                                    <p>Writers, poets, and artists used their work to inspire patriotism. Rabindranath Tagore composed songs and led the Raksha Bandhan festival to symbolize unity.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Formation of Muslim League</h4>
+                                    <p>The All India Muslim League was founded in 1906, partly as a response to the partition, to represent Muslim interests in British India.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Annulment and Aftermath</h4>
+                                    <p>The annulment of the partition was a major victory for Indian nationalists, but it also sowed seeds of communal politics that would later shape India's history.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Partition of Bengal</h3>
+                            <p>The movement against the partition marked the beginning of mass political action in India. It fostered a sense of national identity and set the stage for future struggles for independence. The Swadeshi spirit and unity displayed during this period became a model for later movements.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Lord_Curzon_India.jpg" alt="Lord Curzon">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Lord Curzon</h4>
+                            <p>Viceroy of India who ordered the partition, sparking widespread protest.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Chittaranjan_Das_1925.jpg" alt="Chittaranjan Das">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Chittaranjan Das</h4>
+                            <p>Prominent nationalist leader and advocate of the Swadeshi movement in Bengal.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Rabindranath_Tagore_unknown_location.jpg" alt="Rabindranath Tagore">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Rabindranath Tagore</h4>
+                            <p>Poet and Nobel laureate who inspired unity through literature and the Raksha Bandhan festival.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Bipin_Chandra_Pal_1909.jpg" alt="Bipin Chandra Pal">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Bipin Chandra Pal</h4>
+                            <p>One of the Lal-Bal-Pal trio, he was a key leader in the anti-partition agitation.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Partition Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 40%; left: 30%;" data-location="Western Bengal (Hindu Majority)"></div>
+                    <div class="map-marker" style="top: 60%; left: 70%;" data-location="Eastern Bengal (Muslim Majority)"></div>
+                    <div class="map-marker" style="top: 50%; left: 50%;" data-location="Calcutta (Capital)"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Ignited the Swadeshi and Boycott movements</li>
+                    <li>Fostered national unity and mass political participation</li>
+                    <li>Inspired future leaders and movements for independence</li>
+                    <li>Led to the formation of the All India Muslim League</li>
+                    <li>Demonstrated the power of nonviolent protest and civil disobedience</li>
+                    <li>Resulted in the annulment of the partition in 1911</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"The partition has not only divided the land, but has also united the hearts of the people in protest."</p>
+            <p class="quote-author">— Rabindranath Tagore</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Western Bengal (Hindu Majority)": "The western part of Bengal, predominantly Hindu, was separated from the east in 1905.",
+                    "Eastern Bengal (Muslim Majority)": "The eastern part, with a Muslim majority, became a new province with Dacca as its capital.",
+                    "Calcutta (Capital)": "Calcutta was the capital of British India until 1911, and the center of anti-partition protests."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

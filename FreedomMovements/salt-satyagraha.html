@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salt Satyagraha - Indian Freedom Movement</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+       .header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://1.bp.blogspot.com/-o-Pb_d_FJ0g/Xyvi5azT67I/AAAAAAAAACM/e-FUGUhhUbwxBuBL0D-nqWfPiE9RVEqJwCLcBGAsYHQ/s980/dandi_march%2Bmanojmakvana.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh; /* Changed from height to min-height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--light-bg);
+    clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+    z-index: 0;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color: var(--saffron);
+    z-index: 2;
+}
+
+.header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: var(--white); /* Ensure white text for visibility */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add text shadow for contrast */
+    z-index: 2;
+}
+
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Gujarat_in_India_%28disputed_hatched%29.svg/1200px-Gujarat_in_India_%28disputed_hatched%29.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+      
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* New Detailed Info Section Styles */
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1930</div>
+        <h1>Salt Satyagraha</h1>
+        <p>The historic 24-day march that challenged British salt laws and became a turning point in India's freedom struggle</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Salt March</h2>
+                    <p>The Salt Satyagraha, also known as the Salt March or Dandi March, was a nonviolent protest led by Mahatma Gandhi against the British salt monopoly in colonial India. Beginning on March 12, 1930 and lasting until April 6, 1930, it became one of the most significant campaigns in the Indian independence movement.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Why Salt?</h3>
+                        <p>Gandhi chose salt as the focus of protest because it was a basic necessity used by all Indians, rich and poor alike. The British salt laws prohibited Indians from collecting or selling salt, forcing them to buy expensive, heavily taxed salt from British merchants. This simple act of defiance resonated with millions and became a powerful symbol of resistance.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 12</div>
+                            <div class="timeline-content">
+                                <h3>March Begins</h3>
+                                <p>Gandhi sets out from Sabarmati Ashram with 78 carefully selected followers representing different regions of India. The march covered 240 miles to the coastal village of Dandi, with participants walking about 10 miles each day.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Apr 5</div>
+                            <div class="timeline-content">
+                                <h3>Arrival at Dandi</h3>
+                                <p>The marchers reach Dandi after 24 days of walking. Along the way, they stopped at villages where Gandhi gave speeches explaining the meaning of swaraj (self-rule) and the importance of challenging unjust laws.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Apr 6</div>
+                            <div class="timeline-content">
+                                <h3>Defying the Law</h3>
+                                <p>At dawn, Gandhi picks up a lump of natural salt from the beach, declaring "With this, I am shaking the foundations of the British Empire." This symbolic act sparked mass civil disobedience across India as millions began making or buying illegal salt.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 4</div>
+                            <div class="timeline-content">
+                                <h3>Gandhi's Arrest</h3>
+                                <p>Gandhi is arrested after announcing his intention to raid the Dharasana Salt Works. His arrest led to worldwide condemnation of British rule in India and inspired even greater participation in the movement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://www.mkgandhi.org/images/gandhi21.jpg" alt="Gandhi leading the Salt March">
+                            <div class="gallery-caption">Gandhi leading the march with followers</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="http://kinooze.com/wp-content/uploads/2013/03/salt-march.jpg" alt="Salt March participants">
+                            <div class="gallery-caption">Participants in the Salt March</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://39753546.weebly.com/uploads/4/6/6/5/46655397/295092240_orig.png" alt="Gandhi making salt">
+                            <div class="gallery-caption">Gandhi making salt at Dandi</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://cdn.thewire.in/wp-content/uploads/2020/01/30125741/Photo-6-copy.jpg" alt="Women joining the movement">
+                            <div class="gallery-caption">Women joining the salt protests</div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Salt Satyagraha Movement</h3>
+                        <p>The Salt Satyagraha was not just a protest against the salt tax, but a carefully planned campaign that combined political strategy with spiritual principles. Here's a closer look at various aspects of this historic movement:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Strategic Planning</h4>
+                                    <p>Gandhi spent weeks planning the march, selecting participants from different regions and religions to represent India's diversity. The route was carefully chosen to maximize publicity and pass through areas where Congress support was strong.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Daily Routine</h4>
+                                    <p>Marchers followed a strict daily schedule: waking at 4 AM for prayers, walking 10-12 miles daily, stopping at villages to spin khadi and give speeches. Gandhi used these stops to explain satyagraha and recruit volunteers.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>International Coverage</h4>
+                                    <p>Over 100 foreign journalists covered the march, including Webb Miller whose reports of police brutality at Dharasana shocked the world. Time magazine named Gandhi "Man of the Year" in 1930.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Economic Impact</h4>
+                                    <p>The salt tax represented 8.2% of British tax revenue from India. The campaign caused salt revenue to drop by 75% in some areas as Indians began producing and selling illegal salt nationwide.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Women's Participation</h4>
+                                    <p>Over 17,000 women were arrested during the campaign, marking their first mass participation in the freedom struggle. Leaders like Kamaladevi Chattopadhyay led salt-making demonstrations in Bombay.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Creative Protests</h4>
+                                    <p>Beyond salt-making, protesters held "forest satyagrahas" collecting forbidden wood, manufactured illegal khadi cloth, and organized bonfires of foreign goods. Students left government schools and colleges.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Salt March</h3>
+                            <p>The Salt Satyagraha demonstrated the power of nonviolent resistance on a massive scale. It inspired similar campaigns worldwide, including the US Civil Rights Movement. Most importantly, it united Indians across caste, class and religious lines in a common struggle, making independence inevitable. The British Empire's moral authority was irreparably damaged by images of nonviolent protesters being beaten for making salt.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://cdn.britannica.com/73/200573-050-194DB760/Mahatma-Gandhi-1931.jpg" alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Leader of the Salt Satyagraha and principal architect of India's nonviolent independence movement.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://newsd.in/wp-content/uploads/2018/10/cover-patel-Gandhi-nehrujpg.jpg" alt="Sardar Patel">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sardar Patel</h4>
+                            <p>Key organizer who helped mobilize support across Gujarat during the Salt March.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.0LwrxiA1IesugYSiiIDxZAHaEK&pid=Api&P=0&h=180" alt="Sarojini Naidu">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sarojini Naidu</h4>
+                            <p>Led the nonviolent raid on the Dharasana Salt Works after Gandhi's arrest.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.9nPw-66P8P3BLlPkuU96YwAAAA&pid=Api&P=0&h=180" alt="Abbas Tyabji">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Abbas Tyabji</h4>
+                            <p>Former chief justice who joined the movement and led the march after Gandhi's arrest.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>March Route</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 30%; left: 20%;" data-location="Sabarmati Ashram (Start)"></div>
+                    <div class="map-marker" style="top: 40%; left: 30%;" data-location="Anand (March 20)"></div>
+                    <div class="map-marker" style="top: 50%; left: 40%;" data-location="Navsari (April 2)"></div>
+                    <div class="map-marker" style="top: 60%; left: 50%;" data-location="Dandi (April 5)"></div>
+                </div>
+
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Brought international attention to the Indian independence movement</li>
+                    <li>Marked the first mass participation of women in civil disobedience</li>
+                    <li>Demonstrated the power of nonviolent resistance against colonial rule</li>
+                    <li>Forced the British government to negotiate with Gandhi as a representative of India</li>
+                    <li>Inspired future civil rights movements worldwide, including the American Civil Rights Movement</li>
+                    <li>Led to the Gandhi-Irwin Pact and participation in the Second Round Table Conference</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"Civil disobedience is the inherent right of a citizen. He dare not give it up without ceasing to be a man."</p>
+            <p class="quote-author">— Mahatma Gandhi</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+
+  
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Sabarmati Ashram (Start)": "The march began here on March 12, 1930 with 78 satyagrahis.",
+                    "Anand (March 20)": "Gandhi addressed over 10,000 people here, explaining the importance of the salt tax protest.",
+                    "Navsari (April 2)": "The marchers were joined by thousands of supporters as they neared the coast.",
+                    "Dandi (April 5)": "The march concluded here on April 5, with the symbolic salt-making on April 6."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

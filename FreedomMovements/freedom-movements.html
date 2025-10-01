@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom Movements of India</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slider-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(3px) brightness(0.7);
+            z-index: -1;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .slider-content {
+            display: flex;
+            height: 100%;
+            color: white;
+            padding: 0 5%;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+            padding-right: 50px;
+            z-index: 1;
+        }
+
+        .text-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #FF9933;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 80%;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #138808;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .explore-btn:hover {
+            background-color: #0e6e0a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-carousel {
+            flex: 1;
+            height: 50%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image {
+            width: 800px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-nav {
+            position: absolute;
+            left: 5%;
+            bottom: 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+
+        .arrow-nav {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            display: flex;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arrow:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .slider-content {
+                flex-direction: column;
+                padding-top: 80px;
+                padding-bottom: 120px;
+            }
+
+            .text-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .text-content p {
+                max-width: 100%;
+            }
+
+            .image-carousel {
+                width: 100%;
+                height: 40vh;
+            }
+
+            .main-image {
+                width: 300px;
+                height: 225px;
+            }
+
+            .slider-nav {
+                flex-direction: row;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 30px;
+            }
+
+            .arrow-nav {
+                right: 50%;
+                transform: translateX(50%);
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .text-content h1 {
+                font-size: 2rem;
+            }
+
+            .text-content p {
+                font-size: 1rem;
+            }
+
+            .main-image {
+                width: 250px;
+                height: 187px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider-background"></div>
+        
+        <div class="slider-content">
+            <div class="text-content">
+                <h1 id="movement-title">Non-Cooperation Movement</h1>
+                <p id="movement-description">Launched by Mahatma Gandhi in 1920, this movement encouraged Indians to withdraw from British institutions and return honors and titles.</p>
+                <a href="non-cooperation.html" class="explore-btn" id="explore-link">Explore</a>
+            </div>
+            
+            <div class="image-carousel">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Slides will be added dynamically by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-nav">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+        
+        <div class="arrow-nav">
+            <div class="arrow" id="prev-btn">←</div>
+            <div class="arrow" id="next-btn">→</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Movement data with multiple images and backgrounds
+            const movements = [
+                {
+                  title: "Non-Cooperation Movement",
+                   description: "Launched by Mahatma Gandhi in 1920, this movement encouraged Indians to withdraw from British institutions and return honors and titles.",
+                    link: "non-cooperation.html",
+                    mainImage: "https://popularresistance-uploads.s3.amazonaws.com/uploads/2014/02/Started-Non-Cooperation-Movement.jpg",
+                    backgroundImage: "https://media.geeksforgeeks.org/wp-content/uploads/20230130154515/Dandi-march.jpg"
+                },
+                {
+                    title: "Salt Satyagraha",
+                    description: "The 1930 Salt March was a 24-day nonviolent protest against the British salt monopoly, a pivotal event in the Indian independence movement.",
+                    link: "salt-satyagraha.html",
+                    mainImage: "https://i.pinimg.com/originals/0f/70/a8/0f70a85bdb99e698e6644204aff26337.jpg",
+                    backgroundImage: "https://1.bp.blogspot.com/-o-Pb_d_FJ0g/Xyvi5azT67I/AAAAAAAAACM/e-FUGUhhUbwxBuBL0D-nqWfPiE9RVEqJwCLcBGAsYHQ/s980/dandi_march%2Bmanojmakvana.jpg"
+                },
+                {
+                    title: "Quit India Movement",
+                    description: "Initiated in 1942 by Gandhi, this mass protest demanded an end to British rule in India with the famous slogan 'Do or Die'.",
+                    link: "quit-india.html",
+                    mainImage: "https://tse1.mm.bing.net/th?id=OIP.jVJi0-c3xaiyTRngtIAakgHaEK&pid=Api&P=0&h=180",
+                    backgroundImage: "https://uploads.10pointer.com/images/Quit--1.png"
+                },
+                {
+                    title: "Swadeshi Movement",
+                    description: "Part of the Indian independence movement that promoted Indian goods and boycotted British products, gaining momentum after the 1905 partition of Bengal.",
+                    link: "swadeshi.html",
+                    mainImage: "https://i.pinimg.com/originals/f1/b5/bc/f1b5bc481ce0ceda11c73a845734a0c2.jpg",
+                    backgroundImage: "https://i.pinimg.com/originals/36/ab/13/36ab13a1903b78b5b771f213a1a58b49.png"
+                },
+                {
+                    title: "Khilafat Movement",
+                    description: "A pan-Islamic protest (1919-1924) against the dismantling of the Ottoman Caliphate, which allied with the Non-Cooperation Movement.",
+                    link: "khilafat.html",
+                    mainImage: "https://images.unsplash.com/photo-1589254065878-42a9da5f8b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    backgroundImage: "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ];
+
+            // DOM elements
+            const titleEl = document.getElementById('movement-title');
+            const descEl = document.getElementById('movement-description');
+            const linkEl = document.getElementById('explore-link');
+            const carouselTrack = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const backgroundEl = document.querySelector('.slider-background');
+
+            // Current slide index
+            let currentIndex = 0;
+            let autoSlideInterval;
+            let isTransitioning = false;
+
+            // Initialize carousel slides
+            function initCarousel() {
+                carouselTrack.innerHTML = '';
+                
+                movements.forEach((movement, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'carousel-slide';
+                    slide.dataset.index = index;
+                    
+                    const mainImg = document.createElement('img');
+                    mainImg.src = movement.mainImage;
+                    mainImg.alt = movement.title;
+                    mainImg.className = 'main-image';
+                    
+                    slide.appendChild(mainImg);
+                    carouselTrack.appendChild(slide);
+                });
+            }
+
+            // Update slide function
+            function updateSlide(index) {
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                currentIndex = (index + movements.length) % movements.length;
+                const movement = movements[currentIndex];
+
+                // Update text content
+                titleEl.textContent = movement.title;
+                descEl.textContent = movement.description;
+                linkEl.href = movement.link;
+
+                // Update background
+                backgroundEl.style.backgroundImage = `url(${movement.backgroundImage})`;
+
+                // Update carousel position
+                carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                // Update dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (parseInt(dot.dataset.index) === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                });
+
+                // Reset transitioning flag after animation
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 800);
+            }
+
+            // Next slide
+            function nextSlide() {
+                updateSlide(currentIndex + 1);
+                resetAutoSlide();
+            }
+
+            // Previous slide
+            function prevSlide() {
+                updateSlide(currentIndex - 1);
+                resetAutoSlide();
+            }
+
+            // Auto slide
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    if (!this.classList.contains('active')) {
+                        updateSlide(parseInt(this.dataset.index));
+                        resetAutoSlide();
+                    }
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+
+            // Initialize
+            initCarousel();
+            updateSlide(0);
+            startAutoSlide();
+        });
+    </script>
+</body>
+</html>

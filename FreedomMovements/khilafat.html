@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khilafat Movement - Indian Freedom Struggle</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://i.ytimg.com/vi/vMNS4Q7BIQw/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/India_geographic_map.svg/1200px-India_geographic_map.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1919-1924</div>
+        <h1>Khilafat Movement</h1>
+        <p>The pan-Islamic protest movement that united Hindus and Muslims in India's freedom struggle</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Islamic Caliphate Movement</h2>
+                    <p>The Khilafat Movement (1919-1924) was a pan-Islamic, political protest campaign launched by Muslims in British India to influence the British government and protect the Ottoman Empire during the aftermath of World War I. The movement became a major part of the Indian independence movement through its alliance with the Indian National Congress and Mahatma Gandhi's Non-Cooperation Movement.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Origins of the Movement</h3>
+                        <p>The movement emerged from the concern of Indian Muslims about the fate of the Ottoman Caliphate after World War I. The Ottoman Empire had been defeated, and there were fears that the Allied powers would dismantle it and abolish the Caliphate, which was the spiritual head of the global Muslim community (Ummah). Indian Muslims saw this as an attack on Islam and mobilized to defend the institution.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1919</div>
+                            <div class="timeline-content">
+                                <h3>Movement Begins</h3>
+                                <p>The Khilafat Committee is formed in Bombay with leaders like the Ali brothers (Shaukat Ali and Muhammad Ali Jauhar), Maulana Azad, and Hasrat Mohani. They demand that the British protect the Ottoman Caliphate and not impose harsh terms in the peace settlement.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1920</div>
+                            <div class="timeline-content">
+                                <h3>Alliance with Congress</h3>
+                                <p>Mahatma Gandhi links the Khilafat issue with the Non-Cooperation Movement, creating a united Hindu-Muslim front against British rule. The movement adopts nonviolent protest methods including boycotts of British goods and institutions.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1921</div>
+                            <div class="timeline-content">
+                                <h3>Mass Mobilization</h3>
+                                <p>The movement reaches its peak with widespread participation across India. Thousands of students leave government schools, lawyers boycott courts, and people resign from government jobs. The British respond with mass arrests.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1924</div>
+                            <div class="timeline-content">
+                                <h3>Movement Ends</h3>
+                                <p>Mustafa Kemal Atatürk abolishes the Ottoman Caliphate in Turkey itself, removing the central issue of the movement. The Khilafat Movement dissolves, but its legacy of Hindu-Muslim unity and mass mobilization influences future freedom struggles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://studiousguy.com/wp-content/uploads/2021/07/Khilafat-Movement.jpg" alt="Khilafat Movement meeting">
+                            <div class="gallery-caption">Khilafat leaders addressing a public gathering</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://madrascourier.com/wp-content/uploads/2018/06/Khilafat-Movement-Madras-Courier-01-770x515.jpg" alt="Gandhi with Khilafat leaders">
+                            <div class="gallery-caption">Gandhi with Khilafat leaders Shaukat Ali and Muhammad Ali Jauhar</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://2.bp.blogspot.com/-29mdbUn7hbg/USePrrIVDNI/AAAAAAAAASc/65lf0mUTKoM/s1600/protest2sx0.jpg" alt="Khilafat protest">
+                            <div class="gallery-caption">Mass protest during the Khilafat Movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://api-timescontent.timesofindia.com/api/v1/image-path/view/jpg/8393" alt="Khilafat volunteers">
+                            <div class="gallery-caption">Khilafat volunteers during the Non-Cooperation Movement</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Khilafat Movement</h3>
+                        <p>The Khilafat Movement was more than just a protest about the Ottoman Caliphate - it was a pivotal moment in India's freedom struggle that brought Hindus and Muslims together in unprecedented unity. Here's an in-depth look at various aspects of this significant movement:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Religious Significance</h4>
+                                    <p>For Indian Muslims, the Ottoman Caliph was the symbolic leader of the global Muslim community. The potential abolition of the Caliphate threatened a central institution of Sunni Islam. This religious concern mobilized masses who might not have engaged in purely political protests.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Gandhi's Strategy</h4>
+                                    <p>Gandhi saw the Khilafat issue as an opportunity to unite Hindus and Muslims against British rule. He convinced the Indian National Congress to support the movement, marking the first major Hindu-Muslim political alliance in the independence struggle.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>International Dimensions</h4>
+                                    <p>The movement had connections with Islamic groups worldwide and sent delegations to London and the Middle East. It was part of a global Muslim response to the post-WWI settlement that redrew borders across the Muslim world.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Mass Participation</h4>
+                                    <p>The movement saw unprecedented Muslim participation, including women and religious scholars who had previously stayed out of politics. The use of mosques for political mobilization was innovative and highly effective.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>British Response</h4>
+                                    <p>The British initially tried to appease the movement but later cracked down harshly, arresting leaders and suppressing protests. The repression helped radicalize some participants and demonstrated British unwillingness to respect Indian concerns.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Long-Term Effects</h4>
+                                    <p>Though the movement failed to save the Caliphate, it demonstrated the power of mass mobilization and inter-communal unity. It trained a generation of leaders who would continue in the freedom struggle and influenced later movements like the Non-Cooperation Movement.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of Khilafat</h3>
+                            <p>The Khilafat Movement marked a high point of Hindu-Muslim unity in India's freedom struggle. While the movement itself ended in 1924, its legacy included the politicization of Indian Muslims, the demonstration of mass nonviolent resistance techniques, and the temporary bridging of communal divides. The movement also revealed the challenges of maintaining such unity, as communal tensions resurfaced after its conclusion. Many historians see the Khilafat Movement as a precursor to Pakistan's eventual creation, as it demonstrated both the potential and fragility of Hindu-Muslim political cooperation.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://th.bing.com/th/id/R.475b815509d9e5dd90437dc5ea94d1ee?rik=8Gkw8yziorKbQQ&riu=http%3a%2f%2f2.bp.blogspot.com%2f-4YWItVHldFk%2fTnuj1S7iaoI%2fAAAAAAAAALQ%2fN4DeRRwDdR4%2fs1600%2fMAULANA%2bMUHAMMAD%2bALI%2bJAUHAR.jpg&ehk=MtKE1zACU5vTzJIr%2fa3mw7kOsWxWclYtxYq%2bztzYN7w%3d&risl=&pid=ImgRaw&r=0" alt="Maulana Mohammad Ali Jauhar">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Maulana Mohammad Ali Jauhar</h4>
+                            <p>Leading Khilafat activist and journalist who mobilized Muslim opinion through his newspaper "Comrade".</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://th.bing.com/th/id/OIP.1EwnNhi23xtN314eSp9FfgAAAA?rs=1&pid=ImgDetMain" alt="Maulana Shaukat Ali">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Maulana Shaukat Ali</h4>
+                            <p>Co-founder of the Khilafat Movement and brother of Mohammad Ali Jauhar, known for his fiery speeches.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://cdn.britannica.com/73/200573-050-194DB760/Mahatma-Gandhi-1931.jpg" alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Linked the Khilafat issue with the Non-Cooperation Movement, creating a united front.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.thefamouspeople.com/profiles/images/maulana-abul-kalam-azad-4.jpg" alt="Maulana Abul Kalam Azad">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Maulana Abul Kalam Azad</h4>
+                            <p>Young Islamic scholar who became a prominent leader of the movement and later Congress president.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Movement Centers</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 30%; left: 30%;" data-location="Bombay (Headquarters)"></div>
+                    <div class="map-marker" style="top: 40%; left: 50%;" data-location="Delhi (Protests)"></div>
+                    <div class="map-marker" style="top: 60%; left: 60%;" data-location="Bengal (Mass Support)"></div>
+                    <div class="map-marker" style="top: 70%; left: 40%;" data-location="Punjab (Stronghold)"></div>
+                </div>
+
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Created unprecedented Hindu-Muslim unity in the freedom struggle</li>
+                    <li>Pioneered mass nonviolent resistance techniques in India</li>
+                    <li>Politicized Indian Muslims on a large scale</li>
+                    <li>Influenced Gandhi's Non-Cooperation Movement</li>
+                    <li>Demonstrated the power of religious symbolism in mobilization</li>
+                    <li>Revealed challenges of maintaining inter-communal alliances</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"The Muslims' duty is perfectly clear. The Khilafat must be maintained, and the British must be fought."</p>
+            <p class="quote-author">— Maulana Mohammad Ali Jauhar, Khilafat Movement Leader</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Bombay (Headquarters)": "The Khilafat Committee was headquartered in Bombay (now Mumbai), where major decisions were made and protests organized.",
+                    "Delhi (Protests)": "Delhi saw large Khilafat protests and was where leaders interacted with British officials to present their demands.",
+                    "Bengal (Mass Support)": "Bengal became a stronghold of the movement, with widespread participation from both Muslims and Hindus.",
+                    "Punjab (Stronghold)": "Punjab had particularly strong Khilafat activity, with many religious leaders supporting the movement."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

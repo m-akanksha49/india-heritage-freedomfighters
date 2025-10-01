@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dandi March - Indian Freedom Movement</title>
+    <style>/* CSS copied from salt-satyagraha.html */
+        :root { --saffron: #FF9933; --green: #138808; --blue: #000080; --white: #ffffff; --light-bg: #f8f8f8; --text-dark: #333333; --text-light: #666666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://tse4.mm.bing.net/th/id/OIP.PrsgJxoR-e-Kd2qxhqsxGwHaDt?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Dandi_March_1930.jpg'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1930</div>
+        <h1>Dandi March</h1>
+        <p>The Dandi March, led by Mahatma Gandhi in 1930, was a pivotal act of civil disobedience against the British salt monopoly, sparking the Civil Disobedience Movement.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Dandi March</h2>
+                    <p>On 12 March 1930, Mahatma Gandhi and 78 followers set out from Sabarmati Ashram to Dandi, Gujarat, covering 240 miles in 24 days to break the salt law. The march galvanized the nation and marked a new phase in the freedom struggle.</p>
+                    <div class="highlight-box">
+                        <h3>Why was it important?</h3>
+                        <p>The march was a nonviolent protest against the British salt tax, inspiring mass participation and international attention.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 12, 1930</div>
+                            <div class="timeline-content">
+                                <h3>Dandi March Begins</h3>
+                                <p>Gandhi and his followers begin the march from Sabarmati Ashram.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Apr 6, 1930</div>
+                            <div class="timeline-content">
+                                <h3>Salt Law Broken</h3>
+                                <p>Gandhi reaches Dandi and makes salt, breaking the British law.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Legacy</div>
+                            <div class="timeline-content">
+                                <h3>Impact</h3>
+                                <p>The march inspires nationwide civil disobedience and mass arrests, including Gandhi's own.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://c8.alamy.com/comp/A2FR34/mahatma-gandhi-leading-the-salt-agitation-march-in-india-for-freedom-A2FR34.jpg" alt="Dandi March 1930">
+                            <div class="gallery-caption">Gandhi leading the Dandi March, 1930</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://d197irk3q85upd.cloudfront.net/catalog/product/cache/95dbdf78ad5a0d4b547132f80fbac8f3/b/o/bosengandhi_1.jpg" alt="Mahatma Gandhi">
+                            <div class="gallery-caption">Mahatma Gandhi, leader of the march</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://tse1.mm.bing.net/th/id/OIP.qLphdF7zsSHxRese0E3FCQHaEK?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sabarmati Ashram">
+                            <div class="gallery-caption">Sabarmati Ashram, starting point of the march</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.nyoooz.com/img-uploads/dandi%204.jpg" alt="Dandi Beach">
+                            <div class="gallery-caption">Dandi Beach, where salt was made</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: Dandi March</h3>
+                        <p>The Dandi March was a masterstroke of nonviolent protest, mobilizing millions and challenging the legitimacy of British rule.</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Planning and Execution</h4>
+                                    <p>The march was meticulously planned and executed, drawing national and international attention.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Mass Participation</h4>
+                                    <p>Thousands joined the march and subsequent protests, leading to mass arrests.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Impact</h4>
+                                    <p>The march marked the beginning of the Civil Disobedience Movement.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Key Figures</h4>
+                                    <p>Mahatma Gandhi, Sarojini Naidu, Abbas Tyabji, and others.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Legacy</h4>
+                                    <p>The Dandi March remains a symbol of nonviolent resistance and courage.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Dandi March</h3>
+                            <p>The march is celebrated as a defining moment in India's freedom struggle.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://i0.wp.com/short-biography.com/wp-content/uploads/mahatma-gandhi/Mahatma-Gandhi.jpg?fit=1121%2C1121&ssl=1" alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Leader of the Dandi March.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://res.cloudinary.com/dkplc2mbj/image/upload/v1617184126/sn_4bd133749c.jpg" alt="Sarojini Naidu">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sarojini Naidu</h4>
+                            <p>Prominent leader and participant in the march.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Dandi March Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 50%; left: 30%;" data-location="Sabarmati Ashram"></div>
+                    <div class="map-marker" style="top: 50%; left: 80%;" data-location="Dandi Beach"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Galvanized the nation</li>
+                    <li>Inspired mass civil disobedience</li>
+                    <li>Challenged British authority</li>
+                    <li>Symbol of nonviolent protest</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"In the history of the world, there have been few instances of such courage and determination."</p>
+            <p class="quote-author">— Sarojini Naidu</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Sabarmati Ashram": "Starting point of the historic Dandi March.",
+                    "Dandi Beach": "Where Gandhi broke the salt law on 6 April 1930."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

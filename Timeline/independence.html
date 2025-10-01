@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Gains Independence - Indian Freedom Movement</title>
+    <style>/* CSS copied from salt-satyagraha.html */
+        :root { --saffron: #FF9933; --green: #138808; --blue: #000080; --white: #ffffff; --light-bg: #f8f8f8; --text-dark: #333333; --text-light: #666666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.ytimg.com/vi/t2wIKGdXb0E/maxresdefault.jpg'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/India_Independence_1947.jpg'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1947</div>
+        <h1>India Gains Independence</h1>
+        <p>On 15 August 1947, India became a free and independent nation, ending nearly two centuries of British colonial rule.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>India Gains Independence</h2>
+                    <p>After decades of struggle, sacrifice, and mass movements, India achieved independence from British rule, marking a new era in its history.</p>
+                    <div class="highlight-box">
+                        <h3>Why was it important?</h3>
+                        <p>Independence fulfilled the dreams of millions, but also came with the trauma of partition and the birth of two nations.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Aug 15, 1947</div>
+                            <div class="timeline-content">
+                                <h3>Independence Day</h3>
+                                <p>India becomes a sovereign nation; Jawaharlal Nehru delivers the "Tryst with Destiny" speech.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Aug 1947</div>
+                            <div class="timeline-content">
+                                <h3>Partition</h3>
+                                <p>India is divided into two nations, India and Pakistan, leading to mass migrations and violence.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Legacy</div>
+                            <div class="timeline-content">
+                                <h3>Impact</h3>
+                                <p>Independence inspired other colonies and marked the beginning of a new democratic journey for India.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://1.bp.blogspot.com/-TpMp1fY_hvc/Ugud5qJG6eI/AAAAAAAAL8Q/vf1-xCwnucI/s1600/india-first-independence-day-celebrations-august-15-1947-rare-photos+(60).jpg" alt="India Independence 1947">
+                            <div class="gallery-caption">Celebrations on Independence Day, 1947</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://preview.redd.it/tryst-with-destiny-jawaharlal-nehru-august-15-1947-v0-cvy94w9ms7ib1.jpg?auto=webp&s=7bb8b9aaf4518e1f77f149e744ce130df58090cf" alt="Nehru Independence Speech">
+                            <div class="gallery-caption">Jawaharlal Nehru delivering the "Tryst with Destiny" speech</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://tse1.mm.bing.net/th/id/OIP.5HhqSvSTnZiqtejCIG3H4QHaHS?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Partition Map 1947">
+                            <div class="gallery-caption">Map showing partition of India and Pakistan</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://c8.alamy.com/comp/2BCKMT1/english-overcrowded-train-transferring-refugees-during-the-partition-of-india-1947-this-was-considered-to-be-the-largest-migration-in-human-history-1947-httpwwwcolumbiaeduitcmealacpritchett00routesdata1900-1999partitiontrainstrainshtml-unknown-author-2BCKMT1.jpg" alt="Refugees 1947">
+                            <div class="gallery-caption">Refugees during the partition, 1947</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: Independence and Partition</h3>
+                        <p>Independence was a moment of joy and sorrow, as the country celebrated freedom but also faced the horrors of partition.</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Freedom Achieved</h4>
+                                    <p>India's independence was the result of decades of struggle and sacrifice by countless individuals.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Partition</h4>
+                                    <p>The division of the country led to one of the largest migrations in history and widespread violence.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Impact</h4>
+                                    <p>India emerged as the world's largest democracy and inspired other nations to seek freedom.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Key Figures</h4>
+                                    <p>Jawaharlal Nehru, Mahatma Gandhi, Sardar Patel, Muhammad Ali Jinnah, Lord Mountbatten.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Legacy</h4>
+                                    <p>Independence is celebrated every year as a national holiday and a symbol of unity and resilience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of Independence</h3>
+                            <p>India's independence is a testament to the power of nonviolent struggle and the spirit of its people.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://hwnews.in/wp-content/uploads/2022/08/Untitled-design-2022-08-16T123603.134-960x540.jpg" alt="Jawaharlal Nehru">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Jawaharlal Nehru</h4>
+                            <p>First Prime Minister of independent India.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.stackumbrella.com/wp-content/uploads/2023/10/Mahatma-Gandhi-1-1024x595.jpg" alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Father of the Nation and leader of the freedom movement.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Independence Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 50%; left: 50%;" data-location="Delhi (Independence Celebrations)"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>End of colonial rule</li>
+                    <li>Birth of two nations</li>
+                    <li>World's largest democracy</li>
+                    <li>Symbol of unity and resilience</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"Long years ago, we made a tryst with destiny..."</p>
+            <p class="quote-author">— Jawaharlal Nehru</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Delhi (Independence Celebrations)": "Delhi was the center of India's independence celebrations on 15 August 1947."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

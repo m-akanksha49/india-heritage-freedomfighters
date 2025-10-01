@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motilal Nehru - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        .lesson-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .lesson-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/MotilalNehru3.jpg" alt="Motilal Nehru">
+      </div>
+      <div class="hero-content">
+        <h2>Motilal Nehru</h2>
+        <p>A prominent nationalist leader, lawyer, and father of Jawaharlal Nehru, Motilal Nehru was one of the most influential figures in India's struggle for independence. He transitioned from being a successful barrister to a full-fledged freedom fighter, making immense sacrifices for the nation's cause.</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>May 6, 1861</p>
+            <p>Agra, Uttar Pradesh</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>February 6, 1931</p>
+            <p>Lahore, British India</p>
+          </div>
+          <div class="fact-card">
+            <h4>Profession</h4>
+            <p>Lawyer, Politician, Freedom Fighter</p>
+          </div>
+          <div class="fact-card">
+            <h4>Known For</h4>
+            <p>Swaraj Party, Nehru Report, Father of Jawaharlal Nehru</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "Our demand is for self-rule, and we shall not rest till we achieve it. The British must understand that India cannot be kept in perpetual subjugation."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Motilal Nehru (1861-1931) was born into a Kashmiri Brahmin family in Agra. After completing his education, he became one of the most successful lawyers in Allahabad, earning a fortune and living a luxurious lifestyle in his palatial home, Anand Bhavan. However, the Jallianwala Bagh massacre in 1919 proved to be a turning point in his life, prompting him to join the freedom struggle.</p>
+      
+      <p>He became a prominent leader of the Indian National Congress and served as its president twice (1919 and 1928). Disillusioned with the British government's response to Indian demands, he co-founded the Swaraj Party in 1923 with Chittaranjan Das, advocating for self-rule through legislative means.</p>
+      
+      <p>Motilal Nehru chaired the committee that prepared the Nehru Report in 1928, which was the first major attempt by Indians to draft a constitution for themselves. The report demanded dominion status for India and became a significant milestone in the constitutional development of India.</p>
+      
+      <p>Despite his Western lifestyle and education, he fully supported Mahatma Gandhi's non-cooperation movement and gave up his lucrative legal practice, adopting a simpler lifestyle. His home, Anand Bhavan, became a hub for freedom fighters and political discussions.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1861</div>
+          <p>Born on May 6 in Agra to Gangadhar Nehru and Jeevarani.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1883</div>
+          <p>Became a lawyer after studying law in England.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1900</div>
+          <p>Emerged as one of the most successful lawyers in Allahabad.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1907</div>
+          <p>Started The Leader, an English-language newspaper in Allahabad.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1919</div>
+          <p>Joined the freedom movement after the Jallianwala Bagh massacre; became Congress President.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1923</div>
+          <p>Co-founded the Swaraj Party with C.R. Das to contest elections and obstruct colonial rule from within.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1928</div>
+          <p>Headed the Nehru Commission for constitutional reforms; drafted the Nehru Report.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1930</div>
+          <p>Participated in the Salt Satyagraha and was imprisoned.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1931</div>
+          <p>Passed away on February 6 in Lahore due to health complications.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Political Contributions</h3>
+      <p>Motilal Nehru made significant contributions to India's freedom struggle:</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>Swaraj Party:</strong> After the suspension of the Non-Cooperation Movement, he formed the Swaraj Party with C.R. Das to continue the struggle through legislative means.</li>
+        <li><strong>Nehru Report:</strong> In 1928, he chaired the committee that drafted the Nehru Report, which demanded dominion status for India and proposed a constitutional framework.</li>
+        <li><strong>Opposition to Simon Commission:</strong> He strongly opposed the all-British Simon Commission in 1927 and supported the boycott movement.</li>
+        <li><strong>Support for Complete Independence:</strong> Initially advocating dominion status, he later accepted the Congress's demand for complete independence (Purna Swaraj).</li>
+        <li><strong>Mentorship:</strong> Played a crucial role in shaping the political careers of his son Jawaharlal Nehru and other young leaders.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Personal Life and Family</h3>
+      <p>Motilal Nehru married Swaroop Rani in 1884, and they had three children: Jawaharlal (who became India's first Prime Minister), Vijaya Lakshmi (who became a prominent diplomat), and Krishna (a writer and social activist).</p>
+      <p>Despite his Westernized lifestyle early in life, he gradually adopted Indian traditions and simplified his living standards in line with Gandhian principles. His home, Anand Bhavan, was donated to the Indian National Congress in 1930 and became a center for political activity.</p>
+    </div>
+
+    <div class="section">
+      <h3>Lessons to Learn from Motilal Nehru</h3>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-hand-holding-heart"></i> Willingness to Change</h4>
+        <p>Motilal Nehru demonstrated remarkable adaptability, transitioning from a wealthy, Westernized lawyer to a simple-living freedom fighter. His ability to change his lifestyle and beliefs for a greater cause teaches us the importance of flexibility and growth.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-balance-scale"></i> Balancing Idealism and Pragmatism</h4>
+        <p>While deeply committed to India's freedom, he understood the value of working within the system when necessary (through the Swaraj Party) while also supporting mass movements. This balance between idealism and pragmatism remains relevant in addressing today's challenges.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-graduation-cap"></i> Importance of Education</h4>
+        <p>Despite his political commitments, he ensured his children received the best education possible. His emphasis on education as a tool for empowerment is a lesson for modern society.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-sitemap"></i> Institutional Building</h4>
+        <p>Motilal Nehru contributed to building political institutions like the Swaraj Party and helped shape constitutional frameworks through the Nehru Report. His work reminds us of the importance of strong institutions for a healthy democracy.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4><i class="fas fa-hands-helping"></i> Sacrifice for Larger Causes</h4>
+        <p>He gave up his lucrative legal practice and comfortable lifestyle to join the freedom struggle. His sacrifices teach us about prioritizing national interests over personal comfort.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-landmark"></i> Anand Bhavan</h4>
+          <p>The Nehru residence became a center for political activity in Allahabad and was donated to the nation. Today it serves as a museum preserving India's freedom struggle history.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-users"></i> Swaraj Party</h4>
+          <p>Strengthened India's voice within British legislative councils and demonstrated the effectiveness of working both inside and outside the system.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-file-contract"></i> Nehru Report</h4>
+          <p>Laid the foundation for India's future constitutional development, influencing later documents including the Indian Constitution.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-university"></i> Political Dynasty</h4>
+          <p>Established the Nehru-Gandhi family as a central force in Indian politics, with his son Jawaharlal becoming India's first Prime Minister.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Freedom Fighters</a>
+        <a href="#">Timeline</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

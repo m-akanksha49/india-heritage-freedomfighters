@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian National Congress - India's Premier National Movement</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://image.freepik.com/free-photo/indian-national-congress-flag-symbol-waving-india_1498-88.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .principles-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .principles-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .principles-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1885</div>
+        <h1>Indian National Congress</h1>
+        <p>The largest and most prominent Indian public organization that led India's independence movement</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>India's Independence Movement Leader</h2>
+                    <p>The Indian National Congress (INC) was founded in 1885 by Allan Octavian Hume, Dadabhai Naoroji, and Dinshaw Wacha. It became the principal leader of the Indian independence movement, with over 15 million members and over 70 million participants in its struggle against British rule. The Congress led India to independence from Britain and has since dominated the political system of India.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Objectives and Evolution</h3>
+                        <p>Initially, the Congress was a moderate organization seeking greater Indian participation in government. Under Mahatma Gandhi's leadership (1915-1947), it became the mass movement leading India to independence. Post-independence, the Congress became India's dominant political party, governing for most of the nation's history. The party's modern liberal platform is considered center-left in Indian politics.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1885</div>
+                            <div class="timeline-content">
+                                <h3>Foundation</h3>
+                                <p>First session held in Bombay from December 28-31, with 72 delegates. Womesh Chunder Bonnerjee was the first president.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1905</div>
+                            <div class="timeline-content">
+                                <h3>Partition of Bengal</h3>
+                                <p>Congress leads Swadeshi movement against partition, marking shift toward more assertive nationalism.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1919</div>
+                            <div class="timeline-content">
+                                <h3>Gandhi's Leadership</h3>
+                                <p>Mahatma Gandhi transforms Congress into mass movement with nonviolent civil disobedience.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1929</div>
+                            <div class="timeline-content">
+                                <h3>Purna Swaraj</h3>
+                                <p>Congress declares complete independence as its goal under Jawaharlal Nehru's presidency.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1942</div>
+                            <div class="timeline-content">
+                                <h3>Quit India Movement</h3>
+                                <p>Mass civil disobedience demanding immediate British withdrawal from India.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1947</div>
+                            <div class="timeline-content">
+                                <h3>Indian Independence</h3>
+                                <p>India gains independence on August 15, with Congress forming first government.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://th.bing.com/th/id/R.67ffc6071304c991a43405ec498903bf?rik=%2bZwUu%2bSLVZNJKA&riu=http%3a%2f%2fpbs.twimg.com%2fmedia%2fB52XzmqCMAAAudY.jpg&ehk=e6EjkNVnc2cMfTa%2fZfZOh%2b2wT1roe52O0s12Tc6bkRI%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="First INC Session">
+                            <div class="gallery-caption">First session of Indian National Congress, Bombay 1885</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/originals/1e/f6/90/1ef690fdafd104517c02ff7d8b4344ae.png" alt="Mahatma Gandhi">
+                            <div class="gallery-caption">Mahatma Gandhi, who transformed Congress into mass movement</div>
+                        </div>
+                        <div class="gallery-item">
+                    <img src="https://cdn.dollsofindia.com/images/p/people-posters/jawaharlal-nehru-GA52_l.jpg" alt="Jawaharlal Nehru">
+                            <div class="gallery-caption">Jawaharlal Nehru, first Prime Minister of independent India</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://im.indiatimes.in/content/2022/Aug/4_62f5fa3874ce9.jpg?w=725&h=380&cc=1" alt="Indian Flag">
+                            <div class="gallery-caption">Congress adopted the flag that became India's national flag</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Congress's Role and Legacy</h3>
+                        <p>The Indian National Congress was the principal leader of India's freedom struggle and shaped modern India. Here's an in-depth look at its contributions and historical significance:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Freedom Struggle</h4>
+                                    <p>The Congress led India's nonviolent resistance against British rule through major campaigns like Non-Cooperation (1920), Civil Disobedience (1930), and Quit India (1942).</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>National Integration</h4>
+                                    <p>It united diverse regions, religions, and communities under common nationalist ideals, creating a pan-Indian identity.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Social Reforms</h4>
+                                    <p>Congress promoted social reforms including abolition of untouchability, women's rights, and economic justice.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Post-Independence Governance</h4>
+                                    <p>As the dominant party after 1947, Congress established India's democratic institutions, mixed economy, and non-aligned foreign policy.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Political Leadership</h4>
+                                    <p>Produced generations of leaders including Nehru, Patel, Bose, and later Indira Gandhi and Rajiv Gandhi.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Challenges</h4>
+                                    <p>Faced criticism for centralization, dynastic politics, and economic policies in later decades.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Historical Significance</h3>
+                            <p>The Indian National Congress was the principal vehicle of Indian nationalism and the most important political organization in colonial India. It transformed from an elite pressure group to a mass movement under Gandhi's leadership, becoming synonymous with the independence struggle. Post-1947, Congress governments established India as a secular, democratic republic and implemented policies of economic development and social reform. The party's legacy includes shaping India's constitutional democracy, non-aligned foreign policy, and commitment to pluralism. Despite challenges in recent decades, the Congress remains one of India's major political parties and a key part of its political history.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.thestatesman.com/wp-content/uploads/2018/09/gandhi-1024x572.jpg"alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Leader who transformed Congress into mass movement with nonviolent resistance.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://assets.telegraphindia.com/telegraph/2024/May/1716788654_jawaharlal-nehru.jpg" alt="Jawaharlal Nehru">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Jawaharlal Nehru</h4>
+                            <p>First Prime Minister of India and key architect of modern India.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://i0.wp.com/aanworld.com/wp-content/uploads/2023/01/image_search_1674708946114.webp" alt="Sardar Patel">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sardar Patel</h4>
+                            <p>Unified princely states into Indian union as first Deputy PM.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.bigproperty.in/blog/wp-content/uploads/2024/01/netaji-subhash-chandra-bose-best-quotes1705982810629.jpg" alt="Subhas Chandra Bose">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Subhas Chandra Bose</h4>
+                            <p>Radical leader who later formed Indian National Army.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Major Achievements</h2>
+                <ul class="principles-list">
+                    <li>Led India to independence from British rule</li>
+                    <li>Established India as democratic republic</li>
+                    <li>Formulated India's constitution</li>
+                    <li>Implemented land reforms and economic planning</li>
+                    <li>Promoted secularism and national integration</li>
+                    <li>Shaped India's non-aligned foreign policy</li>
+                    <li>Developed scientific and educational institutions</li>
+                </ul>
+
+                <h2>Important Resolutions</h2>
+                <ul class="principles-list">
+                    <li>1906: Swaraj (self-rule) as goal</li>
+                    <li>1929: Purna Swaraj (complete independence)</li>
+                    <li>1931: Fundamental Rights resolution</li>
+                    <li>1942: Quit India resolution</li>
+                    <li>1947: Accepts partition for independence</li>
+                    <li>1955: Socialist pattern of society</li>
+                    <li>1985: Science and technology for development</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"The Indian National Congress is the greatest political organization in India today."</p>
+            <p class="quote-author">— Jawaharlal Nehru, first Prime Minister of India</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="indian-independence-movement.html" class="back-button">Explore Freedom Struggle</a>
+        </div>
+    </div>
+
+    <script>
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

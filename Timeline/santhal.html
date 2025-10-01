@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santhal Rebellion - Indian History</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://th.bing.com/th/id/OIP.QOgdQU_kLuIXGAEv4-5V5gHaD6?rs=1&pid=ImgDetMain');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/India_geographic_map.svg/1200px-India_geographic_map.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1855-1856</div>
+        <h1>Santhal Rebellion</h1>
+        <p>The tribal uprising against British colonial rule and exploitative zamindari system</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Hul (Revolution) of the Santhals</h2>
+                    <p>The Santhal Rebellion (also known as the Santhal Hul) was a native rebellion in present-day Jharkhand, Eastern India against both the British colonial authority and the corrupt zamindari system by the Santhal people. It began on June 30, 1855 and lasted until 1856 when it was brutally suppressed by the British forces.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Causes of the Rebellion</h3>
+                        <p>The rebellion was caused by the oppressive economic policies of the British, excessive land taxes, exploitation by money lenders and zamindars, and the destruction of the traditional agrarian system. The Santhals were also angered by the corruption of police and the courts which failed to protect them from exploitation. The rebellion was led by the four Murmu brothers - Sidhu, Kanhu, Chand and Bhairav.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1832</div>
+                            <div class="timeline-content">
+                                <h3>British Settlement</h3>
+                                <p>British demarcate Damin-i-Koh region in Jharkhand as Santhal Pargana and encourage Santhal settlement.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1854</div>
+                            <div class="timeline-content">
+                                <h3>Growing Resentment</h3>
+                                <p>Exploitation by moneylenders and zamindars reaches peak; Santhals begin organizing resistance.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">June 30, 1855</div>
+                            <div class="timeline-content">
+                                <h3>Rebellion Begins</h3>
+                                <p>Santhals declare rebellion at Bhagnadihi village; attack moneylenders and zamindars.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">July 1855</div>
+                            <div class="timeline-content">
+                                <h3>Massive Uprising</h3>
+                                <p>Over 30,000 Santhals join the rebellion; attack British police stations and government buildings.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1856</div>
+                            <div class="timeline-content">
+                                <h3>Brutal Suppression</h3>
+                                <p>British deploy over 10,000 troops with modern weapons; rebellion crushed by mid-1856.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1856</div>
+                            <div class="timeline-content">
+                                <h3>Aftermath</h3>
+                                <p>Santhal Pargana created as separate administrative unit; leaders Sidhu and Kanhu killed.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://images.cnbctv18.com/wp-content/uploads/2022/11/Birsa-Munda-Biography-1019x573.jpg?impolicy=website&width=617&height=264" alt="Santhal Rebellion Art">
+                            <div class="gallery-caption">Artistic depiction of Santhal warriors in battle</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Railway_map_india_ILN_1865.jpg/440px-Railway_map_india_ILN_1865.jpg" alt="Map of Santhal Rebellion">
+                            <div class="gallery-caption">Map showing the core area of the Santhal Rebellion</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://alchetron.com/cdn/santhal-rebellion-03b11ec8-a350-4e61-863c-03b2f2f00f4-resize-750.jpeg" alt="British troops fighting Santhals">
+                            <div class="gallery-caption">British East India Company troops engaging Santhal rebels</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://thumbs.dreamstime.com/z/santhal-rebellion-sculpture-shaheedi-park-delhi-india-santhal-rebellion-sculpture-shaheedi-park-delhi-india-315517551.jpg?w=576" alt="Santhal Rebellion Memorial">
+                            <div class="gallery-caption">Memorial commemorating the Santhal Rebellion leaders</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Santhal Rebellion</h3>
+                        <p>The Santhal Rebellion was one of the most significant tribal uprisings in Indian history that demonstrated organized resistance against colonial exploitation. Here's an in-depth look at various aspects of this pivotal event:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Guerrilla Tactics</h4>
+                                    <p>The Santhals used their knowledge of local forests and terrain to wage effective guerrilla warfare against the British. They used traditional weapons like bows and arrows against British firearms.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Political Consequences</h4>
+                                    <p>The rebellion led to the creation of Santhal Pargana as a separate administrative division to address tribal concerns. It exposed the flaws in British land revenue policies.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Leadership</h4>
+                                    <p>The rebellion was led by four brothers - Sidhu, Kanhu, Chand and Bhairav Murmu. Sidhu and Kanhu claimed to have divine visions ordering them to fight oppression.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Cultural Factors</h4>
+                                    <p>The rebellion had strong religious and cultural elements with Santhals believing in divine sanction for their fight. They saw it as a war to protect their traditional way of life.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Connection to 1857</h4>
+                                    <p>Though preceding the 1857 Revolt, the Santhal Rebellion demonstrated similar anti-colonial sentiment and inspired later tribal resistance movements.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Long-Term Effects</h4>
+                                    <p>The rebellion forced the British to recognize tribal rights to some extent and influenced later tribal policies. It remains a symbol of tribal resistance in India.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Santhal Rebellion</h3>
+                            <p>Though brutally suppressed, the Santhal Rebellion remains one of the most important tribal uprisings in Indian history. It demonstrated the capacity of tribal communities to organize large-scale resistance against colonial oppression. The rebellion forced the British to create the separate Santhal Pargana district to administer tribal areas differently. The sacrifice of Sidhu, Kanhu and thousands of Santhal warriors inspired later tribal movements and freedom fighters. Today, the rebellion is commemorated in Jharkhand and West Bengal, with June 30 observed as Hul Diwas (Revolution Day). The Santhal Hul stands as a powerful symbol of indigenous resistance against exploitation and for the rights of tribal communities in India.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://i.pinimg.com/originals/c8/66/90/c86690cbc2c02971891d2f68de82fdb1.png" alt="Sidhu Murmu">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sidhu Murmu</h4>
+                            <p>One of the principal leaders of the Santhal Rebellion who claimed divine inspiration.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://th.bing.com/th/id/OIP.5XzzMOpauohZu84zKjcb_AAAAA?rs=1&pid=ImgDetMain" alt="Kanhu Murmu">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Kanhu Murmu</h4>
+                            <p>Sidhu's brother and co-leader of the rebellion who organized military resistance.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://media.gettyimages.com/id/463994003/photo/john-jervis-earl-of-st-vincent-british-admiral-c1809-jervis-led-the-british-fleet-to-victory.jpg?s=612x612&w=gi&k=20&c=hD6TvTHAFTCCfl3crwwhtK6cgPrwBqcW_0UVqdj6YQ4=" alt="British Officer">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Major Jervis</h4>
+                            <p>British officer who led the military campaign to suppress the rebellion.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://tribaldarshan.com/wp-content/uploads/2016/11/Phulo-Jhano-WB.jpg" alt="Santhal Warriors">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Phulo-Jhano</h4>
+                            <p>Two Santhal women who led groups of warriors during the rebellion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Rebellion Locations</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 50%; left: 60%;" data-location="Bhagnadihi (Rebellion Start)"></div>
+                    <div class="map-marker" style="top: 55%; left: 65%;" data-location="Santhal Pargana (Core Area)"></div>
+                    <div class="map-marker" style="top: 45%; left: 55%;" data-location="Calcutta (British Capital)"></div>
+                    <div class="map-marker" style="top: 60%; left: 70%;" data-location="Rajmahal Hills (Battles)"></div>
+                </div>
+
+                <h2>Consequences</h2>
+                <ul class="impact-list">
+                    <li>First major tribal rebellion against British rule in India</li>
+                    <li>Led to creation of Santhal Pargana as separate district</li>
+                    <li>Exposed exploitation by zamindars and moneylenders</li>
+                    <li>Demonstrated tribal capacity for organized resistance</li>
+                    <li>Influenced later tribal rights movements</li>
+                    <li>Inspired subsequent anti-colonial struggles</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"The Santhal Hul was not merely a rebellion - it was a revolutionary war for the protection of rights, culture and dignity of indigenous people against colonial exploitation."</p>
+            <p class="quote-author">— Historian's assessment of the Santhal Rebellion</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="indian-battles.html" class="back-button">Explore More Historical Battles</a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Bhagnadihi (Rebellion Start)": "The village where the Santhal Rebellion was formally declared on June 30, 1855. The Santhal leaders gathered here to plan their uprising.",
+                    "Santhal Pargana (Core Area)": "The main region of the Santhal Rebellion covering parts of modern Jharkhand, West Bengal and Bihar where most fighting occurred.",
+                    "Calcutta (British Capital)": "Calcutta (now Kolkata) was the capital of British India. News of the rebellion caused alarm among colonial authorities.",
+                    "Rajmahal Hills (Battles)": "The hilly terrain where many battles were fought as Santhals used guerrilla tactics against British forces."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

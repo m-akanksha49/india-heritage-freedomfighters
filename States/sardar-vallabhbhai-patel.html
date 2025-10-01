@@ -1,0 +1,548 @@
+<!-- File: sardar_vallabhbhai_patel.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sardar Vallabhbhai Patel - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+ <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://aalumaisirpi.com/wp-content/uploads/2021/10/a15.jpg" alt="Sardar Vallabhbhai Patel">
+      </div>
+      <div class="hero-content">
+        <h2>Sardar Vallabhbhai Patel</h2>
+        <p>Known as the "Iron Man of India" and "Bismarck of India", Sardar Vallabhbhai Patel was one of the most influential leaders in India's freedom struggle and the chief architect of independent India's political integration. His steadfast leadership and organizational skills earned him the title 'Sardar' (Leader) from Mahatma Gandhi himself.</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>October 31, 1875</p>
+            <p>Nadiad, Gujarat</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>December 15, 1950 (aged 75)</p>
+            <p>Bombay, India</p>
+          </div>
+          <div class="fact-card">
+            <h4>Education</h4>
+            <p>Middle Temple, London</p>
+            <p>Barrister-at-Law</p>
+          </div>
+          <div class="fact-card">
+            <h4>Political Party</h4>
+            <p>Indian National Congress</p>
+          </div>
+          <div class="fact-card">
+            <h4>Key Roles</h4>
+            <p>First Deputy Prime Minister</p>
+            <p>First Home Minister</p>
+            <p>Unifier of India</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "My only desire is that India should be a good producer and no one should be hungry, shedding tears for food in the country."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Born in Nadiad, Gujarat, on October 31, 1875, Vallabhbhai Jhaverbhai Patel was the fourth of six children in a peasant family. Despite limited early education, he studied law in England and became a successful barrister in Ahmedabad. Inspired by Mahatma Gandhi, he abandoned his lucrative practice to join India's freedom struggle.</p>
+      
+      <p>Patel first gained prominence during the Kheda Satyagraha (1918) and Bardoli Satyagraha (1928), where his leadership earned him the title 'Sardar'. He organized relief efforts during natural calamities and became a key Congress leader, serving as its president in 1931.</p>
+      
+      <p>After independence, as India's first Home Minister and Deputy Prime Minister, Patel undertook the mammoth task of integrating over 560 princely states into the Indian Union. His diplomatic skills and firm resolve ensured India's territorial integrity, earning him the sobriquet 'Iron Man of India'.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline of Contributions</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1917</div>
+          <p>Elected Ahmedabad Municipal Corporation's first Indian President</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1918</div>
+          <p>Led Kheda Satyagraha against unjust taxation during famine</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1928</div>
+          <p>Successfully led Bardoli Satyagraha, earning the title 'Sardar'</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1931</div>
+          <p>Presided over Karachi Congress session that passed Fundamental Rights resolution</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1942</div>
+          <p>Played crucial role in Quit India Movement despite being imprisoned</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1947-50</div>
+          <p>Integrated princely states into Indian Union as first Home Minister</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1950</div>
+          <p>Passed away in Bombay after prolonged illness</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Integration of Princely States</h3>
+      <p>Patel's most remarkable achievement was the integration of over 560 princely states into the Indian Union after independence. Facing resistance from rulers of states like Hyderabad, Junagadh, and Kashmir, Patel employed a combination of diplomacy and force when necessary.</p>
+      
+      <p>His approach involved:</p>
+      <ul>
+        <li>Persuading rulers to join India voluntarily by appealing to patriotism</li>
+        <li>Offering privy purses and privileges to cooperating rulers</li>
+        <li>Using military action when diplomacy failed (Operation Polo in Hyderabad)</li>
+        <li>Creating a centralized administrative structure</li>
+      </ul>
+      
+      <p>This monumental task was completed within two years, preventing the balkanization of India that many had feared. Patel's efforts created the united India we know today.</p>
+    </div>
+
+    <div class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Vallabhbhai_Patel_as_a_district_pleader_in_Borsad.jpg/250px-Vallabhbhai_Patel_as_a_district_pleader_in_Borsad.jpg" alt="Young Vallabhbhai Patel">
+          <div class="gallery-caption">Young Vallabhbhai Patel as a barrister</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201707/nehru_patel_0647_070717071248.jpg" alt="Patel with Mahatma Gandhi">
+          <div class="gallery-caption">With Mahatma Gandhi during freedom struggle</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://media.licdn.com/dms/image/v2/D4E12AQE4Ok-2i13-9A/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1723127824549?e=2147483647&v=beta&t=62Ya4m2lCkFPxDo6ybuyFAlqwpbvLDcqEO86Aa_v4eI" alt="Patel meeting princely rulers">
+          <div class="gallery-caption">Negotiating with princely state rulers</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://i.ytimg.com/vi/qt4wKHhq6F0/mqdefault.jpg" alt="Statue of Unity">
+          <div class="gallery-caption">The Statue of Unity, world's tallest statue</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lessons to Learn from Sardar Patel</h3>
+      
+      <div class="lesson-card">
+        <h4>Leadership in Crisis</h4>
+        <p>Patel demonstrated extraordinary leadership during India's most challenging transition period. His ability to make tough decisions while maintaining compassion teaches us about balanced leadership.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4>Nation First Attitude</h4>
+        <p>Despite ideological differences with colleagues, Patel always prioritized national interest over personal ambitions or party politics - a lesson in selfless service.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4>Practical Problem Solving</h4>
+        <p>His pragmatic approach to integrating princely states shows how practical solutions can overcome seemingly impossible challenges.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4>Organizational Skills</h4>
+        <p>From Bardoli Satyagraha to uniting India, Patel's exceptional organizational abilities teach us the value of meticulous planning and execution.</p>
+      </div>
+      
+      <div class="lesson-card">
+        <h4>Courage of Conviction</h4>
+        <p>Patel never hesitated to take unpopular decisions when convinced of their necessity, demonstrating moral courage we can all learn from.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-landmark"></i> Statue of Unity</h4>
+          <p>The 182-meter tall Statue of Unity in Gujarat is the world's tallest statue. Built on Sadhu Bet island, it overlooks the Narmada Dam and includes a museum, exhibition hall, and viewing gallery.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-user-shield"></i> National Unity Day</h4>
+          <p>October 31, Patel's birthday, is celebrated as Rashtriya Ekta Diwas (National Unity Day). The 'Run for Unity' event is organized nationwide to commemorate his contributions.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-book"></i> Educational Institutions</h4>
+          <p>Many institutions bear his name, including Sardar Patel University, Sardar Vallabhbhai National Institute of Technology, and Sardar Patel Police University.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-medal"></i> Awards and Honors</h4>
+          <p>The Sardar Patel Award is given for exceptional contribution to national integration. In 1991, he was posthumously awarded the Bharat Ratna, India's highest civilian honor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Freedom Fighters</a>
+        <a href="#">Timeline</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

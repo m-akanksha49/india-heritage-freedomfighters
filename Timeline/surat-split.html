@@ -1,0 +1,268 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Split - Indian Freedom Movement</title>
+    <style>/* CSS copied from salt-satyagraha.html */
+        :root { --saffron: #FF9933; --green: #138808; --blue: #000080; --white: #ffffff; --light-bg: #f8f8f8; --text-dark: #333333; --text-light: #666666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://rukminim1.flixcart.com/image/416/416/jn6ck280/painting/s/h/d/mm-2094-mad-masters-original-imaf9wm9fbdcyghn.jpeg?q=70'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Bal_Gangadhar_Tilak.jpg'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1907</div>
+        <h1>Surat Split</h1>
+        <p>The split of the Indian National Congress at Surat in 1907, dividing it into Moderates and Extremists, was a turning point in India's freedom struggle.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Surat Split</h2>
+                    <p>The Surat Split occurred during the annual session of the Indian National Congress in 1907 at Surat. The Congress was divided into two groups: Moderates, led by Gopal Krishna Gokhale, and Extremists, led by Bal Gangadhar Tilak, Lala Lajpat Rai, and Bipin Chandra Pal. The split weakened the national movement temporarily but also paved the way for new strategies and leadership.</p>
+                    <div class="highlight-box">
+                        <h3>Why did the split happen?</h3>
+                        <p>The split was caused by differences in ideology and approach. Moderates favored constitutional methods and gradual reforms, while Extremists advocated for direct action and self-rule.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1907</div>
+                            <div class="timeline-content">
+                                <h3>Surat Session</h3>
+                                <p>The Congress session at Surat ends in chaos, with the party splitting into two factions.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1908</div>
+                            <div class="timeline-content">
+                                <h3>Aftermath</h3>
+                                <p>Extremist leaders like Tilak are arrested, and the movement loses momentum for a few years.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1916</div>
+                            <div class="timeline-content">
+                                <h3>Reunion</h3>
+                                <p>The Moderates and Extremists reunite at the Lucknow session, strengthening the national movement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://tse4.mm.bing.net/th/id/OIP.MoW7qbGMXlR8pn3xxgO3OwAAAA?cb=thvnext&w=400&h=400&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Bal Gangadhar Tilak">
+                            <div class="gallery-caption">Bal Gangadhar Tilak, leader of the Extremists</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://metaunfolded.com/wp-content/uploads/2021/12/Lala-Lajpat-Rai-300x300.jpg" alt="Lala Lajpat Rai">
+                            <div class="gallery-caption">Lala Lajpat Rai, prominent Extremist leader</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.gyanipandit.com/wp-content/uploads/2015/06/Bipin-Chandra-Pal.jpg" alt="Bipin Chandra Pal">
+                            <div class="gallery-caption">Bipin Chandra Pal, part of the Lal-Bal-Pal trio</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.XBNlr4a7Mwsg6RgpQYGk6AHaEK?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gopal Krishna Gokhale">
+                            <div class="gallery-caption">Gopal Krishna Gokhale, leader of the Moderates</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Surat Split</h3>
+                        <p>The Surat Split was a significant event in the history of the Indian National Congress. It highlighted the ideological differences within the party and set the stage for future developments in the freedom movement.</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Moderates vs. Extremists</h4>
+                                    <p>Moderates believed in petitions, meetings, and discussions, while Extremists wanted immediate self-rule and were willing to use more assertive methods.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Impact on the Movement</h4>
+                                    <p>The split weakened the Congress for a few years, but also led to the rise of new leaders and strategies.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Reunion at Lucknow</h4>
+                                    <p>The reunion in 1916 brought together the strengths of both groups, leading to greater unity and effectiveness.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Key Leaders</h4>
+                                    <p>Bal Gangadhar Tilak, Lala Lajpat Rai, Bipin Chandra Pal (Extremists); Gopal Krishna Gokhale (Moderates).</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Legacy</h4>
+                                    <p>The Surat Split is remembered as a turning point that shaped the future course of the Indian freedom struggle.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Surat Split</h3>
+                            <p>The Surat Split demonstrated the challenges of unity in a diverse movement, but also the resilience and adaptability of Indian leaders in the face of adversity.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.odishalifestyle.com/wp-content/uploads/2024/02/Biography-Of-Bal-Gangadhar-Tilak-q.jpg" alt="Bal Gangadhar Tilak">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Bal Gangadhar Tilak</h4>
+                            <p>Leader of the Extremist faction in Congress.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://newsd.in/wp-content/uploads/2020/01/LLPRFULL-1280x720-1.jpg" alt="Lala Lajpat Rai">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Lala Lajpat Rai</h4>
+                            <p>Prominent Extremist leader and freedom fighter.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://wordictpost.com/public/assets/images/postimg/main/1652850332_f0f1945453482cdb2e82.jpg" alt="Bipin Chandra Pal">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Bipin Chandra Pal</h4>
+                            <p>Key member of the Lal-Bal-Pal trio.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.L17pWJiWKUWK6hcFk4q5BwAAAA?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gopal Krishna Gokhale">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Gopal Krishna Gokhale</h4>
+                            <p>Leader of the Moderate faction in Congress.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Surat Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 60%; left: 50%;" data-location="Surat (Split)"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Divided Congress into Moderates and Extremists</li>
+                    <li>Temporarily weakened the national movement</li>
+                    <li>Led to new strategies and leadership</li>
+                    <li>Reunion at Lucknow in 1916</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"Swaraj is my birthright and I shall have it."</p>
+            <p class="quote-author">— Bal Gangadhar Tilak</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Surat (Split)": "The Indian National Congress split into Moderates and Extremists at Surat in 1907."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

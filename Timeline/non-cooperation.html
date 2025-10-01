@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Cooperation Movement - Indian Freedom Movement</title>
+    <style>/* CSS copied from salt-satyagraha.html */
+        :root { --saffron: #FF9933; --green: #138808; --blue: #000080; --white: #ffffff; --light-bg: #f8f8f8; --text-dark: #333333; --text-light: #666666; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://www.cheggindia.com/wp-content/uploads/2023/12/what-is-non-cooperation-movement.png'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Mahatma-Gandhi%2C_studio%2C_1931.jpg'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1920-1922</div>
+        <h1>Non-Cooperation Movement</h1>
+        <p>The Non-Cooperation Movement, led by Mahatma Gandhi, was a mass protest against British rule, calling for Indians to withdraw from colonial institutions.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Non-Cooperation Movement</h2>
+                    <p>Launched in 1920, the Non-Cooperation Movement was a nationwide campaign of nonviolent resistance against British rule. Indians were urged to boycott British goods, schools, courts, and titles, and to promote swadeshi and self-reliance.</p>
+                    <div class="highlight-box">
+                        <h3>Why Non-Cooperation?</h3>
+                        <p>The movement was a response to the Jallianwala Bagh Massacre, the Rowlatt Act, and the failure of the Montagu Chelmsford Reforms to meet nationalist aspirations.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1920</div>
+                            <div class="timeline-content">
+                                <h3>Movement Launched</h3>
+                                <p>Gandhi and the Congress launch the Non-Cooperation Movement, calling for mass boycott of British institutions.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1921</div>
+                            <div class="timeline-content">
+                                <h3>Mass Participation</h3>
+                                <p>Millions join the movement, boycotting schools, courts, and foreign goods, and promoting khadi and swadeshi.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1922</div>
+                            <div class="timeline-content">
+                                <h3>Chauri Chaura Incident</h3>
+                                <p>The movement is called off after violence erupts at Chauri Chaura, where protesters set fire to a police station.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://www.orderofindia.com/wp-content/uploads/2023/10/Untitled-design-55-1024x597.png" alt="Mahatma Gandhi">
+                            <div class="gallery-caption">Mahatma Gandhi, leader of the movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://img.jagranjosh.com/images/2022/April/1242022/Jallianwala%20Bagh%20Massacre-min.png" alt="Jallianwala Bagh Memorial">
+                            <div class="gallery-caption">Jallianwala Bagh Massacre, a catalyst for the movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.livemint.com/img/2021/02/04/1140x641/PTI02_03_2021_000316B_1612405601589_1612405648165.jpg" alt="Chauri Chaura Memorial">
+                            <div class="gallery-caption">Chauri Chaura, where violence led to the movement's suspension</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://st.adda247.com/https://adda247jobs-wp-assets-adda247.s3.ap-south-1.amazonaws.com/jobs/wp-content/uploads/sites/2/2023/02/13164104/01-17-1.png" alt="Khadi Spinning">
+                            <div class="gallery-caption">Promotion of khadi and swadeshi during the movement</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: Non-Cooperation Movement</h3>
+                        <p>The movement marked the first mass participation of Indians in the freedom struggle, uniting people across regions and communities in nonviolent protest.</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Boycott of Institutions</h4>
+                                    <p>Indians left British schools, courts, and government jobs, and returned British honors and titles.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Promotion of Swadeshi</h4>
+                                    <p>The movement encouraged the use of Indian-made goods and the spinning of khadi.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Chauri Chaura Incident</h4>
+                                    <p>Violence at Chauri Chaura led Gandhi to call off the movement, emphasizing nonviolence.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Key Leaders</h4>
+                                    <p>Mahatma Gandhi, Motilal Nehru, C.R. Das, Sardar Patel, Jawaharlal Nehru.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Legacy</h4>
+                                    <p>The movement set the stage for future mass movements and established Gandhi as the leader of the national struggle.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of Non-Cooperation</h3>
+                            <p>The movement demonstrated the power of mass nonviolent protest and inspired future campaigns for independence.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://cdn.britannica.com/72/200572-050-448D5045/Mahatma-Gandhi-1930.jpg" alt="Mahatma Gandhi">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mahatma Gandhi</h4>
+                            <p>Leader of the Non-Cooperation Movement.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://img.jagranjosh.com/images/2021/February/522021/Chauri-Chaura-Incident.webp" alt="Chauri Chaura">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Chauri Chaura</h4>
+                            <p>Site of the incident that led to the movement's suspension.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Movement Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 50%; left: 50%;" data-location="Chauri Chaura (Uttar Pradesh)"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>First mass movement for independence</li>
+                    <li>Promoted swadeshi and self-reliance</li>
+                    <li>Established Gandhi as national leader</li>
+                    <li>Set stage for future movements</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"Non-cooperation with evil is as much a duty as is cooperation with good."</p>
+            <p class="quote-author">— Mahatma Gandhi</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Chauri Chaura (Uttar Pradesh)": "Site of the incident that led to the suspension of the movement in 1922."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

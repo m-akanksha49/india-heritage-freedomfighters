@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Freedom Fighter</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+    
+    :root {
+      --orange: #FF6B35;
+      --green: #4CB944;
+      --dark-green: #2E8B57;
+      --red: #EF3E36;
+      --blue: #254E70;
+      --yellow: #FFC914;
+      --white: #F5F5F5;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--green) 100%);
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin: 20px 0;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .score-display {
+      font-size: 1.3rem;
+      font-weight: bold;
+      background: rgba(255,255,255,0.9);
+      padding: 12px 25px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      color: var(--dark-green);
+      border: 2px solid var(--white);
+      animation: bounceIn 0.8s ease-out;
+    }
+
+    .round-box {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 95%;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.5);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+    
+    .round-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+
+    .fighter-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      margin: 15px 0;
+      color: var(--dark-green);
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .fighter-name::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--orange);
+      border-radius: 2px;
+      animation: scaleIn 0.5s ease-out;
+    }
+
+    .fighter-hint {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+      font-style: italic;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .card-area {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin: 20px 0;
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 160px;
+      height: 220px;
+      perspective: 1000px;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s;
+      animation: cardAppear 0.6s ease-out;
+      animation-fill-mode: backwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      border-radius: 12px;
+    }
+
+    .card.flip .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card.selected .card-inner {
+      box-shadow: 0 0 0 4px var(--orange);
+    }
+
+    .card.correct .card-inner {
+      box-shadow: 0 0 0 4px var(--green);
+      animation: pulseCorrect 1s;
+    }
+
+    .card.incorrect .card-inner {
+      box-shadow: 0 0 0 4px var(--red);
+      animation: shake 0.5s;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transform: rotateY(0deg);
+    }
+    
+    .card-front::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="white" opacity="0.1" width="50" height="50" x="25" y="25" rx="10" ry="10"/></svg>');
+      background-size: 100px 100px;
+      opacity: 0.2;
+    }
+
+    .card-back {
+      background: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    
+    .card-back:hover img {
+      transform: scale(1.05);
+    }
+
+    .result {
+      margin: 25px 0;
+      font-size: 1.4rem;
+      font-weight: bold;
+      min-height: 40px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: rgba(255,255,255,0.9);
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .correct {
+      color: var(--green);
+    }
+
+    .incorrect {
+      color: var(--red);
+    }
+
+    .next-btn {
+      margin: 20px 0;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(239, 62, 54, 0.4);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .next-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .next-btn:hover {
+      background: var(--dark-green);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(76, 185, 68, 0.6);
+    }
+    
+    .next-btn:hover::before {
+      left: 100%;
+    }
+
+    .next-btn:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .next-btn:disabled:hover::before {
+      display: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: translateX(-50%) scaleX(0);
+      }
+      to {
+        transform: translateX(-50%) scaleX(1);
+      }
+    }
+    
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(50px) rotateY(90deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateY(0deg);
+      }
+    }
+    
+    @keyframes pulseCorrect {
+      0% {
+        box-shadow: 0 0 0 0 rgba(76, 185, 68, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(76, 185, 68, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(76, 185, 68, 0);
+      }
+    }
+    
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+      }
+      20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    /* Confetti styles */
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: var(--yellow);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+    
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Celebration animation */
+    .celebration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+    }
+    
+    .celebration.active {
+      animation: fadeIn 0.5s forwards;
+    }
+    
+    .celebration-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 5rem;
+      color: white;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      animation: float 2s ease-in-out infinite;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        width: 140px;
+        height: 190px;
+      }
+      
+      .fighter-name {
+        font-size: 1.6rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .card {
+        width: 120px;
+        height: 170px;
+      }
+      
+      .fighter-hint {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>⭐ Guess the Freedom Fighter ⭐</h1>
+<div class="game-container">
+  <div class="score-display">Score: <span id="score">0</span> / <span id="total">0</span></div>
+  <div class="round-box">
+    <div class="fighter-name" id="fighterName">Loading...</div>
+    <div class="fighter-hint" id="fighterHint"></div>
+    <div class="card-area" id="cardArea"></div>
+    <div class="result" id="result"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextRound()" disabled>Next Round</button>
+  </div>
+</div>
+
+<div class="celebration" id="celebration">
+  <div class="celebration-text">Great Job!</div>
+</div>
+
+<script>
+const freedomFighters = {
+  "bhagat.jpg": {
+    name: "Bhagat Singh",
+    hint: "Known as 'Shaheed Bhagat Singh', revolutionary who was hanged at young age"
+  },
+  "rani.jpg": {
+    name: "Rani Lakshmibai",
+    hint: "The Queen of Jhansi who fought bravely against British in 1857"
+  },
+  "bose.jpg": {
+    name: "Subhas Chandra Bose",
+    hint: "Founded Indian National Army (INA) with the slogan 'Give me blood and I will give you freedom'"
+  },
+  "gandhi.jpg": {
+    name: "Mahatma Gandhi",
+    hint: "Father of the Nation, leader of non-violent independence movement"
+  },
+  "nehru.jpg": {
+    name: "Jawaharlal Nehru",
+    hint: "First Prime Minister of India, known as 'Chacha Nehru'"
+  },
+  "sarojini.jpg": {
+    name: "Sarojini Naidu",
+    hint: "Known as 'Nightingale of India', first woman governor of an Indian state"
+  },
+  "tilak.jpg": {
+    name: "Bal Gangadhar Tilak",
+    hint: "Known as 'Lokmanya', said 'Swaraj is my birthright'"
+  },
+  "patel.jpg": {
+    name: "Sardar Vallabhbhai Patel",
+    hint: "Known as 'Iron Man of India', first Deputy Prime Minister"
+  },
+  "lal.jpg": {
+    name: "Lala Lajpat Rai",
+    hint: "Known as 'Punjab Kesari', died after police lathi charge protest"
+  },
+  "gokhale.jpg": {
+    name: "Gopal Krishna Gokhale",
+    hint: "Political guru of Gandhi, founded Servants of India Society"
+  },
+  "subhash.jpg": {
+    name: "Subhas Chandra Bose",
+    hint: "Founded Indian National Army (INA), alternative image"
+  }
+};
+
+const rounds = [
+  {
+    correctImage: "bhagat.jpg",
+    options: ["bhagat.jpg", "gandhi.jpg", "nehru.jpg", "subhash.jpg"]
+  },
+  {
+    correctImage: "rani.jpg",
+    options: ["rani.jpg", "sarojini.jpg", "tilak.jpg", "bose.jpg"]
+  },
+  {
+    correctImage: "bose.jpg",
+    options: ["gokhale.jpg", "bose.jpg", "patel.jpg", "bhagat.jpg"]
+  },
+  {
+    correctImage: "gandhi.jpg",
+    options: ["nehru.jpg", "gandhi.jpg", "lal.jpg", "rani.jpg"]
+  },
+  {
+    correctImage: "nehru.jpg",
+    options: ["nehru.jpg", "gokhale.jpg", "sarojini.jpg", "patel.jpg"]
+  },
+  {
+    correctImage: "sarojini.jpg",
+    options: ["rani.jpg", "sarojini.jpg", "gandhi.jpg", "tilak.jpg"]
+  }
+];
+
+let currentRound = 0;
+let score = 0;
+let correctAnswerSelected = false;
+let selectedCard = null;
+
+function loadRound() {
+  const round = rounds[currentRound];
+  const fighter = freedomFighters[round.correctImage];
+  
+  const nameBox = document.getElementById("fighterName");
+  const hintBox = document.getElementById("fighterHint");
+  const cardArea = document.getElementById("cardArea");
+  const result = document.getElementById("result");
+  const nextBtn = document.getElementById("nextBtn");
+  const scoreDisplay = document.getElementById("score");
+  const totalDisplay = document.getElementById("total");
+
+  nameBox.textContent = fighter.name;
+  hintBox.textContent = fighter.hint;
+  cardArea.innerHTML = "";
+  result.textContent = "";
+  result.className = "result";
+  nextBtn.disabled = true;
+  correctAnswerSelected = false;
+  selectedCard = null;
+  
+  // Update score display
+  scoreDisplay.textContent = score;
+  totalDisplay.textContent = rounds.length;
+
+  const shuffled = [...round.options].sort(() => 0.5 - Math.random());
+
+  shuffled.forEach((img, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.image = img;
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-front">Click to Reveal</div>
+        <div class="card-back">
+          <img src="images/${img}" alt="${freedomFighters[img].name}">
+        </div>
+      </div>
+    `;
+    
+    card.onclick = () => handleCardClick(card, img, round.correctImage);
+    cardArea.appendChild(card);
+  });
+}
+
+function handleCardClick(card, img, correctImage) {
+  const result = document.getElementById("result");
+  const nextBtn = document.getElementById("nextBtn");
+
+  // If already correct, do nothing
+  if (correctAnswerSelected) return;
+
+  // If card is not flipped, flip it
+  if (!card.classList.contains("flip")) {
+    card.classList.add("flip");
+    return;
+  }
+
+  // If we're here, card is flipped and being selected as answer
+  if (selectedCard) {
+    selectedCard.classList.remove("selected");
+  }
+  selectedCard = card;
+  card.classList.add("selected");
+
+  if (img === correctImage) {
+    // Correct answer
+    correctAnswerSelected = true;
+    score++;
+    document.getElementById("score").textContent = score;
+    result.textContent = "✅ Correct! Well done!";
+    result.className = "result correct";
+    nextBtn.disabled = false;
+    card.classList.add("correct");
+    celebrate();
+    createConfetti();
+    
+    // Flip all cards to show all options
+    document.querySelectorAll('.card').forEach(c => {
+      if (!c.classList.contains("flip")) {
+        c.classList.add("flip");
+      }
+    });
+  } else {
+    // Incorrect answer
+    result.textContent = `❌ Incorrect! That's ${freedomFighters[img].name}. Try another!`;
+    result.className = "result incorrect";
+    card.classList.add("incorrect");
+    
+    // Flip back after delay
+    setTimeout(() => {
+      if (!correctAnswerSelected) {
+        card.classList.remove("flip");
+        card.classList.remove("selected");
+        card.classList.remove("incorrect");
+        selectedCard = null;
+      }
+    }, 1500);
+  }
+}
+
+function celebrate() {
+  const celebration = document.getElementById("celebration");
+  celebration.classList.add("active");
+  setTimeout(() => {
+    celebration.classList.remove("active");
+  }, 2000);
+}
+
+function createConfetti() {
+  const colors = ['#FF6B35', '#4CB944', '#FFC914', '#254E70', '#EF3E36'];
+  const roundBox = document.querySelector('.round-box');
+  
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.top = -20 + 'px';
+    confetti.style.width = Math.random() * 12 + 6 + 'px';
+    confetti.style.height = confetti.style.width;
+    confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+    
+    roundBox.appendChild(confetti);
+    
+    // Remove confetti after animation
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
+}
+
+function nextRound() {
+  currentRound++;
+  if (currentRound < rounds.length) {
+    loadRound();
+  } else {
+    const roundBox = document.querySelector('.round-box');
+    roundBox.innerHTML = `
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: var(--dark-green);">Game Completed! 🎉</h2>
+      <p style="font-size: 1.8rem; color: #555; margin-bottom: 20px;">Your final score: <strong style="color: var(--orange);">${score}/${rounds.length}</strong></p>
+      <p style="font-size: 1.2rem; margin: 20px 0; color: #555;">Thanks for playing! ❤️</p>
+      <button class="next-btn" onclick="location.reload()" style="margin-top: 20px;">Play Again</button>
+    `;
+    celebrate();
+    createConfetti();
+  }
+}
+
+window.onload = loadRound;
+</script>
+
+</body>
+</html>

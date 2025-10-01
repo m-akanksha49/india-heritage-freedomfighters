@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gopal Singh Kharwa - Freedom Fighters of Rajasthan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Freedom Fighters of India</h1>
+      <p class="subtitle">Remembering the heroes who fought for our independence</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTSDC6dNowIAOEvNC0lEpUE13l7c4xZVF0XACTqoaSf11ZERJ49Qrl1Oonrx_iRkvvM-I&usqp=CAU"> </div>
+      <div class="hero-content">
+        <h2>Gopal Singh Kharwa</h2>
+        <p>A courageous tribal leader from Mewar, Rajasthan, Gopal Singh Kharwa is remembered for his fearless resistance against British rule and advocacy for the rights of tribal people.</p>
+
+        <div class="quick-facts">
+          <div class="fact-card">
+            <h4>Born</h4>
+            <p>1880</p>
+            <p>Mewar, Rajasthan</p>
+          </div>
+          <div class="fact-card">
+            <h4>Died</h4>
+            <p>Unknown</p>
+            <p>Rajasthan</p>
+          </div>
+          <div class="fact-card">
+            <h4>Known For</h4>
+            <p>Tribal Upliftment, Anti-British Movements</p>
+          </div>
+          <div class="fact-card">
+            <h4>Community</h4>
+            <p>Bhils of Mewar region</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          "We shall not bow to oppression — even if it costs our lives."
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Gopal Singh Kharwa emerged as a strong voice of resistance from the Bhil tribal community in Mewar during the colonial era. Though lacking formal education, he led his people against oppressive British revenue practices and unjust treatment of tribal populations.</p>
+      <p>He became a symbol of defiance and leadership among the tribal groups, organizing small revolts and mobilizing people to resist British authority in forest regions and remote villages.</p>
+    </div>
+
+    <div class="section">
+      <h3>Resistance Activities Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1905</div>
+          <p>Started organizing tribal groups in the Mewar region to resist forest laws and forced taxation.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1912</div>
+          <p>Led protests and direct action campaigns in tribal belts of southern Rajasthan.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1920s</div>
+          <p>Supported the Non-Cooperation Movement and spread nationalist ideas among tribal communities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <div class="legacy-cards">
+        <div class="legacy-card">
+          <h4><i class="fas fa-users"></i> Tribal Leader</h4>
+          <p>One of the earliest tribal leaders to raise awareness of rights among the Bhils in Mewar.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-hand-fist"></i> Anti-Colonial Icon</h4>
+          <p>Challenged British authority through direct action, inspiring tribal youth.</p>
+        </div>
+        <div class="legacy-card">
+          <h4><i class="fas fa-book"></i> Cultural Inspiration</h4>
+          <p>Featured in Rajasthan's oral traditions and folk songs as a symbol of bravery.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFRUXFxcXGBcXFxcYFxcXFxgXFxcaHRcYHyggGB0lHRcXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lHyUtLS4tLS0tLS0tLS0rLS0rLTUtLS0tLS0tLS4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKgBLAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAACAAEDBAUGB//EADkQAAEDAgQDBgUDAwQDAQAAAAEAAhEDIQQSMUEFUWEGEyJxgaEyQpGxwVLR8CNykhRiguFTovEz/8QAGgEAAgMBAQAAAAAAAAAAAAAAAQIAAwQFBv/EADIRAAICAQMCBAIJBQEAAAAAAAABAhEDEiExBEETIlFhcbEjMkKBkaHB0fAUYnLh8QX/2gAMAwEAAhEDEQA/APMkQQ5UQCsMLChIJAJwEApjgIgE7Wp4SjWIL0Dg7f6NOB8jftdefgLuuAyMOwuO3tJj2XM/9H6q+Jv6TllquIc13ofVLEtMiN7Smr3aRz0CcOzU53A9xquWux0BtfCNN0dR2WGgXOg/JUWGccthJN/4VLSw7rkkAnf8KP3CxhYw27jqVIGBokmT9/JMyk1ojN76ou8p9SfUoMVhMpmQXwAdASAP+1I1t6hNV8lznU8rxlczWMrjlsLImszOp5Q4VGg7CzDeHgmOo3ErN7T946jWABzZWGwN2B3j0tOnWAulgxpUvX9jLkm+RDjzXF9OmDWBN8lqYM3Pen4pgfC3ndTUsUQCcpDgIMVakWEDxZSDbeNQq/AaFOmxhABBaCDsZCu13NMltgZnpOqsyZYpJQpu+GU41OW8tl7FZnGmseBUmnAIb3rWlpmSCKrTEaC4Cv0xDBJDQA4+IOEkkkwdCJNo12WL2lfTNHTQQNrAW/Cj7I1HHDguaSxtVzGCbFhbmI0sAdLjz2RyQxyjqiTFLJqcZfczaqUTacwJElsjwnlMBZvFC5jRlBkmJfOQc5LdFd45w6pXp5WFzJy5Zc4hu7iTuSLZZi88lUwXZllEObUrF2cCSbwRoQDoRz6LK+np2n+X6mqOXYFjX5XRVh0NqAFhgsJgNzG1+l9VNg8TiXsBZRw5GjnvqOgGTIjLJix21Ub+HtALRXqOZaBlBJAFxJ0kn4hCu0sF/TDmAFrbAOPit5prUJXGNhk1IOm6t89akB+mjRLtP97yRfyWXxXgVCsZZNN8RMNAMCBNNoAB6iFeZM+E5T+k/wA+yI1ho5v5Vc+uyvaO389wf08e+5xuJ7MV2mBlcP1AwPWbhQYvs7iGCSzMObTm9tfZd41wiAZHIpqdSDB0+yK6/KvQR9LA8tITr0LH8Bo1XEkFpPzNMX8tCuS43wKph7nxMJs4fYjYro4Oux5XXDMmTppQ3RjwiCdOCtxQCkHIgExCgBoShJOVBAShhGmCgUJGAhRgKFYiEbUwCIBAI6SRCcJaCOu04LXDqFMbAQf+P8C4yFp8AqEVQyfC6QelplYusxa4X6bm3pcmmVM6itVtb4nWHRSYBmUlh8/3VapjRPd0bu0zbBWKOGyOBJzO3PQ6rjtUqZ1exE6u5pyMbJ9uikp4Wob1Kno2ysYnwvzfqEeoTucPjfYbN/dLq22INToNF4gczqpWi1rDmVG6odSJ0gGQJOgiJ9dFGa+Uk1QWhusgw3XpB02JQ0SauhWWWUmueHBplzhmcHPbOjbgGDb7KSnldT+KXhziABMCSL5rDw2krkOMdszduHED/wAjtf8AiNvVcxW4jXqkNNWo8yIBc515kQOcrq9NhnpvJ/sonE9Oo4SmA4sD2tlzrCaYJMOaGnxC4mOqeng2zOdwvBGQ3cY56jZWuDB7qcvmm53jcyQWtcYJg6kE3jbqq9Ti7GZmTAzkZI+J0/K7kTrNxdPUZeelvtZUk/qrsRV8LSeIexz26nN4GgRN7yY5WspsvcugZD4c/hb4Ggua1wDQbSTMyd1TrcYLMrHZwXfC2zmtcbTmN4vMXUrKVTMCMgaRD/CA47i46qvUoql+Rd4b5ZZdWcWZc3zEgAEDKYMXvYyoxSG6nFNJwgLPKTk7YVS2RFk6IckGRqpHSLkGEcIKpcEbrkNwFb4i1hGh3Kz6kiz/AEcFafTlTgir4ajgI0RnHxf8vn+wIy0fD5Ge2DYxPsU2UaaHrcIXU4sb9N/MckTamzhIOh/mhWOjR8AiSLG3IpYugKtJzD8wI9dj9YKIOizrg7pi3KZGiCdO1yBq0eYFsWTBS1NSepQleri9jhy2YyeEk5amFBypsqKISIUFsEhCjQwiyJjwjAUYUgCDKwmlEmaETQgMhFOkUQaoQYrS4Bhu8rATAAJPOBb8rOAVzhOL7qq1+2h/tOv7rN1EZPG1HmjTgaUlZ01MNZWytENaLRzK0a5DRJOqoUCDVc86ASDsRzTMqmo7OfhFmN59SuDKNs7TNB7w+mHDUX9QoC6WyZ1aSdcom3vHupMO43BWPxrjbMPT7qnDqrh4pEhgPnqVMeNylpiR7HR8PqBrS1x+a/xQdyBmuRH2UPG+K0WNDyDkaSIDhckXaWm5g7dZXmbeJVgIFR0TNzMHoTceihfUqVnAEue4mALkkrqQ6eSWltUUtLVqI2Mc9wawEucYAG5OwXp3ZXsmyi0OeWmtuTcN/wBrfyU3Y/sw3DjPVIFVw12aDsDz5rRx+O7zwwMrSYI32+imSakt/q/P9l8yu3J1H/g2MxfeANygZSbjfb6KuyiOQTtClbCxzk5O2XKKiqQTKYUgYmYVIx3UJRWLImLVJKYhWbUICXmEBKNIBCMUuAAOChJLSHDZT1HgalVauIbzQkPFWXK4FVneZgCNv+1nObraf1D8hS8OxQD7AOm0JVsIWOkzmA52IJJ0Fkmdalr79+fn7hh5Xp/AiBjW7ToUY8PVv2TOgf2u16FJnhOQ3B0P4WUv5PPeJ4Y06r2nYmPI3HsVWyLoe2FANrMP6mfYn9wsFxXpemnrxRkcTNBKbQACRCchMFoKWPCaE6SguwJCjKklASiRDgIwkiaUGIggnATgJwEBhJ0MIg1QIiEUpBO0SlY6Om4DiA6g5rr5Tp0Nx+Vq8NoHkAT/AOrdlx+BxZpukXBEOHMfutHj/aNopd3SPiqDxkSC1mmX+49LQuPn6SbyVHhnUw5k4V3NJnGaVTEd1Su0NPj/AFOBEwOV1znbbDZazX/rb7tWdwKvkxFI83ZT5Ot+V0/bbDZqDag+Rwnydb9kVjWDPFLho0/ZOJY0uIa0EkmABuV6f2O7MjDN72o2ahHiIv3Y5DrzKj7B9mBTYK9QDvHiWg/I06epV7jnFPH3NMuY5pIqX8LgRt1v7rTKWt/2rn3foZpScnpXIHFseXuyB00xpsoqJVaPVGASs025O2aYxUVSAxvFGU7au5C6xK/FsU/4GZBzWjWa1kudbqqZx7nfDDG7udYfRGMUuw6SMurTxZ+Ko76qs5mIHzv/AMit6pUYGB5p1aoJDQ8+BhJE2mJ0Oiq/6thAIoGHGAWVQTM5dNr81cnL0J5TK73EtuKj/wDIq/gu1eIpmH+MdbFXmYRxcWNPjbrTqDK8fupKeCD5BZBFiCEJTXEkDRF8HR8O4g2swOFp1HJQ8X4mKTbXdsEfC6DWNAAhUO0+EJyOAkzEeazKnL2K4xWqjksTUxNZxLnFo84UQ4fUOtX3K6bhPCsxgNNV41gwxnm7SfdVcZxpzKjqQFBuVzmyZLZbrtzstSc/sosbgnRnYfh1YHOyqbciu5wtUvosqOeTU0cIPX+eq40Y4ktcaYpkkhrmfA8tiWkbG67Ts+4voPgN2110mFTmjKUWmuwmSlUkC9v+LglTbLYOoP2RBliCdCo3VWsBe4w0C58lyt3sh7pWcl2wxYfVawfIL+boJH0j6rBiFZxlc1Kjnn5iT5cvZQwvT9Pj8PGonFyy1SbAhIsRhqZXlIEJKQtTEIi0REISFIQhhQiCUgagAUgQYiCyowhR5UBkKE8CLTO6FEGqEsYtRNCTQihChrEAoMVhM1xr+FZUjGSQEHS3LcU5KSoxsFScarANc7fSCLr1PCUW1PA8ZhqRzvYfVchguId2czGDzIkn9l0OC4wyp4ajchtB2nz2XL6lPI0/Q7SUlF+5s9ouOtw7cgE1XAy02DQRY/suQ4KJEnU/ur3GuCue7O2oXc85LvcqPh2FyNgGU8pxcUo8CYcWm33L4CkY1ROgKxRVDLGRVuHNeqdbg2Qh4l5BmHXHo3RaWPqFlPMPlLSf7ZGb2laNGnMRpqgpNCubRicTxQxFLuqg0IILbFpGhH1I9VkcO4CxlQPzF2UghpAiRoTGq7R3D2G5aD6KangmjQQn8WQqnFKkjn8Twvvqne1MwdaDMQBpYaKw+nGt+q2KlMALOqtuqpSbe4YysCjYqzXw4e0g3VbIruFCCe4Jepl4XDmiIpeGNQCfrGiyOI8Hp1nmo5jmudd2W2Y8yI18l1mJp7jX7oqcGCnWSUXVk196OZHDM9NlEty0mGQBYk851m+q2+AYQNFRgbOly7aLfm6u1qYhZ9TEtouzuHgHxeX5RjNuW4snqi6JC0yTC5PtTjwf6LSCJDnEcxoEuOdpTUJbR8DD/lH4lc8VZ03Q6J6pfcZs3UXGkAU5CQalC6xgsWVO5lpThO56JAcspZUwTqAI3BQkKy9iiLURR90UoQjAQEQ7SpMyDKiCA4inahhSMKgLCyomwnsngKBEApqBuZ5FRQk2yWStUW4p6ZJmrgsH46YI1v6c1s8fNMMGZt9oCzcBXGemdoynzWjxbDy+mT8M3XKl9bc713TMjh2IqveKYJyjWdQNoWnQEEjkSonvNCuSWwx5F+RTvqEPO9/+1G7DZbdT3n0tH7qfD2VUPkKZjikYpbcwEFrhIII8ws7g3Eu4qf6WqdP/AMnH5mnQE8xp6LRpGVmdpOGd9Tt8bbtP3CkK4YlJ7M6sFECvP+zfa0silXmBYP3HQru6NcOggyDy0RlFw2ZTKDQ9bRZDn+Iha9Urj+04q0yXU5yugGNiEiWqVFmJdjesjwxXl1etUJk1HN6ZirHDeO1aJ+PO3cGfYq99K62Y8oM9Wy2VVhh0eq56h2tp5R8UxobD6my0eGY4P8bntc47N0aOXM+azzhJclag1ybDysDtIQKL/KPwtlzwVz/aypFEjckD3B/CmLeaF4TZxLm7JNdr9Pok98XTNFl2lyc5x8thSncmlNmVhTQ4KUJmlO5ygaEWpBKUgVAUM4KOFITKD190RRpRjRRhSBAQMIkmhEFKJYKkaFEjHmjQLJhKQahHmnagOSFqGE0p0Bkg6VSCupw/EmPp5ag9VyYV7h2P7sw4ZmE3G46hZOoxKStcm/ps+nyy4OjLqOSDWDhyME9FUqU4I1uJ9FsUeDUXNFYAbEdQbgqhxt4aWeohYE96OjGSeyI2FWKagGikamYWW6LlMXKix11MHSkaFaOG7U4Pu62YWDr+u6j4V2jrULB2Zv6T/LLqO0GB7ymRFxcLgsRSLSQRcLdj0zjpYJLud1Q7dU8vja4O5C/usni/a91QFtNuUczc/RcskCUY9PjTsRewdQzcm56oYTtYVNTw/n9Fc2kPHHKTIySpcPiHMOZpIKN+HPI/RV30yEtpheOUTocP2se34hKqcU7Q99ALYgyLrEfKam0kwAljggnaRVN2qZbouzuvoFcMKPD0cojfdSwtCRzcs7e3AEIGUxJPNSISnKQg1IhPKaVADOYhIROKSICMBRuCmMqJxRsXgZqlhRNUrUBFwSAp5QAwnIlQOwZKeQopTl8KEJZRqNpi5v5p0B0HdIpJ2tQDY8JEJ4skUrHTPQuzFYVMM1gdByhvk9gykeohwWJxfhFWkwurPzvLwGxoGgG8bSSFz2Cx1Sk7NTeWk66EGOYNirj+M16zmio+RIsAAOmmuu6xSwtWzbhzedF7BVZEbhX2KnWwxZDxodVPTcszpnTZZay6lYLKu0qek9K0IF3YKqYjgNKpqFdClpuQtrgltcGIzsfRGsnpKOp2YogeEQt0lAWSm8SXqBTZy54NkNoP0Rh1QWDWf4hdOyg3kphRAU8T1G8d9zlmNqut4QOgup6HA2auuVv1aQ5Ks4BqDm+wfGb4MHiPZ+kRMQuaqUQxxDfJdnxSvDCZ2XGOM3K19K5dzJ1cvIkRlPKR8ky3pnMoAFOUkJCIBEp2pmiUnSiR0PCGCiBTFQVoThCiKlLlE4o2I0OCpQVCEbVBKJZQgpEpggETnI2QgIumDlCImlEHKLPzRtcgWJEouiAQSiYUA0iRqQAQjVOUAiDUmtuDO6ct6pApZcD49pI7TDtzUwNbKo6kWHSys8Nf4dFarU8y5GpJnbuilSgqRrYKrYjDuZdqenxAaOEH2TWuw1ehaFRLvoT0ntN5Tuoja6W0KL/VjeycYxvNQuZCr1Mo1pk+SNIOlM0m4pvNRYjiDf1aLOPdDVrvoUzDT2Y76IURQRZqcXEWVf8A1pKKDtTjzVDjOZtInSSG266/ZNGKboaWmMboz+LY/N4Abb9TyWZKEWThdHHBRVI5GXI5u2O+EJKRTAq4pGlIpyEJTi7BAJXQiUioB0GE0JNTkIiMYtUdlI8kIFAWiEBSqJqklAVDwjaFHKdzlCDORNZdANU5ciAkyz5KSiOn1UGYqVlRKyyLJIKcIASj1QISNTjyTBPmKFj0IrV7L4RlTENFQTTbJdIMcmzH+4tWRK7nsdw91NgrQc9X4QYyFgIN3QS0mD7WUW7GSrcarhjh6ndPOt2O/UNNJsf2U7Kn0WpxADunMMQ6AWTLgSQARUJ28lUdwUNytbUqAzEva1zTabZYM+fIrDm6bVNqB0cfULSnMjEKCtgGO2R1MNUa3MMtRsxLDc7Tl9okqCrUeyz6bxvOUwBzJFhpzWV4ckXVF8Zp7xZUfwuNHFMcLVGjldGI807sYBbUmwHOL/hLcros1vuVMtYDSUOar+hWXYqoZhkAAmPmIGsden8FijiWn0iQeullG36C+JuU2OqfoH1UkVDyCuOeFE7EDa8RMAmJ0mNEN3wgOXsRNw/Mkn2RUqbKj2tcA5glzgWlzSGjTKPiMkWH/wBtUsG50yQSBPdg6tmCHVBZpvMDkrVaYYA5wbJa17RYNqNdlDdzl8N+cdQNUenlFeJIplnTele55pxbCd3WqM2BkCC0gEZgC11wQDF/dVei6jt1h2tfReMklpaXCRUeRl8T2kSNeuvkuVAldCtznMdzZHVCGp8ydolMVsYBJ7fdINTkpiAtYnayU7SiJKIrYKcN3lLME4IUFBc1DmjmpAozCILKwUgSSSESCCZJJELQpEpwQkkiKO4lEwckkko6RIAiTJIDUWMNRc85Wtc4nZoJP0C3MJ2Uqm9VzaTd5ILvoLe6SSiV0WNKKI6vD2F5bRa54aAGuI+N0S43tAtbqugwdSpTpve2oKtK0sdLiJEEHpPlbZJJIpWjZgwRWqT3uvwNOpic7KZDXZQ4E2DgLbBt+V4UrXNcMzHkZQQTSIcJsS0tcDJ30SSRxqpX6/oV54pWl2YFWf6bdSSXOOTuyYE6HWSQmrVr1BGWXUxuwnSIN2/yCkkpj3nJiT4ivYWIZIrEguMWcQwxDQQAR4tST0lRYnCBoLmMZanJPdPc4xdwDgQJP8kJJJHFSyNP0JGTUF8TOpvJsJLTdp8OhdYXOsc+SDhtCmaz2vmMuVpFoeJLhnb4iYO9vWyZJcrpV9LXxNs9k6LeEwjMmYtNR7XQ4TUfmGbKbZg0Hz0haQDQHUth4Moj4XiW+Bml7AnZpSSXWwRXhfiZM0n4j3AwDyWNc6SWkjcwfhMMAv5nmVXxtYtaHfG5gaTDiTDX6lpHgJBNtbkXhJJIvNhV/wAosxxTzM57tfj3V2U2hpaHPdlDmxOUADxOv8xGg1XKRFhqPwkktDWxinP6eUEtgGhNl62SSQIxBsdEcJ0kwAQ1C43TJKUKw6bZ1RtTJI0K0O4qufRJJGgH/9k=
+          " alt="Portrait of Gopal Singh Kharwa">
+          <div class="gallery-caption">Gopal Singh Kharwa remembered in Mewar</div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/jpeg;base64,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
+          " alt="Tribal resistance">
+          <div class="gallery-caption">Representation of Bhil resistance in tribal areas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Further Reading</h3>
+      <ul style="margin: 1rem 0 1rem 2rem;">
+        <li>"Unsung Tribal Heroes of India" – Ministry of Tribal Affairs</li>
+        <li>"Resistance Movements in Rajasthan" – Rajasthan State Archives</li>
+        <li>"Forgotten Voices of Mewar" – People's History Collective</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3>Freedom Fighters of India</h3>
+      <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Freedom Fighters</a>
+        <a href="#">Timeline</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

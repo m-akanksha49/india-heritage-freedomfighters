@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vellore Mutiny - Indian History</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://hinduinfopedia.org/wp-content/uploads/2024/07/digital_image_depicting_the_Vellore_Mutiny_of_1806-860x860.webp');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/India_geographic_map.svg/1200px-India_geographic_map.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1806</div>
+        <h1>Vellore Mutiny</h1>
+        <p>The first large-scale rebellion by Indian soldiers against British rule, foreshadowing the 1857 Revolt</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The First Major Sepoy Uprising</h2>
+                    <p>The Vellore Mutiny of July 10, 1806, was a violent uprising by Indian sepoys against the British East India Company in the South Indian town of Vellore. Though short-lived, it was the first large-scale military rebellion against British rule and a precursor to the more widespread Indian Rebellion of 1857.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Causes of the Mutiny</h3>
+                        <p>The immediate cause was the introduction of new military regulations that prohibited Hindu and Muslim soldiers from wearing religious marks on their foreheads and beards. Combined with resentment over pay, harsh discipline, and rumors of forced conversion to Christianity, these regulations sparked the violent uprising. The sepoys were also sympathetic to the deposed sons of Tipu Sultan who were housed in the Vellore Fort.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1805</div>
+                            <div class="timeline-content">
+                                <h3>New Regulations</h3>
+                                <p>British Commander-in-Chief Sir John Craddock introduces new dress code regulations affecting Hindu and Muslim religious practices.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 1806</div>
+                            <div class="timeline-content">
+                                <h3>Growing Resentment</h3>
+                                <p>Sepoys at Vellore begin secret meetings to plan rebellion against the new regulations.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">July 10, 1806</div>
+                            <div class="timeline-content">
+                                <h3>Mutiny Begins</h3>
+                                <p>At 2:00 AM, sepoys storm the Vellore Fort, killing many British officers and soldiers.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">July 10, 1806</div>
+                            <div class="timeline-content">
+                                <h3>Rebellion Crushed</h3>
+                                <p>British reinforcements arrive from Arcot by noon and brutally suppress the rebellion.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1806-1807</div>
+                            <div class="timeline-content">
+                                <h3>Aftermath</h3>
+                                <p>Court-martials and executions follow. The British governor withdraws the offending regulations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://3.bp.blogspot.com/-Rb8DxjX3fM4/V6f63_veA6I/AAAAAAAAMBY/JnHU6fbT8wk0KI4xkWawH1Y8RREqyF6XQCLcB/s400/161_1.jpg" alt="Vellore Fort">
+                            <div class="gallery-caption">Vellore Fort where the mutiny took place</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://c8.alamy.com/comp/G0NYY0/indian-mutinyrebellion-british-native-troop-positions-1-may-1857-1924-G0NYY0.jpg"Map of Vellore Mutiny">
+                            <div class="gallery-caption">Strategic map showing locations involved in the mutiny</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://th.bing.com/th/id/OIP.QIrsKfjYPmxYwMrgKvhbOwHaFU?rs=1&pid=ImgDetMain" alt="British troops at Vellore">
+                            <div class="gallery-caption">British East India Company troops suppressing the mutiny</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://th-i.thgim.com/public/news/national/tamil-nadu/dbyz16/article35260144.ece/alternates/LANDSCAPE_1200/10JULYTHRESPECTSPAID" alt="Vellore Mutiny Memorial">
+                            <div class="gallery-caption">Memorial commemorating the Vellore Mutiny</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Vellore Mutiny</h3>
+                        <p>The Vellore Mutiny was a significant though often overlooked event in Indian history that demonstrated early resistance to British rule. Here's an in-depth look at various aspects of this pivotal event:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Military Tactics</h4>
+                                    <p>The mutineers showed remarkable coordination, attacking simultaneously at multiple points in the fort. They captured the arsenal and killed over 100 British soldiers before reinforcements arrived.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Political Consequences</h4>
+                                    <p>The mutiny led to the recall of Governor William Bentinck and Commander-in-Chief Sir John Craddock. It forced the British to be more cautious about interfering with Indian religious practices.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Leadership</h4>
+                                    <p>The rebellion was led by sepoy Mustafa Beg, though some accounts suggest the sons of Tipu Sultan may have inspired the mutineers. The lack of clear leadership contributed to its failure.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Cultural Factors</h4>
+                                    <p>The new leather headgear introduced by the British was seen as an attempt to Christianize the sepoys, as it contained animal products offensive to both Hindus and Muslims.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Connection to 1857</h4>
+                                    <p>Many of the same grievances - religious interference, harsh discipline, and poor pay - would resurface in the 1857 Rebellion, making Vellore a precursor to the larger uprising.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Long-Term Effects</h4>
+                                    <p>The mutiny demonstrated the potential for organized resistance against British rule and influenced later British policies toward Indian cultural practices in the military.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Vellore Mutiny</h3>
+                            <p>Though quickly suppressed, the Vellore Mutiny remains significant as the first large-scale violent rebellion by Indian soldiers against British rule. It demonstrated the potential for organized resistance and forced the British to reconsider policies that offended Indian religious sensibilities. The mutiny also revealed the continuing influence of Tipu Sultan's family, whose exiled sons were housed in Vellore Fort at the time. While not as well-known as the 1857 Rebellion, the Vellore Mutiny shares many of the same causes and characteristics, making it an important precursor to the larger uprising that would follow half a century later. Today, a memorial at the fort commemorates the Indian soldiers who lost their lives in the rebellion.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2019/06/03/Pictures/sepoy_94fe0616-8611-11e9-ab40-33c30d629efb.jpg" alt="Sepoy Mutineer">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mustafa Beg</h4>
+                            <p>Indian sepoy who emerged as one of the leaders of the Vellore Mutiny against British forces.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://i.ytimg.com/vi/bPesommYvzE/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4Ac4FgAKACooCDAgAEAEYZCBlKC4wDw==&rs=AOn4CLBMt4cMoqJDHezECUqc6ZwEq09vHA" alt="William Bentinck">
+                        </div>
+                        <div class="figure-info">
+                            <h4>William Bentinck</h4>
+                            <p>Governor of Madras whose policies contributed to the mutiny and who was recalled afterward.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://en-media.thebetterindia.com/uploads/2018/07/Sir-cordack-500x262.jpg" alt="Sir John Craddock">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Sir John Craddock</h4>
+                            <p>British Commander-in-Chief whose military regulations sparked the mutiny.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://th.bing.com/th/id/OIP.p1gbuTwgb0csTgKxQ3T2OwAAAA?rs=1&pid=ImgDetMain" alt="Tipu's Sons">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Tipu's Sons</h4>
+                            <p>Sons of Tipu Sultan housed in Vellore Fort who may have inspired the mutineers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Battle Locations</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 70%; left: 65%;" data-location="Vellore Fort (Mutiny Site)"></div>
+                    <div class="map-marker" style="top: 75%; left: 70%;" data-location="Arcot (British Base)"></div>
+                    <div class="map-marker" style="top: 65%; left: 60%;" data-location="Madras (British Capital)"></div>
+                    <div class="map-marker" style="top: 60%; left: 55%;" data-location="Mysore (Tipu's Kingdom)"></div>
+                </div>
+
+                <h2>Consequences</h2>
+                <ul class="impact-list">
+                    <li>First large-scale military rebellion against British rule in India</li>
+                    <li>Forced British to be more sensitive to Indian religious practices</li>
+                    <li>Led to recall of Governor William Bentinck</li>
+                    <li>Offending military regulations were withdrawn</li>
+                    <li>Demonstrated potential for organized resistance</li>
+                    <li>Precursor to the larger 1857 Indian Rebellion</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"The Vellore Mutiny was the lightning that preceded the revolutionary storm of 1857. Though quickly suppressed, it illuminated the growing discontent among Indian soldiers under British rule."</p>
+            <p class="quote-author">— Historian's assessment of the Vellore Mutiny</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="indian-battles.html" class="back-button">Explore More Historical Battles</a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Vellore Fort (Mutiny Site)": "The massive Vellore Fort where Indian sepoys rose up against their British officers on July 10, 1806. The fort could house up to 10,000 soldiers and had strong defenses.",
+                    "Arcot (British Base)": "The British military base at Arcot, just 16 miles from Vellore, from where reinforcements were dispatched to suppress the mutiny.",
+                    "Madras (British Capital)": "Madras (now Chennai) was the capital of British operations in South India. News of the mutiny caused panic among the British residents there.",
+                    "Mysore (Tipu's Kingdom)": "The former kingdom of Mysore, ruled by Tipu Sultan until 1799, whose exiled sons were housed in Vellore Fort and may have inspired the mutineers."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

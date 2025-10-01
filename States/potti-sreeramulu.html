@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potti Sreeramulu - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the heroes who fought for our independence</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://historified.in/wp-content/uploads/2024/07/potti.jpg" alt="Potti Sreeramulu">
+            </div>
+            <div class="hero-content">
+                <h2>Potti Sreeramulu</h2>
+                <p class="hero-description">A selfless freedom fighter and Gandhian whose 58-day fast unto death led to the formation of the first linguistic state of independent India - Andhra Pradesh. His supreme sacrifice earned him the title "Amarajeevi" (Immortal Being).</p>
+
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>March 16, 1901</p>
+                        <p>Padamatapalli, Madras Presidency (present-day Andhra Pradesh)</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>December 15, 1952 (aged 51)</p>
+                        <p>Madras (now Chennai), India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Movement</h4>
+                        <p>Indian Independence Movement, Andhra State Movement</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Legacy</h4>
+                        <p>Father of Andhra Pradesh, Linguistic Reorganization of States</p>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    "My ambition is to live as a servant and die as a servant of the people. If I die for the cause of Andhra, I shall be blessed."
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Early Life and Education</h3>
+            <p>Potti Sreeramulu was born into a middle-class family in Padamatapalli village in Nellore district (now part of Andhra Pradesh). His father, Guravayya, was a revenue inspector, and his mother, Mahalakshmamma, was a homemaker. From childhood, he showed remarkable compassion for the poor and downtrodden.</p>
+            <p>He completed his early education in Madras (now Chennai) and graduated with a Bachelor of Arts degree from the prestigious Madras Christian College. Despite coming from an affluent background, he chose to live simply and dedicated his life to public service.</p>
+        </div>
+
+        <div class="section">
+            <h3>Role in Indian Freedom Struggle</h3>
+            <p>Inspired by Mahatma Gandhi's ideals, Sreeramulu joined the Indian National Congress in 1928. He actively participated in:</p>
+            <ul>
+                <li><strong>Salt Satyagraha (1930):</strong> Organized salt marches in Madras Presidency and was imprisoned for 18 months</li>
+                <li><strong>Individual Satyagraha (1940):</strong> Among the first batch of satyagrahis selected by Gandhi</li>
+                <li><strong>Quit India Movement (1942):</strong> Played key role in underground activities and was imprisoned for 3 years</li>
+            </ul>
+            <p>His dedication was such that he donated all his property to the Harijan Welfare Fund and lived in Gandhian ashrams, following strict celibacy and simplicity.</p>
+        </div>
+
+        <div class="section">
+            <h3>The Andhra State Movement</h3>
+            <p>After independence, Sreeramulu championed the cause of Telugu-speaking people who were dissatisfied being part of Madras State. The key events:</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1951</div>
+                    <p>Walked 1,400 miles across Andhra regions to gauge public opinion for separate state</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Oct 19, 1952</div>
+                    <p>Began fast-unto-death at Madras house of Bulusu Sambamurthy</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Dec 15, 1952</div>
+                    <p>Died after 58 days of fasting, creating massive public outcry</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Oct 1, 1953</div>
+                    <p>Andhra State formed - first linguistic state in independent India</p>
+                </div>
+            </div>
+            <p>The fast became a national event with daily bulletins in newspapers. Despite interventions by Nehru and Rajaji, Sreeramulu remained steadfast till his last breath.</p>
+        </div>
+
+        <div class="section">
+            <h3>Personal Life and Gandhian Values</h3>
+            <p>Sreeramulu was a strict follower of Gandhian principles:</p>
+            <div class="two-column">
+                <div class="column">
+                    <h4>Lifestyle</h4>
+                    <ul>
+                        <li>Lived in huts and ashrams throughout his life</li>
+                        <li>Wore only khadi and rejected all material comforts</li>
+                        <li>Maintained celibacy and simple vegetarian diet</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4>Social Work</h4>
+                    <ul>
+                        <li>Established schools for Harijan children</li>
+                        <li>Worked extensively for temple entry movements</li>
+                        <li>Promoted khadi and village industries</li>
+                    </ul>
+                </div>
+            </div>
+            <p>His selfless nature earned him the nickname "Amarajeevi" (Immortal Being) among common people who saw him as a living saint.</p>
+        </div>
+
+        <div class="section">
+            <h3>Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Potti_Sreeramulu_2000_stamp_of_India.jpg/640px-Potti_Sreeramulu_2000_stamp_of_India.jpg" alt="Commemorative Stamp">
+                    <div class="gallery-caption">India Post commemorative stamp issued in 2000</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://th-i.thgim.com/public/incoming/7pu8yh/article67958752.ece/alternates/FREE_1200/10215_16_3_2024_15_30_52_1_IMG_20240316_WA0355.JPG" alt="Statue">
+                    <div class="gallery-caption">50-feet tall bronze statue in Vijayawada</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.evendo.com/locations-resized/LandmarkImages/360x263/aec4d9da-c256-4454-a98e-138b30d1fd90" alt="Memorial">
+                    <div class="gallery-caption">Amarajeevi Memorial in Hyderabad</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static.toiimg.com/photo/msid-96316858/96316858.jpg" alt="Samadhi">
+                    <div class="gallery-caption">Samadhi at Chennai where he undertook his final fast</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Legacy and Impact</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-map"></i> State Formation</h4>
+                    <p>His sacrifice directly led to States Reorganization Act (1956) that redrew India's map along linguistic lines</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-monument"></i> Memorials</h4>
+                    <p>Over 50 major institutions including Potti Sreeramulu Telugu University, hospitals and roads named after him</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Cultural Depictions</h4>
+                    <p>Featured in films like "Amarajeevi" (1986) and numerous literary works in Telugu</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-calendar-alt"></i> Commemorations</h4>
+                    <p>December 15 observed as "Amarajeevi Potti Sreeramulu Remembrance Day" in Andhra and Telangana</p>
+                </div>
+            </div>
+            
+            <h4 class="subsection">Lasting Influence</h4>
+            <p>Sreeramulu's sacrifice established the principle that India's federal structure should respect linguistic identities. The Andhra movement became a template for subsequent statehood demands across India. His life continues to inspire political activists and social workers.</p>
+        </div>
+
+        <div class="section">
+            <h3>Quotes About Potti Sreeramulu</h3>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <p>"A saintly soul who lived and died for his people."</p>
+                    <p class="quote-author">- Jawaharlal Nehru</p>
+                </div>
+                <div class="quote-card">
+                    <p>"His fast was not against any government but for the self-respect of Telugu people."</p>
+                    <p class="quote-author">- C. Rajagopalachari</p>
+                </div>
+                <div class="quote-card">
+                    <p>"The Gandhi of Andhra who proved that moral force could move governments."</p>
+                    <p class="quote-author">- Tanguturi Prakasam</p>
+                </div>
+            </div>
+        </div>
+
+  
+
+        
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+
+        
+
+            <div class="acknowledgement">
+                <p>This tribute page is part of the "Unsung Heroes of Indian Freedom Movement" initiative by the Ministry of Culture, Government of India.</p>
+            </div>
+
+
+        </div>
+    </footer>
+</body>
+</html>

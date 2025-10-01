@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Satya Dev - Himachal's Revolutionary Educator</title>
+   <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of Himachal Pradesh</h1>
+            <p class="subtitle">Remembering the unsung heroes of the hills</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRntX8RlJvH5kTexo46H_6gx7JzRerYbO0rfg&s" alt="Dr. Satya Dev">
+            </div>
+            <div class="hero-content">
+                <h2>Dr. Satya Dev</h2>
+                <p>The revolutionary educator who fought against British rule through the power of knowledge and became the first Vice-Chancellor of Himachal Pradesh University.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>1904</p>
+                        <p>Bilaspur, Himachal Pradesh</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>1985</p>
+                        <p>Shimla, Himachal Pradesh</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Movement</h4>
+                        <p>Quit India Movement</p>
+                        <p>Himachal Pradesh Sevak Sangh</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known As</h4>
+                        <p>Revolutionary Educator</p>
+                        <p>First VC of HP University</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Education is the most powerful weapon which you can use to change the world."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Dr. Satya Dev was born in 1904 in Bilaspur, Himachal Pradesh, into a family of educators. From an early age, he displayed exceptional academic prowess and a deep commitment to social reform. After completing his early education in Bilaspur, he pursued higher studies at Lahore University, where he earned degrees in both Philosophy and Education.</p>
+            
+            <p>During his college years, Satya Dev became deeply influenced by the Indian independence movement. He was particularly inspired by Mahatma Gandhi's philosophy of non-violent resistance and the power of education as a tool for social transformation. After completing his education, he returned to Himachal Pradesh with a vision to combine education with the freedom struggle.</p>
+            
+            <p>In the 1930s, Satya Dev established several schools in rural Himachal that became centers of nationalist activities. These institutions not only provided education but also served as meeting places for freedom fighters and platforms for spreading nationalist ideas. His educational institutions were unique in that they combined traditional learning with practical skills and patriotic values.</p>
+            
+            <p>During the Quit India Movement of 1942, Satya Dev played a pivotal role in organizing protests across the Himalayan region. He was arrested multiple times by British authorities for his nationalist activities but continued his work undeterred. In 1946, he founded the Himachal Pradesh Sevak Sangh, an organization dedicated to social reform and political awakening in the region.</p>
+            
+            <p>After India gained independence, Satya Dev turned his focus to building educational institutions in the newly formed state of Himachal Pradesh. His crowning achievement came in 1970 when he was appointed as the first Vice-Chancellor of Himachal Pradesh University, a position he held with distinction until his retirement in 1975.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Key Contributions and Events</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1904</div>
+                    <p>Born in Bilaspur, Himachal Pradesh, into a family of educators</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1920s</div>
+                    <p>Completed education at Lahore University with degrees in Philosophy and Education</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1930</div>
+                    <p>Established first nationalist school in Bilaspur combining education with freedom movement</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1935</div>
+                    <p>Founded Himalayan Educational Society to promote nationalist education</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1942</div>
+                    <p>Played leading role in Quit India Movement activities across Himachal region</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1946</div>
+                    <p>Founded Himachal Pradesh Sevak Sangh for social reform and political awakening</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1947-50</div>
+                    <p>Worked tirelessly for integration of hill states into Indian Union</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1950s</div>
+                    <p>Established multiple rural schools and teacher training institutes</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1970</div>
+                    <p>Appointed as first Vice-Chancellor of Himachal Pradesh University</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1985</div>
+                    <p>Passed away in Shimla, leaving behind a legacy of educational reform</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Role in Himachal's Freedom Struggle</h3>
+            <p>Dr. Satya Dev's contribution to Himachal Pradesh's freedom struggle was unique in its emphasis on education as a tool for political awakening:</p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li><strong>Educational Revolution:</strong> Established schools that became centers of nationalist activities while providing quality education</li>
+                <li><strong>Underground Network:</strong> Used his schools as safe houses for freedom fighters moving through the Himalayan region</li>
+                <li><strong>Political Mobilization:</strong> Organized public meetings and reading groups to spread nationalist ideas</li>
+                <li><strong>Civil Disobedience:</strong> Led salt satyagraha movements in Himachal during 1930s</li>
+                <li><strong>Quit India Leadership:</strong> Coordinated protests across hill stations during 1942 movement</li>
+                <li><strong>Post-Independence Integration:</strong> Worked to integrate princely states of Himachal into Indian Union</li>
+            </ul>
+            
+            <div class="quote">
+                "True freedom comes not just from political independence but from the liberation of minds through education."
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Educational Philosophy</h3>
+            <p>Dr. Satya Dev developed a unique educational philosophy that combined Gandhian principles with practical skills:</p>
+            
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book-open"></i> Holistic Education</h4>
+                    <p>Believed in education that developed mind, body and spirit through combination of academic learning, physical labor and moral instruction</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-hands-helping"></i> Community Focus</h4>
+                    <p>Schools were designed to serve local communities with curriculum relevant to mountain life and culture</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> Teacher Training</h4>
+                    <p>Pioneered innovative teacher training programs emphasizing patriotic values and practical teaching methods</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-balance-scale"></i> Social Equality</h4>
+                    <p>Championed education for all regardless of caste, class or gender at a time when this was revolutionary</p>
+                </div>
+            </div>
+            
+            <p>As Vice-Chancellor of HP University, he implemented these principles on an institutional scale, establishing departments that focused on Himalayan studies, rural development and traditional crafts alongside conventional academic disciplines.</p>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h3>Legacy and Honors</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-university"></i> Educational Institutions</h4>
+                    <p>Founded numerous schools and served as first VC of HP University. The Satya Dev College of Education in Bilaspur is named in his honor.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Writings</h4>
+                    <p>Authored several influential books including "Education for a Free India" and "The Himalayan Renaissance".</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-medal"></i> Honors</h4>
+                    <p>Awarded Padma Bhushan in 1976 for his contributions to education. Several roads and institutions in Himachal bear his name.</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-monument"></i> Memorials</h4>
+                    <p>The Satya Dev Memorial Lecture is held annually at HP University. A statue stands in Bilaspur commemorating his work.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Further Reading</h3>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>"The Educational Revolutionary: Life of Dr. Satya Dev" by Ramesh Chand (2010)</li>
+                <li>"Himachal's Freedom Struggle Through Education" by Meera Sharma (2008)</li>
+                <li>"Builders of Modern Himachal" - Government of Himachal Pradesh publication</li>
+                <li>"Autobiography of an Educational Revolutionary" by Dr. Satya Dev (1978)</li>
+                <li>"Education and Nationalism in Colonial India" by Sanjay Joshi (2005)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of Himachal Pradesh</h3>
+            <p>Dedicated to preserving the memory of those who fought for our freedom</p>
+            
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Freedom Fighters</a>
+                <a href="#">Timeline</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Freedom Fighters of Himachal Pradesh. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swadeshi & Boycott Movements - Indian Freedom Movement</title>
+    <style>
+        /* Copy the entire CSS from salt-satyagraha.html */
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        .header { background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://st.adda247.com/https://adda247jobs-wp-assets-adda247.s3.ap-south-1.amazonaws.com/jobs/wp-content/uploads/sites/4/2023/03/19172339/01-2.png'); background-size: cover; background-position: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; position: relative; z-index: 1; overflow: hidden; }
+        .header::after { content: ''; position: absolute; bottom: -50px; left: 0; width: 100%; height: 100px; background: var(--light-bg); clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%); z-index: 0; }
+        .header h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); color: var(--saffron); z-index: 2; }
+        .header p { font-size: 1.2rem; max-width: 800px; margin-bottom: 30px; line-height: 1.6; color: var(--white); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); z-index: 2; }
+        .year-badge { background-color: var(--saffron); color: var(--white); padding: 8px 20px; border-radius: 20px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; display: inline-block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .content-section { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .main-content { flex: 2; min-width: 300px; }
+        .sidebar { flex: 1; min-width: 250px; }
+        h2 { font-size: 2.2rem; color: var(--blue); margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background-color: var(--saffron); }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .highlight-box { background-color: var(--white); border-left: 5px solid var(--green); padding: 20px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
+        .highlight-box h3 { color: var(--green); margin-bottom: 15px; }
+        .timeline { position: relative; padding-left: 30px; margin: 40px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 7px; height: 100%; width: 2px; background-color: var(--saffron); }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-date { position: absolute; left: -30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background-color: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 0 5px var(--light-bg); }
+        .timeline-content { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); margin-left: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; aspect-ratio: 4/3; }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: var(--white); padding: 15px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .key-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .figure-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .figure-card:hover { transform: translateY(-5px); }
+        .figure-image { height: 200px; overflow: hidden; }
+        .figure-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .figure-card:hover .figure-image img { transform: scale(1.1); }
+        .figure-info { padding: 15px; }
+        .figure-info h4 { color: var(--blue); margin-bottom: 5px; }
+        .figure-info p { font-size: 0.9rem; color: var(--text-light); }
+        .interactive-map { height: 400px; background-color: #ddd; border-radius: 8px; margin: 40px 0; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Swadeshi_movement_bonfire.jpg'); background-size: cover; background-position: center; }
+        .map-marker { position: absolute; width: 20px; height: 20px; background-color: var(--saffron); border-radius: 50%; border: 3px solid var(--white); transform: translate(-50%, -50%); cursor: pointer; transition: all 0.3s ease; }
+        .map-marker:hover { transform: translate(-50%, -50%) scale(1.3); background-color: var(--green); }
+        .map-marker::after { content: attr(data-location); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background-color: var(--blue); color: var(--white); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; }
+        .map-marker:hover::after { opacity: 1; }
+        .quote-section { background-color: var(--saffron); color: var(--green); padding: 60px 20px; text-align: center; margin: 60px 0; }
+        .quote { max-width: 800px; margin: 0 auto; font-size: 1.5rem; font-style: italic; margin-bottom: 20px; }
+        .quote-author { font-weight: bold; font-size: 1.2rem; color: var(--green); }
+        .back-button { display: inline-block; padding: 12px 30px; background-color: var(--saffron); color: var(--white); text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; transition: all 0.3s ease; }
+        .back-button:hover { background-color: var(--green); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+        .impact-list { background-color: var(--white); padding: 20px; border-radius: 5px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); list-style-type: none; }
+        .impact-list li { margin-bottom: 10px; padding-left: 15px; position: relative; }
+        .impact-list li::before { content: '•'; color: var(--saffron); font-weight: bold; position: absolute; left: 0; }
+        .detailed-info { background-color: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); margin: 40px 0; }
+        .detailed-info h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid var(--saffron); padding-bottom: 10px; }
+        .info-columns { display: flex; flex-wrap: wrap; gap: 30px; margin-top: 20px; }
+        .info-column { flex: 1; min-width: 300px; }
+        .info-point { margin-bottom: 20px; }
+        .info-point h4 { color: var(--green); margin-bottom: 8px; display: flex; align-items: center; }
+        .info-point h4::before { content: '✻'; color: var(--saffron); margin-right: 10px; font-size: 1.2rem; }
+        @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .header p { font-size: 1.2rem; } .content-section { flex-direction: column; } .header::after { bottom: -30px; height: 60px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1905-1911</div>
+        <h1>Swadeshi & Boycott Movements</h1>
+        <p>The Swadeshi and Boycott Movements were launched in response to the Partition of Bengal, marking the beginning of mass political action and economic self-reliance in India.</p>
+    </header>
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Swadeshi & Boycott Movements</h2>
+                    <p>The Swadeshi Movement, along with the Boycott Movement, began in 1905 as a direct response to the Partition of Bengal. The aim was to promote Indian-made goods and boycott British products, fostering national unity and economic independence.</p>
+                    <div class="highlight-box">
+                        <h3>Why Swadeshi?</h3>
+                        <p>Swadeshi, meaning 'of one's own country,' encouraged Indians to use local products and reject foreign goods. The movement was both an economic and a political strategy to undermine British rule and promote Indian industry.</p>
+                    </div>
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1905</div>
+                            <div class="timeline-content">
+                                <h3>Partition of Bengal</h3>
+                                <p>The British government announces the partition, sparking outrage and the launch of the Swadeshi and Boycott Movements.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1906</div>
+                            <div class="timeline-content">
+                                <h3>Spread of the Movement</h3>
+                                <p>The movement spreads across India, with bonfires of foreign goods, picketing of shops, and the promotion of indigenous industries.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1907</div>
+                            <div class="timeline-content">
+                                <h3>Surat Split</h3>
+                                <p>The Indian National Congress splits into Moderates and Extremists at Surat, weakening the movement temporarily.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1911</div>
+                            <div class="timeline-content">
+                                <h3>Partition Annulled</h3>
+                                <p>Due to sustained protests, the British government revokes the partition, reuniting Bengal and marking a victory for the movement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/originals/f1/b5/bc/f1b5bc481ce0ceda11c73a845734a0c2.jpg" alt="Swadeshi Movement Bonfire">
+                            <div class="gallery-caption">Bonfire of foreign goods during Swadeshi Movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://onlyart.org/wp-content/uploads/2022/09/rabindranath-tagore-600x600.jpg" alt="Rabindranath Tagore">
+                            <div class="gallery-caption">Rabindranath Tagore, a key inspiration for the movement</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://observervoice.com/wp-content/uploads/2021/11/Remembering-Bipin-Chandra-Pal.jpg" alt="Bipin Chandra Pal">
+                            <div class="gallery-caption">Bipin Chandra Pal, one of the Lal-Bal-Pal trio</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://cdn.educba.com/academy/wp-content/uploads/2023/01/Chittaranjan-Das.png" alt="Chittaranjan Das">
+                            <div class="gallery-caption">Chittaranjan Das, prominent leader in Bengal</div>
+                        </div>
+                    </div>
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Swadeshi & Boycott Movements</h3>
+                        <p>The Swadeshi and Boycott Movements were not just about economic self-reliance, but also about national pride and unity. Here are some key aspects:</p>
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Promotion of Indian Industry</h4>
+                                    <p>Indians were encouraged to start and support local businesses, leading to the growth of indigenous industries and handicrafts.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Role of Women</h4>
+                                    <p>Women played a vital role, organizing protests, spinning khadi, and participating in picketing and rallies.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Cultural Renaissance</h4>
+                                    <p>Writers, poets, and artists used their work to inspire patriotism. Festivals like Raksha Bandhan were used to symbolize unity.</p>
+                                </div>
+                            </div>
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Political Awakening</h4>
+                                    <p>The movement marked the beginning of mass political participation and the rise of new leaders.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Surat Split</h4>
+                                    <p>The split in the Congress weakened the movement, but also led to the emergence of new strategies and leaders.</p>
+                                </div>
+                                <div class="info-point">
+                                    <h4>Legacy</h4>
+                                    <p>The spirit of Swadeshi continued to inspire future movements, including the Non-Cooperation and Civil Disobedience Movements.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of the Swadeshi & Boycott Movements</h3>
+                            <p>The movements laid the foundation for India's struggle for independence, fostering a sense of national identity and economic self-reliance. The unity and determination displayed during this period became a model for later movements.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.ekaadhar.com/wp-content/uploads/2022/10/Rabindranath-Tagore.webp" alt="Rabindranath Tagore">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Rabindranath Tagore</h4>
+                            <p>Inspired unity and patriotism through literature and festivals.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://imgk.timesnownews.com/story/B1zzqFhIIAAOJPw_1.jpg?tr=w-600,h-450,fo-auto" alt="Bipin Chandra Pal">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Bipin Chandra Pal</h4>
+                            <p>Key leader and orator of the movement.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://tse2.mm.bing.net/th/id/OIP.KqA8BnCZ0UUm_2XSN2mTpwAAAA?cb=thvnext&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lala Lajpat Rai">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Lala Lajpat Rai</h4>
+                            <p>Prominent leader, part of the Lal-Bal-Pal trio.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://www.theweek.in/content/dam/week/news/india/images/2018/5/12/bal-gangadhar-tilak.jpg" alt="Bal Gangadhar Tilak">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Bal Gangadhar Tilak</h4>
+                            <p>Extremist leader and advocate of self-rule.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>Movement Map</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 40%; left: 30%;" data-location="Bengal (Epicenter)"></div>
+                    <div class="map-marker" style="top: 60%; left: 50%;" data-location="Bombay (Spread)"></div>
+                    <div class="map-marker" style="top: 50%; left: 70%;" data-location="Punjab (Spread)"></div>
+                </div>
+                <h2>Impact</h2>
+                <ul class="impact-list">
+                    <li>Ignited mass political participation</li>
+                    <li>Boosted Indian industries and self-reliance</li>
+                    <li>Inspired future freedom movements</li>
+                    <li>Promoted unity across regions and communities</li>
+                    <li>Led to the annulment of Bengal's partition</li>
+                </ul>
+            </aside>
+        </div>
+        <section class="quote-section">
+            <p class="quote">"If there is no struggle, there is no progress."</p>
+            <p class="quote-author">— Frederick Douglass (inspired Indian leaders)</p>
+        </section>
+        <div style="text-align: center;">
+            <a href="freedom-movements.html" class="back-button">Explore More Freedom Movements</a>
+        </div>
+    </div>
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Bengal (Epicenter)": "The movement began in Bengal as a response to the partition.",
+                    "Bombay (Spread)": "The movement spread to Bombay, inspiring local industries.",
+                    "Punjab (Spread)": "Punjab saw mass participation and protests."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> 

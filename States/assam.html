@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Freedom Fighters - Interactive Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+   <style>
+        :root {
+            --primary-color: #FF8F1C;
+            --secondary-color: #FFFFFF;
+            --accent-color: #138808;
+            --dark-color: #000080;
+            --text-color: #2E2E2E;
+            --light-gray: #f9f9f9;
+            --gold-color: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: var(--light-gray);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            bottom: -15px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .slider {
+            display: flex;
+            gap: 2.5rem;
+            padding: 1.5rem 0;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            flex: 0 0 340px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-years {
+            font-size: 1rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-years i {
+            color: var(--gold-color);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+            border: 2px solid var(--primary-color);
+        }
+
+        .card-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .read-more {
+            background: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev {
+            left: 0;
+        }
+
+        .slider-btn.next {
+            right: 0;
+        }
+
+        .filter-options {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark-color);
+            color: white;
+            border-color: var(--dark-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            padding: 2.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-subtitle span {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .modal-quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-color);
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .modal-quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-btn.full {
+            background: var(--dark-color);
+            color: white;
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.full:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .modal-btn.outline {
+            background: transparent;
+            color: var(--dark-color);
+            border: 2px solid var(--dark-color);
+        }
+
+        .modal-btn.outline:hover {
+            background: var(--dark-color);
+            color: white;
+        }
+
+        @media (min-width: 992px) {
+            .modal-body {
+                flex-direction: row;
+            }
+
+            .modal-image {
+                flex: 0 0 45%;
+                height: auto;
+            }
+
+            .modal-info {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .slider-container {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                flex: 0 0 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .slider-container {
+                padding: 0 1rem;
+            }
+            
+            .slider-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+            
+            .filter-btn {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                flex: 0 0 280px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="fade-in">
+        <h1>India's Freedom Fighters</h1>
+        <p class="subtitle">Celebrating the brave souls who fought for India's independence. Explore their inspiring stories and contributions to our nation's history.</p>
+    </header>
+
+  
+
+    <div class="slider-container fade-in">
+        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider" id="slider">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-nav" id="sliderDots">
+            <!-- Dots will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+   const fighters = [
+    // ... (your existing fighters)
+  {
+    id: 16,
+    name: "Ambikagiri Raichoudhury",
+    years: "1885 – 1967",
+    image: "https://amarghar.org/wp-content/themes/amar/images/founder.jpg",
+    category: "freedom fighter, poet",
+    shortDesc: "Poet and nationalist who fought for Assam's identity and Indian independence.",
+    longDesc: "Ambikagiri Raichoudhury was a noted Assamese poet, freedom fighter, and social reformer. He actively participated in the Swadeshi Movement and was imprisoned for anti-British activities. He also advocated for Assamese culture and language and was awarded the Sahitya Akademi Award post-independence.",
+    quote: "Freedom of the land must walk hand-in-hand with the freedom of the spirit.",
+    wikipedia: "https://en.wikipedia.org/wiki/Ambikagiri_Raichoudhury"
+},
+{
+    id: 17,
+    name: "Bhogeswar Baruah",
+    years: "1928 –",
+   image: "https://m.nenow.in/sortd-service/imaginary/v22-01/jpg/medium/high?url=bmVub3ctaW4tcHJvZC1zb3J0ZC9tZWRpYWQ5OGRkN2EwLWJhMDEtMTFlZi05OTIxLWJmNzYyZWY2NmVmNS5qcGc=",
+    category: "sports icon",
+    shortDesc: "Though not a freedom fighter, he is celebrated for putting Assam on India's sports map.",
+    longDesc: "Bhogeswar Baruah is not a traditional freedom fighter, but as Assam’s first Arjuna Awardee and an icon in Indian athletics, he symbolized the emerging identity and pride of post-independence Assam. His story inspired generations in Assam to dream big.",
+    quote: "Discipline and dedication free a person more than fear ever can.",
+    wikipedia: "https://en.wikipedia.org/wiki/Bhogeswar_Baruah"
+},
+{
+    id: 18,
+    name: "Chandraprabha Saikiani",
+    years: "1901 – 1972",
+    image: "data:image/jpeg;base64,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",
+
+    category: "social reformer",
+    shortDesc: "Trailblazing woman reformer and activist for women’s rights and freedom.",
+    longDesc: "Chandraprabha Saikiani was one of the first female social reformers and freedom fighters of Assam. She campaigned for girls' education, fought against child marriage and casteism, and participated in the Civil Disobedience Movement. She founded the All Assam Women’s Conference in 1926.",
+    quote: "Educate a woman, and you free generations.",
+    wikipedia: "https://en.wikipedia.org/wiki/Chandraprabha_Saikiani"
+},
+{
+    id: 19,
+    name: "Gopinath Bordoloi",
+    years: "1890 – 1950",
+    image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBIQEBAQERAQEBAQEBAPDw8PDxAQFREWFhURFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLjcBCgoKDg0OFxAQFysdHR0tLS0rLSstLS0tLS0tLS0tLS0tLSstNy0rLS0rNzc3Ky0tNysrLS03KysrLSsrKysrLf/AABEIAM0A9gMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAADAAECBAUGBwj/xAA3EAABBAEDAwIEBAQFBQAAAAABAAIDESEEEjEFQVEGYRMicZEygaGxB0LB8BQVJDNSFkNicuH/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAhEQACAgICAwADAAAAAAAAAAAAAQIRAyESMQQTQSIyUf/aAAwDAQACEQMRAD8AKwZx4UHxi+UaJnv2Q9oH5lYWXRExBD+JWOwRpH1hBawFK2Im1t5SdGPKZjw00ivzSLAQbhQPPCnGOVEnKLHROgaPsoBOJVAuzhFjQVqd3KbwmdL7IsaESgAZSfOeAhfEI45RyQUWT72m4VV2rkHPCs6XUMfh2D7KHKtlcUwLn2UIn3Wg/TsHdU5mNH/xT7E+g4UAeK8oE5tGkf4P3VKWWjlPkS0U9Q2uFlaoYWxO4FZupZa0iyaMu1JpUpI6UW3wroY5TWFF6jlADuekCmKdqACByYlNZUXIoCW5JQSSGeqmPCHWPqiOeaQ5DQtREQB5yhOlpM915VV8mVRJda7ujxZVCN9hXdPJ2QBYhbZP0Q9QNtIgcQULVm1DKA7rRIxlVSSMIxm2s4QAeV6pyyE/h+6EdTeDwifFGPCiTa6KQr28m7TGehilCR+457JjHfCybZqhfELuchGEIHzBVGv29kcP3DlJ2UGk1BA8qnLLfdKSTsFW5KcSWO43zwhTOBx+qT7KDa0SZEgcrduD90CWlZkduwVnytLVrEzBTC1VeFaLgUJ4WgFYuTJ3jKYhACUmlCKQKaGFJUXFDtSQwHSSCdSKz1HfgKE7rCiChyuwoQAHvoKm7JR53ZQCPdUiGGifWFbgdlUGmlcgdaJAi6ZMocwPZMRee6TpOyhFWVbO7PCqyGzyaulbmNBR0cG52eFT0rBKyu9ovv2V2CAkYbYWro+kfEfQwF2PTekRsaGloJ80uOeejaMTzx2ldxtQzoXdvsvU2dIju9rfsnl6RGR+Fv2WfuRejyeTTv4KYaJ/ZemO6JHd7R9kv8tjb/KD+SPcPs8tk0Un9hQk0jgLor1E6KP/AID7LP1fS2HFCvZHvQcTzE7x2KC8knghd5qekMHZUtT0phGBS0hnJcDjfi1yhyZV7qOj2OQGVRFLqj1Zi9OjLlZRQiVZ1bVTtWhEXoDlYJQHJjIBOouCb80APakx6gkmMISnQkkhHpLZCoSSlRL6woOKhEtg3klINRWBDc5DYiJaUaN6duQoccJgWmOU9vdVmPVh0nypUwBS5NYWr0bSm8jmlV6Do/8AEThv/Ebj9F1zNCWfNWew/qssstUa419NLQ6YAjFcLbbGsnp94vlbNLzns3kFjCaQBMHKEzjXCDKtgX4tVJTaLtcUOQ0kzZIqOI7lUdXMBeVfkbeaWXqY7u+VlpMqihqZbGOVUe40rkjCBVfms7VzUtIOmVRh9WZaw5sduOVsdQlysuYbgT4XpYpaOXIihMQ4WMdllyYNLSJyqetb831XQjIr4UHBFUHpgAeVDciOCigaGTBykVBOhj2kmSSA9Fmx9UGN2fopz3VhDibj3U9GbDb+VXe9FaOyA8KbAPC9O84TQjCW3CdgPEbUJnePKaMG1CUJ2JM3PRmrazVW44cNvhelzNbsJPJoBeN9MfU0ZAsh4/fhetgFxaCMUCQO2LXNmlW2bQRY0EVDPK0A5Z75AwWey53qvW3/APbDseFwLb0b8bOz3hNIQR4Xm3/VM7Dm69wrLfV5dQ25PJFhNwkHA7cmjzakW2uch60CLBzSZ3qL5SayFm1IrjRsz7QMlZcz2E4BK5/V+pj7lZb/AFI7NA/ohYZPY+SOomI/vhYHVzR+qyT1mRx/ER7WhnqG/wDEVccUouw5oqa19lV4husdwrOoaDwqmjYdxHsuuEnRlJWwf+EBJAWRr8Prwuo6bpiXk9x+q5bqv+6+uxpdWN3oykisSolKMKBK2okZyZPSakBZEpqUy1LamFkaSUtiSKCzvtQLHBTRBFnPblDJ4CzIHKqPOVZe5Vttm1LQB4ThFIwgQ4RnOVIAYGeE72guAdYFhSe7Np5G2L8UUpdMF2dhovS2neGPiJ3tIcQuvuvmIogV+iyOjgNY17f5gP2W1+MLyZ5JO1Z2JKjP1EzD+IgNbzZWPqvUWnbYjY33eRYVnqXQnSmt5A8Kk701HAdxt4rITi0UjC6j1Vj802vIpZ29rqrAV89GjD73HZZ+Q+VGXp4uwMeArUlfY6YXpGnc91NN+PdH6oHxggt2rU9L6ItcHVVC0f1jHuYCo5JyFbOClO7nH0Q4o4u9/dXn6HdweVGXpg+E4tI+I04BK6eS6IpgHabTn+aj2s8rPmicw4yEJ0DsuJr2HYoLNS8GncKlC/ojRGoscJw0j5hyh6SPcbPCuSAAH2Wd0xoru1XwmOf5b+q5GVxLi4/zEldNK0OI35aD+FZnWi0gOYzbRpdWORlJGWEJOVHaujZFD2ntMQoORYUFSQrKmHIsCdJlHenTsR6A/wA2EF7sqG75VGNwJ91lZJMZKI2LlRYMq2RhICvgKDspSikmC1S6AmAoPf2UyRSpyOtJsaPRfTWo36Vnt8q6Pp0mNq470JKHaZzb+Zrifquh0U1Ejv8AsvHyfsztXRtPCrzNsZCnG/3tSkcFjaXYGFqNGXfhaEtN0Pu9bbNo8IL9TuO1n5lEsiSK2PpIA3isBZfqaG48LbZTQMi1kddmYWltiz+icJN06Ers4n/Dk3XbwqUgv8V/qtbSO2y7XcEd+CtKbQNNkALblTtl0cZJpWn7oun6c15qv0XRzdOaMuAQdzGcAWFfu/gnFGO/RiM0FWm4P0Reoam3Hss4SE2nC7tkNJFNrC4rM6y/aA3veVr6RpEhB4zRXPdXl3SurgYXdj/YwkUi5EDrQ0l0GYQhJQtJAyVpnFRpKkALKScBJAHb7jtUYHqTihxHKzMrL0JVkGh9VWibQRnCgBdd00iipM5Jl0pannsVKIIJsiRhVpccK240FSkcpexnY+goqgkcO7j+y6HR8m1y/onqbGsdA8hpLrHvhdVHVryskWpSs7Yu0asTgozzjvx9VSdOGjBWNrtaeO5NALD1OWy0aOr6kL2MNk+9qjrusnTNraS4jJHlXujaBrR8R+X9gn6npo3/ADOaCf2UpK9odnLyeqHvydzfFrO1XXsi7v6FX+paVhcAAACVU1XT23isLsx1XQtjP124B2d3ZbXT9cS3J/VY2m0gNjv4RIjsO3wqcU0G7s19XrAR9FzeumNmifurcuo5WbOLSWNJ2DkZ+plP3UYXee/hQ1jMqUBC3rRi+w+skZDE5wy5zfsVxkhJ58kro+vTVGG33C5l5XVgj+JnJjOclaiU4WpI9ptydKgmgFuTgpNpSKdARSTpIoDuZWquxuUUON5QgfmWC7MzSheaAR3Nvt2VOB1VflXd18KwKsgBKceyk8Z/P6ILq3H+whiFMRSpvR5cqu51KboaFBIWuDr4K9O6bMHMafIBz9AvLV6H6O1AkhF5LMFcfkq1Z04jakZd/RY0lNfuPDcrXnftu+/FLn+qhz3U1csWzdF6Dq7TfzV7qeo65ABRJJPhZmh9NOIG5xH0KNqvSzSLEpaR5GEVH6MadsUtPY8ADsVna3URhwDDZrPhAl6HI2w2YV+azZenPYb3WfzVpJ9MV0aEeoqyefKFrJhQKzJJJG+K+uUNupLitowolzZfkddVwoP4TM/RJz6R9JM7VnKo6jUbG2rWqdZWN1Oa/lW8IWZydFTW6syHPZVWhTUSV1xVKjNuxxSVJr8pWgB6TUllKymgHCRSThMBklKkkAdkxxN904YFG647nCkLtY8TIPEQrTZb4xSqwik5cfCtAHmfu/JVic5SDx+aG4WcAk+3KAGccodLS0XRJ5ztjhkcT32kALqumfw4mcAZpAy+WtyQs5zSKRwhjXSehS9spbtJY4Enxa7/AKb6H0kXLTIf/PhdBB0+KNtMja0ewCwn+cS4SUTjNe3FnB8eFkhp3Wt7q0Oxzs3nusoy0aXCdkeicuocBg5WDr+qT3QJpdLFGHYKk/psYuwLUqSXaGcONfN3TO1DiMrrJNBHRwFmz9OYPmBGeyqM1YHPTD2VN0Yb7LX1sNOscLO1GV0xkZMcSYQppMFQlJ44wqMkpVrsjkiMstknssHVPtxvyuo6dozK+ttjkj2Wn1T0GZIvjaY26tzo3eB4XRjkk6IkrPPyFAo88Tmkh7S1wNEdwglbpogg5ME5CQQMkUyVp0xCCcqJUgEDIJ0zk6AOx3qW89vurnSejajUvDYYnOzyQQ0D3K7zpv8ADAbf9RPn/jE0UPayslsyPPA4jlWNNHJIaY1zz4aLK9c0PoTQx1cZea/nN/oFv6bRRRCo42MrHytAP3VqP9Czy7o/oHUzfNLUDT5+Z/2XddI9JaXTAUze8D8T6J/ILeLk1rOUooCIYBwAPoKSpPSdYS2MQCTkrTFO0o0gOG61qN0sg42mlhSSZ72t/wBT6YxyueB8rxd+47LmHGybx3XnPtnoQ2kXRM5ub4QdV1R1HOeypahzuLwqr580aPhVFIpoN/mD+5UJdY4jlA3NNobyFVIVkJJCe6rykBPNIQeOVXnetYxMpANQ8HhUhZvvnCM9+fyW76Y9PumdveCGgir7ra1FbM2rN70l0fZEXOGXCha6vp8NNb7CgnZCBUbcAALS08QArwuRzdlJHG+rvQ0erBli+SWs8UV5J1foM+mftkjcKOHVghfSbwPGVn67QMlbtexrhm7FkfRaw8tw0yXCz5nLe6Tmr071T/Dp1mXR1WS6M/0Xnur0MkRIfG9pvu0/uu6GWM1aM3Gim0J6U3MUfbutLJIPUgkpAoAjSSmkqA+uoIGRgNY1rQOzQAEUqJKdLkjMZzkwUXBSaFyqcpzplfBEJJymTkkmAkxTlMVEnoBkkk4WaVjKPVNA2eMsPJGD4K8u6zopdO8seD7O7EL1+lQ6r0yPUMLJGg2KushRPFWzbHl4njU8778hBfLjIXR+p/Tb9LTmndH5PZc8ReBbvoCs41R0cr2CGoZWTlROrj8qL+kzvd8kUhB8NJUx6W1hP+xJnyCFokiHJlWfVs8qnJqS40wOJPAAtddofQEz6MvyA8juuq6P6ShgPyttw/mIVyyQgtEO2cT6d9KSyObJMKaDe2uV6JDA2JtCvYcG1fOj2D6IGm0/xJNxGBj81hOfLsEqCaWCskZKuxswptZSI0LGTsqxhGoPj9laaEJ6JQTRKeyk+DP9VW1XSoJhU0TX++0WtdrUxapiq2mNuzzrrP8ADPTy2YSWHkAnC4HrfoXWadxpnxG9ttlfQHwkjD/dLsx+RJLbslxR8uzaR7cOY5v1aR+6CY64X03rOiaeX/chY73LRa5Prf8ADTTS2YSY3eOGroh5CZDieHFJdr1X+HethdTQJATggJLT3xJ4s+hiVHckShlcmbO4t0SkTa5SBQQVMLHF5DkNoIkohOutSskkop0ypsBJJJ1KASYp0xVy6Ax/VUAfpZQezbF+Vk+i+lMZAJCwFzzeQMLe68P9PJ/6qfSYw2CMDjY39lyyjcjZSqAUMA4aB+QS+GSj0kj1sjkAGnHe0T4YU1X1TyBjCWSoIabkyp1GVo+UfiOAFPSQ7Wjz3VPT6YOltxJri1rBq5VktmstaAE5U2FDeMozAlF2xPonaA8KUxSYiU7dCWtkmpEIjQkQrjEmyDQplMkVaQCCcttOApKkhWD+EkiJKqQrZ//Z",
+
+    category: "political leader",
+    shortDesc: "First Chief Minister of Assam and key figure in protecting its autonomy during partition.",
+    longDesc: "Gopinath Bordoloi was a Gandhian and the first Chief Minister of Assam. He played a crucial role in ensuring that Assam remained in India during the partition. He also worked to rehabilitate refugees and uphold communal harmony. He was posthumously awarded the Bharat Ratna in 1999.",
+    quote: "True leadership lies in protecting both land and people with integrity.",
+    wikipedia: "https://en.wikipedia.org/wiki/Gopinath_Bordoloi"
+}
+
+];
+    const slider = document.getElementById('slider');
+    const sliderDots = document.getElementById('sliderDots');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentSlide = 0;
+    let filteredFighters = [...fighters];
+    let cardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+
+    function initSlider() {
+        renderCards();
+        createDots();
+        updateSlider();
+    }
+
+    function renderCards() {
+        slider.innerHTML = '';
+        filteredFighters.forEach((fighter, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.id = fighter.id;
+            card.dataset.category = fighter.category;
+            card.innerHTML = `
+                <div class="card-image">
+                    <img src="${fighter.image}" alt="${fighter.name}">
+                    <div class="card-overlay">
+                        <h3 class="card-title">${fighter.name}</h3>
+                        <p class="card-years"><i class="fas fa-calendar-alt"></i> ${fighter.years}</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <span class="card-category">${getCategoryName(fighter.category)}</span>
+                    <p class="card-description">${fighter.shortDesc}</p>
+                    <div class="card-actions">
+                        <a href="${fighter.name.toLowerCase().replace(/\s+/g, '-')}.html" class="read-more">
+                            Read More <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+            slider.appendChild(card);
+        });
+    }
+
+    function createDots() {
+        sliderDots.innerHTML = '';
+        const dotCount = Math.ceil(filteredFighters.length / cardsPerView);
+
+        for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot';
+            dot.dataset.index = i;
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            sliderDots.appendChild(dot);
+        }
+
+        if (sliderDots.children.length > 0) {
+            sliderDots.children[0].classList.add('active');
+        }
+    }
+
+    function updateSlider() {
+        const cardWidth = document.querySelector('.card')?.offsetWidth + 40;
+        if (cardWidth) {
+            slider.scrollTo({
+                left: currentSlide * cardsPerView * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentSlide]) {
+            dots[currentSlide].classList.add('active');
+        }
+
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide >= Math.ceil(filteredFighters.length / cardsPerView) - 1;
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlider();
+    }
+
+    function filterFighters() {
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        filteredFighters = fighters.filter(fighter => {
+            return activeFilter === 'all' || fighter.category === activeFilter;
+        });
+
+        currentSlide = 0;
+        renderCards();
+        createDots();
+        updateSlider();
+    }
+
+    function getCategoryName(category) {
+        const names = {
+            'leader': 'National Leader',
+            'soldier': 'Armed Revolutionary',
+            'woman': 'Women Warrior'
+        };
+        return names[category] || category;
+    }
+
+    // Filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterFighters();
+        });
+    });
+
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlider();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentSlide < Math.ceil(filteredFighters.length / cardsPerView) - 1) {
+            currentSlide++;
+            updateSlider();
+        }
+    });
+
+    // Responsive
+    function handleResize() {
+        const newCardsPerView = Math.min(3, Math.floor(window.innerWidth / 340));
+        if (newCardsPerView !== cardsPerView) {
+            cardsPerView = newCardsPerView;
+            createDots();
+            updateSlider();
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Initialize
+    initSlider();
+    </script>
+</body>
+</html>

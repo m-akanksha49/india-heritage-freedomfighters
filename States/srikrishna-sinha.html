@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Krishna Sinha - Freedom Fighters of India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sri Krishna Sinha</h1>
+    <p>First Chief Minister of Bihar and Eminent Freedom Fighter</p>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-image">
+        <img src="data:image/jpeg;base64,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" alt="Sri Krishna Sinha">
+      </div>
+      <div class="hero-content">
+        <h2>Sri Krishna Sinha</h2>
+        <p>Fondly known as Shri Babu, he was one of the architects of modern Bihar and played a pivotal role in India’s independence and democratic governance after freedom.</p>
+        <div class="quote">"Freedom is not worth having if it does not include the freedom to make mistakes."</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Biography</h3>
+      <p>Born on October 21, 1887, in Bihar, Sri Krishna Sinha was actively involved in the Indian independence movement. He participated in major movements like Non-Cooperation, Civil Disobedience, and Quit India. He was imprisoned several times. After independence, he became the first Chief Minister of Bihar and held the position till 1961, laying the foundation of a democratic, progressive state.</p>
+    </div>
+
+    <div class="section">
+      <h3>Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item"><strong>1887:</strong> Born in Maur, Bihar.</div>
+        <div class="timeline-item"><strong>1920–1942:</strong> Imprisoned multiple times during India's freedom struggle.</div>
+        <div class="timeline-item"><strong>1946:</strong> Became the first Premier of Bihar Province.</div>
+        <div class="timeline-item"><strong>1950:</strong> Became the first Chief Minister of Bihar after Republic formation.</div>
+        <div class="timeline-item"><strong>1961:</strong> Passed away in office, after 15 years of service.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Legacy</h3>
+      <ul>
+        <li>Known as the 'Architect of Modern Bihar'.</li>
+        <li>Close associate of Mahatma Gandhi and follower of Gandhian principles.</li>
+        <li>Honored with statues, streets, and institutions in his memory.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Sri_Krishna_Sinha_Stamp_1989.jpg" alt="Sri Krishna Sinha Stamp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Shri_Babu_Statue.jpg" alt="Statue of Shri Babu">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Srikrishna_Sinha_road_sign.jpg" alt="Road named after Sri Krishna Sinha">
+      </div>
+    </div>
+  </div>
+
+   <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who fought for India's independence</p>
+            
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Freedom Fighters</a>
+                <a href="#">Timeline</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Freedom Fighters of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

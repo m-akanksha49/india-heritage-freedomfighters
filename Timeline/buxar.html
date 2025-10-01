@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle of Buxar - Indian History</title>
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --green: #138808;
+            --blue: #000080;
+            --white: #ffffff;
+            --light-bg: #f8f8f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://cdn.educba.com/academy/wp-content/uploads/2024/05/Battle-of-Buxar-1764-768x427.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light-bg);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: var(--saffron);
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .year-badge {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--blue);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--saffron);
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            border-left: 5px solid var(--green);
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--saffron);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 0 5px var(--light-bg);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .key-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .figure-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .figure-card:hover .figure-image img {
+            transform: scale(1.1);
+        }
+
+        .figure-info {
+            padding: 15px;
+        }
+
+        .figure-info h4 {
+            color: var(--blue);
+            margin-bottom: 5px;
+        }
+
+        .figure-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .interactive-map {
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/India_geographic_map.svg/1200px-India_geographic_map.svg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background-color: var(--green);
+        }
+
+        .map-marker::after {
+            content: attr(data-location);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover::after {
+            opacity: 1;
+        }
+
+        .quote-section {
+            background-color: var(--saffron);
+            color: var(--green);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--green);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--saffron);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: var(--green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .impact-list {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            list-style-type: none;
+        }
+
+        .impact-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .impact-list li::before {
+            content: '•';
+            color: var(--saffron);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .detailed-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .detailed-info h3 {
+            color: var(--blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+        }
+        
+        .info-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .info-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-point {
+            margin-bottom: 20px;
+        }
+        
+        .info-point h4 {
+            color: var(--green);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-point h4::before {
+            content: '✻';
+            color: var(--saffron);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                flex-direction: column;
+            }
+            
+            .header::after {
+                bottom: -30px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="year-badge">1764</div>
+        <h1>Battle of Buxar</h1>
+        <p>The decisive battle that established British supremacy in eastern India</p>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <main class="main-content">
+                <section>
+                    <h2>The Turning Point in Indian History</h2>
+                    <p>The Battle of Buxar (1764) was a significant military engagement fought between the British East India Company and the combined forces of the Mughal Emperor Shah Alam II, the Nawab of Bengal Mir Qasim, and the Nawab of Awadh Shuja-ud-Daula. The British victory at Buxar consolidated their control over Bengal and marked a crucial step in their eventual domination of India.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Background of the Conflict</h3>
+                        <p>The battle was the culmination of growing tensions between the British East India Company and Indian rulers after the Battle of Plassey (1757). Mir Qasim, the Nawab of Bengal, sought to assert his independence from British control and formed an alliance with Shuja-ud-Daula of Awadh and the Mughal Emperor Shah Alam II. The combined forces aimed to challenge British dominance in eastern India.</p>
+                    </div>
+
+                    <h2>Historical Timeline</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1760</div>
+                            <div class="timeline-content">
+                                <h3>Rise of Mir Qasim</h3>
+                                <p>Mir Qasim becomes Nawab of Bengal with British support but soon tries to assert independence by moving his capital from Murshidabad to Munger and reforming his army.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1763</div>
+                            <div class="timeline-content">
+                                <h3>Conflict Escalates</h3>
+                                <p>Open warfare breaks out between Mir Qasim and the British. After initial defeats, Mir Qasim flees to Awadh and forms an alliance with Shuja-ud-Daula and Shah Alam II.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1764</div>
+                            <div class="timeline-content">
+                                <h3>Battle of Buxar</h3>
+                                <p>On October 22, the combined forces face the British under Hector Munro at Buxar. Despite numerical superiority, the Indian forces are decisively defeated due to better British discipline and coordination.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1765</div>
+                            <div class="timeline-content">
+                                <h3>Treaty of Allahabad</h3>
+                                <p>The defeated rulers sign treaties with the British. Shah Alam II grants the Company the Diwani (revenue collection rights) of Bengal, Bihar, and Orissa, marking the beginning of formal British rule in India.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Photo Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <img src="https://thedefencetimes.com/wp-content/uploads/2023/01/Tipu_death.jpg" alt="Depiction of Battle of Buxar">
+                            <div class="gallery-caption">Artistic depiction of the Battle of Buxar</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://image.slidesharecdn.com/buxar-200814032421/85/battle-of-buxar1764-by-drmonica-sharma-4-638.jpg?cb=1666773182" alt="Map of Battle of Buxar">
+                            <div class="gallery-caption">Strategic map showing troop movements at Buxar</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://preview.redd.it/lv5ppefld7h91.png?width=360&format=png&auto=webp&s=193751e298fc9a2f88a9a261f076e24c22e7bb49" alt="Treaty of Allahabad">
+                            <div class="gallery-caption">Signing of the Treaty of Allahabad after the battle</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://th.bing.com/th/id/OIP.lI3LAzbezwKlTlcmu4NyuQAAAA?rs=1&pid=ImgDetMain" alt="British troops at Buxar">
+                            <div class="gallery-caption">British East India Company troops during the battle</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Information Section -->
+                    <div class="detailed-info">
+                        <h3>Deep Dive: The Battle of Buxar</h3>
+                        <p>The Battle of Buxar was more than just a military confrontation - it was a pivotal moment that reshaped India's political landscape and set the stage for British colonial rule. Here's an in-depth look at various aspects of this significant battle:</p>
+                        
+                        <div class="info-columns">
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Military Tactics</h4>
+                                    <p>The British victory demonstrated the superiority of European military discipline and tactics. Despite being outnumbered (7,000 British vs 40,000 combined forces), their coordinated musket volleys and artillery proved decisive against the less disciplined Indian forces.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Political Consequences</h4>
+                                    <p>The battle resulted in the Treaty of Allahabad (1765), where the Mughal Emperor granted the East India Company the Diwani rights (revenue collection) of Bengal, Bihar, and Orissa. This gave the Company legal authority over these rich provinces.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Economic Impact</h4>
+                                    <p>With control over Bengal's revenues, the Company gained vast financial resources that would fund its further expansion in India. The battle marked the transition from a trading company to a territorial power.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-column">
+                                <div class="info-point">
+                                    <h4>Leadership Factors</h4>
+                                    <p>British commander Hector Munro's leadership contrasted with the divided command of the Indian alliance. Mir Qasim, Shuja-ud-Daula, and Shah Alam II failed to coordinate effectively, while the British maintained unified command.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Technological Edge</h4>
+                                    <p>The British had superior artillery and standardized firearms, while the Indian forces relied more on cavalry and had less standardized equipment. This technological gap would widen in future conflicts.</p>
+                                </div>
+                                
+                                <div class="info-point">
+                                    <h4>Long-Term Effects</h4>
+                                    <p>The battle established British military supremacy in northern India and demonstrated that Indian rulers could not easily challenge Company power. It paved the way for the British to become the dominant power in India over the next century.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box" style="margin-top: 30px;">
+                            <h3>Legacy of Buxar</h3>
+                            <p>The Battle of Buxar marked a turning point in Indian history, more significant than Plassey in establishing British dominance. While Plassey had made the British a power in Bengal, Buxar made them the dominant power in northern India. The battle's aftermath saw the East India Company transition from being a trading corporation to a territorial ruler, collecting taxes and administering justice. This shift would eventually lead to direct British Crown rule after the 1857 rebellion. The battle also demonstrated the declining power of the Mughal Empire, as the Emperor became a pensioner of the British.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h2>Key Figures</h2>
+                <div class="key-figures">
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://images02.military.com/sites/default/files/styles/full/public/2022-04/cc%20benedict%20arnold%20painting%201200.jpg" alt="Major Hector Munro">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Major Hector Munro</h4>
+                            <p>British commander who led the East India Company forces to victory at Buxar with superior tactics and discipline.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://th.bing.com/th/id/OIP.Fzf9xV1ah3IjvZL-RzRb2gHaDz?rs=1&pid=ImgDetMain" alt="Mir Qasim">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Mir Qasim</h4>
+                            <p>Nawab of Bengal who challenged British dominance and was the primary Indian leader at Buxar before fleeing after defeat.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://i.pinimg.com/originals/e5/0d/72/e50d7244cee84a7f45fd5422ce3d023f.jpg" alt="Shuja-ud-Daula">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Shuja-ud-Daula</h4>
+                            <p>Nawab of Awadh who joined the alliance against the British and commanded a large portion of the forces at Buxar.</p>
+                        </div>
+                    </div>
+                    <div class="figure-card">
+                        <div class="figure-image">
+                            <img src="https://preview.redd.it/kmw3aosuzoa81.jpg?width=1080&format=pjpg&auto=webp&s=7caf1aeb51c063208fa1efeb991e881fd12df889" alt="Shah Alam II">
+                        </div>
+                        <div class="figure-info">
+                            <h4>Shah Alam II</h4>
+                            <p>Mughal Emperor who joined the anti-British coalition and was captured after the battle, later granting the Company Diwani rights.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Battle Locations</h2>
+                <div class="interactive-map">
+                    <div class="map-marker" style="top: 50%; left: 60%;" data-location="Buxar (Battle Site)"></div>
+                    <div class="map-marker" style="top: 55%; left: 65%;" data-location="Patna (Mir Qasim's Capital)"></div>
+                    <div class="map-marker" style="top: 45%; left: 55%;" data-location="Allahabad (Treaty Site)"></div>
+                    <div class="map-marker" style="top: 40%; left: 50%;" data-location="Awadh (Shuja-ud-Daula's Territory)"></div>
+                </div>
+
+                <h2>Consequences</h2>
+                <ul class="impact-list">
+                    <li>Established British military supremacy in northern India</li>
+                    <li>Granted the East India Company Diwani rights over Bengal, Bihar, and Orissa</li>
+                    <li>Marked the beginning of formal British administrative control in India</li>
+                    <li>Reduced the Mughal Emperor to a British pensioner</li>
+                    <li>Demonstrated the inability of Indian rulers to unite against the British</li>
+                    <li>Provided the Company with vast financial resources for further expansion</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="quote-section">
+            <p class="quote">"The Battle of Buxar was far more important than Plassey; it made the British not merely a factor in Indian politics but the dominant power in northern India."</p>
+            <p class="quote-author">— Historian P.E. Roberts</p>
+        </section>
+
+       
+    </div>
+
+    <script>
+        // Interactive map functionality
+        document.querySelectorAll('.map-marker').forEach(marker => {
+            marker.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const markerInfo = {
+                    "Buxar (Battle Site)": "The actual battlefield near the town of Buxar in present-day Bihar, where the decisive engagement took place on October 22, 1764.",
+                    "Patna (Mir Qasim's Capital)": "Mir Qasim had moved his capital from Murshidabad to Patna (then called Patliputra) as part of his efforts to resist British influence.",
+                    "Allahabad (Treaty Site)": "Where the Treaty of Allahabad was signed in 1765, granting the East India Company Diwani rights over Bengal, Bihar, and Orissa.",
+                    "Awadh (Shuja-ud-Daula's Territory)": "The wealthy kingdom of Awadh, ruled by Shuja-ud-Daula, who was one of the main Indian commanders at Buxar."
+                };
+                alert(`${location}\n\n${markerInfo[location]}`);
+            });
+        });
+
+        // Gallery image click to show caption
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const caption = item.querySelector('.gallery-caption');
+            item.addEventListener('click', function() {
+                caption.style.transform = caption.style.transform === 'translateY(0)' ? 'translateY(100%)' : 'translateY(0)';
+            });
+        });
+
+        // Animate elements when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .figure-card, .gallery-item, .info-point').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Back button animation
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('mouseenter', () => {
+            backButton.style.transform = 'translateY(-3px)';
+        });
+        backButton.addEventListener('mouseleave', () => {
+            backButton.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

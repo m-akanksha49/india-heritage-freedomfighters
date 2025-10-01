@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chittaranjan Das - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+       <style>
+        :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the architects of modern India</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="https://cdn1.byjus.com/wp-content/uploads/2018/11/free-ias-prep/2018/06/16051037/220px-Portrait_of_Chittaranjan_Das.jpg" alt="Chittaranjan Das">
+            </div>
+            <div class="hero-content">
+                <h2>Chittaranjan Das</h2>
+                <p>Affectionately known as "Deshbandhu" (Friend of the Nation), a brilliant lawyer who became one of India's most passionate freedom fighters and political visionaries.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>November 5, 1870</p>
+                        <p>Calcutta, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>June 16, 1925 (aged 54)</p>
+                        <p>Darjeeling, British India</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Title</h4>
+                        <p>Deshbandhu</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Non-cooperation movement, Swaraj Party, defending Aurobindo Ghosh</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Swaraj is my birthright and I shall have it."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Chittaranjan Das was born on November 5, 1870 in Calcutta to a prominent Bengali family. After completing his education in England where he became a Barrister, he returned to India and established himself as one of Calcutta's most successful lawyers. His dramatic defense of Sri Aurobindo in the Alipore Bomb Case (1908) brought him national fame.</p>
+            
+            <p>Das gradually moved from law to politics, becoming a leading figure in the Indian National Congress. He played a crucial role in the Non-Cooperation Movement (1920-22) alongside Gandhi, but later formed the Swaraj Party in 1923 to continue constitutional agitation within the legislatures when the movement was called off.</p>
+            
+            <p>As Mayor of Calcutta, he introduced significant municipal reforms. His vision of decentralized governance and empowerment at local levels was ahead of its time. Despite his aristocratic background, he gave up all his wealth and luxury to serve the nation, earning him the title "Deshbandhu". His untimely death in 1925 at age 54 was mourned by the entire nation.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Timeline of Key Contributions</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1870</div>
+                    <p>Born in Calcutta on November 5</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1908</div>
+                    <p>Famous defense of Sri Aurobindo in Alipore Bomb Case</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1917</div>
+                    <p>Presided over Bengal Provincial Conference</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1920</div>
+                    <p>Key leader in Non-Cooperation Movement</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1922</div>
+                    <p>Elected President of Indian National Congress</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1923</div>
+                    <p>Founded Swaraj Party with Motilal Nehru</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1924</div>
+                    <p>Became first elected Mayor of Calcutta</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1925</div>
+                    <p>Passed away in Darjeeling on June 16</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Key Contributions to Freedom Struggle</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Legal Defense:</strong> Saved many freedom fighters through brilliant legal arguments</li>
+                <li><strong>Mass Mobilization:</strong> Brought educated middle class into freedom movement</li>
+                <li><strong>Political Strategy:</strong> Founded Swaraj Party for legislative resistance</li>
+                <li><strong>Urban Leadership:</strong> Connected nationalist movement with urban centers</li>
+                <li><strong>Constitutional Approach:</strong> Advocated working within system when needed</li>
+                <li><strong>Mentorship:</strong> Guided young leaders like Subhas Chandra Bose</li>
+            </ul>
+        </div>
+        
+       
+        
+        <div class="section">
+            <h3>Lessons from Deshbandhu's Life</h3>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-balance-scale"></i> Principle Over Profession</h4>
+                <p>Left lucrative law practice to serve the nation</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-chess"></i> Strategic Flexibility</h4>
+                <p>Knew when to cooperate and when to oppose</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-hands-helping"></i> Selfless Sacrifice</h4>
+                <p>Gave up wealth and comfort for freedom struggle</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-users"></i> Inclusive Leadership</h4>
+                <p>Bridged gap between moderates and extremists</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-graduation-cap"></i> Mentorship</h4>
+                <p>Nurtured next generation of freedom fighters</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Political Vision</h3>
+            <p>Chittaranjan Das articulated a distinct political vision for India's freedom and governance:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Advocated for complete Swaraj (self-rule)</li>
+                <li>Proposed decentralized governance with strong local bodies</li>
+                <li>Envisioned Hindu-Muslim unity as foundation of nationalism</li>
+                <li>Supported constructive work alongside political agitation</li>
+                <li>Balanced radical aims with pragmatic methods</li>
+                <li>Foresaw importance of urban centers in national movement</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-landmark"></i> Memorials</h4>
+                    <p>Chittaranjan Avenue, Chittaranjan Locomotive Works, Chittaranjan Park</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Literary Works</h4>
+                    <p>His speeches and writings continue to inspire</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-university"></i> Political Tradition</h4>
+                    <p>His pragmatic approach influences Indian politics</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-users"></i> Bengali Identity</h4>
+                    <p>Icon of Bengali leadership in freedom movement</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who shaped our nation</p>
+        </div>
+    </footer>
+</body>
+</html>

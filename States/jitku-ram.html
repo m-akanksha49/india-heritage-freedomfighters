@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitku Ram - Freedom Fighters of India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <style>
+    :root {
+            --primary-color: #ff9933;
+            --secondary-color: #138808;
+            --accent-color: #000080;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 2rem;
+        }
+        
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .quick-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fact-card {
+            background: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            border: 3px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .quote::before {
+            top: 0;
+            left: 10px;
+        }
+        
+        .quote::after {
+            bottom: -20px;
+            right: 10px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 0.8rem;
+            background: white;
+            font-size: 0.9rem;
+        }
+        
+        .legacy-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .legacy-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legacy-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legacy-card i {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content, .hero-image {
+                flex: 100%;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+            
+            .fact-card {
+                min-width: 100%;
+            }
+        }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Freedom Fighters of India</h1>
+            <p class="subtitle">Remembering the architects of modern India</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="data:image/jpeg;base64,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",
+  alt="Jitku Ram">
+            </div>
+            <div class="hero-content">
+                <h2>Jitku Ram</h2>
+                <p>Valiant freedom fighter from Jharkhand who led tribal resistance against British colonial rule - a fearless warrior who sacrificed his life for his people's freedom.</p>
+                
+                <div class="quick-facts">
+                    <div class="fact-card">
+                        <h4>Born</h4>
+                        <p>Late 18th century</p>
+                        <p>Chotanagpur region, British India (present-day Jharkhand)</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Died</h4>
+                        <p>Early 19th century</p>
+                        <p>Executed by British forces</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Title</h4>
+                        <p>Hero of Tribal Resistance</p>
+                    </div>
+                    <div class="fact-card">
+                        <h4>Known For</h4>
+                        <p>Leading the Bhumij rebellion against British oppression</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Our land, our rules - we will never bow to foreign invaders."
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Biography</h3>
+            <p>Jitku Ram was a tribal leader from the Chotanagpur region (present-day Jharkhand) who emerged as a formidable resistance fighter against British colonial expansion in the early 19th century. Born into the Bhumij tribal community, he grew up witnessing the increasing encroachment of British administrators and their exploitative land revenue policies.</p>
+            
+            <p>In 1819-20, Jitku Ram led the Bhumij rebellion against the British East India Company's rule. This uprising was primarily against the oppressive land revenue system and the interference of British officials in traditional tribal governance. Jitku Ram mobilized thousands of tribal warriors using guerrilla warfare tactics, causing significant challenges to British forces in the region.</p>
+            
+            <p>The rebellion spread across the Jungle Mahals area (modern West Bengal-Jharkhand border region). Though ultimately suppressed by the British with superior firepower, Jitku Ram's resistance became legendary among tribal communities. His courage in the face of colonial oppression inspired future tribal movements in eastern India.</p>
+        </div>
+        
+        <div class="section">
+            <h3>Timeline of Key Events</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Late 1700s</div>
+                    <p>Born in tribal community in Chotanagpur region</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Early 1800s</div>
+                    <p>Witnessed increasing British interference in tribal areas</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1819</div>
+                    <p>Led Bhumij rebellion against British rule</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1819-1820</div>
+                    <p>Organized successful guerrilla resistance</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1820</div>
+                    <p>Rebellion suppressed, Jitku Ram captured</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1821</div>
+                    <p>Executed by British, becomes martyr for tribal cause</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Key Contributions to Freedom Struggle</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>Early Resistance:</strong> Among first tribal leaders to challenge British rule</li>
+                <li><strong>Tribal Unity:</strong> United Bhumij and other tribal communities</li>
+                <li><strong>Guerrilla Tactics:</strong> Used innovative forest-based warfare</li>
+                <li><strong>Land Rights:</strong> Fought against colonial land appropriation</li>
+                <li><strong>Inspiration:</strong> Inspired later tribal revolts like Kol and Santhal rebellions</li>
+                <li><strong>Cultural Defense:</strong> Protected tribal traditions from colonial interference</li>
+            </ul>
+        </div>
+        
+       
+        
+        <div class="section">
+            <h3>Lessons from Jitku Ram's Life</h3>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-fist-raised"></i> Courage Against Oppression</h4>
+                <p>His fearless stand against colonial power teaches us to resist injustice.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-people-arrows"></i> Tribal Unity</h4>
+                <p>Demonstrated how tribal communities could unite against common threat.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-tree"></i> Connection to Land</h4>
+                <p>His struggle highlights the deep bond between tribal identity and land.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-book-history"></i> Alternative Resistance</h4>
+                <p>Showed effectiveness of guerrilla tactics against superior forces.</p>
+            </div>
+            
+            <div class="lesson-card">
+                <h4><i class="fas fa-shield-alt"></i> Early Nationalism</h4>
+                <p>Proved anti-colonial resistance predated organized national movement.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Historical Significance</h3>
+            <p>The Bhumij rebellion led by Jitku Ram holds important place in Indian history:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>One of earliest organized tribal resistances to British rule</li>
+                <li>Covered large parts of present-day Jharkhand and West Bengal</li>
+                <li>Forced British to modify their tribal policies</li>
+                <li>Inspired subsequent tribal movements in eastern India</li>
+                <li>Demonstrated organizational capabilities of tribal societies</li>
+                <li>Highlighted tribal contribution to India's freedom struggle</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Legacy</h3>
+            <div class="legacy-cards">
+                <div class="legacy-card">
+                    <h4><i class="fas fa-landmark"></i> Folk Memory</h4>
+                    <p>Remembered in tribal songs, stories and oral traditions</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-book"></i> Tribal Literature</h4>
+                    <p>Featured in Jharkhand's tribal history narratives</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-university"></i> Academic Recognition</h4>
+                    <p>Studied as early anti-colonial resistance leader</p>
+                </div>
+                <div class="legacy-card">
+                    <h4><i class="fas fa-users"></i> Cultural Icon</h4>
+                    <p>Symbol of tribal pride and self-assertion</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Freedom Fighters of India</h3>
+            <p>Dedicated to preserving the memory of those who shaped our nation</p>
+        </div>
+    </footer>
+</body>
+</html>
